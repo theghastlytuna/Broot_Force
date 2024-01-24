@@ -14,8 +14,6 @@ var tipPoints : int = 13
 func _ready() -> void:
 	tip.add_point(Vector2(0,0))
 	tip.add_point(Vector2(0,0))
-	
-	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -29,18 +27,13 @@ func _process(delta: float) -> void:
 		
 	var size : int = tip.points.size()-1
 	tip.points[size] = position
-	
 	if distanceFromLastPoint >= 25:
 		tip.add_point(position)
-		if size >= tipPoints:
-			
+		if size >= tipPoints:			
 			tip.remove_point(0)
 		if size >= tipPoints-1:
 			var removingPoint : Vector2 = tip.points[0]
 			lineRenderer.add_point(removingPoint)
 		
-		print(distanceFromLastPoint)
 		distanceFromLastPoint = 0
-		
 
-	pass

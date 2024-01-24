@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://brh7kxvkvq02q"]
+[gd_scene load_steps=4 format=3 uid="uid://brh7kxvkvq02q"]
 
 [ext_resource type="Script" path="res://Scenes/Line2D.gd" id="1_5iy41"]
+[ext_resource type="Texture2D" uid="uid://6mm3q3gblhrr" path="res://icon.svg" id="2_ja3un"]
 
 [sub_resource type="Curve" id="Curve_ebely"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.373626), 0.0, 0.0, 0, 0]
@@ -8,18 +9,33 @@ point_count = 2
 
 [node name="World" type="Node2D"]
 
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(615, 305)
+scale = Vector2(11.7266, 6)
+texture = ExtResource("2_ja3un")
+
 [node name="Root" type="Node2D" parent="."]
 
-[node name="A" type="Line2D" parent="Root"]
+[node name="RootLine" type="Line2D" parent="Root"]
 points = PackedVector2Array(0, 0)
 end_cap_mode = 2
 antialiased = true
 
-[node name="Tip" type="Line2D" parent="Root"]
+[node name="TipLine" type="Line2D" parent="Root"]
 width_curve = SubResource("Curve_ebely")
 begin_cap_mode = 2
+end_cap_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="Root" node_paths=PackedStringArray("lineRenderer", "tip")]
+[node name="Tip" type="Sprite2D" parent="Root" node_paths=PackedStringArray("lineRenderer", "tip") groups=["Tip"]]
 script = ExtResource("1_5iy41")
-lineRenderer = NodePath("../A")
-tip = NodePath("../Tip")
+lineRenderer = NodePath("../RootLine")
+tip = NodePath("../TipLine")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Root/Tip"]
+remote_path = NodePath("../../../Camera2D")
+update_rotation = false
+update_scale = false
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_speed = 11.125
+rotation_smoothing_speed = 5.845
