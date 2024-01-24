@@ -1,3 +1,25 @@
-[gd_scene format=3 uid="uid://brh7kxvkvq02q"]
+[gd_scene load_steps=3 format=3 uid="uid://brh7kxvkvq02q"]
+
+[ext_resource type="Script" path="res://Scenes/Line2D.gd" id="1_5iy41"]
+
+[sub_resource type="Curve" id="Curve_ebely"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.373626), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="World" type="Node2D"]
+
+[node name="Root" type="Node2D" parent="."]
+
+[node name="A" type="Line2D" parent="Root"]
+points = PackedVector2Array(0, 0)
+end_cap_mode = 2
+antialiased = true
+
+[node name="Tip" type="Line2D" parent="Root"]
+width_curve = SubResource("Curve_ebely")
+begin_cap_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Root" node_paths=PackedStringArray("lineRenderer", "tip")]
+script = ExtResource("1_5iy41")
+lineRenderer = NodePath("../A")
+tip = NodePath("../Tip")
