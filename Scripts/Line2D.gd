@@ -5,20 +5,20 @@ var speed : float = 100
 var lastPosition : Vector2 = Vector2(0,0)
 var time : float = 0
 var tipPoints : int = 13
+var currentLayerMultiplier : float = 1
+
 @export var lineRenderer : Line2D
 @export var tip : Line2D
-
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	tip.add_point(Vector2(0,0))
 	tip.add_point(Vector2(0,0))
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	position += transform.y * speed * delta
+	#print("Speed: " + str(speed) + " Speed in layer: " + str(speed * currentLayerMultiplier))
+	position += transform.y * speed * delta * currentLayerMultiplier
 	distanceFromLastPoint += position.distance_to(lastPosition)
 	lastPosition = position
 	var input_dir := Input.get_vector("ui_right", "ui_left", "ui_down", "ui_up")
@@ -37,3 +37,5 @@ func _process(delta: float) -> void:
 		
 		distanceFromLastPoint = 0
 
+func _on_background_manager_changed_layer(layerSpeedMultiplier):
+	currentLayerMultiplier = layerSpeedMultiplier
