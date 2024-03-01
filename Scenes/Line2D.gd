@@ -7,8 +7,9 @@ var time : float = 0
 var tipPoints : int = 13
 @export var lineRenderer : Line2D
 @export var tip : Line2D
-
-
+@export var spawner : Node2D
+var lastSpawnedDepth : float = 0
+@export var spawnDepthMod : float #every spawnDepthMod units downward, we spawn a new object
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -18,6 +19,12 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	
+	if global_position.y > lastSpawnedDepth + spawnDepthMod:
+		lastSpawnedDepth = snappedi(global_position.y ,spawnDepthMod)
+		print(lastSpawnedDepth)
+		spawner.spawnObject(lastSpawnedDepth)
+		#print(str(global_position.y) + " " + str(lastSpawnedDepth+ spawnDepthMod) + " " + str(snappedi(global_position.y ,spawnDepthMod)))
 	position += transform.y * speed * delta
 	distanceFromLastPoint += position.distance_to(lastPosition)
 	lastPosition = position
@@ -34,6 +41,7 @@ func _process(delta: float) -> void:
 		if size >= tipPoints-1:
 			var removingPoint : Vector2 = tip.points[0]
 			lineRenderer.add_point(removingPoint)
+			
 		
 		distanceFromLastPoint = 0
 
