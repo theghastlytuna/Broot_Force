@@ -5,6 +5,7 @@
 [ext_resource type="Script" path="res://Scripts/LayerManager.gd" id="3_vpma5"]
 [ext_resource type="Texture2D" uid="uid://wnnrtab0skb7" path="res://Art Assets/Textures/Layer2.png" id="5_tt3bi"]
 [ext_resource type="Script" path="res://Scripts/Spawner.gd" id="3_bsb8w"]
+[ext_resource type="PackedScene" uid="uid://o4ow5qdj2dwa" path="res://Scenes/water.tscn" id="4_pwnqw"]
 
 [sub_resource type="Curve" id="Curve_ebely"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.373626), 0.0, 0.0, 0, 0]
@@ -43,10 +44,12 @@ width_curve = SubResource("Curve_ebely")
 begin_cap_mode = 2
 end_cap_mode = 2
 
-[node name="Tip" type="Sprite2D" parent="Root" node_paths=PackedStringArray("lineRenderer", "tip") groups=["Tip"]]
+[node name="Tip" type="Sprite2D" parent="Root" node_paths=PackedStringArray("lineRenderer", "tip", "spawner") groups=["Tip"]]
 script = ExtResource("1_5iy41")
 lineRenderer = NodePath("../RootLine")
 tip = NodePath("../TipLine")
+spawner = NodePath("../../Spawner")
+spawnInterval = 100.0
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Root/Tip"]
 remote_path = NodePath("../../../Camera2D")
@@ -58,6 +61,12 @@ position_smoothing_speed = 11.125
 rotation_smoothing_speed = 5.845
 
 [connection signal="ChangedLayer" from="BackgroundManager" to="Root/Tip" method="_on_background_manager_changed_layer"]
-[node name="Spawner" type="Node2D" parent="."]
+[node name="Spawner" type="Node2D" parent="." node_paths=PackedStringArray("addingParent")]
 script = ExtResource("3_bsb8w")
-YSpread = 100.0
+resourceDictionary = {
+Vector2(0, 5): ExtResource("4_pwnqw")
+}
+XSpread = 1000.0
+addingParent = NodePath("../Obsticles")
+
+[node name="Obsticles" type="Node2D" parent="."]

@@ -9,6 +9,9 @@ var currentLayerMultiplier : float = 1
 
 @export var lineRenderer : Line2D
 @export var tip : Line2D
+@export var spawner : Node2D
+var lastSpawnedDepth : float = 0
+@export var spawnInterval : float #every spawnDepthMod units downward, we spawn a new object
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -17,8 +20,13 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	#print("Speed: " + str(speed) + " Speed in layer: " + str(speed * currentLayerMultiplier))
-	position += transform.y * speed * delta * currentLayerMultiplier
+	
+	#spawn an object every spawnInterval pixels, if you go back up, it will not trigger
+	if global_position.y > lastSpawnedDepth + spawnInterval:
+		lastSpawnedDepth = snappedi(global_position.y ,spawnInterval)
+		spawner.spawnObject(lastSpawnedDepth)
+
+	position += transform.y * speed * delta
 	distanceFromLastPoint += position.distance_to(lastPosition)
 	lastPosition = position
 	var input_dir := Input.get_vector("ui_right", "ui_left", "ui_down", "ui_up")
@@ -34,6 +42,7 @@ func _process(delta: float) -> void:
 		if size >= tipPoints-1:
 			var removingPoint : Vector2 = tip.points[0]
 			lineRenderer.add_point(removingPoint)
+			
 		
 		distanceFromLastPoint = 0
 
