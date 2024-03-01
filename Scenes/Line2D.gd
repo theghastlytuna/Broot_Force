@@ -9,7 +9,7 @@ var tipPoints : int = 13
 @export var tip : Line2D
 @export var spawner : Node2D
 var lastSpawnedDepth : float = 0
-@export var spawnDepthMod : float #every spawnDepthMod units downward, we spawn a new object
+@export var spawnInterval : float #every spawnDepthMod units downward, we spawn a new object
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,8 +20,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	
-	if global_position.y > lastSpawnedDepth + spawnDepthMod:
-		lastSpawnedDepth = snappedi(global_position.y ,spawnDepthMod)
+	if global_position.y > lastSpawnedDepth + spawnInterval:
+		lastSpawnedDepth = snappedi(global_position.y ,spawnInterval)
 		print(lastSpawnedDepth)
 		spawner.spawnObject(lastSpawnedDepth)
 		#print(str(global_position.y) + " " + str(lastSpawnedDepth+ spawnDepthMod) + " " + str(snappedi(global_position.y ,spawnDepthMod)))
