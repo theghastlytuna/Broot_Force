@@ -26,7 +26,7 @@ func _process(delta: float) -> void:
 		lastSpawnedDepth = snappedi(global_position.y ,spawnInterval)
 		spawner.spawnObject(lastSpawnedDepth)
 
-	position += transform.y * speed * delta
+	position += transform.y * speed * delta * currentLayerMultiplier
 	distanceFromLastPoint += position.distance_to(lastPosition)
 	lastPosition = position
 	var input_dir := Input.get_vector("ui_right", "ui_left", "ui_down", "ui_up")

@@ -1,11 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://brh7kxvkvq02q"]
+[gd_scene load_steps=8 format=3 uid="uid://brh7kxvkvq02q"]
 
 [ext_resource type="Script" path="res://Scripts/Line2D.gd" id="1_5iy41"]
 [ext_resource type="Texture2D" uid="uid://6mm3q3gblhrr" path="res://icon.svg" id="2_ja3un"]
-[ext_resource type="Script" path="res://Scripts/LayerManager.gd" id="3_vpma5"]
-[ext_resource type="Texture2D" uid="uid://wnnrtab0skb7" path="res://Art Assets/Textures/Layer2.png" id="5_tt3bi"]
 [ext_resource type="Script" path="res://Scripts/Spawner.gd" id="3_bsb8w"]
+[ext_resource type="Script" path="res://Scripts/LayerManager.gd" id="3_vpma5"]
 [ext_resource type="PackedScene" uid="uid://o4ow5qdj2dwa" path="res://Scenes/water.tscn" id="4_pwnqw"]
+[ext_resource type="Texture2D" uid="uid://wnnrtab0skb7" path="res://Art Assets/Textures/Layer2.png" id="5_tt3bi"]
 
 [sub_resource type="Curve" id="Curve_ebely"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.373626), 0.0, 0.0, 0, 0]
@@ -60,7 +60,6 @@ update_scale = false
 position_smoothing_speed = 11.125
 rotation_smoothing_speed = 5.845
 
-[connection signal="ChangedLayer" from="BackgroundManager" to="Root/Tip" method="_on_background_manager_changed_layer"]
 [node name="Spawner" type="Node2D" parent="." node_paths=PackedStringArray("addingParent")]
 script = ExtResource("3_bsb8w")
 resourceDictionary = {
@@ -70,3 +69,5 @@ XSpread = 1000.0
 addingParent = NodePath("../Obsticles")
 
 [node name="Obsticles" type="Node2D" parent="."]
+
+[connection signal="ChangedLayer" from="BackgroundManager" to="Root/Tip" method="_on_background_manager_changed_layer"]
