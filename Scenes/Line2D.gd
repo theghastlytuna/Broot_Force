@@ -20,11 +20,11 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	
+	#spawn an object every spawnInterval pixels, if you go back up, it will not trigger
 	if global_position.y > lastSpawnedDepth + spawnInterval:
 		lastSpawnedDepth = snappedi(global_position.y ,spawnInterval)
-		print(lastSpawnedDepth)
 		spawner.spawnObject(lastSpawnedDepth)
-		#print(str(global_position.y) + " " + str(lastSpawnedDepth+ spawnDepthMod) + " " + str(snappedi(global_position.y ,spawnDepthMod)))
+
 	position += transform.y * speed * delta
 	distanceFromLastPoint += position.distance_to(lastPosition)
 	lastPosition = position

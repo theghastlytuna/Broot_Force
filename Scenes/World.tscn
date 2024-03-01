@@ -33,6 +33,7 @@ script = ExtResource("1_5iy41")
 lineRenderer = NodePath("../RootLine")
 tip = NodePath("../TipLine")
 spawner = NodePath("../../Spawner")
+spawnInterval = 100.0
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Root/Tip"]
 remote_path = NodePath("../../../Camera2D")
