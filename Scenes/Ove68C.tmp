@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://dq4jcfh8ylt5e"]
+
+[ext_resource type="Texture2D" uid="uid://6mm3q3gblhrr" path="res://icon.svg" id="1_ax81e"]
+[ext_resource type="PackedScene" uid="uid://b6n8fojq4eg0k" path="res://Scenes/BaseEnemy.tscn" id="7_bgqyc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qrx30"]
+size = Vector2(1207, 365)
+
+[node name="Overworld" type="Node2D"]
+
+[node name="Ground" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+position = Vector2(555.5, 513.5)
+shape = SubResource("RectangleShape2D_qrx30")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground"]
+position = Vector2(565.5, 531.5)
+scale = Vector2(9.63281, 3.13281)
+texture = ExtResource("1_ax81e")
+
+[node name="BaseEnemy" parent="." instance=ExtResource("7_bgqyc")]
+position = Vector2(176, 186)
+
+[node name="RigidBody2D" parent="BaseEnemy" index="0"]
+scale = Vector2(4.06122, 2.0505)
+
+[editable path="BaseEnemy"]

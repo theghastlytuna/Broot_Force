@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://b6n8fojq4eg0k"]
+
+[ext_resource type="Texture2D" uid="uid://6mm3q3gblhrr" path="res://icon.svg" id="1_npxjw"]
+[ext_resource type="Script" path="res://Scripts/EnemyMove.gd" id="2_44ib8"]
+[ext_resource type="Script" path="res://Scripts/DefaultAttack.gd" id="3_emobv"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_umb3p"]
+friction = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fkmxp"]
+size = Vector2(116, 114)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dcjwa"]
+
+[node name="BaseEnemy" type="RigidBody2D" groups=["EnemyUnits"]]
+physics_material_override = SubResource("PhysicsMaterial_umb3p")
+lock_rotation = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(3.57628e-07, -1.54972e-06)
+scale = Vector2(0.596251, 0.914376)
+texture = ExtResource("1_npxjw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1, 1)
+
+[node name="AttackArea" type="Area2D" parent="."]
+scale = Vector2(1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(58, 0)
+shape = SubResource("RectangleShape2D_fkmxp")
+
+[node name="Movement" type="Node2D" parent="."]
+scale = Vector2(1, 1)
+script = ExtResource("2_44ib8")
+
+[node name="Attack" type="Node2D" parent="."]
+scale = Vector2(1, 1)
+script = ExtResource("3_emobv")
+attackDamage = 25.0
+timePerAttack = 2.0
+
+[node name="Timer" type="Timer" parent="Attack"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(3.72, 3.8)
+shape = SubResource("CapsuleShape2D_dcjwa")
+
+[connection signal="area_entered" from="AttackArea" to="Attack" method="_on_attack_area_area_entered"]
+[connection signal="area_exited" from="AttackArea" to="Attack" method="_on_attack_area_area_exited"]
+[connection signal="StartedAttacking" from="Attack" to="Movement" method="_on_attack_started_attacking"]
+[connection signal="StoppedAttacking" from="Attack" to="Movement" method="_on_attack_stopped_attacking"]
+[connection signal="timeout" from="Attack/Timer" to="Attack" method="_on_timer_timeout"]

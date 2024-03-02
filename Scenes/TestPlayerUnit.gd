@@ -1,14 +1,16 @@
-extends Node2D
+extends StaticBody2D
 
-@export var walkSpeed : float = 100 #not actually speed
+@export var health: float = 100
 
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+func _ready():
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	get_parent().set_axis_velocity(Vector2(walkSpeed,0))
+func _process(delta):
 	pass
 
+
+func _on_attack_area_area_entered(area):
+	print("area entered from player script")
