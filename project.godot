@@ -24,6 +24,10 @@ LocalizationManager="*res://addons/localization_editor/LocalizationManager.gd"
 
 enabled=PackedStringArray("res://addons/localization_editor/plugin.cfg")
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://localization/localizations.en.translation")
+
 [rendering]
 
 renderer/rendering_method="mobile"

@@ -1,19 +1,17 @@
-[gd_scene load_steps=23 format=3 uid="uid://dq4jcfh8ylt5e"]
+[gd_scene load_steps=21 format=3 uid="uid://dq4jcfh8ylt5e"]
 
 [ext_resource type="Texture2D" uid="uid://73qddd2nftm7" path="res://Art Assets/Textures/Temporary/ground.png" id="1_0ador"]
 [ext_resource type="Texture2D" uid="uid://6mm3q3gblhrr" path="res://icon.svg" id="1_ax81e"]
 [ext_resource type="Texture2D" uid="uid://fxxowst01k33" path="res://Art Assets/Textures/Temporary/tree.png" id="2_1btjc"]
 [ext_resource type="Script" path="res://Scenes/TestPlayerUnit.gd" id="3_7m2uc"]
-[ext_resource type="Script" path="res://Scenes/ThornWall.gd" id="6_k2fq1"]
-[ext_resource type="Script" path="res://Scenes/ThornAttack.gd" id="7_2bu0k"]
-[ext_resource type="PackedScene" uid="uid://b6n8fojq4eg0k" path="res://Scenes/BaseEnemy.tscn" id="7_bgqyc"]
+[ext_resource type="PackedScene" uid="uid://b2t15f7ju4x0g" path="res://Scenes/thorn_wall.tscn" id="7_0yv7s"]
 [ext_resource type="Script" path="res://Scenes/AxeHuman.gd" id="9_2noil"]
 [ext_resource type="Texture2D" uid="uid://dx57ws0tw85ga" path="res://Art Assets/Textures/Temporary/Human.png" id="9_7xn7u"]
-[ext_resource type="Texture2D" uid="uid://db5qellkjpi6o" path="res://Art Assets/Textures/Temporary/thorns.png" id="9_bwa0f"]
 [ext_resource type="Texture2D" uid="uid://xmswgdihi5kt" path="res://Art Assets/Textures/Temporary/axe.png" id="10_i65uy"]
 [ext_resource type="Script" path="res://Scripts/AnimationSignalGiver.gd" id="12_gekqw"]
 [ext_resource type="Script" path="res://Scripts/EnemyMove.gd" id="13_6bodh"]
 [ext_resource type="Script" path="res://Scenes/AxeAttack.gd" id="13_ql77r"]
+[ext_resource type="PackedScene" uid="uid://cygp11kg1j3cp" path="res://tower_picker.tscn" id="15_bkeoa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qrx30"]
 size = Vector2(1207, 257)
@@ -24,11 +22,8 @@ size = Vector2(128, 125)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l0cex"]
 size = Vector2(129, 126)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7qmm3"]
-size = Vector2(44, 51)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fs4w2"]
-size = Vector2(20, 49)
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qqyul"]
+friction = 0.0
 
 [sub_resource type="Animation" id="Animation_ol0kq"]
 resource_name = "Swing"
@@ -53,6 +48,9 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhnfx"]
 size = Vector2(29, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fs4w2"]
+size = Vector2(20, 49)
 
 [node name="Overworld" type="Node2D"]
 
@@ -85,10 +83,6 @@ texture = ExtResource("1_ax81e")
 position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_l0cex")
 
-[node name="BaseEnemy" parent="." instance=ExtResource("7_bgqyc")]
-visible = false
-position = Vector2(131, 197)
-
 [node name="Tree" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Tree"]
@@ -99,6 +93,10 @@ texture = ExtResource("2_1btjc")
 
 [node name="0" type="Node2D" parent="Tree/GroundPositions"]
 position = Vector2(693, 439)
+
+[node name="TowerPicker" parent="Tree/GroundPositions/0" node_paths=PackedStringArray("placeToPutTower") instance=ExtResource("15_bkeoa")]
+placeToPutTower = NodePath("..")
+towerResource = Array[Resource]([ExtResource("7_0yv7s")])
 
 [node name="1" type="Node2D" parent="Tree/GroundPositions"]
 position = Vector2(735, 439)
@@ -130,42 +128,12 @@ position = Vector2(858, 439)
 [node name="4" type="Node2D" parent="Tree/CanopyPositions"]
 position = Vector2(927, 439)
 
-[node name="ThornWall" type="Node2D" parent="." groups=["TreeUnits"]]
-position = Vector2(693, 439)
-script = ExtResource("6_k2fq1")
-health = 600.0
-
-[node name="Sprite" type="Sprite2D" parent="ThornWall"]
-position = Vector2(0, -25)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("9_bwa0f")
-
-[node name="ThornAttack" type="Node2D" parent="ThornWall"]
-script = ExtResource("7_2bu0k")
-attackDamage = 4.0
-groupToAttack = "EnemyUnits"
-
-[node name="StaticBody2D" type="StaticBody2D" parent="ThornWall"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ThornWall/StaticBody2D"]
-position = Vector2(0, -25.5)
-shape = SubResource("RectangleShape2D_7qmm3")
-
-[node name="Area2D" type="Area2D" parent="ThornWall"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ThornWall/Area2D"]
-position = Vector2(0, -25.5)
-shape = SubResource("RectangleShape2D_7qmm3")
-
 [node name="AxeHuman" type="RigidBody2D" parent="." groups=["EnemyUnits"]]
-position = Vector2(593, 406)
+position = Vector2(25, 391)
+physics_material_override = SubResource("PhysicsMaterial_qqyul")
 lock_rotation = true
 script = ExtResource("9_2noil")
 health = 10.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AxeHuman"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_fs4w2")
 
 [node name="Move" type="Node2D" parent="AxeHuman"]
 script = ExtResource("13_6bodh")
@@ -197,12 +165,12 @@ groupToAttack = "TreeUnits"
 position = Vector2(25, -17)
 shape = SubResource("RectangleShape2D_qhnfx")
 
-[connection signal="onDamaged" from="ThornWall" to="ThornWall/ThornAttack" method="onDamaged"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AxeHuman"]
+shape = SubResource("RectangleShape2D_fs4w2")
+
 [connection signal="StartedAttacking" from="AxeHuman/AxeAttack" to="AxeHuman/Move" method="_on_attack_started_attacking"]
 [connection signal="StartedAttacking" from="AxeHuman/AxeAttack" to="AxeHuman/Human/Axe/AnimationPlayer" method="playAnimation"]
 [connection signal="StoppedAttacking" from="AxeHuman/AxeAttack" to="AxeHuman/Move" method="_on_attack_stopped_attacking"]
 [connection signal="StoppedAttacking" from="AxeHuman/AxeAttack" to="AxeHuman/Human/Axe/AnimationPlayer" method="stopAnimation"]
 [connection signal="area_entered" from="AxeHuman/AxeAttack/Area2D" to="AxeHuman/AxeAttack" method="_on_attack_area_area_entered"]
 [connection signal="area_exited" from="AxeHuman/AxeAttack/Area2D" to="AxeHuman/AxeAttack" method="_on_attack_area_area_exited"]
-
-[editable path="BaseEnemy"]

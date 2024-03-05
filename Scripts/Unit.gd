@@ -8,7 +8,7 @@ class_name Unit
 #im doing it like this in case we want units to be able to heal themselves later, there has to be a way to have a units max health
 var damageTaken : float
 
-signal onDamaged(args : AttackArguments)
+signal onDamaged(args)
 signal onDie
 
 func getHealth() -> float:
