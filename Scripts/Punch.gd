@@ -16,9 +16,9 @@ func _on_attack_radius_area_entered(area: Area2D) -> void:
 func _on_timer_timeout() -> void:
 		
 	for a in collidingAreas:
-		print(a.get_parent().health)
+		#print(a.get_parent().health)
 		a.get_parent().health -= punchDamage
-		print(a.get_parent().health)
+		#print(a.get_parent().health)
 	pass # Replace with function body.
 
 

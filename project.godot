@@ -15,6 +15,10 @@ run/main_scene="res://Scenes/World.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Debug="*res://Scripts/Debug.gd"
+
 [rendering]
 
 renderer/rendering_method="mobile"

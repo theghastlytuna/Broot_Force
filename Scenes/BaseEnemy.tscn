@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://6mm3q3gblhrr" path="res://icon.svg" id="1_npxjw"]
 [ext_resource type="Script" path="res://Scripts/EnemyMove.gd" id="2_44ib8"]
-[ext_resource type="Script" path="res://Scripts/DefaultAttack.gd" id="3_emobv"]
+[ext_resource type="Script" path="res://Scripts/Attack.gd" id="3_n8gf5"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_umb3p"]
 friction = 0.0
@@ -22,22 +22,18 @@ scale = Vector2(0.596251, 0.914376)
 texture = ExtResource("1_npxjw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(1, 1)
 
 [node name="AttackArea" type="Area2D" parent="."]
-scale = Vector2(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
 position = Vector2(58, 0)
 shape = SubResource("RectangleShape2D_fkmxp")
 
 [node name="Movement" type="Node2D" parent="."]
-scale = Vector2(1, 1)
 script = ExtResource("2_44ib8")
 
 [node name="Attack" type="Node2D" parent="."]
-scale = Vector2(1, 1)
-script = ExtResource("3_emobv")
+script = ExtResource("3_n8gf5")
 attackDamage = 25.0
 timePerAttack = 2.0
 

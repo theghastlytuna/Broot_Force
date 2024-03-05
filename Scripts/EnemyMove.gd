@@ -11,7 +11,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if !attacking:
 		get_parent().linear_velocity.x = moveSpeed
-	print(get_parent().linear_velocity)
+	#print(get_parent().linear_velocity)
 
 func _on_attack_started_attacking():
 	get_parent().linear_velocity.x = 0
