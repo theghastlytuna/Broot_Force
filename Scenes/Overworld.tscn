@@ -198,10 +198,10 @@ position = Vector2(25, -17)
 shape = SubResource("RectangleShape2D_qhnfx")
 
 [connection signal="onDamaged" from="ThornWall" to="ThornWall/ThornAttack" method="onDamaged"]
-[connection signal="StartedAttacking" from="AxeHuman/AxeAttack" to="AxeHuman/Human/Axe/AnimationPlayer" method="playAnimation"]
 [connection signal="StartedAttacking" from="AxeHuman/AxeAttack" to="AxeHuman/Move" method="_on_attack_started_attacking"]
-[connection signal="StoppedAttacking" from="AxeHuman/AxeAttack" to="AxeHuman/Human/Axe/AnimationPlayer" method="stopAnimation"]
+[connection signal="StartedAttacking" from="AxeHuman/AxeAttack" to="AxeHuman/Human/Axe/AnimationPlayer" method="playAnimation"]
 [connection signal="StoppedAttacking" from="AxeHuman/AxeAttack" to="AxeHuman/Move" method="_on_attack_stopped_attacking"]
+[connection signal="StoppedAttacking" from="AxeHuman/AxeAttack" to="AxeHuman/Human/Axe/AnimationPlayer" method="stopAnimation"]
 [connection signal="area_entered" from="AxeHuman/AxeAttack/Area2D" to="AxeHuman/AxeAttack" method="_on_attack_area_area_entered"]
 [connection signal="area_exited" from="AxeHuman/AxeAttack/Area2D" to="AxeHuman/AxeAttack" method="_on_attack_area_area_exited"]
 
