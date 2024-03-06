@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cygp11kg1j3cp"]
 
 [ext_resource type="Script" path="res://Scripts/UI/TowerPicker.gd" id="1_iom7h"]
-[ext_resource type="Script" path="res://Scripts/UI/MenuButton.gd" id="2_iu23m"]
+[ext_resource type="Script" path="res://Scripts/UI/MenuButton.gd" id="2_dcttr"]
 
 [node name="TowerPicker" type="Control"]
 layout_mode = 3
@@ -20,7 +20,7 @@ text = "+"
 item_count = 1
 popup/item_0/text = "THORN_WALL"
 popup/item_0/id = 0
-script = ExtResource("2_iu23m")
+script = ExtResource("2_dcttr")
 
 [connection signal="about_to_popup" from="MenuButton" to="MenuButton" method="buttonPressed"]
 [connection signal="popupItemPressed" from="MenuButton" to="." method="clicked"]

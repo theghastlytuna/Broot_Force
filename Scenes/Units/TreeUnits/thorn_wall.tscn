@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b2t15f7ju4x0g"]
 
-[ext_resource type="Script" path="res://Scripts/Towers/Tower Scripts/ThornWall.gd" id="1_l7mb6"]
+[ext_resource type="Script" path="res://Scripts/Towers/Tower Scripts/ThornWall.gd" id="1_1lam0"]
 [ext_resource type="Texture2D" uid="uid://db5qellkjpi6o" path="res://Art Assets/Textures/Temporary/thorns.png" id="2_qqsbv"]
 [ext_resource type="Script" path="res://Scripts/Towers/Attack Scripts/ThornAttack.gd" id="3_6qv0m"]
 
@@ -8,7 +8,7 @@
 size = Vector2(44, 51)
 
 [node name="ThornWall" type="Node2D" groups=["PlayerUnits"]]
-script = ExtResource("1_l7mb6")
+script = ExtResource("1_1lam0")
 health = 600.0
 
 [node name="Sprite" type="Sprite2D" parent="."]
