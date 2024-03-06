@@ -1,7 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://dq4jcfh8ylt5e"]
+[gd_scene load_steps=22 format=3 uid="uid://dq4jcfh8ylt5e"]
 
 [ext_resource type="Texture2D" uid="uid://73qddd2nftm7" path="res://Art Assets/Textures/Temporary/ground.png" id="1_0ador"]
 [ext_resource type="Texture2D" uid="uid://6mm3q3gblhrr" path="res://icon.svg" id="1_ax81e"]
+[ext_resource type="PackedScene" uid="uid://rwpvibko6u3y" path="res://Menus/TowerPlacementMenu.tscn" id="1_prufx"]
 [ext_resource type="Texture2D" uid="uid://fxxowst01k33" path="res://Art Assets/Textures/Temporary/tree.png" id="2_1btjc"]
 [ext_resource type="Script" path="res://Scenes/TestPlayerUnit.gd" id="3_7m2uc"]
 [ext_resource type="PackedScene" uid="uid://b2t15f7ju4x0g" path="res://Scenes/thorn_wall.tscn" id="7_0yv7s"]
@@ -167,6 +168,20 @@ shape = SubResource("RectangleShape2D_qhnfx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AxeHuman"]
 shape = SubResource("RectangleShape2D_fs4w2")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TowerPlacementMenu" parent="Control" instance=ExtResource("1_prufx")]
+layout_mode = 1
+grow_horizontal = 2
 
 [connection signal="StartedAttacking" from="AxeHuman/AxeAttack" to="AxeHuman/Move" method="_on_attack_started_attacking"]
 [connection signal="StartedAttacking" from="AxeHuman/AxeAttack" to="AxeHuman/Human/Axe/AnimationPlayer" method="playAnimation"]

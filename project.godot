@@ -22,7 +22,7 @@ LocalizationManager="*res://addons/localization_editor/LocalizationManager.gd"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/localization_editor/plugin.cfg")
+enabled=PackedStringArray()
 
 [internationalization]
 
