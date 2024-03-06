@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://br6g8m6bj0fbe"]
+[gd_scene load_steps=6 format=3 uid="uid://br6g8m6bj0fbe"]
 
+[ext_resource type="Script" path="res://Menus/NewTowerPlacementMenu.gd" id="1_atvjs"]
 [ext_resource type="Texture2D" uid="uid://du3ypt3m6quyy" path="res://Art Assets/Textures/LightBrown.png" id="1_lusb3"]
 [ext_resource type="Texture2D" uid="uid://bn61fvr3hbar7" path="res://Art Assets/Textures/cancel.png" id="2_n5hif"]
 [ext_resource type="Texture2D" uid="uid://fi2rpaj6nplo" path="res://Art Assets/Textures/DarkBrown.png" id="3_bxtdm"]
@@ -10,6 +11,7 @@
 offset_right = 340.0
 offset_bottom = 276.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_h1rti")
+script = ExtResource("1_atvjs")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 2
@@ -45,6 +47,7 @@ theme_override_constants/separation = 32
 layout_mode = 2
 size_flags_horizontal = 5
 size_flags_vertical = 5
+mouse_filter = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 64
 theme_override_constants/margin_right = 16
@@ -53,6 +56,7 @@ theme_override_constants/margin_bottom = 16
 [node name="Control" type="GridContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_constants/h_separation = 10
 columns = 3
 
@@ -156,3 +160,6 @@ text = "THORN_WALL"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 1
+
+[connection signal="pressed" from="NinePatchRect/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="MarginContainer/Control/TextureButton" to="." method="_on_button_clicked" binds= [0]]
