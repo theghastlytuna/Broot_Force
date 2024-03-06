@@ -57,6 +57,7 @@ stretch_mode = 4
 
 [node name="HSeparator" type="HSeparator" parent="NinePatchRect/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 32
 
 [node name="Control" type="GridContainer" parent="NinePatchRect/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer"]
 layout_mode = 2

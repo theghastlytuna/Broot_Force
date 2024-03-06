@@ -1,14 +1,51 @@
-[gd_scene load_steps=8 format=3 uid="uid://dq4jcfh8ylt5e"]
+[gd_scene load_steps=12 format=3 uid="uid://dq4jcfh8ylt5e"]
 
 [ext_resource type="Texture2D" uid="uid://73qddd2nftm7" path="res://Art Assets/Textures/Temporary/ground.png" id="1_q67ni"]
 [ext_resource type="Texture2D" uid="uid://fxxowst01k33" path="res://Art Assets/Textures/Temporary/tree.png" id="2_2hre7"]
 [ext_resource type="PackedScene" uid="uid://cygp11kg1j3cp" path="res://Scenes/UI/tower_picker.tscn" id="3_3ejef"]
 [ext_resource type="PackedScene" uid="uid://b2t15f7ju4x0g" path="res://Scenes/Units/TreeUnits/thorn_wall.tscn" id="4_15r7k"]
-[ext_resource type="PackedScene" uid="uid://rwpvibko6u3y" path="res://Menus/TowerPlacementMenu.tscn" id="5_xj6di"]
+[ext_resource type="PackedScene" uid="uid://br6g8m6bj0fbe" path="res://Menus/NewTowerPlacementMenu.tscn" id="6_7podw"]
 [ext_resource type="PackedScene" uid="uid://b8qn8je4ge20n" path="res://Scenes/Units/EnemyUnits/AxeEnemy.tscn" id="6_onj2u"]
+[ext_resource type="Script" path="res://Scripts/UI/NewTowerPlacementMenu.gd" id="7_o4gh2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qrx30"]
 size = Vector2(1207, 257)
+
+[sub_resource type="Animation" id="Animation_in1ep"]
+resource_name = "Show"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-340, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_h40ep"]
+resource_name = "Hide"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-340, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s40a4"]
+_data = {
+"Hide": SubResource("Animation_h40ep"),
+"Show": SubResource("Animation_in1ep")
+}
 
 [node name="Overworld" type="Node2D"]
 
@@ -68,20 +105,25 @@ position = Vector2(858, 439)
 [node name="4" type="Node2D" parent="Tree/CanopyPositions"]
 position = Vector2(927, 439)
 
-[node name="Control" type="Control" parent="."]
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 1152.0
-offset_bottom = 648.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TowerPlacementMenu" parent="Control" instance=ExtResource("5_xj6di")]
-layout_mode = 1
-grow_horizontal = 2
-
 [node name="AxeEnemy" parent="." instance=ExtResource("6_onj2u")]
 position = Vector2(57, 370)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+
+[node name="PanelContainer" parent="CanvasLayer/Control" instance=ExtResource("6_7podw")]
+layout_mode = 0
+offset_left = -340.0
+offset_right = 0.0
+script = ExtResource("7_o4gh2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Control/PanelContainer"]
+libraries = {
+"": SubResource("AnimationLibrary_s40a4")
+}

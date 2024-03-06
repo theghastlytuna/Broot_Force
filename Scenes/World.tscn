@@ -1,0 +1,73 @@
+[gd_scene load_steps=8 format=3 uid="uid://bm6m4ri1lrshm"]
+
+[ext_resource type="Script" path="res://Scripts/Line2D.gd" id="1_5iy41"]
+[ext_resource type="Texture2D" uid="uid://6mm3q3gblhrr" path="res://icon.svg" id="2_ja3un"]
+[ext_resource type="Script" path="res://Scripts/Spawner.gd" id="3_bsb8w"]
+[ext_resource type="Script" path="res://Scripts/LayerManager.gd" id="3_vpma5"]
+[ext_resource type="PackedScene" path="res://Scenes/water.tscn" id="4_pwnqw"]
+[ext_resource type="Texture2D" uid="uid://wnnrtab0skb7" path="res://Art Assets/Textures/Layer2.png" id="5_tt3bi"]
+
+[sub_resource type="Curve" id="Curve_ebely"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.373626), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="World" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture_repeat = 2
+position = Vector2(0, 750)
+texture = ExtResource("5_tt3bi")
+region_enabled = true
+region_rect = Rect2(0, 0, 100, 1500)
+
+[node name="BackgroundManager" type="Node2D" parent="." node_paths=PackedStringArray("playerCam")]
+script = ExtResource("3_vpma5")
+playerCam = NodePath("../Camera2D")
+layerArray = [["res://Art Assets/Textures/Layer1.jpg", 1.0], ["res://Art Assets/Textures/Layer2.png", 0.7], ["res://Art Assets/Textures/Layer3.jpg", 0.5]]
+
+[node name="Icon" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(615, 305)
+scale = Vector2(11.7266, 6)
+texture = ExtResource("2_ja3un")
+
+[node name="Root" type="Node2D" parent="."]
+
+[node name="RootLine" type="Line2D" parent="Root"]
+points = PackedVector2Array(0, 0)
+end_cap_mode = 2
+antialiased = true
+
+[node name="TipLine" type="Line2D" parent="Root"]
+width_curve = SubResource("Curve_ebely")
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Tip" type="Sprite2D" parent="Root" node_paths=PackedStringArray("lineRenderer", "tip", "spawner") groups=["Tip"]]
+script = ExtResource("1_5iy41")
+lineRenderer = NodePath("../RootLine")
+tip = NodePath("../TipLine")
+spawner = NodePath("../../Spawner")
+spawnInterval = 100.0
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Root/Tip"]
+remote_path = NodePath("../../../Camera2D")
+update_rotation = false
+update_scale = false
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_speed = 11.125
+rotation_smoothing_speed = 5.845
+
+[node name="Spawner" type="Node2D" parent="." node_paths=PackedStringArray("addingParent")]
+script = ExtResource("3_bsb8w")
+resourceDictionary = {
+Vector2(0, 5): ExtResource("4_pwnqw")
+}
+XSpread = 1000.0
+addingParent = NodePath("../Obsticles")
+
+[node name="Obsticles" type="Node2D" parent="."]
+
+[connection signal="ChangedLayer" from="BackgroundManager" to="Root/Tip" method="_on_background_manager_changed_layer"]
