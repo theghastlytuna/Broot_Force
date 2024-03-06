@@ -8,6 +8,7 @@ var attacking : bool = false
 func _process(delta: float) -> void:
 	if !attacking:
 		get_parent().linear_velocity.x = moveSpeed
+	#Debug.Log(get_parent().linear_velocity.x)
 	#print(get_parent().linear_velocity)
 
 func _on_attack_started_attacking():

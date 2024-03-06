@@ -14,7 +14,7 @@ func _ready():
 func _process(delta):
 	anchor_left = lerp(anchor_left, _target_anchor.x, lerp_speed)
 	anchor_right = lerp(anchor_right, _target_anchor.y, lerp_speed)
-	print(_target_anchor)
+	#print(_target_anchor)
 	pass
 
 func _on_texture_button_pressed():

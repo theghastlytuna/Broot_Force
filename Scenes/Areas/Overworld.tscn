@@ -1,0 +1,83 @@
+[gd_scene load_steps=7 format=3 uid="uid://dq4jcfh8ylt5e"]
+
+[ext_resource type="Texture2D" uid="uid://73qddd2nftm7" path="res://Art Assets/Textures/Temporary/ground.png" id="1_q67ni"]
+[ext_resource type="Texture2D" uid="uid://fxxowst01k33" path="res://Art Assets/Textures/Temporary/tree.png" id="2_2hre7"]
+[ext_resource type="PackedScene" uid="uid://cygp11kg1j3cp" path="res://Scenes/UI/tower_picker.tscn" id="3_3ejef"]
+[ext_resource type="PackedScene" uid="uid://b2t15f7ju4x0g" path="res://Scenes/Units/TreeUnits/thorn_wall.tscn" id="4_15r7k"]
+[ext_resource type="PackedScene" uid="uid://rwpvibko6u3y" path="res://Menus/TowerPlacementMenu.tscn" id="5_xj6di"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qrx30"]
+size = Vector2(1207, 257)
+
+[node name="Overworld" type="Node2D"]
+
+[node name="Ground" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+position = Vector2(555.5, 567.5)
+shape = SubResource("RectangleShape2D_qrx30")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground"]
+position = Vector2(611.5, 596)
+scale = Vector2(2.718, 0.628)
+texture = ExtResource("1_q67ni")
+
+[node name="Tree" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Tree"]
+position = Vector2(891, 272)
+texture = ExtResource("2_2hre7")
+
+[node name="GroundPositions" type="Node2D" parent="Tree"]
+
+[node name="0" type="Node2D" parent="Tree/GroundPositions"]
+position = Vector2(693, 439)
+
+[node name="TowerPicker" parent="Tree/GroundPositions/0" node_paths=PackedStringArray("placeToPutTower") instance=ExtResource("3_3ejef")]
+placeToPutTower = NodePath("..")
+towerResource = Array[Resource]([ExtResource("4_15r7k")])
+
+[node name="1" type="Node2D" parent="Tree/GroundPositions"]
+position = Vector2(735, 439)
+
+[node name="2" type="Node2D" parent="Tree/GroundPositions"]
+position = Vector2(804, 439)
+
+[node name="3" type="Node2D" parent="Tree/GroundPositions"]
+position = Vector2(858, 439)
+
+[node name="4" type="Node2D" parent="Tree/GroundPositions"]
+position = Vector2(927, 439)
+
+[node name="CanopyPositions" type="Node2D" parent="Tree"]
+position = Vector2(22, -315)
+
+[node name="0" type="Node2D" parent="Tree/CanopyPositions"]
+position = Vector2(693, 439)
+
+[node name="1" type="Node2D" parent="Tree/CanopyPositions"]
+position = Vector2(735, 439)
+
+[node name="2" type="Node2D" parent="Tree/CanopyPositions"]
+position = Vector2(804, 439)
+
+[node name="3" type="Node2D" parent="Tree/CanopyPositions"]
+position = Vector2(858, 439)
+
+[node name="4" type="Node2D" parent="Tree/CanopyPositions"]
+position = Vector2(927, 439)
+
+[node name="Control" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TowerPlacementMenu" parent="Control" instance=ExtResource("5_xj6di")]
+layout_mode = 1
+grow_horizontal = 2

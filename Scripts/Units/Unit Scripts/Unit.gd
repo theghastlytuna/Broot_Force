@@ -27,3 +27,6 @@ func check_death():
 func die():
 	queue_free()
 
+
+func stopAnimation():
+	pass # Replace with function body.

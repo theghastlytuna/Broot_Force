@@ -1,13 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://b2t15f7ju4x0g"]
 
-[ext_resource type="Script" path="res://Scenes/ThornWall.gd" id="1_l7mb6"]
+[ext_resource type="Script" path="res://Scripts/Towers/Tower Scripts/ThornWall.gd" id="1_l7mb6"]
 [ext_resource type="Texture2D" uid="uid://db5qellkjpi6o" path="res://Art Assets/Textures/Temporary/thorns.png" id="2_qqsbv"]
-[ext_resource type="Script" path="res://Scenes/ThornAttack.gd" id="3_cg3th"]
+[ext_resource type="Script" path="res://Scripts/Towers/Attack Scripts/ThornAttack.gd" id="3_6qv0m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7qmm3"]
 size = Vector2(44, 51)
 
-[node name="ThornWall" type="Node2D" groups=["TreeUnits"]]
+[node name="ThornWall" type="Node2D" groups=["PlayerUnits"]]
 script = ExtResource("1_l7mb6")
 health = 600.0
 
@@ -17,7 +17,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_qqsbv")
 
 [node name="ThornAttack" type="Node2D" parent="."]
-script = ExtResource("3_cg3th")
+script = ExtResource("3_6qv0m")
 attackDamage = 4.0
 groupToAttack = "EnemyUnits"
 

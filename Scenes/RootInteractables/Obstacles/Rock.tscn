@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://ca3vfsmfimr8r"]
+
+[ext_resource type="Texture2D" uid="uid://cbgl38xufrejw" path="res://Sprites/Obstacles/rock.png" id="1_xgt3x"]
+
+[node name="Rock" type="Node2D" groups=["Obstacles"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_xgt3x")

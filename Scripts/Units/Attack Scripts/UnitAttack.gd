@@ -2,7 +2,7 @@ extends Node2D
 class_name Attack
 
 enum AttackType{
-	MEELE,
+	MELEE,
 	VEHICLE,
 	POISON
 	}
@@ -37,8 +37,6 @@ func _ready():
 	attackTimer.stop()
 	attackTimer.timeout.connect(attack)
 	add_child(attackTimer)
-	
-	
 
 func _on_attack_area_area_entered(area : Area2D):
 	if area.get_parent().is_in_group(groupToAttack):

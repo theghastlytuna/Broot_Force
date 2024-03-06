@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cygp11kg1j3cp"]
 
-[ext_resource type="Script" path="res://Scripts/TowerPicker.gd" id="1_iom7h"]
-[ext_resource type="Script" path="res://Scripts/MenuButton.gd" id="2_iu23m"]
+[ext_resource type="Script" path="res://Scripts/UI/TowerPicker.gd" id="1_iom7h"]
+[ext_resource type="Script" path="res://Scripts/UI/MenuButton.gd" id="2_iu23m"]
 
 [node name="TowerPicker" type="Control"]
 layout_mode = 3

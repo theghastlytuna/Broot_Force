@@ -1,11 +1,5 @@
 extends Node2D
 
-## A dictionary which holds layer textures and speeds. Keys should be strings containing the path of textures
-## and values should be floats representing multipliers, where 1 means 100 percent speed.
-##As layers get further down, speed multipliers should get smaller.
-##******MAKE SURE TEXTURES ARE NAMED AS: "Layer_" WHERE _ IS THE LAYER NUMBER.******
-#@export var layerDict: Dictionary
-
 ## The Y-value height of each layer 
 ##(after the player travels this distance, the layer should swap to the next in the dictionary).
 @export var layerHeight : float = 1500
