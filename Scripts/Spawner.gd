@@ -2,10 +2,16 @@ extends Node2D
 
 var noiseX : FastNoiseLite
 var noiseY : FastNoiseLite
+##This is where you choose what will spawn, and with what frequency.
+##The Dictionary's values are a Vector2, and a Resource.
+##Everytime the spawner finds a place where a resource should spawn, it picks a random number between 0-100 to determine which resource will spawn in that location.
+##The Vector2 respresents the range in which the random number must be between (min and max are inclusive) in order for that resource to spawn.
+##The resource is the resource that will be instantiated in that location.
 @export var resourceDictionary : Dictionary#Vector2(min,max),Resource
-#the vector2 will describe the range from which a resource can be spawned in from.
-#for example, Vector2(0 (inclusive),5(inclusive) will spawn the object if the random % is between 0-5
+
+##How many pixels the newly spawned resource can be from Y=0 (in both the positive and negative directions)
 @export var XSpread : float
+##The node that each newly spawned object will be parented to
 @export var addingParent : Node2D
 
 
