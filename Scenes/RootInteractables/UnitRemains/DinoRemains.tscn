@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bc82ny27vki14"]
+
+[ext_resource type="Texture2D" uid="uid://bkgdycrjdjw8y" path="res://Sprites/UnitSkeletons/trex.png" id="1_2vutc"]
+[ext_resource type="Script" path="res://Scripts/RootPhase/Interactable Scripts/remainsInteractable.gd" id="1_q776p"]
+
+[node name="DinoRemains" type="Node2D" groups=["UnitRemains"]]
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("1_q776p")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_2vutc")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-33, 3, 2, 6, 2, 41, -7, 66, 25, 85, 63, 39, 57, -18, 2, -65, -10, -81, -37, -83, -67, -59, -59, -27)
