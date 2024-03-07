@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6kae0ijhor46"]
+
+[ext_resource type="Texture2D" uid="uid://b3rmq871487g8" path="res://Sprites/Collectables/Water.png" id="1_462i3"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Water" type="Sprite2D" parent="."]
+scale = Vector2(0.333, 0.333)
+texture = ExtResource("1_462i3")

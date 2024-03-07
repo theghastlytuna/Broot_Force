@@ -1,0 +1,158 @@
+[gd_scene load_steps=5 format=3 uid="uid://li4smhwmtevf"]
+
+[ext_resource type="Texture2D" uid="uid://du3ypt3m6quyy" path="res://Art Assets/Textures/LightBrown.png" id="1_lusb3"]
+[ext_resource type="Texture2D" uid="uid://bn61fvr3hbar7" path="res://Art Assets/Textures/cancel.png" id="2_n5hif"]
+[ext_resource type="Texture2D" uid="uid://fi2rpaj6nplo" path="res://Art Assets/Textures/DarkBrown.png" id="3_bxtdm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h1rti"]
+
+[node name="PanelContainer" type="PanelContainer"]
+offset_right = 340.0
+offset_bottom = 276.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_h1rti")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_lusb3")
+
+[node name="TextureButton" type="TextureButton" parent="NinePatchRect"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -48.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 48.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("2_n5hif")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="HSeparator" type="HSeparator" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 40.0
+offset_bottom = 72.0
+grow_horizontal = 2
+theme_override_constants/separation = 32
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="Control" type="GridContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/h_separation = 10
+columns = 3
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Control"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture = ExtResource("3_bxtdm")
+
+[node name="Label" type="Label" parent="MarginContainer/Control/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "THORN_WALL"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/Control"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture = ExtResource("3_bxtdm")
+
+[node name="Label" type="Label" parent="MarginContainer/Control/TextureRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "aa"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/Control"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture = ExtResource("3_bxtdm")
+
+[node name="Label" type="Label" parent="MarginContainer/Control/TextureRect3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "aa"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect4" type="TextureRect" parent="MarginContainer/Control"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture = ExtResource("3_bxtdm")
+
+[node name="Label" type="Label" parent="MarginContainer/Control/TextureRect4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "aa"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect5" type="TextureRect" parent="MarginContainer/Control"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture = ExtResource("3_bxtdm")
+
+[node name="Label" type="Label" parent="MarginContainer/Control/TextureRect5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "aa"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/Control"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture_normal = ExtResource("3_bxtdm")
+texture_pressed = ExtResource("3_bxtdm")
+texture_hover = ExtResource("3_bxtdm")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="MarginContainer/Control/TextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "THORN_WALL"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
