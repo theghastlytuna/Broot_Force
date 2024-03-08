@@ -3,6 +3,7 @@ class_name Attack
 
 enum AttackType{
 	MELEE,
+	RANGED,
 	VEHICLE,
 	POISON
 	}

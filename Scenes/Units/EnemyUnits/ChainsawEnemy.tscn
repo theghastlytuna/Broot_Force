@@ -1,11 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://b8qn8je4ge20n"]
+[gd_scene load_steps=14 format=3 uid="uid://b5frixg7n146p"]
 
-[ext_resource type="Script" path="res://Scripts/Units/Unit Scripts/Unit.gd" id="1_dwoek"]
-[ext_resource type="Script" path="res://Scripts/Units/Movement Scripts/UnitMove.gd" id="2_h7fnv"]
-[ext_resource type="Script" path="res://Scripts/Units/Attack Scripts/UnitAttack.gd" id="3_31j3l"]
-[ext_resource type="Texture2D" uid="uid://csjrkbbpxmxpt" path="res://Art Assets/Textures/Temporary/Units/HumanOutlined.png" id="4_bme4p"]
-[ext_resource type="Texture2D" uid="uid://xmswgdihi5kt" path="res://Art Assets/Textures/Temporary/Weapons/axe.png" id="5_1qufm"]
-[ext_resource type="Script" path="res://Scripts/Units/Animation/AnimationSignalGiver.gd" id="5_ns2jt"]
+[ext_resource type="Script" path="res://Scripts/Units/Unit Scripts/Unit.gd" id="1_lg6fk"]
+[ext_resource type="Script" path="res://Scripts/Units/Movement Scripts/UnitMove.gd" id="2_owplk"]
+[ext_resource type="Script" path="res://Scripts/Units/Attack Scripts/UnitAttack.gd" id="3_2blaa"]
+[ext_resource type="Texture2D" uid="uid://csjrkbbpxmxpt" path="res://Art Assets/Textures/Temporary/Units/HumanOutlined.png" id="4_6r8kt"]
+[ext_resource type="Texture2D" uid="uid://d22624vbppux6" path="res://Art Assets/Textures/Temporary/Weapons/chainsaw.png" id="5_83inm"]
+[ext_resource type="Script" path="res://Scripts/Units/Animation/AnimationSignalGiver.gd" id="6_84m67"]
+[ext_resource type="Texture2D" uid="uid://cd7u5p8gmtffc" path="res://Art Assets/Textures/Temporary/hardhat.png" id="7_7kh67"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_umb3p"]
 friction = 0.0
@@ -26,49 +27,76 @@ tracks/0/keys = {
 "values": [0.0, 1.56494, 0.0]
 }
 
+[sub_resource type="Animation" id="Animation_ocqxi"]
+resource_name = "ChainsawSwing"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.7, 2.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.567594, -0.567594, 0.320223, 0.320223, -0.567594]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wufuj"]
 _data = {
-"BaseSwing": SubResource("Animation_nfk13")
+"BaseSwing": SubResource("Animation_nfk13"),
+"ChainsawSwing": SubResource("Animation_ocqxi")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fkmxp"]
-size = Vector2(90, 114)
+size = Vector2(90, 112)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dcjwa"]
 
-[node name="AxeEnemy" type="RigidBody2D" groups=["EnemyUnits"]]
+[node name="ChainsawEnemy" type="RigidBody2D" groups=["EnemyUnits"]]
 collision_layer = 2
 physics_material_override = SubResource("PhysicsMaterial_umb3p")
 lock_rotation = true
-script = ExtResource("1_dwoek")
-health = 10.0
+script = ExtResource("1_lg6fk")
+health = 25.0
 
 [node name="Movement" type="Node2D" parent="."]
-script = ExtResource("2_h7fnv")
+script = ExtResource("2_owplk")
+moveSpeed = 75.0
 
 [node name="Attack" type="Node2D" parent="."]
-script = ExtResource("3_31j3l")
+script = ExtResource("3_2blaa")
+attackDamage = 6.0
+timePerAttack = 3.0
 groupToAttack = "PlayerUnits"
 
 [node name="UnitBody" type="Sprite2D" parent="."]
 z_index = 1
 position = Vector2(3.57628e-07, -1.54972e-06)
 scale = Vector2(0.125, 0.125)
-texture = ExtResource("4_bme4p")
+texture = ExtResource("4_6r8kt")
 
 [node name="UnitWeapon" type="Sprite2D" parent="UnitBody"]
-position = Vector2(140, -60)
-rotation = 0.194868
-scale = Vector2(0.45, 0.45)
-texture = ExtResource("5_1qufm")
-offset = Vector2(120.381, -169.567)
+position = Vector2(132.344, -63.2924)
+rotation = -0.567594
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("5_83inm")
+offset = Vector2(272.021, -75.4116)
 
 [node name="WeaponAnimation" type="AnimationPlayer" parent="UnitBody/UnitWeapon"]
 libraries = {
 "": SubResource("AnimationLibrary_wufuj")
 }
-script = ExtResource("5_ns2jt")
-animationToPlay = "BaseSwing"
+script = ExtResource("6_84m67")
+animationToPlay = "ChainsawSwing"
+
+[node name="Sprite2D" type="Sprite2D" parent="UnitBody"]
+position = Vector2(-16, -240)
+rotation = -0.270054
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_7kh67")
 
 [node name="BodyAnimator" type="AnimatedSprite2D" parent="."]
 

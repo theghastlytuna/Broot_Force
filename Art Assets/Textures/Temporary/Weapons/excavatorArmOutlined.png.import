@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dx57ws0tw85ga"
-path="res://.godot/imported/Human.png-3fa35f08fb8f10ef40c94ab712412a1f.ctex"
+uid="uid://cny25f0vs20im"
+path="res://.godot/imported/excavatorArmOutlined.png-b02d24278db24213fe15a3b8827f20f0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art Assets/Textures/Temporary/Human.png"
-dest_files=["res://.godot/imported/Human.png-3fa35f08fb8f10ef40c94ab712412a1f.ctex"]
+source_file="res://Art Assets/Textures/Temporary/Weapons/excavatorArmOutlined.png"
+dest_files=["res://.godot/imported/excavatorArmOutlined.png-b02d24278db24213fe15a3b8827f20f0.ctex"]
 
 [params]
 

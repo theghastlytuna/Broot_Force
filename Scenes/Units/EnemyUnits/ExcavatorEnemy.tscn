@@ -1,0 +1,106 @@
+[gd_scene load_steps=11 format=3 uid="uid://duugxlocnnohp"]
+
+[ext_resource type="Script" path="res://Scripts/Units/Unit Scripts/Unit.gd" id="1_4bc3o"]
+[ext_resource type="Script" path="res://Scripts/Units/Movement Scripts/UnitMove.gd" id="2_fisyd"]
+[ext_resource type="Script" path="res://Scripts/Units/Attack Scripts/UnitAttack.gd" id="3_vaoh0"]
+[ext_resource type="Texture2D" uid="uid://40ya6tgfett2" path="res://Art Assets/Textures/Temporary/Units/excavatorBodyOutlined.png" id="4_wvhm5"]
+[ext_resource type="Texture2D" uid="uid://cny25f0vs20im" path="res://Art Assets/Textures/Temporary/Weapons/excavatorArmOutlined.png" id="5_p6fo4"]
+[ext_resource type="Script" path="res://Scripts/Units/Animation/AnimationSignalGiver.gd" id="6_gcctc"]
+
+[sub_resource type="Animation" id="Animation_nfk13"]
+resource_name = "BaseSwing"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.56494, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_676vj"]
+resource_name = "BulldozerSwing"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.7, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.31651, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wufuj"]
+_data = {
+"BaseSwing": SubResource("Animation_nfk13"),
+"BulldozerSwing": SubResource("Animation_676vj")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fkmxp"]
+size = Vector2(200, 200)
+
+[node name="ExcavatorEnemy" type="RigidBody2D" groups=["EnemyUnits"]]
+collision_layer = 2
+lock_rotation = true
+script = ExtResource("1_4bc3o")
+health = 80.0
+
+[node name="Movement" type="Node2D" parent="."]
+script = ExtResource("2_fisyd")
+moveSpeed = 60.0
+
+[node name="Attack" type="Node2D" parent="."]
+script = ExtResource("3_vaoh0")
+attackDamage = 24.0
+attackType = 2
+timePerAttack = 3.0
+numberOfTargets = 5
+groupToAttack = "PlayerUnits"
+
+[node name="UnitBody" type="Sprite2D" parent="."]
+position = Vector2(3.57628e-07, -1.54972e-06)
+scale = Vector2(-0.6, 0.6)
+texture = ExtResource("4_wvhm5")
+
+[node name="UnitWeapon" type="Sprite2D" parent="UnitBody"]
+position = Vector2(-102.661, -67.4013)
+texture = ExtResource("5_p6fo4")
+offset = Vector2(-33.5696, 67.79)
+
+[node name="WeaponAnimation" type="AnimationPlayer" parent="UnitBody/UnitWeapon"]
+libraries = {
+"": SubResource("AnimationLibrary_wufuj")
+}
+script = ExtResource("6_gcctc")
+animationToPlay = "BulldozerSwing"
+
+[node name="BodyAnimator" type="AnimatedSprite2D" parent="."]
+
+[node name="AttackArea" type="Area2D" parent="."]
+
+[node name="AttackRadius" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(50, 8)
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_fkmxp")
+
+[node name="UnitHitbox" type="CollisionPolygon2D" parent="."]
+position = Vector2(2, 17)
+scale = Vector2(1.87, 1.91)
+polygon = PackedVector2Array(31.3172, -37.8947, 14.6505, -16.0526, 3.36021, -35.2632, -17.3387, -35.5263, -17.0699, -11.0526, -38.0376, -11.3158, -41.2634, 21.3158, 16.8011, 21.5789, 14.9194, 2.89474, 39.9194, -32.6316)
+
+[connection signal="StartedAttacking" from="Attack" to="Movement" method="_on_attack_started_attacking"]
+[connection signal="StartedAttacking" from="Attack" to="UnitBody/UnitWeapon/WeaponAnimation" method="playAnimation"]
+[connection signal="StoppedAttacking" from="Attack" to="Movement" method="_on_attack_stopped_attacking"]
+[connection signal="StoppedAttacking" from="Attack" to="UnitBody/UnitWeapon/WeaponAnimation" method="stopAnimation"]
+[connection signal="area_entered" from="AttackArea" to="Attack" method="_on_attack_area_area_entered"]
+[connection signal="area_exited" from="AttackArea" to="Attack" method="_on_attack_area_area_exited"]

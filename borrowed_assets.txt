@@ -1,0 +1,8 @@
+Pistol sprite: https://opengameart.org/content/pixel-pistol
+Bulldozer sprite: https://www.istockphoto.com/vector/bulldozer-icon-black-silhouette-side-view-vector-flat-graphic-illustration-the-gm1350311723-426468991
+Chainsaw sprite: https://www.istockphoto.com/vector/hand-chainsaw-icon-on-white-background-vector-gm617388722-107248017
+Hardhat sprite: https://www.istockphoto.com/vector/orange-plastic-helmet-for-builder-protective-headgear-for-construction-worker-flat-gm1088472996-291997883
+Shotgun sprite: https://opengameart.org/content/pixel-art2d-shotgun
+Excavator sprite: https://pngtree.com/freepng/excavator-icon_4316579.html
+Military helmet sprite: https://www.spreadshirt.ca/shop/design/military+helmet+mouse+pad-D6020062bca2fdc3e15bcd9a0?sellable=4wVwkD7YXXfReD43QZJz-993-43
+Rifle sprite: https://opengameart.org/content/ar-15-attempt-112x39

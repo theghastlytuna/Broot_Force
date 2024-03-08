@@ -31,7 +31,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fkmxp"]
-size = Vector2(116, 114)
+size = Vector2(90, 114)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dcjwa"]
 
@@ -73,7 +73,7 @@ animationToPlay = "BaseSwing"
 [node name="AttackArea" type="Area2D" parent="."]
 
 [node name="AttackRadius" type="CollisionShape2D" parent="AttackArea"]
-position = Vector2(58, 0)
+position = Vector2(45, 0)
 shape = SubResource("RectangleShape2D_fkmxp")
 
 [node name="UnitHitbox" type="CollisionShape2D" parent="."]

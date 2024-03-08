@@ -1,11 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://dq4jcfh8ylt5e"]
+[gd_scene load_steps=14 format=3 uid="uid://dq4jcfh8ylt5e"]
 
 [ext_resource type="Texture2D" uid="uid://73qddd2nftm7" path="res://Art Assets/Textures/Temporary/ground.png" id="1_q67ni"]
 [ext_resource type="Texture2D" uid="uid://fxxowst01k33" path="res://Art Assets/Textures/Temporary/tree.png" id="2_2hre7"]
 [ext_resource type="PackedScene" uid="uid://cygp11kg1j3cp" path="res://Scenes/UI/tower_picker.tscn" id="3_3ejef"]
 [ext_resource type="PackedScene" uid="uid://b2t15f7ju4x0g" path="res://Scenes/Units/TreeUnits/thorn_wall.tscn" id="4_15r7k"]
 [ext_resource type="PackedScene" uid="uid://rwpvibko6u3y" path="res://Menus/TowerPlacementMenu.tscn" id="5_xj6di"]
+[ext_resource type="PackedScene" uid="uid://duugxlocnnohp" path="res://Scenes/Units/EnemyUnits/ExcavatorEnemy.tscn" id="6_0e3rg"]
+[ext_resource type="PackedScene" uid="uid://xq6s5a6jdktr" path="res://Scenes/Units/EnemyUnits/ShotgunEnemy.tscn" id="6_8r0hn"]
+[ext_resource type="PackedScene" uid="uid://b4ixdpakfx4g7" path="res://Scenes/Units/EnemyUnits/SoldierEnemy.tscn" id="6_bf8lv"]
+[ext_resource type="PackedScene" uid="uid://cde8tgxvy6y1g" path="res://Scenes/Units/EnemyUnits/PistolEnemy.tscn" id="6_iyl61"]
 [ext_resource type="PackedScene" uid="uid://b8qn8je4ge20n" path="res://Scenes/Units/EnemyUnits/AxeEnemy.tscn" id="6_onj2u"]
+[ext_resource type="PackedScene" uid="uid://b5frixg7n146p" path="res://Scenes/Units/EnemyUnits/ChainsawEnemy.tscn" id="6_yaxo3"]
+[ext_resource type="PackedScene" uid="uid://cvn6nev5hshj5" path="res://Scenes/Units/EnemyUnits/BulldozerEnemy.tscn" id="8_dsl38"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qrx30"]
 size = Vector2(1207, 257)
@@ -84,4 +90,22 @@ layout_mode = 1
 grow_horizontal = 2
 
 [node name="AxeEnemy" parent="." instance=ExtResource("6_onj2u")]
-position = Vector2(57, 370)
+position = Vector2(78, 356)
+
+[node name="BulldozerEnemy" parent="." instance=ExtResource("8_dsl38")]
+position = Vector2(78, 371)
+
+[node name="ChainsawEnemy" parent="." instance=ExtResource("6_yaxo3")]
+position = Vector2(-31, 367)
+
+[node name="ExcavatorEnemy" parent="." instance=ExtResource("6_0e3rg")]
+position = Vector2(24, 364)
+
+[node name="PistolEnemy" parent="." instance=ExtResource("6_iyl61")]
+position = Vector2(90, 370)
+
+[node name="ShotgunEnemy" parent="." instance=ExtResource("6_8r0hn")]
+position = Vector2(40, 373)
+
+[node name="SoldierEnemy" parent="." instance=ExtResource("6_bf8lv")]
+position = Vector2(0, 375)
