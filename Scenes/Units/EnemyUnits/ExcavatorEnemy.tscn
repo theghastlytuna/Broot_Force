@@ -49,9 +49,8 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fkmxp"]
 size = Vector2(200, 200)
 
-[node name="ExcavatorEnemy" type="RigidBody2D" groups=["EnemyUnits"]]
+[node name="ExcavatorEnemy" type="CharacterBody2D" groups=["EnemyUnits"]]
 collision_layer = 2
-lock_rotation = true
 script = ExtResource("1_4bc3o")
 health = 80.0
 
@@ -69,7 +68,8 @@ groupToAttack = "PlayerUnits"
 
 [node name="UnitBody" type="Sprite2D" parent="."]
 position = Vector2(3.57628e-07, -1.54972e-06)
-scale = Vector2(-0.6, 0.6)
+rotation = -3.14159
+scale = Vector2(0.6, -0.6)
 texture = ExtResource("4_wvhm5")
 
 [node name="UnitWeapon" type="Sprite2D" parent="UnitBody"]

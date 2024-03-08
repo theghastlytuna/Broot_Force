@@ -90,22 +90,22 @@ layout_mode = 1
 grow_horizontal = 2
 
 [node name="AxeEnemy" parent="." instance=ExtResource("6_onj2u")]
-position = Vector2(78, 356)
+position = Vector2(157, 410)
 
 [node name="BulldozerEnemy" parent="." instance=ExtResource("8_dsl38")]
-position = Vector2(78, 371)
+position = Vector2(97, 384)
 
 [node name="ChainsawEnemy" parent="." instance=ExtResource("6_yaxo3")]
-position = Vector2(-31, 367)
+position = Vector2(0, 410)
 
 [node name="ExcavatorEnemy" parent="." instance=ExtResource("6_0e3rg")]
-position = Vector2(24, 364)
+position = Vector2(12, 380)
 
 [node name="PistolEnemy" parent="." instance=ExtResource("6_iyl61")]
-position = Vector2(90, 370)
+position = Vector2(60, 410)
 
 [node name="ShotgunEnemy" parent="." instance=ExtResource("6_8r0hn")]
-position = Vector2(40, 373)
+position = Vector2(23, 410)
 
 [node name="SoldierEnemy" parent="." instance=ExtResource("6_bf8lv")]
-position = Vector2(0, 375)
+position = Vector2(-32, 410)

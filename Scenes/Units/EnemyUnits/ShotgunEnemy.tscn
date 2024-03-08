@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://xq6s5a6jdktr"]
+[gd_scene load_steps=12 format=3 uid="uid://xq6s5a6jdktr"]
 
 [ext_resource type="Script" path="res://Scripts/Units/Unit Scripts/Unit.gd" id="1_wa5ym"]
 [ext_resource type="Script" path="res://Scripts/Units/Movement Scripts/UnitMove.gd" id="2_thv0s"]
@@ -6,9 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://csjrkbbpxmxpt" path="res://Art Assets/Textures/Temporary/Units/HumanOutlined.png" id="4_53xmx"]
 [ext_resource type="Texture2D" uid="uid://j2kxfn7xdq8i" path="res://Art Assets/Textures/Temporary/Weapons/Shotgun.png" id="5_qst65"]
 [ext_resource type="Script" path="res://Scripts/Units/Animation/AnimationSignalGiver.gd" id="6_6rx7i"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_umb3p"]
-friction = 0.0
 
 [sub_resource type="Animation" id="Animation_nfk13"]
 resource_name = "BaseSwing"
@@ -53,10 +50,8 @@ size = Vector2(160, 114)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dcjwa"]
 
-[node name="ShotgunEnemy" type="RigidBody2D" groups=["EnemyUnits"]]
+[node name="ShotgunEnemy" type="CharacterBody2D" groups=["EnemyUnits"]]
 collision_layer = 2
-physics_material_override = SubResource("PhysicsMaterial_umb3p")
-lock_rotation = true
 script = ExtResource("1_wa5ym")
 health = 14.0
 

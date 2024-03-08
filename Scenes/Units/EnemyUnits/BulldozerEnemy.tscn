@@ -49,7 +49,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fkmxp"]
 size = Vector2(200, 150)
 
-[node name="BulldozerEnemy" type="RigidBody2D" groups=["EnemyUnits"]]
+[node name="BulldozerEnemy" type="CharacterBody2D" groups=["EnemyUnits"]]
 collision_layer = 2
 script = ExtResource("1_rmqrw")
 health = 60.0
@@ -67,7 +67,7 @@ groupToAttack = "PlayerUnits"
 
 [node name="UnitBody" type="Sprite2D" parent="."]
 position = Vector2(3.57628e-07, -1.54972e-06)
-rotation = -3.14159
+rotation = 3.14159
 scale = Vector2(0.4, -0.4)
 texture = ExtResource("4_y45h3")
 
