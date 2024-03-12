@@ -102,5 +102,5 @@ polygon = PackedVector2Array(-30.5108, 19.2105, -36.9624, 8.94737, -30.5108, -18
 [connection signal="StartedAttacking" from="Attack" to="UnitBody/UnitWeapon/WeaponAnimation" method="playAnimation"]
 [connection signal="StoppedAttacking" from="Attack" to="Movement" method="_on_attack_stopped_attacking"]
 [connection signal="StoppedAttacking" from="Attack" to="UnitBody/UnitWeapon/WeaponAnimation" method="stopAnimation"]
-[connection signal="area_entered" from="AttackArea" to="Attack" method="_on_attack_area_area_entered"]
-[connection signal="area_exited" from="AttackArea" to="Attack" method="_on_attack_area_area_exited"]
+[connection signal="body_entered" from="AttackArea" to="Attack" method="_on_attack_area_body_entered"]
+[connection signal="body_exited" from="AttackArea" to="Attack" method="_on_attack_area_body_exited"]

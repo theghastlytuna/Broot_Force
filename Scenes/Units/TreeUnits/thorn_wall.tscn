@@ -4,33 +4,25 @@
 [ext_resource type="Texture2D" uid="uid://db5qellkjpi6o" path="res://Art Assets/Textures/Temporary/Units/thorns.png" id="2_15dnq"]
 [ext_resource type="Script" path="res://Scripts/Towers/Attack Scripts/ThornAttack.gd" id="3_6qv0m"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7qmm3"]
-size = Vector2(44, 51)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1tuch"]
 
-[node name="ThornWall" type="Node2D" groups=["PlayerUnits"]]
+[node name="ThornWall" type="StaticBody2D" groups=["PlayerUnits"]]
 script = ExtResource("1_1lam0")
 health = 600.0
 
 [node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(0, -25)
-scale = Vector2(0.1, 0.1)
+position = Vector2(0, -62)
+scale = Vector2(0.18, 0.419999)
 texture = ExtResource("2_15dnq")
 
-[node name="ThornAttack" type="Node2D" parent="."]
+[node name="Attack" type="Node2D" parent="."]
 script = ExtResource("3_6qv0m")
 attackDamage = 4.0
 groupToAttack = "EnemyUnits"
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, -70)
+scale = Vector2(4, 7)
+shape = SubResource("RectangleShape2D_1tuch")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, -25.5)
-shape = SubResource("RectangleShape2D_7qmm3")
-
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -25.5)
-shape = SubResource("RectangleShape2D_7qmm3")
-
-[connection signal="onDamaged" from="." to="ThornAttack" method="damaged"]
+[connection signal="onDamaged" from="." to="Attack" method="damaged"]

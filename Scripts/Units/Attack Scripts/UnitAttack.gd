@@ -8,7 +8,7 @@ enum AttackType{
 	POISON
 	}
 
-var enemyColliders : Array[Area2D]
+var enemyBodies : Array[PhysicsBody2D]
 
 var attackTimer : Timer
 
@@ -39,17 +39,17 @@ func _ready():
 	attackTimer.timeout.connect(attack)
 	add_child(attackTimer)
 
-func _on_attack_area_area_entered(area : Area2D):
-	if area.get_parent().is_in_group(groupToAttack):
-		if enemyColliders.size() == 0:
+func _on_attack_area_body_entered(body : PhysicsBody2D):
+	if body.is_in_group(groupToAttack):
+		if enemyBodies.size() == 0:
 			attackTimer.start()
 			StartedAttacking.emit()
-		enemyColliders.append(area)
+		enemyBodies.append(body)
 
-func _on_attack_area_area_exited(area : Area2D):
-	if area.get_parent().is_in_group(groupToAttack):
-		enemyColliders.erase(area)
-		if enemyColliders.size() == 0:
+func _on_attack_area_body_exited(body : PhysicsBody2D):
+	if body.is_in_group(groupToAttack):
+		enemyBodies.erase(body)
+		if enemyBodies.size() == 0:
 			attackTimer.stop()
 			StoppedAttacking.emit()
 
@@ -60,6 +60,7 @@ func _on_timer_timeout():
 func attack():
 	var unitsAttacked : int = 0
 	var attackArgs : AttackArguments = AttackArguments.new(attackDamage,get_parent(),attackType)
-	while unitsAttacked < numberOfTargets && unitsAttacked < enemyColliders.size():
-		enemyColliders[unitsAttacked].get_parent().damage(attackArgs)
+	while unitsAttacked < numberOfTargets && unitsAttacked < enemyBodies.size():
+		enemyBodies[unitsAttacked].damage(attackArgs)
 		unitsAttacked += 1
+	Debug.Log("Attack done")

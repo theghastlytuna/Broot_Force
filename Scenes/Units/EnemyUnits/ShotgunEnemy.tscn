@@ -46,7 +46,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fkmxp"]
-size = Vector2(160, 114)
+size = Vector2(92, 114)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dcjwa"]
 
@@ -73,8 +73,8 @@ scale = Vector2(0.125, 0.125)
 texture = ExtResource("4_53xmx")
 
 [node name="UnitWeapon" type="Sprite2D" parent="UnitBody"]
-position = Vector2(142.323, -64.5032)
-scale = Vector2(-1, 1)
+position = Vector2(144, -64)
+scale = Vector2(-0.572061, 1)
 texture = ExtResource("5_qst65")
 offset = Vector2(-125.104, 35.5887)
 
@@ -90,7 +90,7 @@ animationToPlay = "ShootGun"
 [node name="AttackArea" type="Area2D" parent="."]
 
 [node name="AttackRadius" type="CollisionShape2D" parent="AttackArea"]
-position = Vector2(40, 0)
+position = Vector2(23, 0)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_fkmxp")
 
@@ -102,5 +102,5 @@ shape = SubResource("CapsuleShape2D_dcjwa")
 [connection signal="StartedAttacking" from="Attack" to="UnitBody/UnitWeapon/WeaponAnimation" method="playAnimation"]
 [connection signal="StoppedAttacking" from="Attack" to="Movement" method="_on_attack_stopped_attacking"]
 [connection signal="StoppedAttacking" from="Attack" to="UnitBody/UnitWeapon/WeaponAnimation" method="stopAnimation"]
-[connection signal="area_entered" from="AttackArea" to="Attack" method="_on_attack_area_area_entered"]
-[connection signal="area_exited" from="AttackArea" to="Attack" method="_on_attack_area_area_exited"]
+[connection signal="body_entered" from="AttackArea" to="Attack" method="_on_attack_area_body_entered"]
+[connection signal="body_exited" from="AttackArea" to="Attack" method="_on_attack_area_body_exited"]

@@ -17,7 +17,7 @@ func getHealth() -> float:
 func damage(args : AttackArguments):
 	onDamaged.emit(args)
 	damageTaken += args.attackDamage
-	Debug.LogSpace("Damage Taken " , str(args.attackDamage) , name)
+	Debug.LogSpace("Damage Taken " , str(args.attackDamage) , name , " from " , args.from.name)
 	check_death()
 	
 func check_death():
