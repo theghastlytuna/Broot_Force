@@ -1,15 +1,20 @@
-[gd_scene load_steps=8 format=3 uid="uid://brh7kxvkvq02q"]
+[gd_scene load_steps=11 format=3 uid="uid://brh7kxvkvq02q"]
 
 [ext_resource type="Texture2D" uid="uid://wnnrtab0skb7" path="res://Art Assets/Textures/Layer2.png" id="1_tfsmi"]
 [ext_resource type="Script" path="res://Scripts/RootPhase/Spawn Management/LayerManager.gd" id="2_5ev5r"]
 [ext_resource type="Texture2D" uid="uid://6mm3q3gblhrr" path="res://icon.svg" id="3_gnh0v"]
 [ext_resource type="Script" path="res://Scripts/RootPhase/Root/Line2D.gd" id="4_uwuhp"]
 [ext_resource type="Script" path="res://Scripts/RootPhase/Spawn Management/Spawner.gd" id="5_s6byk"]
+[ext_resource type="Script" path="res://Scripts/RootPhase/Root/Collider.gd" id="5_wty10"]
 [ext_resource type="PackedScene" uid="uid://o4ow5qdj2dwa" path="res://Scenes/RootInteractables/Resources/water.tscn" id="6_coeey"]
+[ext_resource type="Script" path="res://Scripts/SaveGame.gd" id="8_jhff2"]
 
 [sub_resource type="Curve" id="Curve_ebely"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.373626), 0.0, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iqxhk"]
+radius = 5.0
 
 [node name="World" type="Node2D"]
 
@@ -56,6 +61,12 @@ remote_path = NodePath("../../../Camera2D")
 update_rotation = false
 update_scale = false
 
+[node name="Collider" type="Area2D" parent="Root/Tip"]
+script = ExtResource("5_wty10")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Root/Tip/Collider"]
+shape = SubResource("CircleShape2D_iqxhk")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_speed = 11.125
 rotation_smoothing_speed = 5.845
@@ -70,4 +81,8 @@ addingParent = NodePath("../Obsticles")
 
 [node name="Obsticles" type="Node2D" parent="."]
 
+[node name="SaveGame" type="Node2D" parent="."]
+script = ExtResource("8_jhff2")
+
 [connection signal="ChangedLayer" from="BackgroundManager" to="Root/Tip" method="_on_background_manager_changed_layer"]
+[connection signal="area_entered" from="Root/Tip/Collider" to="Root/Tip/Collider" method="_on_area_entered"]

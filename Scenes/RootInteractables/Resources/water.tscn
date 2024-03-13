@@ -1,9 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://o4ow5qdj2dwa"]
+[gd_scene load_steps=3 format=3 uid="uid://o4ow5qdj2dwa"]
 
 [ext_resource type="Texture2D" uid="uid://b3rmq871487g8" path="res://Sprites/Collectables/Water.png" id="1_462i3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oqbvq"]
+size = Vector2(85, 69)
 
 [node name="Node2D" type="Node2D" groups=["WaterResources"]]
 
 [node name="Water" type="Sprite2D" parent="."]
 scale = Vector2(0.333, 0.333)
 texture = ExtResource("1_462i3")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2.5, 5.5)
+shape = SubResource("RectangleShape2D_oqbvq")

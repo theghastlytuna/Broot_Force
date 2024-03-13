@@ -14,6 +14,8 @@ var noiseY : FastNoiseLite
 ##The node that each newly spawned object will be parented to
 @export var addingParent : Node2D
 
+#the place we have our save data
+var savedDataNode : Node2D
 
 func _ready():
 	noiseY = FastNoiseLite.new()
@@ -24,6 +26,7 @@ func _ready():
 	noiseX = FastNoiseLite.new()
 	noiseX.noise_type = FastNoiseLite.TYPE_VALUE
 	
+	savedDataNode = $"../SaveGame"
 	pass
 	
 func spawnObject(depth : float):
@@ -42,6 +45,9 @@ func spawnObject(depth : float):
 			#make a new node, set its position, and add it to a parent
 			var newResource : Node2D = resourceDictionary[vec].instantiate()
 			newResource.global_position = Vector2(xPosition,depth)
+			if savedDataNode.saveData.depthsCollected.has(depth):
+				newResource.add_to_group("COLLECTED")
+				newResource.modulate = Color(0.5,0.5,0.5)
 			addingParent.add_child(newResource)
 			continue#dont keep iterating, once an object is spawned, any new objects would have the same X position so we will just leave it 
 
