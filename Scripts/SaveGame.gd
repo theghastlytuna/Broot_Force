@@ -12,6 +12,10 @@ func saveGame():
 	for n in collectedUnits:
 		saveData.depthsCollected.append(n.global_position.y)
 		Debug.Log(n.name)
+	saveData.availableUnits = GameManager.availableUnits
+	saveData.waterPerRound = GameManager.waterPerRound
+	saveData.totalWater = GameManager.totalWater
+	saveData.depthsCollected = GameManager.depthsCollected
 	ResourceSaver.save(saveData,"user://Data.tres")
 
 func _enter_tree() -> void:
@@ -21,5 +25,8 @@ func _enter_tree() -> void:
 func loadData():
 	if FileAccess.file_exists("user://Data.tres"):
 		saveData = load("user://Data.tres")
-		Debug.Log(saveData.depthsCollected)
+		GameManager.availableUnits = saveData.availableUnits
+		GameManager.waterPerRound = saveData.waterPerRound
+		GameManager.totalWater = saveData.totalWater
+		GameManager.depthsCollected = saveData.depthsCollected
 	pass

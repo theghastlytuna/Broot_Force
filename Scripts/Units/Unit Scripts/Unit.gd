@@ -4,6 +4,15 @@ class_name Unit
 ##The amount of health a unit has
 @export var health : float
 
+#going to put the enum here so we can easily access it using Unit.UnitType
+enum UnitType{
+	UNDEAD_SMALL_ANIMAL,
+	UNDEAD_HUMAN,
+	UNDEAD_LARGE_ANIMAL,
+	UNDEAD_ANCIENT_CREATURE,
+	UNDEAD_DINOSAUR
+	}
+
 #this is the total amount of damage taken
 #im doing it like this in case we want units to be able to heal themselves later, there has to be a way to have a units max health
 var damageTaken : float
