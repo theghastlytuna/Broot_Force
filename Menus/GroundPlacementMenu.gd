@@ -4,6 +4,7 @@ extends PanelContainer
 var most_recent_parentclicked:Node2D
 var open_menu = false
 var display_desc = false
+var towerIndex : int
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,8 +30,8 @@ func _on_button_land_clicked(to_parent_to):
 	pass # Replace with function body.
 
 # Confirm button function
-func _on_button_confirm(extra_arg_0):
-	most_recent_parentclicked.spawn_tower(tower_resources[extra_arg_0].instantiate())
+func _on_button_confirm():
+	most_recent_parentclicked.spawn_tower(tower_resources[towerIndex].instantiate())
 	Debug.Log("spawned tower")
 	$NinePatchRect/MarginContainer/VBoxContainer/Control/Confirm.visible = false
 	$NinePatchRect/MarginContainer/VBoxContainer/TextureRect/ThornwallText.visible = false
@@ -38,9 +39,10 @@ func _on_button_confirm(extra_arg_0):
 	pass # Replace with function body.
 
 # General tower button selection function
-func _on_button_clicked():
+func _on_button_clicked(index_arg):
 	if !display_desc:
 		display_desc = true
+		towerIndex = index_arg
 		
 		$NinePatchRect/MarginContainer/VBoxContainer/Control/Confirm.visible = true
 		$NinePatchRect/MarginContainer/VBoxContainer/TextureRect/ThornwallText.visible = true

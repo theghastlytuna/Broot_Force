@@ -1,9 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://cugohrjbgvgjd"]
+[gd_scene load_steps=14 format=3 uid="uid://cugohrjbgvgjd"]
 
-[ext_resource type="PackedScene" uid="uid://br6g8m6bj0fbe" path="res://Menus/NewTowerPlacementMenu.tscn" id="1_culm0"]
+[ext_resource type="Script" path="res://Menus/GroundPlacementMenu.gd" id="1_g0epv"]
 [ext_resource type="PackedScene" uid="uid://b2t15f7ju4x0g" path="res://Scenes/Units/TreeUnitsGround/thorn_wall.tscn" id="2_qnobb"]
 [ext_resource type="PackedScene" uid="uid://dv0aty8oydrg2" path="res://Scenes/Units/TreeUnitsGround/toxicBloom.tscn" id="3_qrhbf"]
 [ext_resource type="PackedScene" uid="uid://dfgsbnatkyqsl" path="res://Scenes/Units/TreeUnitsGround/flytrapCluster.tscn" id="4_f5dde"]
+[ext_resource type="Texture2D" uid="uid://db82ofrfglp06" path="res://Art Assets/Textures/LightBrown2.png" id="5_0nt0d"]
+[ext_resource type="Texture2D" uid="uid://bn61fvr3hbar7" path="res://Art Assets/Textures/cancel.png" id="6_mf22d"]
+[ext_resource type="Texture2D" uid="uid://dhof0e12mnbuk" path="res://Art Assets/Textures/DarkBrown2.png" id="7_ipm2g"]
+[ext_resource type="Texture2D" uid="uid://fi2rpaj6nplo" path="res://Art Assets/Textures/DarkBrown.png" id="8_px6hh"]
+[ext_resource type="PackedScene" uid="uid://beneb1d1elm1l" path="res://Menus/thornwall.tscn" id="9_icbxn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h1rti"]
 
 [sub_resource type="Animation" id="Animation_h40ep"]
 resource_name = "Hide"
@@ -50,28 +57,162 @@ anchor_left = 1.0
 anchor_right = 1.0
 grow_horizontal = 0
 
-[node name="PanelContainer" parent="Control" instance=ExtResource("1_culm0")]
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
 layout_mode = 0
+offset_right = 340.0
+offset_bottom = 648.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_h1rti")
+script = ExtResource("1_g0epv")
 tower_resources = Array[Resource]([ExtResource("2_qnobb"), ExtResource("3_qrhbf"), ExtResource("4_f5dde")])
 
-[node name="TextureButton3" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control" index="2"]
-visible = false
+[node name="NinePatchRect" type="NinePatchRect" parent="Control/PanelContainer"]
+layout_mode = 2
+texture = ExtResource("5_0nt0d")
 
-[node name="TextureButton5" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control" index="4"]
-visible = false
+[node name="MarginContainer" type="MarginContainer" parent="Control/PanelContainer/NinePatchRect"]
+layout_mode = 2
+offset_right = 340.0
+offset_bottom = 648.0
+size_flags_horizontal = 5
+size_flags_vertical = 5
+mouse_filter = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
 
-[node name="TextureButton6" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control" index="5"]
-visible = false
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/PanelContainer/NinePatchRect/MarginContainer"]
+layout_mode = 2
 
-[node name="TextureButton7" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control" index="6"]
-visible = false
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
 
-[node name="TextureButton8" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control" index="7"]
-visible = false
+[node name="TextureRect" type="TextureRect" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+text = "PICK_TOWER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("6_mf22d")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Control" type="GridContainer" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/h_separation = 10
+columns = 2
+
+[node name="Tower1" type="TextureButton" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+texture_normal = ExtResource("7_ipm2g")
+texture_pressed = ExtResource("7_ipm2g")
+texture_hover = ExtResource("8_px6hh")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control/Tower1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "THORN_WALL"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Tower2" type="TextureButton" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture_normal = ExtResource("7_ipm2g")
+texture_pressed = ExtResource("7_ipm2g")
+texture_hover = ExtResource("8_px6hh")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control/Tower2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "TOXIC_BLOOM"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Tower3" type="TextureButton" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture_normal = ExtResource("7_ipm2g")
+texture_pressed = ExtResource("7_ipm2g")
+texture_hover = ExtResource("8_px6hh")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control/Tower3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "FLYTRAP_CLUSTER"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Confirm" type="TextureButton" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control"]
+layout_mode = 2
+texture_normal = ExtResource("7_ipm2g")
+texture_pressed = ExtResource("7_ipm2g")
+texture_hover = ExtResource("8_px6hh")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control/Confirm"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "CONFIRM"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("8_px6hh")
+
+[node name="ThornwallText" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/TextureRect" instance=ExtResource("9_icbxn")]
+layout_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Control/PanelContainer"]
 libraries = {
 "": SubResource("AnimationLibrary_s40a4")
 }
 
-[editable path="Control/PanelContainer"]
+[connection signal="pressed" from="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer/TextureButton" to="Control/PanelContainer" method="_on_texture_button_pressed"]
+[connection signal="pressed" from="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control/Tower1" to="Control/PanelContainer" method="_on_button_clicked" binds= [0]]
+[connection signal="pressed" from="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control/Tower2" to="Control/PanelContainer" method="_on_button_clicked" binds= [1]]
+[connection signal="pressed" from="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control/Tower3" to="Control/PanelContainer" method="_on_button_clicked" binds= [2]]
+[connection signal="pressed" from="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control/Confirm" to="Control/PanelContainer" method="_on_button_confirm"]
