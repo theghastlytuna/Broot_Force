@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xmswgdihi5kt"
-path="res://.godot/imported/axe.png-767c3898a4702315f5fb80b75b424d76.ctex"
+uid="uid://db5qellkjpi6o"
+path="res://.godot/imported/thorns.png-895617454f5032873e079393a47c6015.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art Assets/Textures/Temporary/axe.png"
-dest_files=["res://.godot/imported/axe.png-767c3898a4702315f5fb80b75b424d76.ctex"]
+source_file="res://Art Assets/Textures/Temporary/Units/thorns.png"
+dest_files=["res://.godot/imported/thorns.png-895617454f5032873e079393a47c6015.ctex"]
 
 [params]
 

@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7koih8c4fa8d"]
+
+[ext_resource type="Script" path="res://Scripts/Towers/Attack Scripts/bomberCloud.gd" id="1_yju8d"]
+[ext_resource type="Texture2D" uid="uid://bdi5uhfq0jhtc" path="res://Sprites/poison.png" id="2_v0br4"]
+[ext_resource type="Script" path="res://Scripts/Units/Attack Scripts/UnitAttack.gd" id="3_s3eoq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yvunn"]
+
+[node name="SporeCloud" type="Node2D" node_paths=PackedStringArray("cloudSprite", "attackNode")]
+script = ExtResource("1_yju8d")
+cloudSprite = NodePath("Sprite")
+attackNode = NodePath("Attack")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(-7.62939e-06, -70)
+scale = Vector2(0.5, 0.518518)
+texture = ExtResource("2_v0br4")
+
+[node name="Attack" type="Node2D" parent="."]
+script = ExtResource("3_s3eoq")
+attackDamage = 4.0
+numberOfTargets = 999
+groupToAttack = "EnemyUnits"
+
+[node name="AttackArea" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(0, -70)
+scale = Vector2(12, 7)
+shape = SubResource("RectangleShape2D_yvunn")
+
+[connection signal="body_entered" from="AttackArea" to="Attack" method="_on_attack_area_body_entered"]
+[connection signal="body_exited" from="AttackArea" to="Attack" method="_on_attack_area_body_exited"]

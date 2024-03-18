@@ -1,16 +1,47 @@
-[gd_scene load_steps=12 format=3 uid="uid://dq4jcfh8ylt5e"]
+[gd_scene load_steps=28 format=3 uid="uid://dq4jcfh8ylt5e"]
 
 [ext_resource type="Texture2D" uid="uid://73qddd2nftm7" path="res://Art Assets/Textures/Temporary/ground.png" id="1_q67ni"]
 [ext_resource type="Texture2D" uid="uid://fxxowst01k33" path="res://Art Assets/Textures/Temporary/tree.png" id="2_2hre7"]
+[ext_resource type="PackedScene" uid="uid://cygp11kg1j3cp" path="res://Scenes/UI/tower_picker.tscn" id="3_3ejef"]
+[ext_resource type="PackedScene" uid="uid://b2t15f7ju4x0g" path="res://Scenes/Units/TreeUnitsGround/thorn_wall.tscn" id="4_15r7k"]
+[ext_resource type="PackedScene" uid="uid://dv0aty8oydrg2" path="res://Scenes/Units/TreeUnitsGround/toxicBloom.tscn" id="5_jlgs5"]
+[ext_resource type="PackedScene" uid="uid://rwpvibko6u3y" path="res://Menus/TowerPlacementMenu.tscn" id="5_xj6di"]
+[ext_resource type="PackedScene" uid="uid://duugxlocnnohp" path="res://Scenes/Units/EnemyUnits/ExcavatorEnemy.tscn" id="6_0e3rg"]
+[ext_resource type="PackedScene" uid="uid://xq6s5a6jdktr" path="res://Scenes/Units/EnemyUnits/ShotgunEnemy.tscn" id="6_8r0hn"]
+[ext_resource type="PackedScene" uid="uid://b4ixdpakfx4g7" path="res://Scenes/Units/EnemyUnits/SoldierEnemy.tscn" id="6_bf8lv"]
+[ext_resource type="PackedScene" uid="uid://dfgsbnatkyqsl" path="res://Scenes/Units/TreeUnitsGround/flytrapCluster.tscn" id="6_d50hy"]
+[ext_resource type="PackedScene" uid="uid://cde8tgxvy6y1g" path="res://Scenes/Units/EnemyUnits/PistolEnemy.tscn" id="6_iyl61"]
 [ext_resource type="Script" path="res://Scenes/Areas/LandPlot.gd" id="3_2dlsq"]
 [ext_resource type="Script" path="res://Scenes/Areas/Button.gd" id="3_wo8c8"]
-[ext_resource type="PackedScene" uid="uid://b2t15f7ju4x0g" path="res://Scenes/Units/TreeUnits/thorn_wall.tscn" id="4_15r7k"]
 [ext_resource type="PackedScene" uid="uid://br6g8m6bj0fbe" path="res://Menus/NewTowerPlacementMenu.tscn" id="6_7podw"]
 [ext_resource type="PackedScene" uid="uid://b8qn8je4ge20n" path="res://Scenes/Units/EnemyUnits/AxeEnemy.tscn" id="6_onj2u"]
+[ext_resource type="PackedScene" uid="uid://b5frixg7n146p" path="res://Scenes/Units/EnemyUnits/ChainsawEnemy.tscn" id="6_yaxo3"]
+[ext_resource type="PackedScene" uid="uid://dcfycayg8y1hf" path="res://Scenes/Units/TreeUnitsCanopy/bomberFruit.tscn" id="7_vhtud"]
+[ext_resource type="PackedScene" uid="uid://cvn6nev5hshj5" path="res://Scenes/Units/EnemyUnits/BulldozerEnemy.tscn" id="8_dsl38"]
+[ext_resource type="PackedScene" uid="uid://cdiyjm4ro371c" path="res://Scenes/Units/TreeUnitsCanopy/sporeSprayer.tscn" id="8_oatvq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qrx30"]
 size = Vector2(1207, 257)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o8who"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yulpt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eippf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_baxir"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0d6lb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_43ala"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7cfx3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kul3j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rba4d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vljai"]
 [sub_resource type="Animation" id="Animation_h40ep"]
 resource_name = "Hide"
 tracks/0/type = "value"
@@ -69,8 +100,16 @@ texture = ExtResource("2_2hre7")
 [node name="GroundPositions" type="Node2D" parent="Tree"]
 
 [node name="0" type="Node2D" parent="Tree/GroundPositions"]
-position = Vector2(693, 439)
-script = ExtResource("3_2dlsq")
+position = Vector2(230, 440)
+
+[node name="TowerPicker" parent="Tree/GroundPositions/0" node_paths=PackedStringArray("placeToPutTower") instance=ExtResource("3_3ejef")]
+placeToPutTower = NodePath("..")
+towerResource = Array[Resource]([ExtResource("4_15r7k"), ExtResource("5_jlgs5"), ExtResource("6_d50hy")])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tree/GroundPositions/0"]
+position = Vector2(1, -70)
+scale = Vector2(4, 7)
+shape = SubResource("RectangleShape2D_o8who")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Tree/GroundPositions/0"]
 
@@ -85,37 +124,142 @@ script = ExtResource("3_wo8c8")
 parentnode = NodePath("../..")
 
 [node name="1" type="Node2D" parent="Tree/GroundPositions"]
-position = Vector2(735, 439)
+position = Vector2(390, 440)
+
+[node name="TowerPicker2" parent="Tree/GroundPositions/1" node_paths=PackedStringArray("placeToPutTower") instance=ExtResource("3_3ejef")]
+placeToPutTower = NodePath("..")
+towerResource = Array[Resource]([ExtResource("4_15r7k"), ExtResource("5_jlgs5"), ExtResource("6_d50hy")])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tree/GroundPositions/1"]
+position = Vector2(0, -70)
+scale = Vector2(4, 7)
+shape = SubResource("RectangleShape2D_yulpt")
 
 [node name="2" type="Node2D" parent="Tree/GroundPositions"]
-position = Vector2(804, 439)
+position = Vector2(550, 440)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tree/GroundPositions/2"]
+position = Vector2(0, -70)
+scale = Vector2(4, 7)
+shape = SubResource("RectangleShape2D_eippf")
+
+[node name="TowerPicker3" parent="Tree/GroundPositions/2" node_paths=PackedStringArray("placeToPutTower") instance=ExtResource("3_3ejef")]
+placeToPutTower = NodePath("..")
+towerResource = Array[Resource]([ExtResource("4_15r7k"), ExtResource("5_jlgs5"), ExtResource("6_d50hy")])
 
 [node name="3" type="Node2D" parent="Tree/GroundPositions"]
-position = Vector2(858, 439)
+position = Vector2(710, 440)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tree/GroundPositions/3"]
+position = Vector2(0, -70)
+scale = Vector2(4, 7)
+shape = SubResource("RectangleShape2D_baxir")
+
+[node name="TowerPicker4" parent="Tree/GroundPositions/3" node_paths=PackedStringArray("placeToPutTower") instance=ExtResource("3_3ejef")]
+placeToPutTower = NodePath("..")
+towerResource = Array[Resource]([ExtResource("4_15r7k"), ExtResource("5_jlgs5"), ExtResource("6_d50hy")])
 
 [node name="4" type="Node2D" parent="Tree/GroundPositions"]
-position = Vector2(927, 439)
+position = Vector2(870, 440)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tree/GroundPositions/4"]
+position = Vector2(0, -70)
+scale = Vector2(4, 7)
+shape = SubResource("RectangleShape2D_0d6lb")
+
+[node name="TowerPicker5" parent="Tree/GroundPositions/4" node_paths=PackedStringArray("placeToPutTower") instance=ExtResource("3_3ejef")]
+offset_left = 1.0
+offset_right = 1.0
+placeToPutTower = NodePath("..")
+towerResource = Array[Resource]([ExtResource("4_15r7k"), ExtResource("5_jlgs5"), ExtResource("6_d50hy")])
 
 [node name="CanopyPositions" type="Node2D" parent="Tree"]
 position = Vector2(22, -315)
 
 [node name="0" type="Node2D" parent="Tree/CanopyPositions"]
-position = Vector2(693, 439)
+position = Vector2(288, 570)
+
+[node name="TowerPicker" parent="Tree/CanopyPositions/0" node_paths=PackedStringArray("placeToPutTower") instance=ExtResource("3_3ejef")]
+placeToPutTower = NodePath("..")
+towerResource = Array[Resource]([ExtResource("4_15r7k"), ExtResource("5_jlgs5")])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tree/CanopyPositions/0"]
+position = Vector2(1, -70)
+scale = Vector2(4, 7)
+shape = SubResource("RectangleShape2D_43ala")
 
 [node name="1" type="Node2D" parent="Tree/CanopyPositions"]
-position = Vector2(735, 439)
+position = Vector2(448, 570)
+
+[node name="TowerPicker2" parent="Tree/CanopyPositions/1" node_paths=PackedStringArray("placeToPutTower") instance=ExtResource("3_3ejef")]
+placeToPutTower = NodePath("..")
+towerResource = Array[Resource]([ExtResource("4_15r7k"), ExtResource("5_jlgs5"), ExtResource("6_d50hy"), ExtResource("7_vhtud"), ExtResource("8_oatvq")])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tree/CanopyPositions/1"]
+position = Vector2(0, -70)
+scale = Vector2(4, 7)
+shape = SubResource("RectangleShape2D_7cfx3")
 
 [node name="2" type="Node2D" parent="Tree/CanopyPositions"]
-position = Vector2(804, 439)
+position = Vector2(608, 570)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tree/CanopyPositions/2"]
+position = Vector2(0, -70)
+scale = Vector2(4, 7)
+shape = SubResource("RectangleShape2D_kul3j")
+
+[node name="TowerPicker3" parent="Tree/CanopyPositions/2" node_paths=PackedStringArray("placeToPutTower") instance=ExtResource("3_3ejef")]
+offset_left = -1.0
+offset_right = -1.0
+placeToPutTower = NodePath("../../../GroundPositions/1")
+towerResource = Array[Resource]([ExtResource("4_15r7k"), ExtResource("5_jlgs5")])
 
 [node name="3" type="Node2D" parent="Tree/CanopyPositions"]
-position = Vector2(858, 439)
+position = Vector2(768, 570)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tree/CanopyPositions/3"]
+position = Vector2(0, -70)
+scale = Vector2(4, 7)
+shape = SubResource("RectangleShape2D_rba4d")
+
+[node name="TowerPicker4" parent="Tree/CanopyPositions/3" node_paths=PackedStringArray("placeToPutTower") instance=ExtResource("3_3ejef")]
+offset_left = 1.0
+offset_right = 1.0
+placeToPutTower = NodePath("..")
+towerResource = Array[Resource]([ExtResource("4_15r7k"), ExtResource("5_jlgs5")])
 
 [node name="4" type="Node2D" parent="Tree/CanopyPositions"]
-position = Vector2(927, 439)
+position = Vector2(928, 570)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tree/CanopyPositions/4"]
+position = Vector2(0, -70)
+scale = Vector2(4, 7)
+shape = SubResource("RectangleShape2D_vljai")
+
+[node name="TowerPicker5" parent="Tree/CanopyPositions/4" node_paths=PackedStringArray("placeToPutTower") instance=ExtResource("3_3ejef")]
+placeToPutTower = NodePath("..")
+towerResource = Array[Resource]([ExtResource("4_15r7k"), ExtResource("5_jlgs5")])
 
 [node name="AxeEnemy" parent="." instance=ExtResource("6_onj2u")]
-position = Vector2(57, 370)
+position = Vector2(-402, 401)
+
+[node name="BulldozerEnemy" parent="." instance=ExtResource("8_dsl38")]
+position = Vector2(-411, 379)
+
+[node name="ChainsawEnemy" parent="." instance=ExtResource("6_yaxo3")]
+position = Vector2(-508, 405)
+
+[node name="ExcavatorEnemy" parent="." instance=ExtResource("6_0e3rg")]
+position = Vector2(-547, 374)
+
+[node name="PistolEnemy" parent="." instance=ExtResource("6_iyl61")]
+position = Vector2(-448, 405)
+
+[node name="ShotgunEnemy" parent="." instance=ExtResource("6_8r0hn")]
+position = Vector2(-481, 403)
+
+[node name="SoldierEnemy" parent="." instance=ExtResource("6_bf8lv")]
+position = Vector2(-540, 405)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

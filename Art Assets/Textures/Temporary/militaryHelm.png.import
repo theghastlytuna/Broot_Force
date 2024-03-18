@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://db5qellkjpi6o"
-path="res://.godot/imported/thorns.png-515d4f8a585bac307a982fa00cc48ddb.ctex"
+uid="uid://cwwblntnwsdep"
+path="res://.godot/imported/militaryHelm.png-d2ea5cc9715dcd64d6010d9dc151a798.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art Assets/Textures/Temporary/thorns.png"
-dest_files=["res://.godot/imported/thorns.png-515d4f8a585bac307a982fa00cc48ddb.ctex"]
+source_file="res://Art Assets/Textures/Temporary/militaryHelm.png"
+dest_files=["res://.godot/imported/militaryHelm.png-d2ea5cc9715dcd64d6010d9dc151a798.ctex"]
 
 [params]
 

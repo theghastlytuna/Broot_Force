@@ -12,6 +12,7 @@ var currentLayerMultiplier : float = 1
 @export var spawner : Node2D
 var lastSpawnedDepth : float = 0
 @export var spawnInterval : float #every spawnDepthMod units downward, we spawn a new object
+@export var playerCamera : Camera2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,7 +25,7 @@ func _process(delta: float) -> void:
 	#spawn an object every spawnInterval pixels, if you go back up, it will not trigger
 	if global_position.y > lastSpawnedDepth + spawnInterval:
 		lastSpawnedDepth = snappedi(global_position.y ,spawnInterval)
-		spawner.spawnObject(lastSpawnedDepth)
+		spawner.spawnObject(lastSpawnedDepth + playerCamera.get_viewport_rect().size.y)
 
 	position += transform.y * speed * delta * currentLayerMultiplier
 	distanceFromLastPoint += position.distance_to(lastPosition)
@@ -48,3 +49,6 @@ func _process(delta: float) -> void:
 
 func _on_background_manager_changed_layer(layerSpeedMultiplier):
 	currentLayerMultiplier = layerSpeedMultiplier
+
+func _on_area_entered(area):
+	area.HitByRoot(self)

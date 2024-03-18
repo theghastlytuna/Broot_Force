@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2t15f7ju4x0g"]
+
+[ext_resource type="Script" path="res://Scripts/Towers/Tower Scripts/ThornWall.gd" id="1_1lam0"]
+[ext_resource type="Texture2D" uid="uid://db5qellkjpi6o" path="res://Art Assets/Textures/Temporary/Units/thorns.png" id="2_15dnq"]
+[ext_resource type="Script" path="res://Scripts/Towers/Attack Scripts/ThornAttack.gd" id="3_6qv0m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1tuch"]
+
+[node name="ThornWall" type="StaticBody2D" groups=["PlayerUnits"]]
+script = ExtResource("1_1lam0")
+health = 600.0
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -62)
+scale = Vector2(0.18, 0.419999)
+texture = ExtResource("2_15dnq")
+
+[node name="Attack" type="Node2D" parent="."]
+script = ExtResource("3_6qv0m")
+attackDamage = 4.0
+groupToAttack = "EnemyUnits"
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, -70)
+scale = Vector2(4, 7)
+shape = SubResource("RectangleShape2D_1tuch")
+
+[connection signal="onDamaged" from="." to="Attack" method="damaged"]

@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxqdbtck6mg14"]
+
+[ext_resource type="Script" path="res://Scripts/Towers/Tower Scripts/ThornWall.gd" id="1_surdd"]
+[ext_resource type="Texture2D" uid="uid://bdi5uhfq0jhtc" path="res://Sprites/poison.png" id="2_wd6n1"]
+[ext_resource type="Script" path="res://Scripts/Units/Attack Scripts/UnitAttack.gd" id="3_d2idf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yvunn"]
+
+[node name="SporeSprayerCloud" type="Area2D"]
+script = ExtResource("1_surdd")
+health = 450.0
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0.49999, -70)
+scale = Vector2(0.502083, 0.518518)
+texture = ExtResource("2_wd6n1")
+
+[node name="Attack" type="Node2D" parent="."]
+script = ExtResource("3_d2idf")
+attackDamage = 4.0
+attackType = 3
+numberOfTargets = 999
+groupToAttack = "EnemyUnits"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -70)
+scale = Vector2(12, 7)
+shape = SubResource("RectangleShape2D_yvunn")

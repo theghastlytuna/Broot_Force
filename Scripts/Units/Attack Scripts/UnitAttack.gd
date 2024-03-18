@@ -3,11 +3,12 @@ class_name Attack
 
 enum AttackType{
 	MELEE,
+	RANGED,
 	VEHICLE,
 	POISON
 	}
 
-var enemyColliders : Array[Area2D]
+var enemyBodies : Array[PhysicsBody2D]
 
 var attackTimer : Timer
 
@@ -26,29 +27,52 @@ var attackTimer : Timer
 ##The group that this attack will exclusively attack
 @export var groupToAttack : String
 
+#Keeps track of if the unit's attack is enabled
+var attackEnabled : bool = true
+
+#Keeps track of if the unit is currently in the attack phase
+var isAttacking : bool = false
+
+##Emits when the unit first starts attacking (typically when a unit first enters its attack range)
 signal StartedAttacking
+
+##Emits when the unit stops attacking (typically when the last unit leaves its attack range)
 signal StoppedAttacking
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	#Set up the attack timer so that it shares its duration with the attack speed
 	attackTimer = Timer.new()
 	attackTimer.wait_time = timePerAttack
 	attackTimer.autostart = false
 	attackTimer.stop()
+	#Connect the timer's timeout to the attack method, so that the unit attacks at the proper attack speed
 	attackTimer.timeout.connect(attack)
 	add_child(attackTimer)
 
-func _on_attack_area_area_entered(area : Area2D):
-	if area.get_parent().is_in_group(groupToAttack):
-		if enemyColliders.size() == 0:
+func _on_attack_area_body_entered(body : PhysicsBody2D):
+	#If the detected body is in the target group
+	if body.is_in_group(groupToAttack):
+		Debug.Log(get_parent().name + " area entered")
+		#If the unit isn't already attacking and attacking is enabled
+		if !isAttacking && attackEnabled:
+			#Set attacking to true, start the timer, emit the signal
+			Debug.Log(get_parent().name + "started attacking")
+			isAttacking = true
 			attackTimer.start()
 			StartedAttacking.emit()
-		enemyColliders.append(area)
+		#Add the body to the end of the array of bodies being attacked
+		enemyBodies.append(body)
 
-func _on_attack_area_area_exited(area : Area2D):
-	if area.get_parent().is_in_group(groupToAttack):
-		enemyColliders.erase(area)
-		if enemyColliders.size() == 0:
+func _on_attack_area_body_exited(body : PhysicsBody2D):
+	#If the detected body is in the target group
+	if body.is_in_group(groupToAttack):
+		#Remove the body from the target bodies array
+		enemyBodies.erase(body)
+		#If the array is empty after removing the body
+		if enemyBodies.size() == 0:
+			#Nobody left to attack, so stop attacking, stop the timer, emit the signal
+			isAttacking = false
 			attackTimer.stop()
 			StoppedAttacking.emit()
 
@@ -56,9 +80,30 @@ func _on_timer_timeout():
 	attack()
 	#print(enemyColliders[0].get_parent().getHealth())
 
+##Attack method which attacks the proper number of units (based on numberOfTargets) within 
+##the array of bodies within the unit's attack range
 func attack():
 	var unitsAttacked : int = 0
+	#Create an AttackArguments variable which holds the unit's attack damage, type, and the name of the unit
 	var attackArgs : AttackArguments = AttackArguments.new(attackDamage,get_parent(),attackType)
-	while unitsAttacked < numberOfTargets && unitsAttacked < enemyColliders.size():
-		enemyColliders[unitsAttacked].get_parent().damage(attackArgs)
+	#Use a while loop to attack the correct number of units (maximum = numberOfTargets)
+	while unitsAttacked < numberOfTargets && unitsAttacked < enemyBodies.size():
+		enemyBodies[unitsAttacked].damage(attackArgs)
 		unitsAttacked += 1
+	#Debug.Log("Attack done")
+
+##Method used for enablind and disabling this unit's ability to attack.
+##A unit handles its own attack loop by default, this method should only be used for special units
+##which need special activation/deactivation.
+func enableAttack(attacking : bool):
+	attackEnabled = attacking
+	#If we just disabled attacking, make sure the attacking stops
+	if !attackEnabled:
+		isAttacking = false
+		attackTimer.stop()
+		StoppedAttacking.emit()
+	#If we just enabled attacking, make sure the attacking starts
+	elif enemyBodies.size() > 0:
+		isAttacking = true;
+		attackTimer.start()
+		StartedAttacking.emit()

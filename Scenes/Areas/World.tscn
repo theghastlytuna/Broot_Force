@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://brh7kxvkvq02q"]
+[gd_scene load_steps=11 format=3 uid="uid://brh7kxvkvq02q"]
 
 [ext_resource type="Texture2D" uid="uid://wnnrtab0skb7" path="res://Art Assets/Textures/Layer2.png" id="1_tfsmi"]
 [ext_resource type="Script" path="res://Scripts/RootPhase/Spawn Management/LayerManager.gd" id="2_5ev5r"]
@@ -6,10 +6,14 @@
 [ext_resource type="Script" path="res://Scripts/RootPhase/Root/Line2D.gd" id="4_uwuhp"]
 [ext_resource type="Script" path="res://Scripts/RootPhase/Spawn Management/Spawner.gd" id="5_s6byk"]
 [ext_resource type="PackedScene" uid="uid://o4ow5qdj2dwa" path="res://Scenes/RootInteractables/Resources/water.tscn" id="6_coeey"]
+[ext_resource type="PackedScene" uid="uid://ca3vfsmfimr8r" path="res://Scenes/RootInteractables/Obstacles/Rock.tscn" id="7_rhly2"]
+[ext_resource type="PackedScene" uid="uid://bc82ny27vki14" path="res://Scenes/RootInteractables/UnitRemains/DinoRemains.tscn" id="8_e761s"]
 
 [sub_resource type="Curve" id="Curve_ebely"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.373626), 0.0, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4g5gk"]
 
 [node name="World" type="Node2D"]
 
@@ -40,21 +44,29 @@ end_cap_mode = 2
 antialiased = true
 
 [node name="TipLine" type="Line2D" parent="Root"]
+points = PackedVector2Array(0, 0)
 width_curve = SubResource("Curve_ebely")
 begin_cap_mode = 2
 end_cap_mode = 2
 
-[node name="Tip" type="Sprite2D" parent="Root" node_paths=PackedStringArray("lineRenderer", "tip", "spawner") groups=["Tip"]]
+[node name="Area2D" type="Area2D" parent="Root" node_paths=PackedStringArray("lineRenderer", "tip", "spawner", "playerCamera")]
 script = ExtResource("4_uwuhp")
 lineRenderer = NodePath("../RootLine")
 tip = NodePath("../TipLine")
 spawner = NodePath("../../Spawner")
 spawnInterval = 100.0
+playerCamera = NodePath("../../Camera2D")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Root/Tip"]
-remote_path = NodePath("../../../Camera2D")
+[node name="Tip" type="Sprite2D" parent="Root/Area2D" groups=["Tip"]]
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Root/Area2D/Tip"]
+remote_path = NodePath("../../../../Camera2D")
 update_rotation = false
 update_scale = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Root/Area2D"]
+scale = Vector2(0.2, 0.2)
+shape = SubResource("CircleShape2D_4g5gk")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_speed = 11.125
@@ -63,11 +75,14 @@ rotation_smoothing_speed = 5.845
 [node name="Spawner" type="Node2D" parent="." node_paths=PackedStringArray("addingParent")]
 script = ExtResource("5_s6byk")
 resourceDictionary = {
-Vector2(0, 5): ExtResource("6_coeey")
+Vector2(0, 10): ExtResource("6_coeey"),
+Vector2(11, 21): ExtResource("7_rhly2"),
+Vector2(22, 25): ExtResource("8_e761s")
 }
 XSpread = 1000.0
 addingParent = NodePath("../Obsticles")
 
 [node name="Obsticles" type="Node2D" parent="."]
 
-[connection signal="ChangedLayer" from="BackgroundManager" to="Root/Tip" method="_on_background_manager_changed_layer"]
+[connection signal="ChangedLayer" from="BackgroundManager" to="Root/Area2D" method="_on_background_manager_changed_layer"]
+[connection signal="area_entered" from="Root/Area2D" to="Root/Area2D" method="_on_area_entered"]

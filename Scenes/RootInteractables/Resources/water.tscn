@@ -1,9 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://o4ow5qdj2dwa"]
+[gd_scene load_steps=3 format=3 uid="uid://o4ow5qdj2dwa"]
 
 [ext_resource type="Texture2D" uid="uid://b3rmq871487g8" path="res://Sprites/Collectables/Water.png" id="1_462i3"]
+[ext_resource type="Script" path="res://Scripts/RootPhase/Interactable Scripts/waterInteractable.gd" id="1_u0gbh"]
 
 [node name="Node2D" type="Node2D" groups=["WaterResources"]]
 
-[node name="Water" type="Sprite2D" parent="."]
-scale = Vector2(0.333, 0.333)
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("1_u0gbh")
+
+[node name="Water" type="Sprite2D" parent="Area2D"]
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("1_462i3")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-42, -16, -11, -35, 15, -33, 44, -1, 42, 42, -47, 43)
