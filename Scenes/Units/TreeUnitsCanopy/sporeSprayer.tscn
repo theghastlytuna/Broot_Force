@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://cdiyjm4ro371c"]
+
+[ext_resource type="Script" path="res://Scripts/Towers/Tower Scripts/ThornWall.gd" id="1_5x647"]
+[ext_resource type="Texture2D" uid="uid://6mm3q3gblhrr" path="res://icon.svg" id="2_v4fst"]
+[ext_resource type="Script" path="res://Scripts/Towers/Attack Scripts/SporeSprayerAttack.gd" id="3_wuled"]
+[ext_resource type="PackedScene" uid="uid://b7koih8c4fa8d" path="res://Scenes/Units/TreeUnitsCanopy/sporeCloud.tscn" id="4_hdd1m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yvunn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cj6o5"]
+
+[node name="SporeSprayer" type="StaticBody2D" groups=["PlayerUnits"]]
+script = ExtResource("1_5x647")
+health = 100000.0
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0.500002, -70)
+scale = Vector2(0.554687, 1.07813)
+texture = ExtResource("2_v4fst")
+
+[node name="Attack" type="Node2D" parent="." node_paths=PackedStringArray("poisonNode", "minCloudSpawn", "maxCloudSpawn")]
+script = ExtResource("3_wuled")
+poisonNode = NodePath("../SporeCloud")
+minCloudSpawn = NodePath("../MinSpawn")
+maxCloudSpawn = NodePath("../MaxSpawn")
+attackDamage = 0.0
+timePerAttack = 3.0
+numberOfTargets = 0
+groupToAttack = "EnemyUnits"
+
+[node name="AttackArea" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(0, 40)
+scale = Vector2(12, 18)
+shape = SubResource("RectangleShape2D_yvunn")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, -70)
+scale = Vector2(4, 7)
+shape = SubResource("RectangleShape2D_cj6o5")
+
+[node name="BombPosition" type="Node2D" parent="."]
+position = Vector2(0, 220)
+
+[node name="SporeCloud" parent="." instance=ExtResource("4_hdd1m")]
+position = Vector2(0, 180)
+
+[node name="MinSpawn" type="Node2D" parent="."]
+position = Vector2(-120, 104)
+
+[node name="MaxSpawn" type="Node2D" parent="."]
+position = Vector2(120, 106)
+
+[connection signal="body_entered" from="AttackArea" to="Attack" method="_on_attack_area_body_entered"]
+[connection signal="body_exited" from="AttackArea" to="Attack" method="_on_attack_area_body_exited"]
