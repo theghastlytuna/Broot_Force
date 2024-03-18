@@ -1,6 +1,5 @@
 extends Node2D
 
-
 var saveData : GameData
 
 func resetData():

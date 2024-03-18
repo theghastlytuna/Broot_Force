@@ -1,15 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://brh7kxvkvq02q"]
+[gd_scene load_steps=12 format=3 uid="uid://brh7kxvkvq02q"]
 
 [ext_resource type="Texture2D" uid="uid://wnnrtab0skb7" path="res://Art Assets/Textures/Layer2.png" id="1_tfsmi"]
 [ext_resource type="Script" path="res://Scripts/RootPhase/Spawn Management/LayerManager.gd" id="2_5ev5r"]
 [ext_resource type="Texture2D" uid="uid://6mm3q3gblhrr" path="res://icon.svg" id="3_gnh0v"]
 [ext_resource type="Script" path="res://Scripts/RootPhase/Root/Line2D.gd" id="4_uwuhp"]
 [ext_resource type="Script" path="res://Scripts/RootPhase/Spawn Management/Spawner.gd" id="5_s6byk"]
-[ext_resource type="Script" path="res://Scripts/RootPhase/Root/Collider.gd" id="5_wty10"]
 [ext_resource type="PackedScene" uid="uid://o4ow5qdj2dwa" path="res://Scenes/RootInteractables/Resources/water.tscn" id="6_coeey"]
-[ext_resource type="Script" path="res://Scripts/SaveGame.gd" id="8_jhff2"]
 [ext_resource type="PackedScene" uid="uid://ca3vfsmfimr8r" path="res://Scenes/RootInteractables/Obstacles/Rock.tscn" id="7_rhly2"]
 [ext_resource type="PackedScene" uid="uid://bc82ny27vki14" path="res://Scenes/RootInteractables/UnitRemains/DinoRemains.tscn" id="8_e761s"]
+[ext_resource type="Script" path="res://Scripts/SaveGame.gd" id="8_jhff2"]
 
 [sub_resource type="Curve" id="Curve_ebely"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.373626), 0.0, 0.0, 0, 0]

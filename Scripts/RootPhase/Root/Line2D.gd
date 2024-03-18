@@ -52,3 +52,9 @@ func _on_background_manager_changed_layer(layerSpeedMultiplier):
 
 func _on_area_entered(area):
 	area.HitByRoot(self)
+	
+	if area.get_parent().is_in_group("COLLECTED"):
+		return
+	area.get_parent().collected()
+	area.get_parent().add_to_group("COLLECTED")
+	$"../../SaveGame".saveGame() #you can remove this, its just here to immediately save your progress
