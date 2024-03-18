@@ -1,19 +1,18 @@
-[gd_scene load_steps=28 format=3 uid="uid://dq4jcfh8ylt5e"]
+[gd_scene load_steps=33 format=3 uid="uid://dq4jcfh8ylt5e"]
 
 [ext_resource type="Texture2D" uid="uid://73qddd2nftm7" path="res://Art Assets/Textures/Temporary/ground.png" id="1_q67ni"]
 [ext_resource type="Texture2D" uid="uid://fxxowst01k33" path="res://Art Assets/Textures/Temporary/tree.png" id="2_2hre7"]
 [ext_resource type="PackedScene" uid="uid://cygp11kg1j3cp" path="res://Scenes/UI/tower_picker.tscn" id="3_3ejef"]
+[ext_resource type="Script" path="res://Scenes/Areas/LandPlot.gd" id="3_ncd5e"]
+[ext_resource type="Script" path="res://Scenes/Areas/Button.gd" id="3_wo8c8"]
 [ext_resource type="PackedScene" uid="uid://b2t15f7ju4x0g" path="res://Scenes/Units/TreeUnitsGround/thorn_wall.tscn" id="4_15r7k"]
 [ext_resource type="PackedScene" uid="uid://dv0aty8oydrg2" path="res://Scenes/Units/TreeUnitsGround/toxicBloom.tscn" id="5_jlgs5"]
-[ext_resource type="PackedScene" uid="uid://rwpvibko6u3y" path="res://Menus/TowerPlacementMenu.tscn" id="5_xj6di"]
 [ext_resource type="PackedScene" uid="uid://duugxlocnnohp" path="res://Scenes/Units/EnemyUnits/ExcavatorEnemy.tscn" id="6_0e3rg"]
+[ext_resource type="PackedScene" uid="uid://br6g8m6bj0fbe" path="res://Menus/NewTowerPlacementMenu.tscn" id="6_7podw"]
 [ext_resource type="PackedScene" uid="uid://xq6s5a6jdktr" path="res://Scenes/Units/EnemyUnits/ShotgunEnemy.tscn" id="6_8r0hn"]
 [ext_resource type="PackedScene" uid="uid://b4ixdpakfx4g7" path="res://Scenes/Units/EnemyUnits/SoldierEnemy.tscn" id="6_bf8lv"]
 [ext_resource type="PackedScene" uid="uid://dfgsbnatkyqsl" path="res://Scenes/Units/TreeUnitsGround/flytrapCluster.tscn" id="6_d50hy"]
 [ext_resource type="PackedScene" uid="uid://cde8tgxvy6y1g" path="res://Scenes/Units/EnemyUnits/PistolEnemy.tscn" id="6_iyl61"]
-[ext_resource type="Script" path="res://Scenes/Areas/LandPlot.gd" id="3_2dlsq"]
-[ext_resource type="Script" path="res://Scenes/Areas/Button.gd" id="3_wo8c8"]
-[ext_resource type="PackedScene" uid="uid://br6g8m6bj0fbe" path="res://Menus/NewTowerPlacementMenu.tscn" id="6_7podw"]
 [ext_resource type="PackedScene" uid="uid://b8qn8je4ge20n" path="res://Scenes/Units/EnemyUnits/AxeEnemy.tscn" id="6_onj2u"]
 [ext_resource type="PackedScene" uid="uid://b5frixg7n146p" path="res://Scenes/Units/EnemyUnits/ChainsawEnemy.tscn" id="6_yaxo3"]
 [ext_resource type="PackedScene" uid="uid://dcfycayg8y1hf" path="res://Scenes/Units/TreeUnitsCanopy/bomberFruit.tscn" id="7_vhtud"]
@@ -42,6 +41,7 @@ size = Vector2(1207, 257)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rba4d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vljai"]
+
 [sub_resource type="Animation" id="Animation_h40ep"]
 resource_name = "Hide"
 tracks/0/type = "value"
@@ -101,6 +101,7 @@ texture = ExtResource("2_2hre7")
 
 [node name="0" type="Node2D" parent="Tree/GroundPositions"]
 position = Vector2(230, 440)
+script = ExtResource("3_ncd5e")
 
 [node name="TowerPicker" parent="Tree/GroundPositions/0" node_paths=PackedStringArray("placeToPutTower") instance=ExtResource("3_3ejef")]
 placeToPutTower = NodePath("..")
@@ -114,10 +115,10 @@ shape = SubResource("RectangleShape2D_o8who")
 [node name="CanvasLayer" type="CanvasLayer" parent="Tree/GroundPositions/0"]
 
 [node name="Button" type="Button" parent="Tree/GroundPositions/0/CanvasLayer" node_paths=PackedStringArray("parentnode")]
-offset_left = 682.0
-offset_top = 427.0
-offset_right = 703.0
-offset_bottom = 449.0
+offset_left = 191.0
+offset_top = 300.0
+offset_right = 271.0
+offset_bottom = 439.0
 theme_override_font_sizes/font_size = 10
 text = "+"
 script = ExtResource("3_wo8c8")
