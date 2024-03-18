@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Debug="*res://Scripts/Debug.gd"
 LocalizationManager="*res://addons/localization_editor/LocalizationManager.gd"
+GameManager="*res://Scripts/GameManager.gd"
 ResourceHolder="*res://Scripts/RootPhase/ResourceHolder.gd"
 
 [editor_plugins]

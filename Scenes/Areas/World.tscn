@@ -5,7 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://6mm3q3gblhrr" path="res://icon.svg" id="3_gnh0v"]
 [ext_resource type="Script" path="res://Scripts/RootPhase/Root/Line2D.gd" id="4_uwuhp"]
 [ext_resource type="Script" path="res://Scripts/RootPhase/Spawn Management/Spawner.gd" id="5_s6byk"]
+[ext_resource type="Script" path="res://Scripts/RootPhase/Root/Collider.gd" id="5_wty10"]
 [ext_resource type="PackedScene" uid="uid://o4ow5qdj2dwa" path="res://Scenes/RootInteractables/Resources/water.tscn" id="6_coeey"]
+[ext_resource type="Script" path="res://Scripts/SaveGame.gd" id="8_jhff2"]
 [ext_resource type="PackedScene" uid="uid://ca3vfsmfimr8r" path="res://Scenes/RootInteractables/Obstacles/Rock.tscn" id="7_rhly2"]
 [ext_resource type="PackedScene" uid="uid://bc82ny27vki14" path="res://Scenes/RootInteractables/UnitRemains/DinoRemains.tscn" id="8_e761s"]
 
@@ -83,6 +85,9 @@ XSpread = 1000.0
 addingParent = NodePath("../Obsticles")
 
 [node name="Obsticles" type="Node2D" parent="."]
+
+[node name="SaveGame" type="Node2D" parent="."]
+script = ExtResource("8_jhff2")
 
 [connection signal="ChangedLayer" from="BackgroundManager" to="Root/Area2D" method="_on_background_manager_changed_layer"]
 [connection signal="area_entered" from="Root/Area2D" to="Root/Area2D" method="_on_area_entered"]

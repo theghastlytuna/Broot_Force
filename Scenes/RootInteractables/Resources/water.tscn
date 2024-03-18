@@ -1,9 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://o4ow5qdj2dwa"]
+[gd_scene load_steps=4 format=3 uid="uid://o4ow5qdj2dwa"]
 
+[ext_resource type="Script" path="res://Scripts/RootPhase/Collectable.gd" id="1_44ohb"]
 [ext_resource type="Texture2D" uid="uid://b3rmq871487g8" path="res://Sprites/Collectables/Water.png" id="1_462i3"]
 [ext_resource type="Script" path="res://Scripts/RootPhase/Interactable Scripts/waterInteractable.gd" id="1_u0gbh"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oqbvq"]
+size = Vector2(85, 69)
+
 [node name="Node2D" type="Node2D" groups=["WaterResources"]]
+script = ExtResource("1_44ohb")
 
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource("1_u0gbh")
