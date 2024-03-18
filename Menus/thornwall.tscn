@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://beneb1d1elm1l"]
+
+[ext_resource type="Texture2D" uid="uid://fi2rpaj6nplo" path="res://Art Assets/Textures/DarkBrown.png" id="1_vipph"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 308.0
+offset_bottom = 264.0
+texture = ExtResource("1_vipph")
+
+[node name="Label" type="Label" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 21
+text = "Thorn Wall
+Basic defense, enemies must destroy thorns before they can advance. Damage taken upon attacking the wall."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

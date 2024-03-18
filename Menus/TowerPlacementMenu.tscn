@@ -37,15 +37,10 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect/VBoxContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/VBoxContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/VBoxContainer/MarginContainer/NinePatchRect"]
-layout_mode = 2
-offset_right = 313.0
-offset_bottom = 616.0
-
-[node name="TextureButton" type="TextureButton" parent="NinePatchRect/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer"]
+[node name="TextureButton" type="TextureButton" parent="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -55,22 +50,23 @@ texture_hover = ExtResource("3_1s5us")
 ignore_texture_size = true
 stretch_mode = 4
 
-[node name="HSeparator" type="HSeparator" parent="NinePatchRect/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 32
 
-[node name="Control" type="GridContainer" parent="NinePatchRect/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer"]
+[node name="Control" type="GridContainer" parent="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/h_separation = 10
-columns = 3
+theme_override_constants/h_separation = -21
+columns = 4
 
-[node name="TextureRect" type="TextureRect" parent="NinePatchRect/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/Control"]
+[node name="TextureButton" type="TextureButton" parent="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/Control"]
 custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
-texture = ExtResource("2_547bd")
+texture_normal = ExtResource("2_547bd")
+texture_pressed = ExtResource("2_547bd")
+texture_hover = ExtResource("2_547bd")
 
-[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/Control/TextureRect"]
+[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/Control/TextureButton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -82,71 +78,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 1
 
-[node name="TextureRect2" type="TextureRect" parent="NinePatchRect/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/Control"]
-custom_minimum_size = Vector2(96, 96)
-layout_mode = 2
-texture = ExtResource("2_547bd")
-
-[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/Control/TextureRect2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "aa"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="TextureRect3" type="TextureRect" parent="NinePatchRect/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/Control"]
-custom_minimum_size = Vector2(96, 96)
-layout_mode = 2
-texture = ExtResource("2_547bd")
-
-[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/Control/TextureRect3"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "aa"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="TextureRect4" type="TextureRect" parent="NinePatchRect/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/Control"]
-custom_minimum_size = Vector2(96, 96)
-layout_mode = 2
-texture = ExtResource("2_547bd")
-
-[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/Control/TextureRect4"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "aa"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="TextureRect5" type="TextureRect" parent="NinePatchRect/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/Control"]
-custom_minimum_size = Vector2(96, 96)
-layout_mode = 2
-texture = ExtResource("2_547bd")
-
-[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/Control/TextureRect5"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "aa"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="TextureButton" type="TextureButton" parent="NinePatchRect/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/Control"]
+[node name="TextureButton2" type="TextureButton" parent="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/Control"]
 custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
 texture_normal = ExtResource("2_547bd")
@@ -154,7 +86,7 @@ texture_pressed = ExtResource("2_547bd")
 texture_hover = ExtResource("2_547bd")
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/Control/TextureButton"]
+[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/Control/TextureButton2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -166,4 +98,124 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 1
 
-[connection signal="pressed" from="NinePatchRect/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/TextureButton" to="." method="_on_texture_button_pressed"]
+[node name="TextureButton3" type="TextureButton" parent="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/Control"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture_normal = ExtResource("2_547bd")
+texture_pressed = ExtResource("2_547bd")
+texture_hover = ExtResource("2_547bd")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/Control/TextureButton3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "THORN_WALL"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="TextureButton4" type="TextureButton" parent="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/Control"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture_normal = ExtResource("2_547bd")
+texture_pressed = ExtResource("2_547bd")
+texture_hover = ExtResource("2_547bd")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/Control/TextureButton4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "THORN_WALL"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="TextureButton5" type="TextureButton" parent="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/Control"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture_normal = ExtResource("2_547bd")
+texture_pressed = ExtResource("2_547bd")
+texture_hover = ExtResource("2_547bd")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/Control/TextureButton5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "THORN_WALL"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="TextureButton6" type="TextureButton" parent="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/Control"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture_normal = ExtResource("2_547bd")
+texture_pressed = ExtResource("2_547bd")
+texture_hover = ExtResource("2_547bd")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/Control/TextureButton6"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "THORN_WALL"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="TextureButton7" type="TextureButton" parent="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/Control"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture_normal = ExtResource("2_547bd")
+texture_pressed = ExtResource("2_547bd")
+texture_hover = ExtResource("2_547bd")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/Control/TextureButton7"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "THORN_WALL"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="TextureButton8" type="TextureButton" parent="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/Control"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture_normal = ExtResource("2_547bd")
+texture_pressed = ExtResource("2_547bd")
+texture_hover = ExtResource("2_547bd")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/Control/TextureButton8"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "THORN_WALL"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
+[connection signal="pressed" from="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/TextureButton" to="." method="_on_texture_button_pressed"]

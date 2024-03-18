@@ -1,11 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://br6g8m6bj0fbe"]
+[gd_scene load_steps=6 format=3 uid="uid://br6g8m6bj0fbe"]
 
 [ext_resource type="Script" path="res://Menus/NewTowerPlacementMenu.gd" id="1_atvjs"]
-[ext_resource type="Texture2D" uid="uid://db82ofrfglp06" path="res://Art Assets/Textures/LightBrown2.png" id="2_b8yem"]
+[ext_resource type="Texture2D" uid="uid://du3ypt3m6quyy" path="res://Art Assets/Textures/LightBrown.png" id="1_lusb3"]
 [ext_resource type="Texture2D" uid="uid://bn61fvr3hbar7" path="res://Art Assets/Textures/cancel.png" id="2_n5hif"]
 [ext_resource type="Texture2D" uid="uid://fi2rpaj6nplo" path="res://Art Assets/Textures/DarkBrown.png" id="3_bxtdm"]
-[ext_resource type="Texture2D" uid="uid://dhof0e12mnbuk" path="res://Art Assets/Textures/DarkBrown2.png" id="4_7hkt5"]
-[ext_resource type="PackedScene" uid="uid://beneb1d1elm1l" path="res://Menus/thornwall.tscn" id="6_jf8ot"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h1rti"]
 
@@ -14,10 +12,11 @@ offset_right = 340.0
 offset_bottom = 648.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_h1rti")
 script = ExtResource("1_atvjs")
+tower_resources = null
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 2
-texture = ExtResource("2_b8yem")
+texture = ExtResource("1_lusb3")
 
 [node name="MarginContainer" type="MarginContainer" parent="NinePatchRect"]
 layout_mode = 2
@@ -47,13 +46,12 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 45.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 26
 text = "PICK_TOWER"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="TextureButton" type="TextureButton" parent="NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(32, 32)
@@ -73,8 +71,8 @@ columns = 3
 [node name="TextureButton" type="TextureButton" parent="NinePatchRect/MarginContainer/VBoxContainer/Control"]
 custom_minimum_size = Vector2(10, 10)
 layout_mode = 2
-texture_normal = ExtResource("4_7hkt5")
-texture_pressed = ExtResource("4_7hkt5")
+texture_normal = ExtResource("3_bxtdm")
+texture_pressed = ExtResource("3_bxtdm")
 texture_hover = ExtResource("3_bxtdm")
 ignore_texture_size = true
 stretch_mode = 4
@@ -94,8 +92,8 @@ autowrap_mode = 3
 [node name="TextureButton2" type="TextureButton" parent="NinePatchRect/MarginContainer/VBoxContainer/Control"]
 custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
-texture_normal = ExtResource("4_7hkt5")
-texture_pressed = ExtResource("4_7hkt5")
+texture_normal = ExtResource("3_bxtdm")
+texture_pressed = ExtResource("3_bxtdm")
 texture_hover = ExtResource("3_bxtdm")
 stretch_mode = 0
 
@@ -114,8 +112,8 @@ autowrap_mode = 3
 [node name="TextureButton3" type="TextureButton" parent="NinePatchRect/MarginContainer/VBoxContainer/Control"]
 custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
-texture_normal = ExtResource("4_7hkt5")
-texture_pressed = ExtResource("4_7hkt5")
+texture_normal = ExtResource("3_bxtdm")
+texture_pressed = ExtResource("3_bxtdm")
 texture_hover = ExtResource("3_bxtdm")
 stretch_mode = 0
 
@@ -134,8 +132,8 @@ autowrap_mode = 3
 [node name="TextureButton4" type="TextureButton" parent="NinePatchRect/MarginContainer/VBoxContainer/Control"]
 custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
-texture_normal = ExtResource("4_7hkt5")
-texture_pressed = ExtResource("4_7hkt5")
+texture_normal = ExtResource("3_bxtdm")
+texture_pressed = ExtResource("3_bxtdm")
 texture_hover = ExtResource("3_bxtdm")
 stretch_mode = 0
 
@@ -154,8 +152,8 @@ autowrap_mode = 3
 [node name="TextureButton5" type="TextureButton" parent="NinePatchRect/MarginContainer/VBoxContainer/Control"]
 custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
-texture_normal = ExtResource("4_7hkt5")
-texture_pressed = ExtResource("4_7hkt5")
+texture_normal = ExtResource("3_bxtdm")
+texture_pressed = ExtResource("3_bxtdm")
 texture_hover = ExtResource("3_bxtdm")
 stretch_mode = 0
 
@@ -174,8 +172,8 @@ autowrap_mode = 3
 [node name="TextureButton6" type="TextureButton" parent="NinePatchRect/MarginContainer/VBoxContainer/Control"]
 custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
-texture_normal = ExtResource("4_7hkt5")
-texture_pressed = ExtResource("4_7hkt5")
+texture_normal = ExtResource("3_bxtdm")
+texture_pressed = ExtResource("3_bxtdm")
 texture_hover = ExtResource("3_bxtdm")
 stretch_mode = 0
 
@@ -194,8 +192,8 @@ autowrap_mode = 3
 [node name="TextureButton7" type="TextureButton" parent="NinePatchRect/MarginContainer/VBoxContainer/Control"]
 custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
-texture_normal = ExtResource("4_7hkt5")
-texture_pressed = ExtResource("4_7hkt5")
+texture_normal = ExtResource("3_bxtdm")
+texture_pressed = ExtResource("3_bxtdm")
 texture_hover = ExtResource("3_bxtdm")
 stretch_mode = 0
 
@@ -214,8 +212,8 @@ autowrap_mode = 3
 [node name="TextureButton8" type="TextureButton" parent="NinePatchRect/MarginContainer/VBoxContainer/Control"]
 custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
-texture_normal = ExtResource("4_7hkt5")
-texture_pressed = ExtResource("4_7hkt5")
+texture_normal = ExtResource("3_bxtdm")
+texture_pressed = ExtResource("3_bxtdm")
 texture_hover = ExtResource("3_bxtdm")
 stretch_mode = 0
 
@@ -231,39 +229,16 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="Confirm" type="TextureButton" parent="NinePatchRect/MarginContainer/VBoxContainer/Control"]
-layout_mode = 2
-texture_normal = ExtResource("4_7hkt5")
-texture_pressed = ExtResource("4_7hkt5")
-texture_hover = ExtResource("3_bxtdm")
-stretch_mode = 0
-
-[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer/Control/Confirm"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "CONFIRM"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="TextureRect" type="TextureRect" parent="NinePatchRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
 texture = ExtResource("3_bxtdm")
 
-[node name="ThornwallText" parent="NinePatchRect/MarginContainer/VBoxContainer/TextureRect" instance=ExtResource("6_jf8ot")]
-layout_mode = 1
-
 [connection signal="pressed" from="NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer/TextureButton" to="." method="_on_texture_button_pressed"]
-[connection signal="pressed" from="NinePatchRect/MarginContainer/VBoxContainer/Control/TextureButton" to="." method="_on_button_clicked"]
-[connection signal="pressed" from="NinePatchRect/MarginContainer/VBoxContainer/Control/TextureButton2" to="." method="_on_button_clicked"]
-[connection signal="pressed" from="NinePatchRect/MarginContainer/VBoxContainer/Control/TextureButton3" to="." method="_on_button_clicked"]
-[connection signal="pressed" from="NinePatchRect/MarginContainer/VBoxContainer/Control/TextureButton4" to="." method="_on_button_clicked"]
-[connection signal="pressed" from="NinePatchRect/MarginContainer/VBoxContainer/Control/TextureButton5" to="." method="_on_button_clicked"]
-[connection signal="pressed" from="NinePatchRect/MarginContainer/VBoxContainer/Control/TextureButton6" to="." method="_on_button_clicked"]
-[connection signal="pressed" from="NinePatchRect/MarginContainer/VBoxContainer/Control/TextureButton7" to="." method="_on_button_clicked"]
-[connection signal="pressed" from="NinePatchRect/MarginContainer/VBoxContainer/Control/TextureButton8" to="." method="_on_button_clicked"]
-[connection signal="pressed" from="NinePatchRect/MarginContainer/VBoxContainer/Control/Confirm" to="." method="_on_button_confirm" binds= [0]]
+[connection signal="pressed" from="NinePatchRect/MarginContainer/VBoxContainer/Control/TextureButton" to="." method="_on_button_clicked" binds= [0]]
+[connection signal="pressed" from="NinePatchRect/MarginContainer/VBoxContainer/Control/TextureButton2" to="." method="_on_button_clicked" binds= [0]]
+[connection signal="pressed" from="NinePatchRect/MarginContainer/VBoxContainer/Control/TextureButton3" to="." method="_on_button_clicked" binds= [0]]
+[connection signal="pressed" from="NinePatchRect/MarginContainer/VBoxContainer/Control/TextureButton4" to="." method="_on_button_clicked" binds= [0]]
+[connection signal="pressed" from="NinePatchRect/MarginContainer/VBoxContainer/Control/TextureButton5" to="." method="_on_button_clicked" binds= [0]]
+[connection signal="pressed" from="NinePatchRect/MarginContainer/VBoxContainer/Control/TextureButton6" to="." method="_on_button_clicked" binds= [0]]
+[connection signal="pressed" from="NinePatchRect/MarginContainer/VBoxContainer/Control/TextureButton7" to="." method="_on_button_clicked" binds= [0]]
+[connection signal="pressed" from="NinePatchRect/MarginContainer/VBoxContainer/Control/TextureButton8" to="." method="_on_button_clicked" binds= [0]]
