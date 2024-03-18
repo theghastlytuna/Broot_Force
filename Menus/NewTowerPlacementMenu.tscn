@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://br6g8m6bj0fbe"]
 
-[ext_resource type="Script" path="res://Menus/NewTowerPlacementMenu.gd" id="1_atvjs"]
+[ext_resource type="Script" path="res://Menus/GroundPlacementMenu.gd" id="1_4mb2k"]
 [ext_resource type="Texture2D" uid="uid://db82ofrfglp06" path="res://Art Assets/Textures/LightBrown2.png" id="2_b8yem"]
 [ext_resource type="Texture2D" uid="uid://bn61fvr3hbar7" path="res://Art Assets/Textures/cancel.png" id="2_n5hif"]
 [ext_resource type="Texture2D" uid="uid://fi2rpaj6nplo" path="res://Art Assets/Textures/DarkBrown.png" id="3_bxtdm"]
@@ -13,7 +13,7 @@
 offset_right = 340.0
 offset_bottom = 648.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_h1rti")
-script = ExtResource("1_atvjs")
+script = ExtResource("1_4mb2k")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 2

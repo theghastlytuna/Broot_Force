@@ -21,7 +21,6 @@ func _on_texture_button_pressed():
 	$NinePatchRect/MarginContainer/VBoxContainer/Control/Confirm.visible = false
 	pass # Replace with function body.
 
-# Node press function
 func _on_button_land_clicked(to_parent_to):
 	if !open_menu:
 		$AnimationPlayer.play("Show")
@@ -46,5 +45,3 @@ func _on_button_clicked():
 		$NinePatchRect/MarginContainer/VBoxContainer/Control/Confirm.visible = true
 		$NinePatchRect/MarginContainer/VBoxContainer/TextureRect/ThornwallText.visible = true
 	pass # Replace with function body.
-
-

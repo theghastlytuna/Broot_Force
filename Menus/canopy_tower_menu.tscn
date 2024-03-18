@@ -1,0 +1,240 @@
+[gd_scene load_steps=15 format=3 uid="uid://bi0fa577rl8s6"]
+
+[ext_resource type="Script" path="res://Menus/CanopyPlacementMenu.gd" id="2_yfrpf"]
+[ext_resource type="PackedScene" uid="uid://6bwdx0gvtgdc" path="res://Scenes/Units/TreeUnitsCanopy/thornVines.tscn" id="3_2bydq"]
+[ext_resource type="PackedScene" uid="uid://cdiyjm4ro371c" path="res://Scenes/Units/TreeUnitsCanopy/sporeSprayer.tscn" id="4_mlhu6"]
+[ext_resource type="PackedScene" uid="uid://dcfycayg8y1hf" path="res://Scenes/Units/TreeUnitsCanopy/bomberFruit.tscn" id="5_txlek"]
+[ext_resource type="PackedScene" uid="uid://ba6ewlavv28ho" path="res://Scenes/Units/TreeUnitsCanopy/seedBomber.tscn" id="6_8oflw"]
+[ext_resource type="Texture2D" uid="uid://db82ofrfglp06" path="res://Art Assets/Textures/LightBrown2.png" id="6_w3tiy"]
+[ext_resource type="Texture2D" uid="uid://bn61fvr3hbar7" path="res://Art Assets/Textures/cancel.png" id="7_mu6k7"]
+[ext_resource type="Texture2D" uid="uid://dhof0e12mnbuk" path="res://Art Assets/Textures/DarkBrown2.png" id="8_hjyy2"]
+[ext_resource type="Texture2D" uid="uid://fi2rpaj6nplo" path="res://Art Assets/Textures/DarkBrown.png" id="9_mpsqo"]
+[ext_resource type="PackedScene" uid="uid://beneb1d1elm1l" path="res://Menus/thornwall.tscn" id="10_6fver"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h1rti"]
+
+[sub_resource type="Animation" id="Animation_h40ep"]
+resource_name = "Hide"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-340, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_in1ep"]
+resource_name = "Show"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-340, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s40a4"]
+_data = {
+"Hide": SubResource("Animation_h40ep"),
+"Show": SubResource("Animation_in1ep")
+}
+
+[node name="CanopyCanvas" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
+layout_mode = 0
+offset_right = 340.0
+offset_bottom = 648.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_h1rti")
+script = ExtResource("2_yfrpf")
+tower_resources = Array[Resource]([ExtResource("3_2bydq"), ExtResource("4_mlhu6"), ExtResource("5_txlek"), ExtResource("6_8oflw")])
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control/PanelContainer"]
+layout_mode = 2
+texture = ExtResource("6_w3tiy")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/PanelContainer/NinePatchRect"]
+layout_mode = 2
+offset_right = 340.0
+offset_bottom = 648.0
+size_flags_horizontal = 5
+size_flags_vertical = 5
+mouse_filter = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/PanelContainer/NinePatchRect/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+text = "PICK_TOWER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("7_mu6k7")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Control" type="GridContainer" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/h_separation = 10
+columns = 3
+
+[node name="Tower1" type="TextureButton" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture_normal = ExtResource("8_hjyy2")
+texture_pressed = ExtResource("8_hjyy2")
+texture_hover = ExtResource("9_mpsqo")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control/Tower1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "THORN_VINES"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Tower2" type="TextureButton" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture_normal = ExtResource("8_hjyy2")
+texture_pressed = ExtResource("8_hjyy2")
+texture_hover = ExtResource("9_mpsqo")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control/Tower2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "TOXIC_SPORE"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Tower3" type="TextureButton" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture_normal = ExtResource("8_hjyy2")
+texture_pressed = ExtResource("8_hjyy2")
+texture_hover = ExtResource("9_mpsqo")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control/Tower3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "BOMBER_FRUIT"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Tower4" type="TextureButton" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture_normal = ExtResource("8_hjyy2")
+texture_pressed = ExtResource("8_hjyy2")
+texture_hover = ExtResource("9_mpsqo")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control/Tower4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "SEED_BOMBER"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Confirm" type="TextureButton" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control"]
+layout_mode = 2
+texture_normal = ExtResource("8_hjyy2")
+texture_pressed = ExtResource("8_hjyy2")
+texture_hover = ExtResource("9_mpsqo")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control/Confirm"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "CONFIRM"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("9_mpsqo")
+
+[node name="ThornwallText" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/TextureRect" instance=ExtResource("10_6fver")]
+layout_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/PanelContainer"]
+libraries = {
+"": SubResource("AnimationLibrary_s40a4")
+}
+
+[connection signal="pressed" from="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer/TextureButton" to="Control/PanelContainer" method="_on_texture_button_pressed"]
+[connection signal="pressed" from="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control/Tower1" to="Control/PanelContainer" method="_on_button_clicked" binds= [0]]
+[connection signal="pressed" from="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control/Tower2" to="Control/PanelContainer" method="_on_button_clicked" binds= [1]]
+[connection signal="pressed" from="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control/Tower3" to="Control/PanelContainer" method="_on_button_clicked" binds= [2]]
+[connection signal="pressed" from="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control/Tower4" to="Control/PanelContainer" method="_on_button_clicked" binds= [3]]
+[connection signal="pressed" from="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control/Confirm" to="Control/PanelContainer" method="_on_button_confirm"]

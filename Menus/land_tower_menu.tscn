@@ -1,0 +1,77 @@
+[gd_scene load_steps=8 format=3 uid="uid://cugohrjbgvgjd"]
+
+[ext_resource type="PackedScene" uid="uid://br6g8m6bj0fbe" path="res://Menus/NewTowerPlacementMenu.tscn" id="1_culm0"]
+[ext_resource type="PackedScene" uid="uid://b2t15f7ju4x0g" path="res://Scenes/Units/TreeUnitsGround/thorn_wall.tscn" id="2_qnobb"]
+[ext_resource type="PackedScene" uid="uid://dv0aty8oydrg2" path="res://Scenes/Units/TreeUnitsGround/toxicBloom.tscn" id="3_qrhbf"]
+[ext_resource type="PackedScene" uid="uid://dfgsbnatkyqsl" path="res://Scenes/Units/TreeUnitsGround/flytrapCluster.tscn" id="4_f5dde"]
+
+[sub_resource type="Animation" id="Animation_h40ep"]
+resource_name = "Hide"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-340, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_in1ep"]
+resource_name = "Show"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-340, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s40a4"]
+_data = {
+"Hide": SubResource("Animation_h40ep"),
+"Show": SubResource("Animation_in1ep")
+}
+
+[node name="LandCanvas" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+
+[node name="PanelContainer" parent="Control" instance=ExtResource("1_culm0")]
+layout_mode = 0
+tower_resources = Array[Resource]([ExtResource("2_qnobb"), ExtResource("3_qrhbf"), ExtResource("4_f5dde")])
+
+[node name="TextureButton3" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control" index="2"]
+visible = false
+
+[node name="TextureButton5" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control" index="4"]
+visible = false
+
+[node name="TextureButton6" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control" index="5"]
+visible = false
+
+[node name="TextureButton7" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control" index="6"]
+visible = false
+
+[node name="TextureButton8" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control" index="7"]
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/PanelContainer"]
+libraries = {
+"": SubResource("AnimationLibrary_s40a4")
+}
+
+[editable path="Control/PanelContainer"]
