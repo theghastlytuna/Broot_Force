@@ -28,4 +28,11 @@ func loadData():
 		GameManager.waterPerRound = saveData.waterPerRound
 		GameManager.totalWater = saveData.totalWater
 		GameManager.depthsCollected = saveData.depthsCollected
+	else:
+		saveData = GameData.new()
+		saveData.availableUnits = []
+		saveData.waterPerRound = 0
+		saveData.totalWater = 0
+		saveData.depthsCollected = []
+		saveGame()
 	pass

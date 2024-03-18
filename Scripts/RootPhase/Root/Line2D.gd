@@ -7,12 +7,14 @@ var time : float = 0
 var tipPoints : int = 13
 var currentLayerMultiplier : float = 1
 
+
 @export var lineRenderer : Line2D
 @export var tip : Line2D
 @export var spawner : Node2D
 var lastSpawnedDepth : float = 0
 @export var spawnInterval : float #every spawnDepthMod units downward, we spawn a new object
 @export var playerCamera : Camera2D
+@export var gameSaver : Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -55,6 +57,6 @@ func _on_area_entered(area):
 	
 	if area.get_parent().is_in_group("COLLECTED"):
 		return
-	area.get_parent().collected()
+	#area.get_parent().collected()
 	area.get_parent().add_to_group("COLLECTED")
-	$"../../SaveGame".saveGame() #you can remove this, its just here to immediately save your progress
+	gameSaver.saveGame() #you can remove this, its just here to immediately save your progress

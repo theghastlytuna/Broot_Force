@@ -50,13 +50,14 @@ width_curve = SubResource("Curve_ebely")
 begin_cap_mode = 2
 end_cap_mode = 2
 
-[node name="Area2D" type="Area2D" parent="Root" node_paths=PackedStringArray("lineRenderer", "tip", "spawner", "playerCamera")]
+[node name="Area2D" type="Area2D" parent="Root" node_paths=PackedStringArray("lineRenderer", "tip", "spawner", "playerCamera", "gameSaver")]
 script = ExtResource("4_uwuhp")
 lineRenderer = NodePath("../RootLine")
 tip = NodePath("../TipLine")
 spawner = NodePath("../../Spawner")
 spawnInterval = 100.0
 playerCamera = NodePath("../../Camera2D")
+gameSaver = NodePath("../../SaveGame")
 
 [node name="Tip" type="Sprite2D" parent="Root/Area2D" groups=["Tip"]]
 
