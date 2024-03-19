@@ -21,10 +21,11 @@ Debug="*res://Scripts/Debug.gd"
 LocalizationManager="*res://addons/localization_editor/LocalizationManager.gd"
 GameManager="*res://Scripts/GameManager.gd"
 ResourceHolder="*res://Scripts/RootPhase/ResourceHolder.gd"
+SoundManager="*res://addons/sound_manager/sound_manager.gd"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/localization_editor/plugin.cfg")
+enabled=PackedStringArray("res://addons/localization_editor/plugin.cfg", "res://addons/sound_manager/plugin.cfg")
 
 [internationalization]
 
