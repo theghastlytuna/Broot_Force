@@ -7,8 +7,8 @@ Excavator sprite: https://pngtree.com/freepng/excavator-icon_4316579.html
 Military helmet sprite: https://www.spreadshirt.ca/shop/design/military+helmet+mouse+pad-D6020062bca2fdc3e15bcd9a0?sellable=4wVwkD7YXXfReD43QZJz-993-43
 Rifle sprite: https://opengameart.org/content/ar-15-attempt-112x39
 
-water sound and dirt sound from original broot force
-
+water sound from original broot force
+digging sound: https://pixabay.com/sound-effects/digging-6691/
 cracking sound: https://pixabay.com/sound-effects/breaking-bones-38128/
 shotgun: https://pixabay.com/sound-effects/shotgun-firing-3-14483/
 axe: https://pixabay.com/sound-effects/woodcutter-84949/
