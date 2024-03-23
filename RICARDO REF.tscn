@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://mtl0fvqnv6kx"]
+
+[ext_resource type="Texture2D" uid="uid://ysfnqcwkk8uj" path="res://Art Assets/Textures/Temporary/HumanTex.png" id="1_kejlv"]
+
+[sub_resource type="Animation" id="Animation_o23lm"]
+resource_name = "new_animation"
+
+[sub_resource type="Animation" id="Animation_sj74v"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_niwvf"]
+_data = {
+"RESET": SubResource("Animation_sj74v"),
+"new_animation": SubResource("Animation_o23lm")
+}
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Parts" type="Node2D" parent="."]
+
+[node name="Stem" type="Polygon2D" parent="Parts"]
+position = Vector2(-224, -243)
+scale = Vector2(0.423077, 0.423077)
+texture = ExtResource("1_kejlv")
+skeleton = NodePath("../../Skeleton2D")
+polygon = PackedVector2Array(472, 48, 560, 48, 568, 592, 464, 592)
+uv = PackedVector2Array(472, 48, 560, 48, 568, 592, 464, 592)
+bones = ["Hip", PackedFloat32Array(0, 0, 0, 0), "Hip/Stem1", PackedFloat32Array(1, 1, 1, 1), "Hip/Stem1/Leaf", PackedFloat32Array(0, 0, 0, 0)]
+
+[node name="Leaf" type="Polygon2D" parent="Parts"]
+position = Vector2(12, -379)
+rotation = 0.789514
+scale = Vector2(0.212477, 0.212477)
+texture = ExtResource("1_kejlv")
+skeleton = NodePath("../../Skeleton2D")
+polygon = PackedVector2Array(480, 56, 560, 56, 560, 584, 480, 600)
+uv = PackedVector2Array(480, 56, 560, 56, 560, 584, 480, 600)
+bones = ["Hip", PackedFloat32Array(0, 0, 0, 0), "Hip/Stem1", PackedFloat32Array(0, 0, 0, 0), "Hip/Stem1/Leaf", PackedFloat32Array(1, 1, 1, 1)]
+
+[node name="Skeleton2D" type="Skeleton2D" parent="."]
+
+[node name="Hip" type="Bone2D" parent="Skeleton2D"]
+rest = Transform2D(1, 0, 0, 1, 0, 0)
+
+[node name="Stem1" type="Bone2D" parent="Skeleton2D/Hip"]
+rotation = 0.420548
+rest = Transform2D(1, 0, 0, 1, 0, 0)
+
+[node name="Leaf" type="Bone2D" parent="Skeleton2D/Hip/Stem1"]
+position = Vector2(0, -211)
+rest = Transform2D(1, 0, 0, 1, 0, -211)
+auto_calculate_length_and_angle = false
+length = 110.224
+bone_angle = -42.632
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_niwvf")
+}
+autoplay = "new_animation"

@@ -23,7 +23,10 @@ var lastSpawnedDepth : float = 0
 @export var gameSaver : Node2D
 @export var turningAwayCurve : Curve
 @export var turningAwayForce : float
+@export var turningAmount : float
 @export var rootPhaseTimeout : float
+var mousePosition = Vector2.ZERO
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -59,11 +62,16 @@ func _process(delta: float) -> void:
 	position += transform.y * speed * delta * currentLayerMultiplier
 	distanceFromLastPoint += position.distance_to(lastPosition)
 	lastPosition = position
-	var input_dir := Input.get_vector("ui_right", "ui_left", "ui_down", "ui_up")
+	
+	#var input_dir : Vector2= mousePosition - position#Input.get_vector("ui_right", "ui_left", "ui_down", "ui_up")
+	
+	mousePosition = get_global_mouse_position()
 	var amountToRoate : float = 0
 	
-	if input_dir:
-		amountToRoate = input_dir.x
+	var angleToMouse : float = (rad_to_deg(global_position.angle_to_point(mousePosition)) - 90)*1 - rotation_degrees
+	
+	amountToRoate = clampi(angleToMouse,-turningAmount,turningAmount)
+		
 	#check the raycasts to see if you will hit something
 	
 	var checkWallCollision : bool = false
@@ -111,6 +119,7 @@ func _process(delta: float) -> void:
 		
 		
 		distanceFromLastPoint = 0
+
 
 func _on_background_manager_changed_layer(layerSpeedMultiplier):
 	currentLayerMultiplier = layerSpeedMultiplier
