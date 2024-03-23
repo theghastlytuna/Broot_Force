@@ -49,11 +49,10 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fkmxp"]
 size = Vector2(200, 200)
 
-[node name="ExcavatorEnemy" type="CharacterBody2D" groups=["EnemyUnits", "EnemyVehicle", "Vehicle"]]
+[node name="ExcavatorEnemy" type="CharacterBody2D" groups=["EnemyUnits", "EnemyVehicle"]]
 collision_layer = 2
 script = ExtResource("1_4bc3o")
-health = 100.0
-cost = 130
+health = 80.0
 
 [node name="Movement" type="Node2D" parent="."]
 script = ExtResource("2_fisyd")
