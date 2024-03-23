@@ -14,7 +14,8 @@ func _ready():
 
 # Cancel button function
 func _on_texture_button_pressed():
-	#if open_menu:
+	if !open_menu:
+		return
 	$AnimationPlayer.play("Hide")
 	Debug.Log("I'm hiding")
 	open_menu = false

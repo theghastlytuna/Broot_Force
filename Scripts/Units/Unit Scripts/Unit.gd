@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Node2D
 class_name Unit
 
 ##The amount of health a unit has

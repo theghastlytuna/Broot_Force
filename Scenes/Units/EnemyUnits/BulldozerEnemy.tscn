@@ -56,10 +56,12 @@ health = 60.0
 cost = 70
 
 [node name="Movement" type="Node2D" parent="."]
+position = Vector2(-0.0673752, -54.323)
 script = ExtResource("2_fb7yf")
 moveSpeed = 50.0
 
 [node name="Attack" type="Node2D" parent="."]
+position = Vector2(-0.0673752, -54.323)
 script = ExtResource("3_vswf4")
 attackDamage = 12.0
 attackType = 2
@@ -67,7 +69,7 @@ timePerAttack = 2.0
 groupToAttack = "PlayerUnits"
 
 [node name="UnitBody" type="Sprite2D" parent="."]
-position = Vector2(3.57628e-07, -1.54972e-06)
+position = Vector2(-0.0673748, -54.323)
 rotation = 3.14159
 scale = Vector2(0.4, -0.4)
 texture = ExtResource("4_y45h3")
@@ -86,8 +88,10 @@ script = ExtResource("5_2d423")
 animationToPlay = "BulldozerSwing"
 
 [node name="BodyAnimator" type="AnimatedSprite2D" parent="."]
+position = Vector2(-0.0673752, -54.323)
 
 [node name="AttackArea" type="Area2D" parent="."]
+position = Vector2(-0.0673752, -54.323)
 
 [node name="AttackRadius" type="CollisionShape2D" parent="AttackArea"]
 position = Vector2(50, 17)
@@ -95,7 +99,7 @@ scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_fkmxp")
 
 [node name="UnitHitbox" type="CollisionPolygon2D" parent="."]
-position = Vector2(2, 17)
+position = Vector2(1.93262, -37.323)
 scale = Vector2(1.87, 1.91)
 polygon = PackedVector2Array(-30.5108, 19.2105, -36.9624, 8.94737, -30.5108, -18.6842, -25.1344, -35.5263, -4.43548, -36.0526, 0.403226, -20.7895, 25.672, -17.3684, 33.4677, -1.57895, 34.0054, 13.4211, 25.4032, 19.4737)
 

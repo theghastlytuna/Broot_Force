@@ -57,10 +57,12 @@ health = 14.0
 cost = 40
 
 [node name="Movement" type="Node2D" parent="."]
+position = Vector2(0.25, -28.75)
 script = ExtResource("2_thv0s")
 moveSpeed = 80.0
 
 [node name="Attack" type="Node2D" parent="."]
+position = Vector2(0.25, -28.75)
 script = ExtResource("3_2k1bm")
 attackDamage = 15.0
 attackType = 1
@@ -69,7 +71,7 @@ groupToAttack = "PlayerUnits"
 
 [node name="UnitBody" type="Sprite2D" parent="."]
 z_index = 1
-position = Vector2(3.57628e-07, -1.54972e-06)
+position = Vector2(0.25, -28.75)
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("4_53xmx")
 
@@ -87,8 +89,10 @@ script = ExtResource("6_6rx7i")
 animationToPlay = "ShootGun"
 
 [node name="BodyAnimator" type="AnimatedSprite2D" parent="."]
+position = Vector2(0.25, -28.75)
 
 [node name="AttackArea" type="Area2D" parent="."]
+position = Vector2(0.25, -28.75)
 
 [node name="AttackRadius" type="CollisionShape2D" parent="AttackArea"]
 position = Vector2(23, 0)
@@ -96,6 +100,7 @@ scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_fkmxp")
 
 [node name="UnitHitbox" type="CollisionShape2D" parent="."]
+position = Vector2(0.25, -28.75)
 scale = Vector2(1.9, 1.941)
 shape = SubResource("CapsuleShape2D_dcjwa")
 
