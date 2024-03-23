@@ -11,7 +11,7 @@ const waterSound: AudioStream =  preload("res://Sounds/SFX/water.mp3")
 const dirtSound: AudioStream =  preload("res://Sounds/SFX/dirt.mp3")
 const crackSound: AudioStream =  preload("res://Sounds/SFX/crack.mp3")
 
-const music: AudioStream =  preload("res://Sounds/Music/020 See In Your Fantasy.mp3")
+const music: AudioStream =  preload("res://Sounds/Music/KiloWatts - Gollum Fingers.mp3")
 
 @export var lineRenderer : Line2D
 @export var tip : Line2D
