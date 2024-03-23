@@ -8,6 +8,8 @@ class_name Unit
 const deathSound: AudioStream = preload("res://Sounds/SFX/death.mp3")
 const painSound: AudioStream = preload("res://Sounds/SFX/pain.mp3")
 const vehicleSound: AudioStream = preload("res://Sounds/SFX/vehicle.mp3")
+const vehicleExplosion: AudioStream = preload("res://Sounds/SFX/explosion.mp3")
+const vehicleDamage: AudioStream = preload("res://Sounds/SFX/metalCrunch.mp3")
 
 #going to put the enum here so we can easily access it using Unit.UnitType
 enum UnitType{
@@ -30,8 +32,8 @@ signal onDie
 func _ready():
 	SoundManager.set_default_sound_bus("Effects")
 	SoundManager.set_default_ambient_sound_bus("Ambient")
-	if is_in_group("EnemyVehicle"):
-		SoundManager.play_ambient_sound(vehicleSound)
+	#if is_in_group("EnemyVehicle"):
+		#SoundManager.play_ambient_sound(vehicleSound)
 
 ##Returns the current health of the unit
 func getHealth() -> float:
@@ -46,6 +48,8 @@ func damage(args : AttackArguments):
 	if is_in_group("EnemyHuman"):
 		var player:AudioStreamPlayer = SoundManager.play_sound(painSound)
 		player.volume_db -= 0
+	elif is_in_group("EnemyVehicle"):
+		SoundManager.play_sound(vehicleDamage)
 
 ##Checks if the unit has died; if it has, then destroy it.
 func check_death():
@@ -53,6 +57,9 @@ func check_death():
 		die()
 		if is_in_group("EnemyHuman"):
 			SoundManager.play_sound(deathSound)
+		elif is_in_group("EnemyVehicle"):
+			SoundManager.play_sound(vehicleExplosion)
+			#SoundManager.stop_ambient_sound(vehicleSound)
 
 ##Destroys the unit
 func die():

@@ -16,6 +16,7 @@ excavator: https://pixabay.com/sound-effects/construction-equipment-tracked-7795
 tree damage sound: https://pixabay.com/sound-effects/impact-109588/
 pain: https://pixabay.com/sound-effects/ough-47202/
 death: https://pixabay.com/sound-effects/male-scream-in-fear-123079/
-
+explosion: https://pixabay.com/sound-effects/medium-explosion-40472/
+metal crunching: https://pixabay.com/sound-effects/messing-around-with-garbage-container-containing-metal-66982/
 
 Gollum Fingers - KiloWatts
