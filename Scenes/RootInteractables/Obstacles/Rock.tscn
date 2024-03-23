@@ -1,12 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://ca3vfsmfimr8r"]
 
-[ext_resource type="Script" path="res://Scripts/RootPhase/Interactable Scripts/InteractableBehaviour.gd" id="1_2h4qf"]
+[ext_resource type="Script" path="res://Scenes/RootInteractables/Obstacles/Rock.gd" id="1_kb8lt"]
 [ext_resource type="Texture2D" uid="uid://cbgl38xufrejw" path="res://Sprites/Obstacles/rock.png" id="1_xgt3x"]
 
 [node name="Rock" type="Node2D" groups=["Obstacles"]]
 
 [node name="Area2D" type="Area2D" parent="."]
-script = ExtResource("1_2h4qf")
+script = ExtResource("1_kb8lt")
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D"]
 scale = Vector2(0.2, 0.2)

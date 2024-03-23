@@ -1,7 +1,7 @@
 extends Node2D
 
 var distanceFromLastPoint : float = 0
-@export var speed : float = 300
+@export var speed : float = 100
 var lastPosition : Vector2 = Vector2(0,0)
 var time : float = 0
 var tipPoints : int = 13
@@ -15,6 +15,8 @@ var lastSpawnedDepth : float = 0
 @export var spawnInterval : float #every spawnDepthMod units downward, we spawn a new object
 @export var playerCamera : Camera2D
 @export var gameSaver : Node2D
+@export var turningAwayCurve : Curve
+@export var turningAwayForce : float
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -42,8 +44,44 @@ func _process(delta: float) -> void:
 	distanceFromLastPoint += position.distance_to(lastPosition)
 	lastPosition = position
 	var input_dir := Input.get_vector("ui_right", "ui_left", "ui_down", "ui_up")
+	var amountToRoate : float = 0
+	
 	if input_dir:
-		rotate(deg_to_rad(input_dir.x))
+		amountToRoate = input_dir.x
+	#check the raycasts to see if you will hit something
+	
+	var checkWallCollision : bool = false
+	var leftObject = $CheckLeft.get_collider()
+	var rightObject = $CheckRight.get_collider()
+	
+	if leftObject:
+		if leftObject.is_in_group("WALL"):
+			checkWallCollision = true
+	if rightObject:
+		if rightObject.is_in_group("WALL"):
+			checkWallCollision = true
+
+		
+	
+	if checkWallCollision:
+		amountToRoate = 0
+		var leftIntersect : Vector2 = $CheckLeft.get_collision_point()
+		var rightIntersect : Vector2 = $CheckRight.get_collision_point()
+		
+		var leftDistance : float = leftIntersect.distance_to(position)
+		var rightDistance : float = rightIntersect.distance_to(position)
+		
+		if leftDistance < 100 or rightDistance < 100:
+			var rotateMultiplier = 1
+			if leftDistance > rightDistance:
+				rotateMultiplier = -1
+			var largestDistance : float = max(leftDistance,rightDistance)
+			amountToRoate = turningAwayCurve.sample(largestDistance/100) * turningAwayForce * rotateMultiplier
+		
+		Debug.Log(leftIntersect," ",rightIntersect)
+	
+	
+	rotate(deg_to_rad(amountToRoate))
 		
 	var size : int = tip.points.size()-1
 	tip.points[size] = position
