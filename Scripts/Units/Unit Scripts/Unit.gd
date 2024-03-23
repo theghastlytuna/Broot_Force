@@ -1,9 +1,10 @@
-extends Node2D
+extends CharacterBody2D
 class_name Unit
 
 ##The amount of health a unit has
 @export var health : float
 @export var type: UnitType
+@export var cost: int
 
 const deathSound: AudioStream = preload("res://Sounds/SFX/death.mp3")
 const painSound: AudioStream = preload("res://Sounds/SFX/pain.mp3")

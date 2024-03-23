@@ -52,10 +52,11 @@ size = Vector2(90, 112)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dcjwa"]
 
-[node name="ChainsawEnemy" type="CharacterBody2D" groups=["EnemyHuman", "EnemyUnits"]]
+[node name="ChainsawEnemy" type="CharacterBody2D" groups=["EnemyHuman", "EnemyUnits", "Melee"]]
 collision_layer = 2
 script = ExtResource("1_lg6fk")
 health = 25.0
+cost = 25
 
 [node name="Movement" type="Node2D" parent="."]
 script = ExtResource("2_owplk")

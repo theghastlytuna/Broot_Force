@@ -4,6 +4,7 @@ var depthsCollected : Array[float]
 var totalWater : float = 0
 var waterPerRound : float = 0
 var availableUnits : Array[int] = [0,0,0,0,0,0]
+var growthRounds : int = 0
 
 var desiredResolution : Vector2
 
