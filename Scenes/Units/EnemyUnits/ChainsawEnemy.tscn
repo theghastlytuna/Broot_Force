@@ -26,7 +26,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_ocqxi"]
 resource_name = "ChainsawSwing"
-length = 3.0
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -35,10 +34,10 @@ tracks/0/path = NodePath(".:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 0.7, 2.5, 3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.3, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [-0.567594, -0.567594, 0.320223, 0.320223, -0.567594]
+"values": [-0.567594, 0.320223, 0.320223, -0.567594]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wufuj"]
@@ -52,11 +51,10 @@ size = Vector2(90, 112)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dcjwa"]
 
-[node name="ChainsawEnemy" type="CharacterBody2D" groups=["EnemyHuman", "EnemyUnits", "Melee"]]
+[node name="ChainsawEnemy" type="CharacterBody2D" groups=["EnemyHuman", "EnemyUnits"]]
 collision_layer = 2
 script = ExtResource("1_lg6fk")
 health = 25.0
-cost = 25
 
 [node name="Movement" type="Node2D" parent="."]
 position = Vector2(0.25, -28.75)
@@ -66,8 +64,7 @@ moveSpeed = 75.0
 [node name="Attack" type="Node2D" parent="."]
 position = Vector2(0.25, -28.75)
 script = ExtResource("3_2blaa")
-attackDamage = 6.0
-timePerAttack = 3.0
+attackDamage = 2.0
 groupToAttack = "PlayerUnits"
 
 [node name="UnitBody" type="Sprite2D" parent="."]
@@ -78,7 +75,7 @@ texture = ExtResource("4_6r8kt")
 
 [node name="UnitWeapon" type="Sprite2D" parent="UnitBody"]
 position = Vector2(132.344, -63.2924)
-rotation = -0.567594
+rotation = -0.131059
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("5_83inm")
 offset = Vector2(272.021, -75.4116)
