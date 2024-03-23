@@ -1,6 +1,7 @@
 extends Node2D
 
 var saveData : GameData
+var alwaysReset : bool = true
 
 func resetData():
 	saveData = GameData.new()
@@ -19,6 +20,9 @@ func saveGame():
 
 func _enter_tree() -> void:
 	#load data
+	if alwaysReset:
+		resetData()
+		return
 	loadData()
 	
 func loadData():

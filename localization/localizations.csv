@@ -8,3 +8,7 @@ THORN_VINES,Thorn Vines
 TOXIC_SPORE,Toxic Spore Sprayer
 BOMBER_FRUIT,Bomber Fruit
 SEED_BOMBER,Seed Bomber
+WATER_COLLECTED,Water Collected: 
+OBSTICLE_HIT,HIT A ROCK!
+OBSTICLE_INSTRUCTIONS,Tap the rock below to break it!
+OBSTICLE_HIT_LEFT,Tap {Number} more times!

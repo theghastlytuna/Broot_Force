@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjbwiosardiy1"]
+
+[ext_resource type="Texture2D" uid="uid://0jqvsnax4iop" path="res://Sprites/UI/STONE.png" id="1_565lx"]
+[ext_resource type="Script" path="res://Scenes/UI/RockUI.gd" id="1_wsd3v"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wsd3v")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "OBSTICLE_HIT"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+text = "OBSTICLE_INSTRUCTIONS"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+text = "OBSTICLE_HIT_LEFT"
+horizontal_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="PanelContainer/VBoxContainer/CenterContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture_normal = ExtResource("1_565lx")
+stretch_mode = 4
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/CenterContainer/TextureButton" to="." method="pressed"]

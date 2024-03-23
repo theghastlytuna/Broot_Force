@@ -2,16 +2,7 @@ extends Node2D
 
 var active : bool = true
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 func HitByRoot(area: Area2D):
 	Debug.Log("Hit an object: " + get_parent().get_groups()[0] + ", already been hit - " + str(!active))
-	if active:
-		active = false
+	var layerNumber : int = floori(global_position.y/1500)
+	EventManager.onShowRockUI.emit(layerNumber)

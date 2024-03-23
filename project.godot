@@ -21,6 +21,7 @@ Debug="*res://Scripts/Debug.gd"
 LocalizationManager="*res://addons/localization_editor/LocalizationManager.gd"
 GameManager="*res://Scripts/GameManager.gd"
 ResourceHolder="*res://Scripts/RootPhase/ResourceHolder.gd"
+EventManager="*res://Scripts/EventManager.gd"
 
 [editor_plugins]
 

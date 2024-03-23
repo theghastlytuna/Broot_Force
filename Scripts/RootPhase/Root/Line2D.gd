@@ -1,12 +1,12 @@
 extends Node2D
 
 var distanceFromLastPoint : float = 0
-var speed : float = 100
+@export var speed : float = 300
 var lastPosition : Vector2 = Vector2(0,0)
 var time : float = 0
 var tipPoints : int = 13
 var currentLayerMultiplier : float = 1
-
+var stopMoving :bool = false
 
 @export var lineRenderer : Line2D
 @export var tip : Line2D
@@ -20,10 +20,19 @@ var lastSpawnedDepth : float = 0
 func _ready() -> void:
 	tip.add_point(Vector2(0,0))
 	tip.add_point(Vector2(0,0))
+	EventManager.onShowRockUI.connect(showRock)
+	EventManager.onRockUIEnd.connect(setStopMoving.bind(false))
+
+func showRock(i:int):
+	setStopMoving(true)
+
+func setStopMoving(b : bool):
+	stopMoving = b
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	
+	if stopMoving:
+		return
 	#spawn an object every spawnInterval pixels, if you go back up, it will not trigger
 	if global_position.y > lastSpawnedDepth + spawnInterval:
 		lastSpawnedDepth = snappedi(global_position.y ,spawnInterval)
@@ -45,7 +54,7 @@ func _process(delta: float) -> void:
 		if size >= tipPoints-1:
 			var removingPoint : Vector2 = tip.points[0]
 			lineRenderer.add_point(removingPoint)
-			
+		
 		
 		distanceFromLastPoint = 0
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://brh7kxvkvq02q"]
+[gd_scene load_steps=14 format=3 uid="uid://brh7kxvkvq02q"]
 
 [ext_resource type="Texture2D" uid="uid://wnnrtab0skb7" path="res://Art Assets/Textures/Layer2.png" id="1_tfsmi"]
 [ext_resource type="Script" path="res://Scripts/RootPhase/Spawn Management/LayerManager.gd" id="2_5ev5r"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://ca3vfsmfimr8r" path="res://Scenes/RootInteractables/Obstacles/Rock.tscn" id="7_rhly2"]
 [ext_resource type="PackedScene" uid="uid://bc82ny27vki14" path="res://Scenes/RootInteractables/UnitRemains/DinoRemains.tscn" id="8_e761s"]
 [ext_resource type="Script" path="res://Scripts/SaveGame.gd" id="8_jhff2"]
+[ext_resource type="Script" path="res://Scenes/Areas/WaterCounter.gd" id="10_c5w6e"]
+[ext_resource type="PackedScene" uid="uid://bjbwiosardiy1" path="res://Scenes/UI/RockUI.tscn" id="11_623x4"]
 
 [sub_resource type="Curve" id="Curve_ebely"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.373626), 0.0, 0.0, 0, 0]
@@ -81,13 +83,35 @@ Vector2(0, 10): ExtResource("6_coeey"),
 Vector2(11, 21): ExtResource("7_rhly2"),
 Vector2(22, 25): ExtResource("8_e761s")
 }
-XSpread = 1000.0
+XSpread = 2500.0
 addingParent = NodePath("../Obsticles")
 
 [node name="Obsticles" type="Node2D" parent="."]
 
 [node name="SaveGame" type="Node2D" parent="."]
 script = ExtResource("8_jhff2")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Label" type="Label" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 1034.0
+offset_right = 1152.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "WATER_COUNT"
+horizontal_alignment = 2
+vertical_alignment = 1
+script = ExtResource("10_c5w6e")
+
+[node name="Control" parent="CanvasLayer" instance=ExtResource("11_623x4")]
 
 [connection signal="ChangedLayer" from="BackgroundManager" to="Root/Area2D" method="_on_background_manager_changed_layer"]
 [connection signal="area_entered" from="Root/Area2D" to="Root/Area2D" method="_on_area_entered"]
