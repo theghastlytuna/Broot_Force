@@ -2,6 +2,7 @@ extends Control
 
 var amountToClick : int = 0
 var amountClicked : int = 0
+const dirtSound: AudioStream =  preload("res://Sounds/SFX/dirt.mp3")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -25,4 +26,5 @@ func pressed():
 		visible = false
 		EventManager.onRockUIEnd.emit()
 		EventManager.rootStartMoving.emit()
+		SoundManager.play_ambient_sound(dirtSound)
 	pass
