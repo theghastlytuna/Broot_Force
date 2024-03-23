@@ -14,13 +14,15 @@ func showUI(layer : int):
 	visible = true
 	layer+=1
 	amountToClick = randi_range(layer*5,layer*7)
-	$PanelContainer/VBoxContainer/Label3.text = LocalizationManager.tr("OBSTICLE_HIT_LEFT").format({"Number":(amountToClick-amountClicked)})
+	$VBoxContainer/Label3.text = LocalizationManager.tr("OBSTICLE_HIT_LEFT").format({"Number":(amountToClick-amountClicked)})
+	EventManager.rootStopMoving.emit()
 	pass
 	
 func pressed():
 	amountClicked +=1
-	$PanelContainer/VBoxContainer/Label3.text = LocalizationManager.tr("OBSTICLE_HIT_LEFT").format({"Number":(amountToClick-amountClicked)})
+	$VBoxContainer/Label3.text = LocalizationManager.tr("OBSTICLE_HIT_LEFT").format({"Number":(amountToClick-amountClicked)})
 	if amountClicked >= amountToClick:
 		visible = false
 		EventManager.onRockUIEnd.emit()
+		EventManager.rootStartMoving.emit()
 	pass

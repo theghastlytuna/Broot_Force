@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://brh7kxvkvq02q"]
+[gd_scene load_steps=18 format=3 uid="uid://brh7kxvkvq02q"]
 
 [ext_resource type="Texture2D" uid="uid://wnnrtab0skb7" path="res://Art Assets/Textures/Layer2.png" id="1_tfsmi"]
 [ext_resource type="Script" path="res://Scripts/RootPhase/Spawn Management/LayerManager.gd" id="2_5ev5r"]
@@ -11,6 +11,8 @@
 [ext_resource type="Script" path="res://Scripts/SaveGame.gd" id="8_jhff2"]
 [ext_resource type="Script" path="res://Scenes/Areas/WaterCounter.gd" id="10_c5w6e"]
 [ext_resource type="PackedScene" uid="uid://bjbwiosardiy1" path="res://Scenes/UI/RockUI.tscn" id="11_623x4"]
+[ext_resource type="Script" path="res://Scenes/Areas/SetOrientation.gd" id="11_cjjht"]
+[ext_resource type="PackedScene" uid="uid://d0ljl84myeby" path="res://Scenes/UI/RootCollectionResults.tscn" id="13_y0ym3"]
 
 [sub_resource type="Curve" id="Curve_ebely"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.373626), 0.0, 0.0, 0, 0]
@@ -83,17 +85,17 @@ shape = SubResource("CircleShape2D_4g5gk")
 
 [node name="CheckLeft" type="RayCast2D" parent="Root/Area2D"]
 position = Vector2(5, -1)
-scale = Vector2(1, 1)
 target_position = Vector2(0, 100)
 collide_with_areas = true
 collide_with_bodies = false
 
 [node name="CheckRight" type="RayCast2D" parent="Root/Area2D"]
 position = Vector2(-5, -1)
-scale = Vector2(1, 1)
 target_position = Vector2(0, 100)
 collide_with_areas = true
 collide_with_bodies = false
+
+[node name="Timer" type="Timer" parent="Root/Area2D"]
 
 [node name="LeftWall" type="Area2D" parent="." groups=["WALL"]]
 
@@ -130,15 +132,18 @@ script = ExtResource("8_jhff2")
 
 [node name="UI" type="Control" parent="CanvasLayer"]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Label" type="Label" parent="CanvasLayer/UI"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 1034.0
-offset_right = 1152.0
+offset_left = -118.0
 offset_bottom = 23.0
 grow_horizontal = 0
 text = "WATER_COUNT"
@@ -146,7 +151,31 @@ horizontal_alignment = 2
 vertical_alignment = 1
 script = ExtResource("10_c5w6e")
 
-[node name="Control" parent="CanvasLayer" instance=ExtResource("11_623x4")]
+[node name="LAND" type="Button" parent="CanvasLayer/UI"]
+visible = false
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 76.0
+text = "LANDSCAPE"
+script = ExtResource("11_cjjht")
+
+[node name="PORT" type="Button" parent="CanvasLayer/UI"]
+visible = false
+layout_mode = 0
+offset_top = 93.0
+offset_right = 256.0
+offset_bottom = 186.0
+text = "PORTRAIT"
+script = ExtResource("11_cjjht")
+
+[node name="RockUI" parent="CanvasLayer/UI" instance=ExtResource("11_623x4")]
+layout_mode = 1
+
+[node name="RootResults" parent="CanvasLayer/UI" instance=ExtResource("13_y0ym3")]
+layout_mode = 1
 
 [connection signal="ChangedLayer" from="BackgroundManager" to="Root/Area2D" method="_on_background_manager_changed_layer"]
 [connection signal="area_entered" from="Root/Area2D" to="Root/Area2D" method="_on_area_entered"]
+[connection signal="timeout" from="Root/Area2D/Timer" to="Root/Area2D" method="onRootPhaseTimeout"]
+[connection signal="pressed" from="CanvasLayer/UI/LAND" to="CanvasLayer/UI/LAND" method="setLandscape"]
+[connection signal="pressed" from="CanvasLayer/UI/PORT" to="CanvasLayer/UI/PORT" method="setPortrait"]

@@ -17,16 +17,19 @@ var lastSpawnedDepth : float = 0
 @export var gameSaver : Node2D
 @export var turningAwayCurve : Curve
 @export var turningAwayForce : float
+@export var rootPhaseTimeout : float
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	tip.add_point(Vector2(0,0))
 	tip.add_point(Vector2(0,0))
-	EventManager.onShowRockUI.connect(showRock)
-	EventManager.onRockUIEnd.connect(setStopMoving.bind(false))
-
-func showRock(i:int):
-	setStopMoving(true)
+	EventManager.rootStartMoving.connect(setStopMoving.bind(false))
+	EventManager.rootStopMoving.connect(setStopMoving.bind(true))
+	EventManager.onRootPhaseStart.connect(startRootPhase)
+	
+func startRootPhase():
+	$Timer.timeout = rootPhaseTimeout
+	$Timer.start()
 
 func setStopMoving(b : bool):
 	stopMoving = b
@@ -102,8 +105,11 @@ func _on_background_manager_changed_layer(layerSpeedMultiplier):
 func _on_area_entered(area):
 	if area.get_parent().is_in_group("COLLECTED"):
 		return
-		
 	area.HitByRoot(self)
 	#area.get_parent().collected()
 	area.get_parent().add_to_group("COLLECTED")
 	gameSaver.saveGame() #you can remove this, its just here to immediately save your progress
+	
+func onRootPhaseTimeout():
+	EventManager.onRootPhaseEnd.emit()
+	pass
