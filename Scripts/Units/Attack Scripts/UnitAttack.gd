@@ -1,6 +1,11 @@
 extends Node2D
 class_name Attack
 
+const axeSound: AudioStream = preload("res://Sounds/SFX/wood cut.mp3")
+const shotgunSound: AudioStream = preload("res://Sounds/SFX/shotgun.mp3")
+const damageSound: AudioStream = preload("res://Sounds/SFX/wood cut.mp3")
+const heavyDamageSound: AudioStream = preload("res://Sounds/SFX/tree damage.mp3")
+
 enum AttackType{
 	MELEE,
 	RANGED,
@@ -49,6 +54,8 @@ func _ready():
 	#Connect the timer's timeout to the attack method, so that the unit attacks at the proper attack speed
 	attackTimer.timeout.connect(attack)
 	add_child(attackTimer)
+	
+	SoundManager.set_default_sound_bus("Effects")
 
 func _on_attack_area_body_entered(body : PhysicsBody2D):
 	#If the detected body is in the target group
@@ -90,6 +97,14 @@ func attack():
 	while unitsAttacked < numberOfTargets && unitsAttacked < enemyBodies.size():
 		enemyBodies[unitsAttacked].damage(attackArgs)
 		unitsAttacked += 1
+	
+	if get_parent().is_in_group("EnemyUnits"):
+		if attackType == AttackType.MELEE:
+			SoundManager.play_sound(axeSound)
+		elif attackType == AttackType.RANGED:
+			SoundManager.play_sound(shotgunSound)
+		elif attackType == AttackType.VEHICLE:
+			SoundManager.play_sound(heavyDamageSound)
 	#Debug.Log("Attack done")
 
 ##Method used for enablind and disabling this unit's ability to attack.

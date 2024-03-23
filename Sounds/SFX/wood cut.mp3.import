@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://csld74nsiad0x"
+path="res://.godot/imported/wood cut.mp3-9a62e2fb2a06ba5a9132c7641c2873d0.mp3str"
+
+[deps]
+
+source_file="res://Sounds/SFX/wood cut.mp3"
+dest_files=["res://.godot/imported/wood cut.mp3-9a62e2fb2a06ba5a9132c7641c2873d0.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

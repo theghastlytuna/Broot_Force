@@ -8,6 +8,12 @@ var tipPoints : int = 13
 var currentLayerMultiplier : float = 1
 var stopMoving :bool = false
 
+const waterSound: AudioStream =  preload("res://Sounds/SFX/water.mp3")
+const dirtSound: AudioStream =  preload("res://Sounds/SFX/dirt.mp3")
+const crackSound: AudioStream =  preload("res://Sounds/SFX/crack.mp3")
+
+const music: AudioStream =  preload("res://Sounds/Music/KiloWatts - Gollum Fingers.mp3")
+
 @export var lineRenderer : Line2D
 @export var tip : Line2D
 @export var spawner : Node2D
@@ -23,6 +29,13 @@ var lastSpawnedDepth : float = 0
 func _ready() -> void:
 	tip.add_point(Vector2(0,0))
 	tip.add_point(Vector2(0,0))
+	
+	SoundManager.set_default_ambient_sound_bus("Ambient")
+	SoundManager.set_default_sound_bus("Effects")
+	SoundManager.set_default_music_bus("Music")
+	
+	SoundManager.play_ambient_sound(dirtSound)
+	SoundManager.play_music(music)
 	EventManager.rootStartMoving.connect(setStopMoving.bind(false))
 	EventManager.rootStopMoving.connect(setStopMoving.bind(true))
 	EventManager.onRootPhaseStart.connect(startRootPhase)
@@ -105,6 +118,15 @@ func _on_background_manager_changed_layer(layerSpeedMultiplier):
 func _on_area_entered(area):
 	if area.get_parent().is_in_group("COLLECTED"):
 		return
+		
+	if area.get_parent().is_in_group("WaterResources"):
+		SoundManager.play_sound(waterSound)
+	elif area.get_parent().is_in_group("UnitRemains"):
+		SoundManager.play_sound(crackSound)
+	elif area.get_parent().is_in_group("Obstacles"):
+		SoundManager.stop_ambient_sound(dirtSound)
+		
+	
 	area.HitByRoot(self)
 	#area.get_parent().collected()
 	area.get_parent().add_to_group("COLLECTED")
