@@ -1,8 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://d0ljl84myeby"]
+[gd_scene load_steps=4 format=3 uid="uid://dsyj27gjp5q35"]
 
 [ext_resource type="Script" path="res://Scenes/UI/RootCollectionResult.gd" id="1_4vkie"]
 [ext_resource type="PackedScene" uid="uid://dxa7recdeio70" path="res://Scenes/UI/Text.tscn" id="2_6c1od"]
-[ext_resource type="PackedScene" uid="uid://dgc6rkcb3ilng" path="res://Scenes/UI/Button.tscn" id="3_141ya"]
+[ext_resource type="PackedScene" uid="uid://n1mg5sojwgry" path="res://Scenes/UI/Button.tscn" id="3_141ya"]
 
 [node name="PanelContainer" type="PanelContainer"]
 anchors_preset = 8

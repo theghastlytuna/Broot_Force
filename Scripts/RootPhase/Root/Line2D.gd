@@ -28,7 +28,7 @@ func _ready() -> void:
 	EventManager.onRootPhaseStart.connect(startRootPhase)
 	
 func startRootPhase():
-	$Timer.timeout = rootPhaseTimeout
+	$Timer.wait_time = rootPhaseTimeout
 	$Timer.start()
 
 func setStopMoving(b : bool):

@@ -1,5 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://brh7kxvkvq02q"]
+[gd_scene load_steps=19 format=3 uid="uid://brh7kxvkvq02q"]
 
+[ext_resource type="Script" path="res://Scenes/Areas/World.gd" id="1_j1hoq"]
 [ext_resource type="Texture2D" uid="uid://wnnrtab0skb7" path="res://Art Assets/Textures/Layer2.png" id="1_tfsmi"]
 [ext_resource type="Script" path="res://Scripts/RootPhase/Spawn Management/LayerManager.gd" id="2_5ev5r"]
 [ext_resource type="Texture2D" uid="uid://6mm3q3gblhrr" path="res://icon.svg" id="3_gnh0v"]
@@ -10,9 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://bc82ny27vki14" path="res://Scenes/RootInteractables/UnitRemains/DinoRemains.tscn" id="8_e761s"]
 [ext_resource type="Script" path="res://Scripts/SaveGame.gd" id="8_jhff2"]
 [ext_resource type="Script" path="res://Scenes/Areas/WaterCounter.gd" id="10_c5w6e"]
-[ext_resource type="PackedScene" uid="uid://bjbwiosardiy1" path="res://Scenes/UI/RockUI.tscn" id="11_623x4"]
+[ext_resource type="PackedScene" uid="uid://bm1jicmeiq73h" path="res://Scenes/UI/RockUI.tscn" id="11_623x4"]
 [ext_resource type="Script" path="res://Scenes/Areas/SetOrientation.gd" id="11_cjjht"]
-[ext_resource type="PackedScene" uid="uid://d0ljl84myeby" path="res://Scenes/UI/RootCollectionResults.tscn" id="13_y0ym3"]
+[ext_resource type="PackedScene" uid="uid://dsyj27gjp5q35" path="res://Scenes/UI/RootCollectionResults.tscn" id="13_y0ym3"]
 
 [sub_resource type="Curve" id="Curve_ebely"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.373626), 0.0, 0.0, 0, 0]
@@ -28,6 +29,7 @@ point_count = 3
 size = Vector2(156, 701)
 
 [node name="World" type="Node2D"]
+script = ExtResource("1_j1hoq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
@@ -71,6 +73,7 @@ playerCamera = NodePath("../../Camera2D")
 gameSaver = NodePath("../../SaveGame")
 turningAwayCurve = SubResource("Curve_lyvea")
 turningAwayForce = 4.0
+rootPhaseTimeout = 2.0
 
 [node name="Tip" type="Sprite2D" parent="Root/Area2D" groups=["Tip"]]
 
