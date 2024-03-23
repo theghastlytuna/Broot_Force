@@ -73,7 +73,7 @@ playerCamera = NodePath("../../Camera2D")
 gameSaver = NodePath("../../SaveGame")
 turningAwayCurve = SubResource("Curve_lyvea")
 turningAwayForce = 4.0
-rootPhaseTimeout = 2.0
+rootPhaseTimeout = 60.0
 
 [node name="Tip" type="Sprite2D" parent="Root/Area2D" groups=["Tip"]]
 
