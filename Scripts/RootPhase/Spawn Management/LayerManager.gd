@@ -68,6 +68,6 @@ func MakeNewLayer(newTex : Resource):
 	newLayer.position.y = (layerIndex + 1) * layerHeight - (0.5 * layerHeight)
 	#Enable regions and set the Rect2's region
 	newLayer.region_enabled = true
-	newLayer.region_rect = Rect2(0, 0, 3000, layerHeight)
+	newLayer.region_rect = Rect2(0, 0, 5000, layerHeight)
 	#Add this layer as a child to the backgroundmanager
 	add_child(newLayer)

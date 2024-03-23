@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bisl0oylw3drt"]
+
+[sub_resource type="Curve" id="Curve_jc5oj"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.85348, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -23.5539, 0.0, 0, 0]
+point_count = 3
+
+[node name="OldRoot" type="Line2D"]
+width = 7.0
+width_curve = SubResource("Curve_jc5oj")
+default_color = Color(0.54902, 0.54902, 0.54902, 1)
+joint_mode = 2

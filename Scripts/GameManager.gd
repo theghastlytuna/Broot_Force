@@ -4,6 +4,9 @@ var depthsCollected : Array[float]
 var totalWater : float = 0
 var waterPerRound : float = 0
 var availableUnits : Array[int] = [0,0,0,0,0,0]
+var pastRoots : Dictionary
+
+var currentRootRound : int = 0
 
 var desiredResolution : Vector2
 

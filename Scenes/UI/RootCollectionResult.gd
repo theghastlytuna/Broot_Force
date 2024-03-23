@@ -13,3 +13,6 @@ func showResults():
 	$VBoxContainer/Label2.text = LocalizationManager.tr("ROOT_RESULTS").format({"Water":(GameManager.rootPhaseStats.totalWater),"Unit":(totalUnitsCollected)})
 	visible = true
 	EventManager.rootStopMoving.emit()	
+	
+func goToGrowth():
+	EventManager.onGrowthPhaseStart.emit()

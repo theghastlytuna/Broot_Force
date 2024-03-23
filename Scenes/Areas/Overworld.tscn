@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dq4jcfh8ylt5e"]
+[gd_scene load_steps=33 format=3 uid="uid://dq4jcfh8ylt5e"]
 
 [ext_resource type="Texture2D" uid="uid://73qddd2nftm7" path="res://Art Assets/Textures/Temporary/ground.png" id="1_q67ni"]
 [ext_resource type="Texture2D" uid="uid://fxxowst01k33" path="res://Art Assets/Textures/Temporary/tree.png" id="2_2hre7"]
@@ -18,8 +18,9 @@
 [ext_resource type="PackedScene" uid="uid://cvn6nev5hshj5" path="res://Scenes/Units/EnemyUnits/BulldozerEnemy.tscn" id="8_dsl38"]
 [ext_resource type="PackedScene" uid="uid://cdiyjm4ro371c" path="res://Scenes/Units/TreeUnitsCanopy/sporeSprayer.tscn" id="8_oatvq"]
 [ext_resource type="Script" path="res://Scenes/Areas/CanopyButton.gd" id="9_d41nc"]
-[ext_resource type="PackedScene" uid="uid://bi0fa577rl8s6" path="res://Menus/canopy_tower_menu.tscn" id="19_ovhgu"]
-[ext_resource type="PackedScene" uid="uid://cugohrjbgvgjd" path="res://Menus/land_tower_menu.tscn" id="20_lxlg4"]
+[ext_resource type="PackedScene" path="res://Menus/canopy_tower_menu.tscn" id="19_ovhgu"]
+[ext_resource type="PackedScene" path="res://Menus/land_tower_menu.tscn" id="20_lxlg4"]
+[ext_resource type="Script" path="res://Scenes/Areas/GoToWorld.gd" id="21_na14l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qrx30"]
 size = Vector2(1207, 257)
@@ -348,6 +349,14 @@ position = Vector2(-540, 405)
 [node name="LandCanvas" parent="." instance=ExtResource("20_lxlg4")]
 
 [node name="CanopyCanvas" parent="." instance=ExtResource("19_ovhgu")]
+
+[node name="DEBUGCanvas" type="CanvasLayer" parent="."]
+
+[node name="Button" type="Button" parent="DEBUGCanvas"]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "GO TO WORLD"
+script = ExtResource("21_na14l")
 
 [connection signal="land_clicked" from="Tree/GroundPositions/0/CanvasLayer/Button" to="LandCanvas/Control/PanelContainer" method="_on_button_land_clicked"]
 [connection signal="pressed" from="Tree/GroundPositions/0/CanvasLayer/Button" to="Tree/GroundPositions/0/CanvasLayer/Button" method="_on_pressed"]

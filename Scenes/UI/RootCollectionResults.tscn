@@ -34,3 +34,5 @@ horizontal_alignment = 1
 [node name="Button" parent="VBoxContainer" instance=ExtResource("3_141ya")]
 layout_mode = 2
 text = "GO_TO_GROWTH"
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="goToGrowth"]
