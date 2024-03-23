@@ -60,34 +60,38 @@ func _ready():
 	while currentIndex >= 0:
 		if enemyUnits[currentIndex].is_in_group("Vehicle") && \
 		enemyUnits[currentIndex].cost <= vehicleBudget:
-					unitsToSpawn.append(enemyUnits[currentIndex])
-					vehicleBudget -= enemyUnits[currentIndex].cost
-					Debug.Log("Added a vehicle")
+			unitsToSpawn.append(enemyUnits[currentIndex])
+			vehicleBudget -= enemyUnits[currentIndex].cost
+			Debug.Log("Added a vehicle")
 		else:
 			currentIndex -= 1
+	
+	Debug.Log("Finished vehicles")
 	
 	currentIndex = maxUnitIndex
 	rangedBudget += vehicleBudget
 	while currentIndex >= 0:
 		if enemyUnits[currentIndex].is_in_group("Ranged") && \
 		enemyUnits[currentIndex].cost <= rangedBudget:
-					unitsToSpawn.append(enemyUnits[currentIndex])
-					rangedBudget -= enemyUnits[currentIndex].cost
-					Debug.Log("Added a ranged")
+			unitsToSpawn.append(enemyUnits[currentIndex])
+			rangedBudget -= enemyUnits[currentIndex].cost
+			Debug.Log("Added a ranged")
 		else:
 			currentIndex -= 1
+	
+	Debug.Log("Finished ranged")
 	
 	currentIndex = maxUnitIndex
 	meleeBudget += rangedBudget
 	while currentIndex >= 0:
 		if enemyUnits[currentIndex].is_in_group("Melee") && \
 		enemyUnits[currentIndex].cost <= meleeBudget:
-					unitsToSpawn.append(enemyUnits[currentIndex])
-					meleeBudget -= enemyUnits[currentIndex].cost
-					Debug.Log("Added a melee")
+			unitsToSpawn.append(enemyUnits[currentIndex])
+			meleeBudget -= enemyUnits[currentIndex].cost
+			Debug.Log("Added a melee")
 		else:
 			currentIndex -= 1
-
+	Debug.Log("Finished melee")
 	#var spawnLoopNum : int = 0
 	#var budgetToSpend = currentRoundBudget * 0.5
 	#while spawnLoopNum <= 2:

@@ -49,10 +49,11 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fkmxp"]
 size = Vector2(200, 150)
 
-[node name="BulldozerEnemy" type="CharacterBody2D" groups=["EnemyUnits", "EnemyVehicle"]]
+[node name="BulldozerEnemy" type="CharacterBody2D" groups=["EnemyUnits", "EnemyVehicle", "Vehicle"]]
 collision_layer = 2
 script = ExtResource("1_rmqrw")
 health = 60.0
+cost = 70
 
 [node name="Movement" type="Node2D" parent="."]
 position = Vector2(-0.0673752, -54.323)
