@@ -1,7 +1,7 @@
 extends Node2D
 
 var distanceFromLastPoint : float = 0
-@export var speed : float = 100
+
 var lastPosition : Vector2 = Vector2(0,0)
 var time : float = 0
 var tipPoints : int = 13
@@ -14,16 +14,29 @@ const crackSound: AudioStream =  preload("res://Sounds/SFX/crack.mp3")
 
 const music: AudioStream =  preload("res://Sounds/Music/KiloWatts - Gollum Fingers.mp3")
 
-@export var lineRenderer : Line2D
-@export var tip : Line2D
-@export var spawner : Node2D
-var lastSpawnedDepth : float = 0
-@export var spawnInterval : float #every spawnDepthMod units downward, we spawn a new object
-@export var playerCamera : Camera2D
-@export var gameSaver : Node2D
+@export_category("Root Movement")
+@export var speed : float = 100
+@export var turningAmount : float
+@export_category("Wall collisions")
+@export var wallNode : Node2D
 @export var turningAwayCurve : Curve
 @export var turningAwayForce : float
+@export_category("Root creation")
+@export var lineRenderer : Line2D
+@export var tip : Line2D
+@export var playerCamera : Camera2D
+@export_category("Spawning & Saving")
+@export var spawner : Node2D
+@export var spawnInterval : float #every spawnDepthMod units downward, we spawn a new object
+@export var gameSaver : Node2D
+@export var rootPointSaveArcLength : float = 200
+@export_category("Root Phase Variables")
 @export var rootPhaseTimeout : float
+
+var lastSpawnedDepth : float = 0
+var mousePosition = Vector2.ZERO
+var currentRootArray : Array
+var spawningArcLength : float = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -41,6 +54,9 @@ func _ready() -> void:
 	EventManager.onRootPhaseStart.connect(startRootPhase)
 	
 func startRootPhase():
+	GameManager.pastRoots[(GameManager.currentRootRound)] = []
+	currentRootArray = GameManager.pastRoots[(GameManager.currentRootRound)]
+	currentRootArray.append(Vector2.ZERO)
 	$Timer.wait_time = rootPhaseTimeout
 	$Timer.start()
 
@@ -51,21 +67,40 @@ func setStopMoving(b : bool):
 func _process(delta: float) -> void:
 	if stopMoving:
 		return
+		
+	wallNode.global_position.y = global_position.y
 	#spawn an object every spawnInterval pixels, if you go back up, it will not trigger
 	if global_position.y > lastSpawnedDepth + spawnInterval:
 		lastSpawnedDepth = snappedi(global_position.y ,spawnInterval)
 		spawner.spawnObject(lastSpawnedDepth + playerCamera.get_viewport_rect().size.y)
 
 	position += transform.y * speed * delta * currentLayerMultiplier
-	distanceFromLastPoint += position.distance_to(lastPosition)
+	var distanceFromLast = position.distance_to(lastPosition)
+	distanceFromLastPoint += distanceFromLast
+	spawningArcLength += distanceFromLast
 	lastPosition = position
-	var input_dir := Input.get_vector("ui_right", "ui_left", "ui_down", "ui_up")
+	
+	if spawningArcLength >= rootPointSaveArcLength:
+		spawningArcLength = 0	
+		currentRootArray.append(global_position)
+		
+	
+	mousePosition = get_global_mouse_position()
 	var amountToRoate : float = 0
 	
-	if input_dir:
-		amountToRoate = input_dir.x
-	#check the raycasts to see if you will hit something
+	var angleToMouse : float = (rad_to_deg(global_position.angle_to_point(mousePosition)) - 90) - rotation_degrees
 	
+	
+	
+	#>1 = right, <1 = left
+	
+	#set bias based on roation
+	Debug.LogSpace(angleToMouse)
+	
+	amountToRoate = clampi(angleToMouse,-turningAmount,turningAmount)
+
+		
+	#check the raycasts to see if you will hit something
 	var checkWallCollision : bool = false
 	var leftObject = $CheckLeft.get_collider()
 	var rightObject = $CheckRight.get_collider()
@@ -77,8 +112,6 @@ func _process(delta: float) -> void:
 		if rightObject.is_in_group("WALL"):
 			checkWallCollision = true
 
-		
-	
 	if checkWallCollision:
 		amountToRoate = 0
 		var leftIntersect : Vector2 = $CheckLeft.get_collision_point()
@@ -94,11 +127,8 @@ func _process(delta: float) -> void:
 			var largestDistance : float = max(leftDistance,rightDistance)
 			amountToRoate = turningAwayCurve.sample(largestDistance/100) * turningAwayForce * rotateMultiplier
 		
-		Debug.Log(leftIntersect," ",rightIntersect)
-	
-	
 	rotate(deg_to_rad(amountToRoate))
-		
+
 	var size : int = tip.points.size()-1
 	tip.points[size] = position
 	if distanceFromLastPoint >= 25:
@@ -108,9 +138,9 @@ func _process(delta: float) -> void:
 		if size >= tipPoints-1:
 			var removingPoint : Vector2 = tip.points[0]
 			lineRenderer.add_point(removingPoint)
-		
-		
+				
 		distanceFromLastPoint = 0
+		
 
 func _on_background_manager_changed_layer(layerSpeedMultiplier):
 	currentLayerMultiplier = layerSpeedMultiplier
@@ -133,5 +163,6 @@ func _on_area_entered(area):
 	gameSaver.saveGame() #you can remove this, its just here to immediately save your progress
 	
 func onRootPhaseTimeout():
+	currentRootArray.append(global_position)
 	EventManager.onRootPhaseEnd.emit()
 	pass

@@ -172,7 +172,6 @@ uv = PackedVector2Array(496, 48, 560, 48, 560, 592, 496, 592)
 bones = ["Hip", PackedFloat32Array(0, 0, 0, 0), "Hip/Spine", PackedFloat32Array(0, 0, 0, 0), "Hip/Spine/Head", PackedFloat32Array(0, 0, 0, 0), "Hip/Spine/Head/TopHead", PackedFloat32Array(0, 0, 0, 0), "Hip/Spine/UpperArmR", PackedFloat32Array(0, 0, 0, 0), "Hip/Spine/UpperArmR/LowerArmR", PackedFloat32Array(0, 0, 0, 0), "Hip/Spine/UpperArmR/LowerArmR/HandR", PackedFloat32Array(0, 0, 0, 0), "Hip/Spine/UpperArmL", PackedFloat32Array(0, 0, 0, 0), "Hip/Spine/UpperArmL/LowerArmL", PackedFloat32Array(0, 0, 0, 0), "Hip/Spine/UpperArmL/LowerArmL/HandL", PackedFloat32Array(0, 0, 0, 0), "Hip/UpperLegR", PackedFloat32Array(0, 0, 0, 0), "Hip/UpperLegR/LowerLegR", PackedFloat32Array(0, 0, 0, 0), "Hip/UpperLegR/LowerLegR/FootR", PackedFloat32Array(0, 0, 0, 0), "Hip/UpperLegL", PackedFloat32Array(0, 0, 0, 0), "Hip/UpperLegL/LowerLegL", PackedFloat32Array(1, 1, 1, 1), "Hip/UpperLegL/LowerLegL/FootL", PackedFloat32Array(0, 0, 0, 0)]
 
 [node name="Skeleton2D" type="Skeleton2D" parent="."]
-visible = false
 
 [node name="Hip" type="Bone2D" parent="Skeleton2D"]
 position = Vector2(0, -4.91324)

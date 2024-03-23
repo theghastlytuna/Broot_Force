@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://brh7kxvkvq02q"]
+[gd_scene load_steps=19 format=3 uid="uid://brh7kxvkvq02q"]
 
 [ext_resource type="Script" path="res://Scenes/Areas/World.gd" id="1_j1hoq"]
 [ext_resource type="Texture2D" uid="uid://wnnrtab0skb7" path="res://Art Assets/Textures/Layer2.png" id="1_tfsmi"]
@@ -20,20 +20,16 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.373626), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_lyvea"]
-_data = [Vector2(0, 0.0542083), 0.0, 0.0, 0, 0, Vector2(0.791209, 0.610556), 2.01614, 2.01614, 0, 0, Vector2(0.908425, 1), 3.03766, 0.0, 0, 0]
+_data = [Vector2(0, 0.012782), 0.0, 0.0, 0, 0, Vector2(0.945055, 0.628571), 2.01614, 2.01614, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4g5gk"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kfqgj"]
-size = Vector2(69, 694)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2wq4q"]
+size = Vector2(156, 701)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_u5ugd"]
-size = Vector2(64, 742)
-
-[node name="World" type="Node2D" node_paths=PackedStringArray("oldRootHolder")]
+[node name="World" type="Node2D"]
 script = ExtResource("1_j1hoq")
-oldRootHolder = NodePath("OldRootHolder")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
@@ -54,8 +50,6 @@ position = Vector2(615, 305)
 scale = Vector2(11.7266, 6)
 texture = ExtResource("3_gnh0v")
 
-[node name="OldRootHolder" type="Node2D" parent="."]
-
 [node name="Root" type="Node2D" parent="."]
 
 [node name="RootLine" type="Line2D" parent="Root"]
@@ -69,19 +63,17 @@ width_curve = SubResource("Curve_ebely")
 begin_cap_mode = 2
 end_cap_mode = 2
 
-[node name="Area2D" type="Area2D" parent="Root" node_paths=PackedStringArray("wallNode", "lineRenderer", "tip", "playerCamera", "spawner", "gameSaver")]
+[node name="Area2D" type="Area2D" parent="Root" node_paths=PackedStringArray("lineRenderer", "tip", "spawner", "playerCamera", "gameSaver")]
 script = ExtResource("4_uwuhp")
-turningAmount = 1.0
-wallNode = NodePath("../../Walls")
-turningAwayCurve = SubResource("Curve_lyvea")
-turningAwayForce = 4.0
 lineRenderer = NodePath("../RootLine")
 tip = NodePath("../TipLine")
-playerCamera = NodePath("../../Camera2D")
 spawner = NodePath("../../Spawner")
 spawnInterval = 100.0
+playerCamera = NodePath("../../Camera2D")
 gameSaver = NodePath("../../SaveGame")
-rootPointSaveArcLength = 50.0
+turningAwayCurve = SubResource("Curve_lyvea")
+turningAwayForce = 4.0
+turningAmount = 1.0
 rootPhaseTimeout = 60.0
 
 [node name="Tip" type="Sprite2D" parent="Root/Area2D" groups=["Tip"]]
@@ -109,19 +101,17 @@ collide_with_bodies = false
 
 [node name="Timer" type="Timer" parent="Root/Area2D"]
 
-[node name="Walls" type="Node2D" parent="."]
+[node name="LeftWall" type="Area2D" parent="." groups=["WALL"]]
 
-[node name="LeftWall" type="Area2D" parent="Walls" groups=["WALL"]]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
+position = Vector2(-613, 20.5)
+shape = SubResource("RectangleShape2D_2wq4q")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/LeftWall"]
-position = Vector2(-1534.5, -14)
-shape = SubResource("RectangleShape2D_kfqgj")
+[node name="RightWall" type="Area2D" parent="." groups=["WALL"]]
 
-[node name="RightWall" type="Area2D" parent="Walls" groups=["WALL"]]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/RightWall"]
-position = Vector2(1532, -1)
-shape = SubResource("RectangleShape2D_u5ugd")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
+position = Vector2(626, 10)
+shape = SubResource("RectangleShape2D_2wq4q")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_speed = 11.125
