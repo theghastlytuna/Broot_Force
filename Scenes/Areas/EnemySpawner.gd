@@ -17,6 +17,7 @@ var activated : bool = false
 ##Parent node to spawn units under
 @export var unitParent : Node2D
 
+signal FinishedSpawning()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -136,14 +137,19 @@ func _process(delta):
 		unitSpawnTimer.stop()
 
 func spawnUnit():
-	Debug.Log("Spawning")
 	rng.randomize()
+	
 	var index = rng.randi_range(0, unitsToSpawn.size() - 1)
 	var newUnit = unitsToSpawn[index].duplicate()
+	
 	newUnit.position = position
 	unitParent.add_child(newUnit)
 	unitsToSpawn.remove_at(index)
+	
 	Debug.Log("Spawned: " + newUnit.name)
+	
+	if unitsToSpawn.size() == 0:
+		FinishedSpawning.emit()
 
 
 func _on_button_button_up():

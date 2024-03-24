@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dq4jcfh8ylt5e"]
+[gd_scene load_steps=21 format=3 uid="uid://dq4jcfh8ylt5e"]
 
 [ext_resource type="Texture2D" uid="uid://73qddd2nftm7" path="res://Art Assets/Textures/Temporary/ground.png" id="1_q67ni"]
 [ext_resource type="Script" path="res://Scenes/Areas/Overworld.gd" id="1_y88pi"]
@@ -11,8 +11,10 @@
 [ext_resource type="PackedScene" uid="uid://cde8tgxvy6y1g" path="res://Scenes/Units/EnemyUnits/PistolEnemy.tscn" id="6_iyl61"]
 [ext_resource type="PackedScene" uid="uid://b8qn8je4ge20n" path="res://Scenes/Units/EnemyUnits/AxeEnemy.tscn" id="6_onj2u"]
 [ext_resource type="PackedScene" uid="uid://b5frixg7n146p" path="res://Scenes/Units/EnemyUnits/ChainsawEnemy.tscn" id="6_yaxo3"]
+[ext_resource type="PackedScene" uid="uid://mlvq353kw0c1" path="res://Scenes/Units/TreeUnitsGround/MainTree.tscn" id="7_dtyo1"]
 [ext_resource type="PackedScene" uid="uid://cvn6nev5hshj5" path="res://Scenes/Units/EnemyUnits/BulldozerEnemy.tscn" id="8_dsl38"]
 [ext_resource type="Script" path="res://Scenes/Areas/CanopyButton.gd" id="9_d41nc"]
+[ext_resource type="Script" path="res://Scenes/Areas/EnemyUnitsHolder.gd" id="18_8vmsq"]
 [ext_resource type="Script" path="res://Scenes/Areas/EndTowerPlacement.gd" id="18_hqi7h"]
 [ext_resource type="PackedScene" uid="uid://bi0fa577rl8s6" path="res://Menus/canopy_tower_menu.tscn" id="19_ovhgu"]
 [ext_resource type="PackedScene" uid="uid://cugohrjbgvgjd" path="res://Menus/land_tower_menu.tscn" id="20_lxlg4"]
@@ -200,6 +202,10 @@ text = "+"
 script = ExtResource("9_d41nc")
 parentnode = NodePath("../..")
 
+[node name="MainTree" parent="Tree" instance=ExtResource("7_dtyo1")]
+position = Vector2(1071, 438)
+health = 100.0
+
 [node name="LandCanvas" parent="." instance=ExtResource("20_lxlg4")]
 
 [node name="CanopyCanvas" parent="." instance=ExtResource("19_ovhgu")]
@@ -235,6 +241,7 @@ position = Vector2(-525, 186)
 position = Vector2(-259, 177)
 
 [node name="EnemyUnits" type="Node2D" parent="."]
+script = ExtResource("18_8vmsq")
 
 [node name="Button" type="Button" parent="." groups=["TowerButton"]]
 offset_top = 508.0
@@ -263,6 +270,7 @@ script = ExtResource("18_hqi7h")
 [connection signal="pressed" from="Tree/CanopyPositions/3/CanvasLayer/Button" to="Tree/CanopyPositions/3/CanvasLayer/Button" method="_on_pressed"]
 [connection signal="canopy_clicked" from="Tree/CanopyPositions/4/CanvasLayer/Button" to="CanopyCanvas/Control/PanelContainer" method="_on_button_canopy_clicked"]
 [connection signal="pressed" from="Tree/CanopyPositions/4/CanvasLayer/Button" to="Tree/CanopyPositions/4/CanvasLayer/Button" method="_on_pressed"]
+[connection signal="FinishedSpawning" from="EnemySpawner" to="EnemyUnits" method="_on_enemy_spawner_finished_spawning"]
 [connection signal="button_up" from="Button" to="LandCanvas/Control/PanelContainer" method="_on_texture_button_pressed"]
 [connection signal="button_up" from="Button" to="CanopyCanvas/Control/PanelContainer" method="_on_texture_button_pressed"]
 [connection signal="button_up" from="Button" to="EnemySpawner" method="_on_button_button_up"]

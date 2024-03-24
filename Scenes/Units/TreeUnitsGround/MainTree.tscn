@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://mlvq353kw0c1"]
+
+[ext_resource type="Script" path="res://Scenes/Units/TreeUnitsGround/MainTree.gd" id="1_d6j5j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1tuch"]
+
+[node name="MainTree" type="StaticBody2D" groups=["PlayerUnits"]]
+script = ExtResource("1_d6j5j")
+health = 1500.0
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, -140)
+scale = Vector2(4, 14)
+shape = SubResource("RectangleShape2D_1tuch")
