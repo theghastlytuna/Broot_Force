@@ -1,0 +1,92 @@
+[gd_scene load_steps=10 format=3 uid="uid://dd20bvpcnqwfs"]
+
+[ext_resource type="Script" path="res://Scripts/Units/Unit Scripts/Unit.gd" id="1_pjrmx"]
+[ext_resource type="Script" path="res://Scripts/Units/Movement Scripts/UnitMove.gd" id="2_0mbfe"]
+[ext_resource type="Script" path="res://Scripts/Units/Attack Scripts/UnitAttack.gd" id="3_qbfl6"]
+[ext_resource type="Texture2D" uid="uid://uejajowx7627" path="res://Art Assets/Textures/Icons/UndeadUnits/UNDEAD_ANCIENT_CREATURE.png" id="4_ojje4"]
+[ext_resource type="Script" path="res://Scripts/Units/Animation/AnimationSignalGiver.gd" id="6_so4py"]
+
+[sub_resource type="Animation" id="Animation_nfk13"]
+resource_name = "BaseSwing"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.56494, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wufuj"]
+_data = {
+"BaseSwing": SubResource("Animation_nfk13")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_asgvg"]
+size = Vector2(50, 263)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xqykc"]
+size = Vector2(88.9785, 69.2105)
+
+[node name="Mammoth" type="CharacterBody2D" groups=["PlayerUnits"]]
+collision_layer = 4
+script = ExtResource("1_pjrmx")
+health = 8.0
+type = 3
+
+[node name="Movement" type="Node2D" parent="."]
+position = Vector2(0, -57.6581)
+script = ExtResource("2_0mbfe")
+moveSpeed = -100.0
+
+[node name="Attack" type="Node2D" parent="."]
+position = Vector2(0, -57.6581)
+script = ExtResource("3_qbfl6")
+attackDamage = 16.0
+timePerAttack = 2.0
+groupToAttack = "EnemyUnits"
+
+[node name="UnitBody" type="Sprite2D" parent="."]
+position = Vector2(-164, -163)
+scale = Vector2(0.766592, 0.766592)
+texture = ExtResource("4_ojje4")
+
+[node name="UnitWeapon" type="Sprite2D" parent="UnitBody"]
+position = Vector2(-381.811, 30.992)
+scale = Vector2(0.396226, 0.650035)
+offset = Vector2(63.4919, -62.2502)
+
+[node name="WeaponAnimation" type="AnimationPlayer" parent="UnitBody/UnitWeapon"]
+libraries = {
+"": SubResource("AnimationLibrary_wufuj")
+}
+script = ExtResource("6_so4py")
+animationToPlay = "BaseSwing"
+
+[node name="BodyAnimator" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -57.6581)
+
+[node name="AttackArea" type="Area2D" parent="."]
+position = Vector2(-128, -57.6581)
+collision_mask = 2
+
+[node name="AttackRadius" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(-231, -74.8419)
+shape = SubResource("RectangleShape2D_asgvg")
+
+[node name="UnitHitbox" type="CollisionShape2D" parent="."]
+position = Vector2(-167.5, -132.5)
+scale = Vector2(3.72, 3.8)
+shape = SubResource("RectangleShape2D_xqykc")
+
+[connection signal="StartedAttacking" from="Attack" to="Movement" method="_on_attack_started_attacking"]
+[connection signal="StartedAttacking" from="Attack" to="UnitBody/UnitWeapon/WeaponAnimation" method="playAnimation"]
+[connection signal="StoppedAttacking" from="Attack" to="Movement" method="_on_attack_stopped_attacking"]
+[connection signal="StoppedAttacking" from="Attack" to="UnitBody/UnitWeapon/WeaponAnimation" method="stopAnimation"]
+[connection signal="body_entered" from="AttackArea" to="Attack" method="_on_attack_area_body_entered"]
+[connection signal="body_exited" from="AttackArea" to="Attack" method="_on_attack_area_body_exited"]

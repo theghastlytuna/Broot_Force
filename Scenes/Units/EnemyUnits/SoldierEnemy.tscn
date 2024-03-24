@@ -101,6 +101,7 @@ position = Vector2(0.25, -28.75)
 
 [node name="AttackArea" type="Area2D" parent="."]
 position = Vector2(0.25, -28.75)
+collision_mask = 4
 
 [node name="AttackRadius" type="CollisionShape2D" parent="AttackArea"]
 position = Vector2(32, -1)

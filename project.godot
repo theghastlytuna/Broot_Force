@@ -32,6 +32,12 @@ enabled=PackedStringArray("res://addons/localization_editor/plugin.cfg", "res://
 
 locale/translations=PackedStringArray("res://localization/localizations.en.translation")
 
+[layer_names]
+
+2d_physics/layer_1="Environment"
+2d_physics/layer_2="Enemy"
+2d_physics/layer_3="Friendly"
+
 [rendering]
 
 renderer/rendering_method="mobile"

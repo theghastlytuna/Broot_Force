@@ -9,6 +9,9 @@ var noiseY : FastNoiseLite
 ##The resource is the resource that will be instantiated in that location.
 @export var resourceDictionary : Dictionary#Vector2(min,max),Resource
 
+##The resourceDictionary that will be swapped in when you go to a new layer
+@export var layeredResourceDictionaries : Array #array of dictionaries with vec2 and resource key value pairs
+
 ##How many pixels the newly spawned resource can be from Y=0 (in both the positive and negative directions)
 @export var XSpread : float
 ##The node that each newly spawned object will be parented to
@@ -22,8 +25,11 @@ func _ready():
 	
 	noiseX = FastNoiseLite.new()
 	noiseX.noise_type = FastNoiseLite.TYPE_VALUE
-	
+	EventManager.onEnterNewLayer.connect(onNewLayer)
 	pass
+	
+func onNewLayer(i:int):
+	resourceDictionary = layeredResourceDictionaries[i]
 	
 func spawnObject(depth : float):
 	var noiseValue : float = noiseY.get_noise_1d(depth)
