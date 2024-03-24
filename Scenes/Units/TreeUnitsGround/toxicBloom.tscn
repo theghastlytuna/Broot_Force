@@ -20,6 +20,7 @@ texture = ExtResource("2_vmv5r")
 [node name="Attack" type="Node2D" parent="."]
 script = ExtResource("3_5iyqw")
 attackDamage = 6.0
+attackType = 3
 timePerAttack = 3.0
 numberOfTargets = 999
 groupToAttack = "EnemyUnits"

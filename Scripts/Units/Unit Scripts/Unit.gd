@@ -5,6 +5,9 @@ class_name Unit
 @export var health : float
 @export var type: UnitType
 @export var cost: int
+##Float which represents the percentage of poison damage negated,
+##where 0 is no damage negation and 1 is 100 percent damage negation
+@export var poisonResistance : float
 
 const deathSound: AudioStream = preload("res://Sounds/SFX/death.mp3")
 const painSound: AudioStream = preload("res://Sounds/SFX/pain.mp3")
@@ -19,6 +22,13 @@ enum UnitType{
 	UNDEAD_LARGE_ANIMAL,
 	UNDEAD_ANCIENT_CREATURE,
 	UNDEAD_DINOSAUR,
+	}
+
+enum AttackType{
+	MELEE,
+	RANGED,
+	VEHICLE,
+	POISON
 	}
 
 #this is the total amount of damage taken
@@ -43,8 +53,13 @@ func getHealth() -> float:
 ##A function for damaging this unit. Updates the health based on the attack damage and type provided in args.
 func damage(args : AttackArguments):
 	onDamaged.emit(args)
-	damageTaken += args.attackDamage
-	Debug.LogSpace("Damage Taken " , str(args.attackDamage) , name , " from " , args.from.name)
+	var currentDamage : float = args.attackDamage
+	if args.attackType == AttackType.POISON:
+		currentDamage *= (1 - poisonResistance)
+		Debug.Log("Damage reduced by ", 100 * poisonResistance, " percent.")
+	damageTaken += currentDamage
+	Debug.LogSpace("Damage Taken " , currentDamage , name , " from " , args.from.name)
+	Debug.Log(name, " current health: ", health - damageTaken)
 	check_death()
 	if is_in_group("EnemyHuman"):
 		var player:AudioStreamPlayer = SoundManager.play_sound(painSound)

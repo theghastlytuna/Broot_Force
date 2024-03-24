@@ -16,8 +16,8 @@
 [ext_resource type="Script" path="res://Scenes/Areas/CanopyButton.gd" id="9_d41nc"]
 [ext_resource type="Script" path="res://Scenes/Areas/EnemyUnitsHolder.gd" id="18_8vmsq"]
 [ext_resource type="Script" path="res://Scenes/Areas/EndTowerPlacement.gd" id="18_hqi7h"]
-[ext_resource type="PackedScene" path="res://Menus/canopy_tower_menu.tscn" id="19_ovhgu"]
-[ext_resource type="PackedScene" path="res://Menus/land_tower_menu.tscn" id="20_lxlg4"]
+[ext_resource type="PackedScene" uid="uid://bi0fa577rl8s6" path="res://Menus/canopy_tower_menu.tscn" id="19_ovhgu"]
+[ext_resource type="PackedScene" uid="uid://cugohrjbgvgjd" path="res://Menus/land_tower_menu.tscn" id="20_lxlg4"]
 [ext_resource type="Script" path="res://Scenes/Areas/EnemySpawner.gd" id="21_y32r6"]
 [ext_resource type="Texture2D" uid="uid://6mm3q3gblhrr" path="res://icon.svg" id="23_e5pjt"]
 

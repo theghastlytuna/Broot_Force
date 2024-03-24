@@ -54,6 +54,7 @@ collision_layer = 2
 script = ExtResource("1_rmqrw")
 health = 60.0
 cost = 70
+poisonResistance = 0.4
 
 [node name="Movement" type="Node2D" parent="."]
 position = Vector2(-0.0673752, -54.323)
