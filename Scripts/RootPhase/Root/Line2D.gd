@@ -93,13 +93,6 @@ func _process(delta: float) -> void:
 	
 	var angleToMouse : float = (rad_to_deg(forward.angle_to(toMouseVector)))
 	
-	
-	
-	#>1 = right, <1 = left
-	
-	#set bias based on roation
-	Debug.LogSpace(angleToMouse)
-	
 	amountToRoate = clampi(angleToMouse,-turningAmount,turningAmount)
 
 		

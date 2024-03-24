@@ -10,6 +10,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cj6o5"]
 
 [node name="SporeSprayer" type="StaticBody2D" groups=["PlayerUnits"]]
+collision_layer = 4
 script = ExtResource("1_5x647")
 health = 100000.0
 
@@ -29,7 +30,7 @@ numberOfTargets = 0
 groupToAttack = "EnemyUnits"
 
 [node name="AttackArea" type="Area2D" parent="."]
-collision_mask = 3
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
 position = Vector2(0, 40)

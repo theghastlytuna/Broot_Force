@@ -18,7 +18,7 @@ enum UnitType{
 	UNDEAD_HUMAN,
 	UNDEAD_LARGE_ANIMAL,
 	UNDEAD_ANCIENT_CREATURE,
-	UNDEAD_DINOSAUR,
+	UNDEAD_DINOSAUR
 	}
 
 #this is the total amount of damage taken

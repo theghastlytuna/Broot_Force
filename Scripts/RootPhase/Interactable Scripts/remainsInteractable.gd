@@ -1,7 +1,7 @@
 extends "res://Scripts/RootPhase/Interactable Scripts/InteractableBehaviour.gd"
 
+@export var unitType : Unit.UnitType
+
 func HitByRoot(area: Area2D):
-	if active:
-		ResourceHolder.units += 1
-		Debug.Log(ResourceHolder.units)
+	GameManager.availableUnits[unitType] += 1
 	super(area)

@@ -16,3 +16,8 @@ TIME_UP,Time's Up!
 ROOT_RESULTS,You collected {Water} water and {Unit} new units!
 GO_TO_GROWTH,Defend the tree!
 GO_TO_ROOT,Collect more nutrients!
+UNDEAD_SMALL_ANIMAL,Undead Squirrel
+UNDEAD_HUMAN,Undead Human
+UNDEAD_LARGE_ANIMAL,Undead Bear
+UNDEAD_ANCIENT_CREATURE,Undead Mammoth
+UNDEAD_DINOSAUR,Undead T-Rex

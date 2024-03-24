@@ -31,7 +31,7 @@ func _process(delta):
 	#Once the player's camera gets close to reaching the edge of the latest rendered layer, render a new layer
 	if (playerCam.position.y + playerCam.get_viewport_rect().size.y) >= (layerHeight * (layerIndex + 1)):
 		layerIndex += 1
-		
+		EventManager.onEnterNewLayer.emit(layerIndex)
 		#If there are more layer textures to render, grab the next one
 		if layerArray.size() > layerIndex:
 			MakeNewLayer(load(layerArray[layerIndex][0]))

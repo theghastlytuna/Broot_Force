@@ -5,6 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1tuch"]
 
 [node name="MainTree" type="StaticBody2D" groups=["PlayerUnits"]]
+collision_layer = 4
 script = ExtResource("1_d6j5j")
 health = 1500.0
 

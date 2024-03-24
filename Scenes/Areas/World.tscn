@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://brh7kxvkvq02q"]
+[gd_scene load_steps=23 format=3 uid="uid://brh7kxvkvq02q"]
 
 [ext_resource type="Script" path="res://Scenes/Areas/World.gd" id="1_j1hoq"]
 [ext_resource type="Texture2D" uid="uid://wnnrtab0skb7" path="res://Art Assets/Textures/Layer2.png" id="1_tfsmi"]
@@ -10,9 +10,12 @@
 [ext_resource type="PackedScene" uid="uid://ca3vfsmfimr8r" path="res://Scenes/RootInteractables/Obstacles/Rock.tscn" id="7_rhly2"]
 [ext_resource type="PackedScene" uid="uid://bc82ny27vki14" path="res://Scenes/RootInteractables/UnitRemains/DinoRemains.tscn" id="8_e761s"]
 [ext_resource type="Script" path="res://Scripts/SaveGame.gd" id="8_jhff2"]
+[ext_resource type="PackedScene" uid="uid://raxinoox6x3n" path="res://Scenes/RootInteractables/UnitRemains/squirrel_remains.tscn" id="9_gxojj"]
+[ext_resource type="PackedScene" uid="uid://bwqvbth4kx3qw" path="res://Scenes/RootInteractables/UnitRemains/human_remains.tscn" id="10_4jyts"]
 [ext_resource type="Script" path="res://Scenes/Areas/WaterCounter.gd" id="10_c5w6e"]
 [ext_resource type="PackedScene" uid="uid://bm1jicmeiq73h" path="res://Scenes/UI/RockUI.tscn" id="11_623x4"]
 [ext_resource type="Script" path="res://Scenes/Areas/SetOrientation.gd" id="11_cjjht"]
+[ext_resource type="PackedScene" uid="uid://cs4yg3hh2bejv" path="res://Scenes/RootInteractables/UnitRemains/bear_remains.tscn" id="11_tewbi"]
 [ext_resource type="PackedScene" uid="uid://dsyj27gjp5q35" path="res://Scenes/UI/RootCollectionResults.tscn" id="13_y0ym3"]
 
 [sub_resource type="Curve" id="Curve_ebely"]
@@ -45,6 +48,7 @@ region_rect = Rect2(0, 0, 100, 1500)
 
 [node name="BackgroundManager" type="Node2D" parent="." node_paths=PackedStringArray("playerCam")]
 script = ExtResource("2_5ev5r")
+layerHeight = 3000.0
 playerCam = NodePath("../Camera2D")
 layerArray = [["res://Art Assets/Textures/Layer1.jpg", 1.0], ["res://Art Assets/Textures/Layer2.png", 0.7], ["res://Art Assets/Textures/Layer3.jpg", 0.5]]
 
@@ -71,6 +75,7 @@ end_cap_mode = 2
 
 [node name="Area2D" type="Area2D" parent="Root" node_paths=PackedStringArray("wallNode", "lineRenderer", "tip", "playerCamera", "spawner", "gameSaver")]
 script = ExtResource("4_uwuhp")
+speed = 200.0
 turningAmount = 1.0
 wallNode = NodePath("../../Walls")
 turningAwayCurve = SubResource("Curve_lyvea")
@@ -82,7 +87,7 @@ spawner = NodePath("../../Spawner")
 spawnInterval = 100.0
 gameSaver = NodePath("../../SaveGame")
 rootPointSaveArcLength = 50.0
-rootPhaseTimeout = 60.0
+rootPhaseTimeout = 30.0
 
 [node name="Tip" type="Sprite2D" parent="Root/Area2D" groups=["Tip"]]
 
@@ -132,8 +137,26 @@ script = ExtResource("5_s6byk")
 resourceDictionary = {
 Vector2(0, 10): ExtResource("6_coeey"),
 Vector2(11, 21): ExtResource("7_rhly2"),
-Vector2(22, 25): ExtResource("8_e761s")
+Vector2(22, 25): ExtResource("9_gxojj")
 }
+layeredResourceDictionaries = [{
+Vector2(0, 10): ExtResource("6_coeey"),
+Vector2(11, 31): ExtResource("7_rhly2"),
+Vector2(32, 52): ExtResource("9_gxojj"),
+Vector2(53, 54): ExtResource("10_4jyts")
+}, {
+Vector2(0, 10): ExtResource("6_coeey"),
+Vector2(11, 21): ExtResource("9_gxojj"),
+Vector2(22, 32): ExtResource("10_4jyts"),
+Vector2(33, 43): ExtResource("11_tewbi"),
+Vector2(44, 64): ExtResource("7_rhly2")
+}, {
+Vector2(0, 10): ExtResource("6_coeey"),
+Vector2(11, 20): ExtResource("10_4jyts"),
+Vector2(21, 41): ExtResource("11_tewbi"),
+Vector2(42, 57): ExtResource("8_e761s"),
+Vector2(58, 88): ExtResource("7_rhly2")
+}]
 XSpread = 2500.0
 addingParent = NodePath("../Obsticles")
 
