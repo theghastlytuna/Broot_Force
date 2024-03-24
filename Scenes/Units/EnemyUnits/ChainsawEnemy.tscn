@@ -56,6 +56,7 @@ collision_layer = 2
 script = ExtResource("1_lg6fk")
 health = 25.0
 cost = 25
+meleeResistance = 0.1
 
 [node name="Movement" type="Node2D" parent="."]
 position = Vector2(0.25, -28.75)
@@ -101,8 +102,8 @@ position = Vector2(0.25, -28.75)
 position = Vector2(0.25, -28.75)
 
 [node name="AttackRadius" type="CollisionShape2D" parent="AttackArea"]
-position = Vector2(23, 0)
-scale = Vector2(0.5, 0.5)
+position = Vector2(13, 0)
+scale = Vector2(0.3, 0.5)
 shape = SubResource("RectangleShape2D_fkmxp")
 
 [node name="UnitHitbox" type="CollisionShape2D" parent="."]

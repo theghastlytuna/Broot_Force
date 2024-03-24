@@ -54,6 +54,7 @@ collision_layer = 2
 script = ExtResource("1_rmqrw")
 health = 60.0
 cost = 70
+poisonResistance = 0.2
 
 [node name="Movement" type="Node2D" parent="."]
 position = Vector2(-0.0673752, -54.323)
@@ -94,8 +95,8 @@ position = Vector2(-0.0673752, -54.323)
 position = Vector2(-0.0673752, -54.323)
 
 [node name="AttackRadius" type="CollisionShape2D" parent="AttackArea"]
-position = Vector2(50, 17)
-scale = Vector2(0.5, 0.5)
+position = Vector2(40, 17)
+scale = Vector2(0.4, 0.5)
 shape = SubResource("RectangleShape2D_fkmxp")
 
 [node name="UnitHitbox" type="CollisionPolygon2D" parent="."]
