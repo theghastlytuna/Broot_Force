@@ -1,0 +1,89 @@
+[gd_scene load_steps=6 format=3 uid="uid://ckpxkhasyjkom"]
+
+[ext_resource type="Script" path="res://Menus/optionsmenu.gd" id="1_45swt"]
+[ext_resource type="Texture2D" uid="uid://fi2rpaj6nplo" path="res://Art Assets/Textures/DarkBrown.png" id="1_knyvl"]
+[ext_resource type="PackedScene" uid="uid://dxa7recdeio70" path="res://Scenes/UI/Text.tscn" id="2_bc4k0"]
+[ext_resource type="Texture2D" uid="uid://bn61fvr3hbar7" path="res://Art Assets/Textures/cancel.png" id="3_qnap2"]
+
+[sub_resource type="SystemFont" id="SystemFont_3j0xp"]
+font_names = PackedStringArray("Impact")
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_45swt")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 288.0
+offset_top = 100.0
+offset_right = -288.0
+offset_bottom = -148.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("1_knyvl")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/NinePatchRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/NinePatchRect/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" parent="Control/MarginContainer/NinePatchRect/VBoxContainer/HBoxContainer/TextureRect" instance=ExtResource("2_bc4k0")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = SubResource("SystemFont_3j0xp")
+theme_override_font_sizes/font_size = 48
+text = "OPTIONS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="Control/MarginContainer/NinePatchRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="Control"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+offset_left = 523.0
+offset_top = -24.0
+offset_right = 603.0
+offset_bottom = 56.0
+size_flags_horizontal = 0
+texture_normal = ExtResource("3_qnap2")
+texture_pressed = ExtResource("3_qnap2")
+texture_hover = ExtResource("3_qnap2")
+ignore_texture_size = true
+stretch_mode = 4
+
+[connection signal="pressed" from="Control/TextureButton" to="." method="_on_cancel_button_pressed"]
