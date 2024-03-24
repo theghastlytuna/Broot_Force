@@ -88,7 +88,10 @@ func _process(delta: float) -> void:
 	mousePosition = get_global_mouse_position()
 	var amountToRoate : float = 0
 	
-	var angleToMouse : float = (rad_to_deg(global_position.angle_to_point(mousePosition)) - 90) - rotation_degrees
+	var toMouseVector = mousePosition - global_position
+	var forward = transform.y
+	
+	var angleToMouse : float = (rad_to_deg(forward.angle_to(toMouseVector)))
 	
 	
 	
