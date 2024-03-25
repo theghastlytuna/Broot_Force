@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://6bwdx0gvtgdc"]
+[gd_scene load_steps=11 format=3 uid="uid://6bwdx0gvtgdc"]
 
 [ext_resource type="Script" path="res://Scripts/Towers/Tower Scripts/ThornWall.gd" id="1_qcer7"]
 [ext_resource type="Texture2D" uid="uid://d30er8toa543j" path="res://Art Assets/Textures/BasicStem.png" id="3_lt1r1"]
@@ -160,9 +160,162 @@ tracks/5/keys = {
 "values": [0.0]
 }
 
+[sub_resource type="Animation" id="Animation_irsvu"]
+resource_name = "Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton2D/Spine1:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.63734, -0.776854, -0.63734]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton2D/Spine1/Spine2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.95863, 0.749461, 0.95863]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Skeleton2D/Spine1/Spine2/Spine3:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.76552, 1.76552]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Skeleton2D/Spine1/Spine2/Spine3/Spine4:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.38001, 1.07859, 1.38001]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Skeleton2D/Spine1/Spine2/Spine3/Spine4/Spine5:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [2.29244, 2.11816, 2.29244]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Skeleton2D/Spine1/Spine2/Spine3/Spine4/Spine5/Head:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_efwbm"]
+resource_name = "AttackNew"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton2D/Spine1:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.594213]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton2D/Spine1/Spine2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.696136]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Skeleton2D/Spine1/Spine2/Spine3:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Skeleton2D/Spine1/Spine2/Spine3/Spine4:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Skeleton2D/Spine1/Spine2/Spine3/Spine4/Spine5:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Skeleton2D/Spine1/Spine2/Spine3/Spine4/Spine5/Head:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f71m0"]
 _data = {
 "Attack": SubResource("Animation_4wdqg"),
+"AttackNew": SubResource("Animation_efwbm"),
+"Idle": SubResource("Animation_irsvu"),
 "RESET": SubResource("Animation_4r6ju")
 }
 
@@ -192,14 +345,13 @@ scale = Vector2(4, 7)
 shape = SubResource("RectangleShape2D_cj6o5")
 
 [node name="Holder" type="Node2D" parent="."]
-position = Vector2(0, -140)
 
 [node name="Parts" type="Node2D" parent="Holder"]
 
 [node name="Stem1" type="Polygon2D" parent="Holder/Parts"]
 rotation = 3.14159
 scale = Vector2(0.205364, 0.205364)
-offset = Vector2(-70.035, -349.12)
+offset = Vector2(-66.2, 331.4)
 texture = ExtResource("3_lt1r1")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(24, 32, 16, 376, 128, 376, 120, 16)
@@ -209,7 +361,7 @@ bones = ["Spine1", PackedFloat32Array(1, 1, 1, 1), "Spine1/Spine2", PackedFloat3
 [node name="Stem2" type="Polygon2D" parent="Holder/Parts"]
 rotation = 3.14159
 scale = Vector2(0.205364, 0.205364)
-offset = Vector2(-72.3, -651.6)
+offset = Vector2(-67.7, 22.2)
 texture = ExtResource("3_lt1r1")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(24, 32, 16, 376, 128, 376, 120, 16)
@@ -219,7 +371,7 @@ bones = ["Spine1", PackedFloat32Array(0, 0, 0, 0), "Spine1/Spine2", PackedFloat3
 [node name="Stem3" type="Polygon2D" parent="Holder/Parts"]
 rotation = 3.14159
 scale = Vector2(0.205364, 0.205364)
-offset = Vector2(-69.6, -948.3)
+offset = Vector2(-64.7, -274.6)
 texture = ExtResource("3_lt1r1")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(24, 32, 16, 376, 128, 376, 120, 16)
@@ -229,7 +381,7 @@ bones = ["Spine1", PackedFloat32Array(0, 0, 0, 0), "Spine1/Spine2", PackedFloat3
 [node name="Stem4" type="Polygon2D" parent="Holder/Parts"]
 rotation = 3.14159
 scale = Vector2(0.205364, 0.205364)
-offset = Vector2(-72.3, -1236.2)
+offset = Vector2(-68.5, -542.2)
 texture = ExtResource("3_lt1r1")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(24, 32, 16, 376, 128, 376, 120, 16)
@@ -239,7 +391,7 @@ bones = ["Spine1", PackedFloat32Array(0, 0, 0, 0), "Spine1/Spine2", PackedFloat3
 [node name="Stem5" type="Polygon2D" parent="Holder/Parts"]
 rotation = 3.14159
 scale = Vector2(0.205364, 0.205364)
-offset = Vector2(-73.2, -1533.6)
+offset = Vector2(-77.6, -836.4)
 texture = ExtResource("3_lt1r1")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(39.1209, 33.8275, 16, 376, 128, 376, 121.901, 28.9586)
@@ -248,10 +400,10 @@ bones = ["Spine1", PackedFloat32Array(0, 0, 0, 0), "Spine1/Spine2", PackedFloat3
 
 [node name="Skeleton2D" type="Skeleton2D" parent="Holder"]
 visible = false
+position = Vector2(0, -137)
 
 [node name="Spine1" type="Bone2D" parent="Holder/Skeleton2D"]
 rotation = -0.44833
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 0, 0)
 
 [node name="Spine2" type="Bone2D" parent="Holder/Skeleton2D/Spine1"]
@@ -274,7 +426,6 @@ rest = Transform2D(1, 0, 0, 1, 0, 60)
 [node name="Spine5" type="Bone2D" parent="Holder/Skeleton2D/Spine1/Spine2/Spine3/Spine4"]
 position = Vector2(0, 64)
 rotation = 2.29244
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 0, 64)
 
 [node name="Head" type="Bone2D" parent="Holder/Skeleton2D/Spine1/Spine2/Spine3/Spine4/Spine5"]
@@ -288,6 +439,9 @@ bone_angle = 90.0
 libraries = {
 "": SubResource("AnimationLibrary_f71m0")
 }
+playback_default_blend_time = 0.2
 
+[connection signal="StartedAttacking" from="Attack" to="Holder/AnimationPlayer" method="play" binds= ["Attack"]]
+[connection signal="StoppedAttacking" from="Attack" to="Holder/AnimationPlayer" method="play" binds= ["Idle"]]
 [connection signal="body_entered" from="AttackArea" to="Attack" method="_on_attack_area_body_entered"]
 [connection signal="body_exited" from="AttackArea" to="Attack" method="_on_attack_area_body_exited"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b2t15f7ju4x0g"]
 
 [ext_resource type="Script" path="res://Scripts/Towers/Tower Scripts/ThornWall.gd" id="1_1lam0"]
-[ext_resource type="Texture2D" uid="uid://db5qellkjpi6o" path="res://Art Assets/Textures/Temporary/Units/thorns.png" id="2_15dnq"]
+[ext_resource type="Texture2D" uid="uid://buib6rapkh83j" path="res://Art Assets/Textures/TM_overworld.png" id="2_ta6pr"]
 [ext_resource type="Script" path="res://Scripts/Towers/Attack Scripts/ThornAttack.gd" id="3_6qv0m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1tuch"]
@@ -12,9 +12,11 @@ script = ExtResource("1_1lam0")
 health = 600.0
 
 [node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(0, -62)
-scale = Vector2(0.18, 0.419999)
-texture = ExtResource("2_15dnq")
+position = Vector2(0, -47)
+scale = Vector2(0.170924, 0.170924)
+texture = ExtResource("2_ta6pr")
+region_enabled = true
+region_rect = Rect2(1568, 2000, 471, 554)
 
 [node name="Attack" type="Node2D" parent="."]
 script = ExtResource("3_6qv0m")
