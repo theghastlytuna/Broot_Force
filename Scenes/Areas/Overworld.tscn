@@ -1,11 +1,11 @@
 [gd_scene load_steps=24 format=3 uid="uid://dq4jcfh8ylt5e"]
 
-[ext_resource type="Texture2D" uid="uid://73qddd2nftm7" path="res://Art Assets/Textures/Temporary/ground.png" id="1_q67ni"]
 [ext_resource type="Script" path="res://Scenes/Areas/Overworld.gd" id="1_y88pi"]
-[ext_resource type="Texture2D" uid="uid://fxxowst01k33" path="res://Art Assets/Textures/Temporary/tree.png" id="2_2hre7"]
 [ext_resource type="Script" path="res://Scenes/Areas/FriendlySpawnLocation.gd" id="2_no26d"]
 [ext_resource type="Script" path="res://Scenes/Areas/LandPlot.gd" id="3_ncd5e"]
+[ext_resource type="Texture2D" uid="uid://cog42c6avtfrv" path="res://Art Assets/Textures/floor.png" id="3_p34j2"]
 [ext_resource type="Script" path="res://Scenes/Areas/GroundButton.gd" id="3_wo8c8"]
+[ext_resource type="Texture2D" uid="uid://buib6rapkh83j" path="res://Art Assets/Textures/TM_overworld.png" id="4_jfqio"]
 [ext_resource type="PackedScene" uid="uid://duugxlocnnohp" path="res://Scenes/Units/EnemyUnits/ExcavatorEnemy.tscn" id="6_0e3rg"]
 [ext_resource type="PackedScene" uid="uid://xq6s5a6jdktr" path="res://Scenes/Units/EnemyUnits/ShotgunEnemy.tscn" id="6_8r0hn"]
 [ext_resource type="PackedScene" uid="uid://b4ixdpakfx4g7" path="res://Scenes/Units/EnemyUnits/SoldierEnemy.tscn" id="6_bf8lv"]
@@ -36,9 +36,23 @@ script = ExtResource("2_no26d")
 [node name="Ground" type="StaticBody2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Ground"]
-position = Vector2(471, 596)
-scale = Vector2(3.28, 0.628)
-texture = ExtResource("1_q67ni")
+z_index = -1
+z_as_relative = false
+texture_repeat = 2
+position = Vector2(471, 432)
+scale = Vector2(0.409904, 0.409904)
+texture = ExtResource("3_p34j2")
+region_enabled = true
+region_rect = Rect2(-712, -8, 3648, 664)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Ground/Sprite2D"]
+z_index = -2
+z_as_relative = false
+position = Vector2(300.07, 404.972)
+scale = Vector2(8.63645, 5.46469)
+texture = ExtResource("3_p34j2")
+region_enabled = true
+region_rect = Rect2(0, 568, 512, 89)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
 position = Vector2(635, 600)
@@ -47,8 +61,13 @@ shape = SubResource("RectangleShape2D_jos54")
 [node name="Tree" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Tree"]
-position = Vector2(891, 272)
-texture = ExtResource("2_2hre7")
+z_index = -1
+z_as_relative = false
+position = Vector2(658, 132)
+scale = Vector2(0.409904, 0.409904)
+texture = ExtResource("4_jfqio")
+region_enabled = true
+region_rect = Rect2(589.751, 316.757, 3436.79, 1560.75)
 
 [node name="GroundPositions" type="Node2D" parent="Tree"]
 
