@@ -16,3 +16,4 @@ func showResults():
 	
 func goToGrowth():
 	EventManager.onGrowthPhaseStart.emit()
+	SoundManager.stop_all_ambient_sounds()
