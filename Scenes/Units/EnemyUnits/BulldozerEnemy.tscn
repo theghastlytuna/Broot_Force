@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cvn6nev5hshj5"]
+[gd_scene load_steps=12 format=3 uid="uid://cvn6nev5hshj5"]
 
 [ext_resource type="Script" path="res://Scripts/Units/Unit Scripts/Unit.gd" id="1_rmqrw"]
 [ext_resource type="Script" path="res://Scripts/Units/Movement Scripts/UnitMove.gd" id="2_fb7yf"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dspovhna2o66b" path="res://Art Assets/Textures/Temporary/Units/bulldozerBodyOutlined.png" id="4_y45h3"]
 [ext_resource type="Script" path="res://Scripts/Units/Animation/AnimationSignalGiver.gd" id="5_2d423"]
 [ext_resource type="Texture2D" uid="uid://bbis40hqep3x7" path="res://Art Assets/Textures/Temporary/Weapons/bulldozerArmOutlined.png" id="5_4bi4r"]
+[ext_resource type="PackedScene" uid="uid://drh5slfmagly0" path="res://Scenes/Units/HealthBar.tscn" id="7_d51sq"]
 
 [sub_resource type="Animation" id="Animation_nfk13"]
 resource_name = "BaseSwing"
@@ -49,12 +50,13 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fkmxp"]
 size = Vector2(200, 150)
 
-[node name="BulldozerEnemy" type="CharacterBody2D" groups=["EnemyUnits", "EnemyVehicle", "Vehicle"]]
+[node name="BulldozerEnemy" type="CharacterBody2D" node_paths=PackedStringArray("healthBarNode") groups=["EnemyUnits", "EnemyVehicle", "Vehicle"]]
 collision_layer = 2
 script = ExtResource("1_rmqrw")
 health = 60.0
 cost = 70
 poisonResistance = 0.2
+healthBarNode = NodePath("HealthBar")
 
 [node name="Movement" type="Node2D" parent="."]
 position = Vector2(-0.0673752, -54.323)
@@ -104,6 +106,9 @@ shape = SubResource("RectangleShape2D_fkmxp")
 position = Vector2(1.93262, -37.323)
 scale = Vector2(1.87, 1.91)
 polygon = PackedVector2Array(-30.5108, 19.2105, -36.9624, 8.94737, -30.5108, -18.6842, -25.1344, -35.5263, -4.43548, -36.0526, 0.403226, -20.7895, 25.672, -17.3684, 33.4677, -1.57895, 34.0054, 13.4211, 25.4032, 19.4737)
+
+[node name="HealthBar" parent="." instance=ExtResource("7_d51sq")]
+position = Vector2(0, -118)
 
 [connection signal="StartedAttacking" from="Attack" to="Movement" method="_on_attack_started_attacking"]
 [connection signal="StartedAttacking" from="Attack" to="UnitBody/UnitWeapon/WeaponAnimation" method="playAnimation"]

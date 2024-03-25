@@ -1,18 +1,20 @@
-[gd_scene load_steps=7 format=3 uid="uid://dcfycayg8y1hf"]
+[gd_scene load_steps=8 format=3 uid="uid://dcfycayg8y1hf"]
 
 [ext_resource type="Script" path="res://Scripts/Towers/Tower Scripts/ThornWall.gd" id="1_bqnyd"]
 [ext_resource type="Texture2D" uid="uid://6mm3q3gblhrr" path="res://icon.svg" id="2_2345g"]
 [ext_resource type="Script" path="res://Scripts/Towers/Attack Scripts/BombfruitAttack.gd" id="3_0kxpf"]
 [ext_resource type="PackedScene" uid="uid://daadsxgrjomlf" path="res://Scenes/Units/TreeUnitsCanopy/bomberCloud.tscn" id="4_3n000"]
+[ext_resource type="PackedScene" uid="uid://drh5slfmagly0" path="res://Scenes/Units/HealthBar.tscn" id="5_wrsqx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yvunn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cj6o5"]
 
-[node name="BomberFruit" type="StaticBody2D" groups=["PlayerUnits"]]
+[node name="BomberFruit" type="StaticBody2D" node_paths=PackedStringArray("healthBarNode") groups=["PlayerUnits"]]
 collision_layer = 4
 script = ExtResource("1_bqnyd")
 health = 100000.0
+healthBarNode = NodePath("HealthBar")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(0.500002, -70)
@@ -41,6 +43,10 @@ shape = SubResource("RectangleShape2D_cj6o5")
 
 [node name="BomberCloud" parent="." instance=ExtResource("4_3n000")]
 position = Vector2(0, 180)
+
+[node name="HealthBar" parent="." instance=ExtResource("5_wrsqx")]
+position = Vector2(0, -146)
+scale = Vector2(0.15, 0.15)
 
 [connection signal="body_entered" from="AttackArea" to="Attack" method="_on_attack_area_body_entered"]
 [connection signal="body_exited" from="AttackArea" to="Attack" method="_on_attack_area_body_exited"]

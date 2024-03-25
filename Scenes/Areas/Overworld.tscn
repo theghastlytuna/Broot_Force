@@ -253,25 +253,25 @@ unitParent = NodePath("../EnemyUnits")
 position = Vector2(-953, 955)
 
 [node name="AxeEnemy" parent="EnemySpawner/Factories" instance=ExtResource("6_onj2u")]
-position = Vector2(-232, 180)
+position = Vector2(-374, 79)
 
 [node name="BulldozerEnemy" parent="EnemySpawner/Factories" instance=ExtResource("8_dsl38")]
 position = Vector2(-458, 156)
 
 [node name="ChainsawEnemy" parent="EnemySpawner/Factories" instance=ExtResource("6_yaxo3")]
-position = Vector2(-169, 177)
+position = Vector2(-182, 178)
 
 [node name="ExcavatorEnemy" parent="EnemySpawner/Factories" instance=ExtResource("6_0e3rg")]
-position = Vector2(-389, 151)
+position = Vector2(-379, 92)
 
 [node name="PistolEnemy" parent="EnemySpawner/Factories" instance=ExtResource("6_iyl61")]
-position = Vector2(-205, 174)
+position = Vector2(-245, 103)
 
 [node name="ShotgunEnemy" parent="EnemySpawner/Factories" instance=ExtResource("6_8r0hn")]
 position = Vector2(-525, 186)
 
 [node name="SoldierEnemy" parent="EnemySpawner/Factories" instance=ExtResource("6_bf8lv")]
-position = Vector2(-259, 177)
+position = Vector2(-277, 195)
 
 [node name="EnemyUnits" type="Node2D" parent="."]
 script = ExtResource("18_8vmsq")

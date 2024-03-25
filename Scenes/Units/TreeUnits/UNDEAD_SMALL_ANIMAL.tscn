@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://deljoqhp5w33c"]
+[gd_scene load_steps=11 format=3 uid="uid://deljoqhp5w33c"]
 
 [ext_resource type="Script" path="res://Scripts/Units/Unit Scripts/Unit.gd" id="1_5a3xh"]
 [ext_resource type="Script" path="res://Scripts/Units/Movement Scripts/UnitMove.gd" id="2_3cfxi"]
 [ext_resource type="Script" path="res://Scripts/Units/Attack Scripts/UnitAttack.gd" id="3_vf0de"]
 [ext_resource type="Texture2D" uid="uid://d2oro3qnu8jmm" path="res://Art Assets/Textures/Icons/UndeadUnits/UNDEAD_SMALL_ANIMAL.png" id="4_eagqh"]
 [ext_resource type="Script" path="res://Scripts/Units/Animation/AnimationSignalGiver.gd" id="5_ab3rs"]
+[ext_resource type="PackedScene" uid="uid://drh5slfmagly0" path="res://Scenes/Units/HealthBar.tscn" id="6_6jn8o"]
 
 [sub_resource type="Animation" id="Animation_nfk13"]
 resource_name = "BaseSwing"
@@ -33,10 +34,11 @@ size = Vector2(13, 124)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3jbfo"]
 size = Vector2(11.828, 32.1053)
 
-[node name="Squirrel" type="CharacterBody2D" groups=["PlayerUnits"]]
+[node name="Squirrel" type="CharacterBody2D" node_paths=PackedStringArray("healthBarNode") groups=["PlayerUnits"]]
 collision_layer = 4
 script = ExtResource("1_5a3xh")
 health = 8.0
+healthBarNode = NodePath("HealthBar")
 
 [node name="Movement" type="Node2D" parent="."]
 position = Vector2(-34, -57.6581)
@@ -80,6 +82,9 @@ shape = SubResource("RectangleShape2D_ujixc")
 position = Vector2(-23, -61)
 scale = Vector2(3.72, 3.8)
 shape = SubResource("RectangleShape2D_3jbfo")
+
+[node name="HealthBar" parent="." instance=ExtResource("6_6jn8o")]
+position = Vector2(-30, -45)
 
 [connection signal="StartedAttacking" from="Attack" to="Movement" method="_on_attack_started_attacking"]
 [connection signal="StartedAttacking" from="Attack" to="UnitBody/UnitWeapon/WeaponAnimation" method="playAnimation"]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://cfelnv6gn2tco"]
+[gd_scene load_steps=11 format=3 uid="uid://cfelnv6gn2tco"]
 
 [ext_resource type="Script" path="res://Scripts/Units/Unit Scripts/Unit.gd" id="1_po77j"]
 [ext_resource type="Script" path="res://Scripts/Units/Movement Scripts/UnitMove.gd" id="2_vs0c5"]
 [ext_resource type="Script" path="res://Scripts/Units/Attack Scripts/UnitAttack.gd" id="3_7uai5"]
 [ext_resource type="Texture2D" uid="uid://chh1j7pf27l82" path="res://Art Assets/Textures/Icons/UndeadUnits/UNDEAD_DINOSAUR.png" id="4_cgcc1"]
+[ext_resource type="PackedScene" uid="uid://drh5slfmagly0" path="res://Scenes/Units/HealthBar.tscn" id="6_5vgk0"]
 [ext_resource type="Script" path="res://Scripts/Units/Animation/AnimationSignalGiver.gd" id="6_rrg57"]
 
 [sub_resource type="Animation" id="Animation_nfk13"]
@@ -33,11 +34,12 @@ size = Vector2(68, 320)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q447j"]
 size = Vector2(73.6559, 83.6842)
 
-[node name="TREX" type="CharacterBody2D" groups=["PlayerUnits"]]
+[node name="TREX" type="CharacterBody2D" node_paths=PackedStringArray("healthBarNode") groups=["PlayerUnits"]]
 collision_layer = 4
 script = ExtResource("1_po77j")
 health = 8.0
 type = 4
+healthBarNode = NodePath("HealthBar")
 
 [node name="Movement" type="Node2D" parent="."]
 position = Vector2(0, -57.6581)
@@ -83,6 +85,10 @@ shape = SubResource("RectangleShape2D_mpg8u")
 position = Vector2(-140, -161)
 scale = Vector2(3.72, 3.8)
 shape = SubResource("RectangleShape2D_q447j")
+
+[node name="HealthBar" parent="." instance=ExtResource("6_5vgk0")]
+position = Vector2(-178, -326)
+scale = Vector2(0.25, 0.25)
 
 [connection signal="StartedAttacking" from="Attack" to="Movement" method="_on_attack_started_attacking"]
 [connection signal="StartedAttacking" from="Attack" to="UnitBody/UnitWeapon/WeaponAnimation" method="playAnimation"]

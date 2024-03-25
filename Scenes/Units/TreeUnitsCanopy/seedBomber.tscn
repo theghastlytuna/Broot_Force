@@ -1,17 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://ba6ewlavv28ho"]
+[gd_scene load_steps=7 format=3 uid="uid://ba6ewlavv28ho"]
 
 [ext_resource type="Script" path="res://Scripts/Towers/Tower Scripts/ThornWall.gd" id="1_c6e28"]
 [ext_resource type="Texture2D" uid="uid://6mm3q3gblhrr" path="res://icon.svg" id="2_r1bea"]
 [ext_resource type="Script" path="res://Scripts/Units/Attack Scripts/UnitAttack.gd" id="3_lrkr1"]
+[ext_resource type="PackedScene" uid="uid://drh5slfmagly0" path="res://Scenes/Units/HealthBar.tscn" id="4_sfld5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yvunn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cj6o5"]
 
-[node name="SeedBomber" type="StaticBody2D" groups=["PlayerUnits"]]
+[node name="SeedBomber" type="StaticBody2D" node_paths=PackedStringArray("healthBarNode") groups=["PlayerUnits"]]
 collision_layer = 4
 script = ExtResource("1_c6e28")
 health = 100000.0
+healthBarNode = NodePath("HealthBar")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(0.500002, -70)
@@ -37,6 +39,10 @@ shape = SubResource("RectangleShape2D_yvunn")
 position = Vector2(0, -70)
 scale = Vector2(4, 7)
 shape = SubResource("RectangleShape2D_cj6o5")
+
+[node name="HealthBar" parent="." instance=ExtResource("4_sfld5")]
+position = Vector2(0, -148)
+scale = Vector2(0.15, 0.15)
 
 [connection signal="body_entered" from="AttackArea" to="Attack" method="_on_attack_area_body_entered"]
 [connection signal="body_exited" from="AttackArea" to="Attack" method="_on_attack_area_body_exited"]

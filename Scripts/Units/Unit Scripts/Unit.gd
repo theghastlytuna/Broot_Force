@@ -11,6 +11,8 @@ class_name Unit
 ##Float which represents the percentage of melee damage negated,
 ##where 0 is no damage negation and 1 is 100 percent damage negation
 @export var meleeResistance : float
+##The unit's health bar
+var healthBar : TextureProgressBar
 
 const deathSound: AudioStream = preload("res://Sounds/SFX/death.mp3")
 const painSound: AudioStream = preload("res://Sounds/SFX/pain.mp3")
@@ -46,6 +48,11 @@ signal onDie
 func _ready():
 	SoundManager.set_default_sound_bus("Effects")
 	SoundManager.set_default_ambient_sound_bus("Ambient")
+	
+	healthBar = get_node("HealthBar").get_node("TextureProgressBar")
+	healthBar.max_value = health
+	healthBar.value = health
+	
 	#if is_in_group("EnemyVehicle"):
 		#SoundManager.play_ambient_sound(vehicleSound)
 
@@ -59,15 +66,17 @@ func damage(args : AttackArguments):
 	var currentDamage : float = args.attackDamage
 	if args.attackType == AttackType.POISON:
 		currentDamage *= (1 - poisonResistance)
-		Debug.Log("Poison damage reduced by ", 100 * poisonResistance, " percent.")
+		#Debug.Log("Poison damage reduced by ", 100 * poisonResistance, " percent.")
 	
 	if args.attackType == AttackType.MELEE:
 		currentDamage *= (1 - meleeResistance)
-		Debug.Log("Melee damage reduced by ", 100 * meleeResistance, " percent.")
+		#Debug.Log("Melee damage reduced by ", 100 * meleeResistance, " percent.")
 	
 	damageTaken += currentDamage
-	Debug.LogSpace("Damage Taken " , currentDamage , name , " from " , args.from.name)
-	Debug.Log(name, " current health: ", health - damageTaken)
+	healthBar.value = health - damageTaken
+	Debug.Log("Health bar value: ", healthBar.value)
+	#Debug.LogSpace("Damage Taken " , currentDamage , name , " from " , args.from.name)
+	#Debug.Log(name, " current health: ", health - damageTaken)
 	check_death()
 	if is_in_group("EnemyHuman"):
 		var player:AudioStreamPlayer = SoundManager.play_sound(painSound)

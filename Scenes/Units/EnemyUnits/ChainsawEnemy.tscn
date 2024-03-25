@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b5frixg7n146p"]
+[gd_scene load_steps=14 format=3 uid="uid://b5frixg7n146p"]
 
 [ext_resource type="Script" path="res://Scripts/Units/Unit Scripts/Unit.gd" id="1_lg6fk"]
 [ext_resource type="Script" path="res://Scripts/Units/Movement Scripts/UnitMove.gd" id="2_owplk"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://d22624vbppux6" path="res://Art Assets/Textures/Temporary/Weapons/chainsaw.png" id="5_83inm"]
 [ext_resource type="Script" path="res://Scripts/Units/Animation/AnimationSignalGiver.gd" id="6_84m67"]
 [ext_resource type="Texture2D" uid="uid://cd7u5p8gmtffc" path="res://Art Assets/Textures/Temporary/hardhat.png" id="7_7kh67"]
+[ext_resource type="PackedScene" uid="uid://drh5slfmagly0" path="res://Scenes/Units/HealthBar.tscn" id="8_np1cl"]
 
 [sub_resource type="Animation" id="Animation_nfk13"]
 resource_name = "BaseSwing"
@@ -51,12 +52,13 @@ size = Vector2(90, 112)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dcjwa"]
 
-[node name="ChainsawEnemy" type="CharacterBody2D" groups=["EnemyHuman", "EnemyUnits", "Melee"]]
+[node name="ChainsawEnemy" type="CharacterBody2D" node_paths=PackedStringArray("healthBarNode") groups=["EnemyHuman", "EnemyUnits", "Melee"]]
 collision_layer = 2
 script = ExtResource("1_lg6fk")
 health = 25.0
 cost = 25
 meleeResistance = 0.1
+healthBarNode = NodePath("HealthBar")
 
 [node name="Movement" type="Node2D" parent="."]
 position = Vector2(0.25, -28.75)
@@ -111,6 +113,9 @@ shape = SubResource("RectangleShape2D_fkmxp")
 position = Vector2(0.25, -28.75)
 scale = Vector2(1.9, 1.941)
 shape = SubResource("CapsuleShape2D_dcjwa")
+
+[node name="HealthBar" parent="." instance=ExtResource("8_np1cl")]
+position = Vector2(0, -72)
 
 [connection signal="StartedAttacking" from="Attack" to="Movement" method="_on_attack_started_attacking"]
 [connection signal="StartedAttacking" from="Attack" to="UnitBody/UnitWeapon/WeaponAnimation" method="playAnimation"]

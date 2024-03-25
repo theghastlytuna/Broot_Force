@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://22g1ee03m4xd"]
+[gd_scene load_steps=11 format=3 uid="uid://22g1ee03m4xd"]
 
 [ext_resource type="Script" path="res://Scripts/Units/Unit Scripts/Unit.gd" id="1_6qilm"]
 [ext_resource type="Script" path="res://Scripts/Units/Movement Scripts/UnitMove.gd" id="2_iaqot"]
 [ext_resource type="Script" path="res://Scripts/Units/Attack Scripts/UnitAttack.gd" id="3_ifee8"]
 [ext_resource type="Texture2D" uid="uid://bv2qvatmd53er" path="res://Art Assets/Textures/Icons/UndeadUnits/UNDEAD_LARGE_ANIMAL.png" id="4_l7fva"]
 [ext_resource type="Script" path="res://Scripts/Units/Animation/AnimationSignalGiver.gd" id="6_4cvt2"]
+[ext_resource type="PackedScene" uid="uid://drh5slfmagly0" path="res://Scenes/Units/HealthBar.tscn" id="6_d3f7d"]
 
 [sub_resource type="Animation" id="Animation_nfk13"]
 resource_name = "BaseSwing"
@@ -33,11 +34,12 @@ size = Vector2(41, 121)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_omf0h"]
 size = Vector2(33.6021, 26.5789)
 
-[node name="Bear" type="CharacterBody2D" groups=["PlayerUnits"]]
+[node name="Bear" type="CharacterBody2D" node_paths=PackedStringArray("healthBarNode") groups=["PlayerUnits"]]
 collision_layer = 4
 script = ExtResource("1_6qilm")
 health = 20.0
 type = 2
+healthBarNode = NodePath("HealthBar")
 
 [node name="Movement" type="Node2D" parent="."]
 position = Vector2(0, -57.6581)
@@ -82,6 +84,9 @@ shape = SubResource("RectangleShape2D_5hdqn")
 position = Vector2(-63.5, -51.5)
 scale = Vector2(3.72, 3.8)
 shape = SubResource("RectangleShape2D_omf0h")
+
+[node name="HealthBar" parent="." instance=ExtResource("6_d3f7d")]
+position = Vector2(-99, -109)
 
 [connection signal="StartedAttacking" from="Attack" to="Movement" method="_on_attack_started_attacking"]
 [connection signal="StartedAttacking" from="Attack" to="UnitBody/UnitWeapon/WeaponAnimation" method="playAnimation"]

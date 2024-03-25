@@ -1,18 +1,20 @@
-[gd_scene load_steps=7 format=3 uid="uid://cdiyjm4ro371c"]
+[gd_scene load_steps=8 format=3 uid="uid://cdiyjm4ro371c"]
 
 [ext_resource type="Script" path="res://Scripts/Towers/Tower Scripts/ThornWall.gd" id="1_5x647"]
 [ext_resource type="Texture2D" uid="uid://6mm3q3gblhrr" path="res://icon.svg" id="2_v4fst"]
 [ext_resource type="Script" path="res://Scripts/Towers/Attack Scripts/SporeSprayerAttack.gd" id="3_wuled"]
 [ext_resource type="PackedScene" uid="uid://b7koih8c4fa8d" path="res://Scenes/Units/TreeUnitsCanopy/sporeCloud.tscn" id="4_hdd1m"]
+[ext_resource type="PackedScene" uid="uid://drh5slfmagly0" path="res://Scenes/Units/HealthBar.tscn" id="5_j61k6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yvunn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cj6o5"]
 
-[node name="SporeSprayer" type="StaticBody2D" groups=["PlayerUnits"]]
+[node name="SporeSprayer" type="StaticBody2D" node_paths=PackedStringArray("healthBarNode") groups=["PlayerUnits"]]
 collision_layer = 4
 script = ExtResource("1_5x647")
 health = 100000.0
+healthBarNode = NodePath("HealthBar")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(0.500002, -70)
@@ -53,6 +55,10 @@ position = Vector2(-120, 104)
 
 [node name="MaxSpawn" type="Node2D" parent="."]
 position = Vector2(120, 106)
+
+[node name="HealthBar" parent="." instance=ExtResource("5_j61k6")]
+position = Vector2(0, -148)
+scale = Vector2(0.15, 0.15)
 
 [connection signal="body_entered" from="AttackArea" to="Attack" method="_on_attack_area_body_entered"]
 [connection signal="body_exited" from="AttackArea" to="Attack" method="_on_attack_area_body_exited"]
