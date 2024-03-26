@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://brh7kxvkvq02q"]
+[gd_scene load_steps=24 format=3 uid="uid://brh7kxvkvq02q"]
 
 [ext_resource type="Script" path="res://Scenes/Areas/World.gd" id="1_j1hoq"]
 [ext_resource type="Texture2D" uid="uid://wnnrtab0skb7" path="res://Art Assets/Textures/Layer2.png" id="1_tfsmi"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bm1jicmeiq73h" path="res://Scenes/UI/RockUI.tscn" id="11_623x4"]
 [ext_resource type="Script" path="res://Scenes/Areas/SetOrientation.gd" id="11_cjjht"]
 [ext_resource type="PackedScene" uid="uid://cs4yg3hh2bejv" path="res://Scenes/RootInteractables/UnitRemains/bear_remains.tscn" id="11_tewbi"]
+[ext_resource type="PackedScene" uid="uid://dym6oonfw5m5d" path="res://Scenes/RootInteractables/UnitRemains/mammoth_remains.tscn" id="12_j0mwa"]
 [ext_resource type="PackedScene" uid="uid://dsyj27gjp5q35" path="res://Scenes/UI/RootCollectionResults.tscn" id="13_y0ym3"]
 
 [sub_resource type="Curve" id="Curve_ebely"]
@@ -140,24 +141,25 @@ Vector2(11, 21): ExtResource("7_rhly2"),
 Vector2(22, 25): ExtResource("9_gxojj")
 }
 layeredResourceDictionaries = [{
-Vector2(0, 10): ExtResource("6_coeey"),
-Vector2(11, 31): ExtResource("7_rhly2"),
-Vector2(32, 52): ExtResource("9_gxojj"),
-Vector2(53, 54): ExtResource("10_4jyts")
+Vector2(0, 30): ExtResource("6_coeey"),
+Vector2(31, 45): ExtResource("9_gxojj"),
+Vector2(46, 50): ExtResource("10_4jyts"),
+Vector2(51, 100): ExtResource("7_rhly2")
 }, {
-Vector2(0, 10): ExtResource("6_coeey"),
-Vector2(11, 21): ExtResource("9_gxojj"),
-Vector2(22, 32): ExtResource("10_4jyts"),
-Vector2(33, 43): ExtResource("11_tewbi"),
-Vector2(44, 64): ExtResource("7_rhly2")
+Vector2(0, 30): ExtResource("6_coeey"),
+Vector2(31, 45): ExtResource("10_4jyts"),
+Vector2(46, 55): ExtResource("11_tewbi"),
+Vector2(56, 60): ExtResource("12_j0mwa"),
+Vector2(61, 100): ExtResource("7_rhly2")
 }, {
-Vector2(0, 10): ExtResource("6_coeey"),
-Vector2(11, 20): ExtResource("10_4jyts"),
-Vector2(21, 41): ExtResource("11_tewbi"),
-Vector2(42, 57): ExtResource("8_e761s"),
-Vector2(58, 88): ExtResource("7_rhly2")
+Vector2(0, 30): ExtResource("6_coeey"),
+Vector2(31, 35): ExtResource("10_4jyts"),
+Vector2(36, 50): ExtResource("11_tewbi"),
+Vector2(50, 60): ExtResource("12_j0mwa"),
+Vector2(61, 65): ExtResource("8_e761s"),
+Vector2(66, 100): ExtResource("7_rhly2")
 }]
-XSpread = 2500.0
+XSpread = 1000.0
 addingParent = NodePath("../Obsticles")
 
 [node name="Obsticles" type="Node2D" parent="."]
