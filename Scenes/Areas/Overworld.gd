@@ -1,5 +1,7 @@
 extends Node2D
 
+
+
 func _enter_tree():
 	GameManager.growthRounds += 1
 

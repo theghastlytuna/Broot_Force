@@ -90,6 +90,7 @@ parentnode = NodePath("../..")
 [node name="1" type="Node2D" parent="Tree/GroundPositions"]
 position = Vector2(390, 440)
 script = ExtResource("3_ncd5e")
+towerIndex = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Tree/GroundPositions/1"]
 
@@ -106,6 +107,7 @@ parentnode = NodePath("../..")
 [node name="2" type="Node2D" parent="Tree/GroundPositions"]
 position = Vector2(550, 440)
 script = ExtResource("3_ncd5e")
+towerIndex = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Tree/GroundPositions/2"]
 
@@ -122,6 +124,7 @@ parentnode = NodePath("../..")
 [node name="3" type="Node2D" parent="Tree/GroundPositions"]
 position = Vector2(710, 440)
 script = ExtResource("3_ncd5e")
+towerIndex = 3
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Tree/GroundPositions/3"]
 
@@ -138,6 +141,7 @@ parentnode = NodePath("../..")
 [node name="4" type="Node2D" parent="Tree/GroundPositions"]
 position = Vector2(870, 440)
 script = ExtResource("3_ncd5e")
+towerIndex = 4
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Tree/GroundPositions/4"]
 
@@ -157,6 +161,7 @@ position = Vector2(22, -315)
 [node name="0" type="Node2D" parent="Tree/CanopyPositions"]
 position = Vector2(288, 570)
 script = ExtResource("3_ncd5e")
+towerIndex = 5
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Tree/CanopyPositions/0"]
 
@@ -173,6 +178,7 @@ parentnode = NodePath("../..")
 [node name="1" type="Node2D" parent="Tree/CanopyPositions"]
 position = Vector2(448, 570)
 script = ExtResource("3_ncd5e")
+towerIndex = 6
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Tree/CanopyPositions/1"]
 
@@ -189,6 +195,7 @@ parentnode = NodePath("../..")
 [node name="2" type="Node2D" parent="Tree/CanopyPositions"]
 position = Vector2(608, 570)
 script = ExtResource("3_ncd5e")
+towerIndex = 7
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Tree/CanopyPositions/2"]
 
@@ -205,6 +212,7 @@ parentnode = NodePath("../..")
 [node name="3" type="Node2D" parent="Tree/CanopyPositions"]
 position = Vector2(768, 570)
 script = ExtResource("3_ncd5e")
+towerIndex = 8
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Tree/CanopyPositions/3"]
 
@@ -221,6 +229,7 @@ parentnode = NodePath("../..")
 [node name="4" type="Node2D" parent="Tree/CanopyPositions"]
 position = Vector2(928, 570)
 script = ExtResource("3_ncd5e")
+towerIndex = 9
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Tree/CanopyPositions/4"]
 

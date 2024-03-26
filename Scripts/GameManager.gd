@@ -4,6 +4,8 @@ var depthsCollected : Array[float]
 var totalWater : float = 0
 var waterPerRound : float = 0
 var availableUnits : Array[int] = [0,0,0,0,0,0]
+var placedTowers : Dictionary #number tower slot key, path resource
+var placedTowersHealth : Dictionary #number tower slot key, float health
 var growthRounds : int = 0
 var pastRoots : Dictionary
 
