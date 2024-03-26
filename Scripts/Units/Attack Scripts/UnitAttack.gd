@@ -44,6 +44,8 @@ signal StartedAttacking
 ##Emits when the unit stops attacking (typically when the last unit leaves its attack range)
 signal StoppedAttacking
 
+signal AttackedEnemy
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#Set up the attack timer so that it shares its duration with the attack speed
@@ -97,6 +99,8 @@ func attack():
 	while unitsAttacked < numberOfTargets && unitsAttacked < enemyBodies.size():
 		enemyBodies[unitsAttacked].damage(attackArgs)
 		unitsAttacked += 1
+	
+	AttackedEnemy.emit()
 	
 	if get_parent().is_in_group("EnemyUnits"):
 		if attackType == AttackType.MELEE:
