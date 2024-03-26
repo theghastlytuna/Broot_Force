@@ -28,94 +28,6 @@ tracks/0/keys = {
 "values": [0.0, -0.803731, -0.941627, 0.800757, 0.972572, 0.0]
 }
 
-[sub_resource type="Animation" id="Animation_efrrk"]
-resource_name = "Walk"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Skeleton2D/Root:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(768, 136)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Skeleton2D/Root:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Skeleton2D/Root/BackSpine/FrontSpine/Head:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Skeleton2D/Root/BackSpine/FrontSpine/LegFT:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0.0506175, -0.442733, 0.0506175]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Skeleton2D/Root/BackSpine/FrontSpine/LegFB:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [-0.0472179, 0.420868, -0.0472179]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Skeleton2D/Root/BackSpine/LegBT:rotation")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0.0459181, -0.522184, 0.0459181]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Skeleton2D/Root/BackSpine/LegBB:rotation")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [-0.0499477, 0.388205, -0.0499477]
-}
-
 [sub_resource type="Animation" id="Animation_q5y7i"]
 resource_name = "Die"
 length = 1.6
@@ -281,6 +193,94 @@ tracks/5/keys = {
 "values": [Vector2(768, 320)]
 }
 
+[sub_resource type="Animation" id="Animation_efrrk"]
+resource_name = "Walk"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton2D/Root:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(768, 136)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton2D/Root:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Skeleton2D/Root/BackSpine/FrontSpine/Head:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Skeleton2D/Root/BackSpine/FrontSpine/LegFT:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0506175, -0.442733, 0.0506175]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Skeleton2D/Root/BackSpine/FrontSpine/LegFB:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.0472179, 0.420868, -0.0472179]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Skeleton2D/Root/BackSpine/LegBT:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0459181, -0.522184, 0.0459181]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Skeleton2D/Root/BackSpine/LegBB:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.0499477, 0.388205, -0.0499477]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ykyp6"]
 _data = {
 "Attack": SubResource("Animation_i4tjc"),
@@ -403,7 +403,6 @@ bone_angle = -167.0
 [node name="LegFT" type="Bone2D" parent="SkeletonHolderScaled/Skeleton2D/Root/BackSpine/FrontSpine"]
 position = Vector2(-9, 20)
 rotation = 0.0506175
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, -9, 20)
 auto_calculate_length_and_angle = false
 length = 338.4
@@ -412,7 +411,6 @@ bone_angle = 99.473
 [node name="LegFB" type="Bone2D" parent="SkeletonHolderScaled/Skeleton2D/Root/BackSpine/FrontSpine"]
 position = Vector2(1, 23)
 rotation = -0.0472179
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 1, 23)
 auto_calculate_length_and_angle = false
 length = 320.275
@@ -429,7 +427,6 @@ bone_angle = 108.948
 [node name="LegBB" type="Bone2D" parent="SkeletonHolderScaled/Skeleton2D/Root/BackSpine"]
 position = Vector2(28, 37)
 rotation = -0.0499477
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 28, 37)
 auto_calculate_length_and_angle = false
 length = 305.4
@@ -519,7 +516,6 @@ bone_angle = -167.0
 [node name="LegFT" type="Bone2D" parent="SkeletonHolder1S/Skeleton2D/Root/BackSpine/FrontSpine"]
 position = Vector2(-9, 20)
 rotation = 0.0506175
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, -9, 20)
 auto_calculate_length_and_angle = false
 length = 338.4

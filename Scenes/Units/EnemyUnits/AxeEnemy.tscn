@@ -88,6 +88,7 @@ shape = SubResource("CapsuleShape2D_dcjwa")
 [node name="HealthBar" parent="." instance=ExtResource("7_itma6")]
 position = Vector2(-5.96046e-08, -62)
 
+[connection signal="onDie" from="." to="." method="queue_free"]
 [connection signal="StartedAttacking" from="Attack" to="Movement" method="_on_attack_started_attacking"]
 [connection signal="StartedAttacking" from="Attack" to="UnitBody/UnitWeapon/WeaponAnimation" method="playAnimation"]
 [connection signal="StoppedAttacking" from="Attack" to="Movement" method="_on_attack_stopped_attacking"]
