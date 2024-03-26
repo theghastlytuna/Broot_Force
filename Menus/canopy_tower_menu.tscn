@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bi0fa577rl8s6"]
+[gd_scene load_steps=14 format=3 uid="uid://bi0fa577rl8s6"]
 
 [ext_resource type="Script" path="res://Menus/CanopyPlacementMenu.gd" id="2_yfrpf"]
 [ext_resource type="PackedScene" uid="uid://6bwdx0gvtgdc" path="res://Scenes/Units/TreeUnitsCanopy/thornVines.tscn" id="3_2bydq"]
@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://bn61fvr3hbar7" path="res://Art Assets/Textures/cancel.png" id="7_mu6k7"]
 [ext_resource type="Texture2D" uid="uid://dhof0e12mnbuk" path="res://Art Assets/Textures/DarkBrown2.png" id="8_hjyy2"]
 [ext_resource type="Texture2D" uid="uid://fi2rpaj6nplo" path="res://Art Assets/Textures/DarkBrown.png" id="9_mpsqo"]
-[ext_resource type="PackedScene" uid="uid://beneb1d1elm1l" path="res://Menus/thornwall.tscn" id="10_6fver"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h1rti"]
 
@@ -102,7 +101,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 26
-text = "PICK_TOWER"
+text = "CANOPY_TOWER"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -117,12 +116,15 @@ stretch_mode = 4
 
 [node name="Control" type="GridContainer" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 mouse_filter = 2
-theme_override_constants/h_separation = 10
-columns = 3
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 2
 
 [node name="Tower1" type="TextureButton" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control"]
-custom_minimum_size = Vector2(96, 96)
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture_normal = ExtResource("8_hjyy2")
 texture_pressed = ExtResource("8_hjyy2")
@@ -142,7 +144,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="Tower2" type="TextureButton" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control"]
-custom_minimum_size = Vector2(96, 96)
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture_normal = ExtResource("8_hjyy2")
 texture_pressed = ExtResource("8_hjyy2")
@@ -162,7 +164,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="Tower3" type="TextureButton" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control"]
-custom_minimum_size = Vector2(96, 96)
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture_normal = ExtResource("8_hjyy2")
 texture_pressed = ExtResource("8_hjyy2")
@@ -182,7 +184,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="Tower4" type="TextureButton" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control"]
-custom_minimum_size = Vector2(96, 96)
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture_normal = ExtResource("8_hjyy2")
 texture_pressed = ExtResource("8_hjyy2")
@@ -201,14 +203,85 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="Confirm" type="TextureButton" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control"]
+[node name="TextureRect" type="TextureRect" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("9_mpsqo")
+
+[node name="Text0" type="Label" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/TextureRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 21
+text = "
+Thorn Vines
+Cost: X   DPS: 5
+Whips enemies in the area below the tower"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Text1" type="Label" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/TextureRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 21
+text = "
+Toxic Spore Sprayer
+Cost: X   DPS: 4
+Drops toxic blobs in the area, spreading gas afterwards that deals damage over time"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Text2" type="Label" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/TextureRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 21
+text = "
+Bomber Fruit
+Cost: X   DPS: 16 + 3/s
+Grows a fruit that drops when matured, damaging on impact and over time in its toxic cloud"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Text3" type="Label" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/TextureRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 21
+text = "
+Seed Bomber
+Cost: X   DPS: 4
+Continuously spawns helicopter seeds that drift to the left, detonating on impact"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Confirm" type="TextureButton" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("8_hjyy2")
 texture_pressed = ExtResource("8_hjyy2")
 texture_hover = ExtResource("9_mpsqo")
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control/Confirm"]
+[node name="Label" type="Label" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Confirm"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -218,14 +291,6 @@ grow_vertical = 2
 text = "CONFIRM"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-texture = ExtResource("9_mpsqo")
-
-[node name="ThornwallText" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/TextureRect" instance=ExtResource("10_6fver")]
-layout_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Control/PanelContainer"]
 libraries = {
@@ -237,4 +302,4 @@ libraries = {
 [connection signal="pressed" from="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control/Tower2" to="Control/PanelContainer" method="_on_button_clicked" binds= [1]]
 [connection signal="pressed" from="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control/Tower3" to="Control/PanelContainer" method="_on_button_clicked" binds= [2]]
 [connection signal="pressed" from="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control/Tower4" to="Control/PanelContainer" method="_on_button_clicked" binds= [3]]
-[connection signal="pressed" from="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control/Confirm" to="Control/PanelContainer" method="_on_button_confirm"]
+[connection signal="pressed" from="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Confirm" to="Control/PanelContainer" method="_on_button_confirm"]

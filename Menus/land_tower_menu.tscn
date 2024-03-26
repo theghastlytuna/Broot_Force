@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cugohrjbgvgjd"]
+[gd_scene load_steps=13 format=3 uid="uid://cugohrjbgvgjd"]
 
 [ext_resource type="Script" path="res://Menus/GroundPlacementMenu.gd" id="1_g0epv"]
 [ext_resource type="PackedScene" uid="uid://b2t15f7ju4x0g" path="res://Scenes/Units/TreeUnitsGround/thorn_wall.tscn" id="2_qnobb"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://bn61fvr3hbar7" path="res://Art Assets/Textures/cancel.png" id="6_mf22d"]
 [ext_resource type="Texture2D" uid="uid://dhof0e12mnbuk" path="res://Art Assets/Textures/DarkBrown2.png" id="7_ipm2g"]
 [ext_resource type="Texture2D" uid="uid://fi2rpaj6nplo" path="res://Art Assets/Textures/DarkBrown.png" id="8_px6hh"]
-[ext_resource type="PackedScene" uid="uid://beneb1d1elm1l" path="res://Menus/thornwall.tscn" id="9_icbxn"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h1rti"]
 
@@ -101,7 +100,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 26
-text = "PICK_TOWER"
+text = "GROUND_TOWER"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -116,8 +115,10 @@ stretch_mode = 4
 
 [node name="Control" type="GridContainer" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 mouse_filter = 2
-theme_override_constants/h_separation = 10
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
 columns = 2
 
 [node name="Tower1" type="TextureButton" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control"]
@@ -141,7 +142,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="Tower2" type="TextureButton" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control"]
-custom_minimum_size = Vector2(96, 96)
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture_normal = ExtResource("7_ipm2g")
 texture_pressed = ExtResource("7_ipm2g")
@@ -161,7 +162,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="Tower3" type="TextureButton" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control"]
-custom_minimum_size = Vector2(96, 96)
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture_normal = ExtResource("7_ipm2g")
 texture_pressed = ExtResource("7_ipm2g")
@@ -180,14 +181,67 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="Confirm" type="TextureButton" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control"]
+[node name="TextureRect" type="TextureRect" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("8_px6hh")
+
+[node name="Text0" type="Label" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/TextureRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 21
+text = "
+Thorn Wall
+Cost: 6  HP: 600   DPS: 4
+Basic defence that damages enemies that attack it"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Text1" type="Label" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/TextureRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 21
+text = "
+Toxic Bloom
+Cost: X  HP: 400   DPS: 6
+Ranged defence that fires a toxic cloud, damaging units in range over time"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Text2" type="Label" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/TextureRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 21
+text = "
+Flytrap Cluster
+Cost: X  HP: 850   DPS: 5
+Traps a single enemy in its mouth, immobilizing them to deal damage over time"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Confirm" type="TextureButton" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("7_ipm2g")
 texture_pressed = ExtResource("7_ipm2g")
 texture_hover = ExtResource("8_px6hh")
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control/Confirm"]
+[node name="Label" type="Label" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Confirm"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -198,14 +252,6 @@ text = "CONFIRM"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-texture = ExtResource("8_px6hh")
-
-[node name="ThornwallText" parent="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/TextureRect" instance=ExtResource("9_icbxn")]
-layout_mode = 1
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Control/PanelContainer"]
 libraries = {
 "": SubResource("AnimationLibrary_s40a4")
@@ -215,4 +261,4 @@ libraries = {
 [connection signal="pressed" from="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control/Tower1" to="Control/PanelContainer" method="_on_button_clicked" binds= [0]]
 [connection signal="pressed" from="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control/Tower2" to="Control/PanelContainer" method="_on_button_clicked" binds= [1]]
 [connection signal="pressed" from="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control/Tower3" to="Control/PanelContainer" method="_on_button_clicked" binds= [2]]
-[connection signal="pressed" from="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Control/Confirm" to="Control/PanelContainer" method="_on_button_confirm"]
+[connection signal="pressed" from="Control/PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Confirm" to="Control/PanelContainer" method="_on_button_confirm"]

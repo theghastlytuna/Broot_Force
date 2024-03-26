@@ -7,6 +7,7 @@
 
 [sub_resource type="SystemFont" id="SystemFont_3j0xp"]
 font_names = PackedStringArray("Impact")
+subpixel_positioning = 0
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_45swt")
