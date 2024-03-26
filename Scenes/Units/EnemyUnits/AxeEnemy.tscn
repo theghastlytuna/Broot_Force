@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b8qn8je4ge20n"]
+[gd_scene load_steps=12 format=3 uid="uid://b8qn8je4ge20n"]
 
 [ext_resource type="Script" path="res://Scripts/Units/Unit Scripts/Unit.gd" id="1_dwoek"]
 [ext_resource type="Script" path="res://Scripts/Units/Movement Scripts/UnitMove.gd" id="2_h7fnv"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://csjrkbbpxmxpt" path="res://Art Assets/Textures/Temporary/Units/HumanOutlined.png" id="4_bme4p"]
 [ext_resource type="Texture2D" uid="uid://xmswgdihi5kt" path="res://Art Assets/Textures/Temporary/Weapons/axe.png" id="5_1qufm"]
 [ext_resource type="Script" path="res://Scripts/Units/Animation/AnimationSignalGiver.gd" id="5_ns2jt"]
+[ext_resource type="PackedScene" uid="uid://drh5slfmagly0" path="res://Scenes/Units/HealthBar.tscn" id="7_itma6"]
 
 [sub_resource type="Animation" id="Animation_nfk13"]
 resource_name = "BaseSwing"
@@ -33,11 +34,12 @@ size = Vector2(90, 114)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dcjwa"]
 
-[node name="AxeEnemy" type="CharacterBody2D" groups=["EnemyHuman", "EnemyUnits", "Melee"]]
+[node name="AxeEnemy" type="CharacterBody2D" node_paths=PackedStringArray("healthBarNode") groups=["EnemyHuman", "EnemyUnits", "Melee"]]
 collision_layer = 2
 script = ExtResource("1_dwoek")
 health = 10.0
 cost = 10
+healthBarNode = NodePath("HealthBar")
 
 [node name="Movement" type="Node2D" parent="."]
 position = Vector2(0.25, -28.75)
@@ -84,6 +86,9 @@ shape = SubResource("RectangleShape2D_fkmxp")
 position = Vector2(0.25, -28.75)
 scale = Vector2(1.9, 1.941)
 shape = SubResource("CapsuleShape2D_dcjwa")
+
+[node name="HealthBar" parent="." instance=ExtResource("7_itma6")]
+position = Vector2(-5.96046e-08, -62)
 
 [connection signal="StartedAttacking" from="Attack" to="Movement" method="_on_attack_started_attacking"]
 [connection signal="StartedAttacking" from="Attack" to="UnitBody/UnitWeapon/WeaponAnimation" method="playAnimation"]

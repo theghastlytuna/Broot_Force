@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b4ixdpakfx4g7"]
+[gd_scene load_steps=14 format=3 uid="uid://b4ixdpakfx4g7"]
 
 [ext_resource type="Script" path="res://Scripts/Units/Unit Scripts/Unit.gd" id="1_ptiun"]
 [ext_resource type="Script" path="res://Scripts/Units/Movement Scripts/UnitMove.gd" id="2_qb5gg"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dv8wk7ar4tdg" path="res://Art Assets/Textures/Temporary/Weapons/ar-15.png" id="5_tq3yq"]
 [ext_resource type="Script" path="res://Scripts/Units/Animation/AnimationSignalGiver.gd" id="6_o41yf"]
 [ext_resource type="Texture2D" uid="uid://cwwblntnwsdep" path="res://Art Assets/Textures/Temporary/militaryHelm.png" id="7_fwq47"]
+[ext_resource type="PackedScene" uid="uid://drh5slfmagly0" path="res://Scenes/Units/HealthBar.tscn" id="8_a74qf"]
 
 [sub_resource type="Animation" id="Animation_nfk13"]
 resource_name = "BaseSwing"
@@ -51,12 +52,13 @@ size = Vector2(92, 114)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dcjwa"]
 
-[node name="SoldierEnemy" type="CharacterBody2D" groups=["EnemyHuman", "EnemyUnits", "Ranged"]]
+[node name="SoldierEnemy" type="CharacterBody2D" node_paths=PackedStringArray("healthBarNode") groups=["EnemyHuman", "EnemyUnits", "Ranged"]]
 collision_layer = 2
 script = ExtResource("1_ptiun")
 health = 14.0
 cost = 60
 meleeResistance = 0.2
+healthBarNode = NodePath("HealthBar")
 
 [node name="Movement" type="Node2D" parent="."]
 position = Vector2(0.25, -28.75)
@@ -112,6 +114,9 @@ shape = SubResource("RectangleShape2D_fkmxp")
 position = Vector2(0.25, -28.75)
 scale = Vector2(1.9, 1.941)
 shape = SubResource("CapsuleShape2D_dcjwa")
+
+[node name="HealthBar" parent="." instance=ExtResource("8_a74qf")]
+position = Vector2(-5.96046e-08, -70)
 
 [connection signal="StartedAttacking" from="Attack" to="Movement" method="_on_attack_started_attacking"]
 [connection signal="StartedAttacking" from="Attack" to="UnitBody/UnitWeapon/WeaponAnimation" method="playAnimation"]

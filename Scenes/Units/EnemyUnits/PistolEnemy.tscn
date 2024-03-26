@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cde8tgxvy6y1g"]
+[gd_scene load_steps=13 format=3 uid="uid://cde8tgxvy6y1g"]
 
 [ext_resource type="Script" path="res://Scripts/Units/Unit Scripts/Unit.gd" id="1_hqxxc"]
 [ext_resource type="Script" path="res://Scripts/Units/Movement Scripts/UnitMove.gd" id="2_abctq"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://csjrkbbpxmxpt" path="res://Art Assets/Textures/Temporary/Units/HumanOutlined.png" id="4_7dd52"]
 [ext_resource type="Texture2D" uid="uid://b4538ammfq2qd" path="res://Art Assets/Textures/Temporary/Weapons/pistol.png" id="5_2lqka"]
 [ext_resource type="Script" path="res://Scripts/Units/Animation/AnimationSignalGiver.gd" id="5_cb8ig"]
+[ext_resource type="PackedScene" uid="uid://drh5slfmagly0" path="res://Scenes/Units/HealthBar.tscn" id="7_0soum"]
 
 [sub_resource type="Animation" id="Animation_nfk13"]
 resource_name = "BaseSwing"
@@ -101,6 +102,9 @@ shape = SubResource("RectangleShape2D_fkmxp")
 position = Vector2(0.25, -28.75)
 scale = Vector2(1.9, 1.941)
 shape = SubResource("CapsuleShape2D_dcjwa")
+
+[node name="HealthBar" parent="." instance=ExtResource("7_0soum")]
+position = Vector2(0, -63)
 
 [connection signal="StartedAttacking" from="Attack" to="Movement" method="_on_attack_started_attacking"]
 [connection signal="StartedAttacking" from="Attack" to="UnitBody/UnitWeapon/WeaponAnimation" method="playAnimation"]

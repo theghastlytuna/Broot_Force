@@ -1,15 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://mlvq353kw0c1"]
+[gd_scene load_steps=4 format=3 uid="uid://mlvq353kw0c1"]
 
 [ext_resource type="Script" path="res://Scenes/Units/TreeUnitsGround/MainTree.gd" id="1_d6j5j"]
+[ext_resource type="PackedScene" uid="uid://drh5slfmagly0" path="res://Scenes/Units/HealthBar.tscn" id="2_fsi3d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1tuch"]
 
-[node name="MainTree" type="StaticBody2D" groups=["PlayerUnits"]]
+[node name="MainTree" type="StaticBody2D" node_paths=PackedStringArray("healthBarNode") groups=["PlayerUnits"]]
 collision_layer = 4
 script = ExtResource("1_d6j5j")
 health = 1500.0
+healthBarNode = NodePath("HealthBar")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, -140)
 scale = Vector2(4, 14)
 shape = SubResource("RectangleShape2D_1tuch")
+
+[node name="HealthBar" parent="." instance=ExtResource("2_fsi3d")]
+position = Vector2(0, 50)
+scale = Vector2(0.2, 0.2)

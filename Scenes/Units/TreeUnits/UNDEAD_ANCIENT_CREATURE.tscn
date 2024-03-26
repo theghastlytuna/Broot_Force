@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dd20bvpcnqwfs"]
+[gd_scene load_steps=11 format=3 uid="uid://dd20bvpcnqwfs"]
 
 [ext_resource type="Script" path="res://Scripts/Units/Unit Scripts/Unit.gd" id="1_pjrmx"]
 [ext_resource type="Script" path="res://Scripts/Units/Movement Scripts/UnitMove.gd" id="2_0mbfe"]
 [ext_resource type="Script" path="res://Scripts/Units/Attack Scripts/UnitAttack.gd" id="3_qbfl6"]
 [ext_resource type="Texture2D" uid="uid://uejajowx7627" path="res://Art Assets/Textures/Icons/UndeadUnits/UNDEAD_ANCIENT_CREATURE.png" id="4_ojje4"]
+[ext_resource type="PackedScene" uid="uid://drh5slfmagly0" path="res://Scenes/Units/HealthBar.tscn" id="6_df8os"]
 [ext_resource type="Script" path="res://Scripts/Units/Animation/AnimationSignalGiver.gd" id="6_so4py"]
 
 [sub_resource type="Animation" id="Animation_nfk13"]
@@ -33,11 +34,12 @@ size = Vector2(50, 263)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xqykc"]
 size = Vector2(88.9785, 69.2105)
 
-[node name="Mammoth" type="CharacterBody2D" groups=["PlayerUnits"]]
+[node name="Mammoth" type="CharacterBody2D" node_paths=PackedStringArray("healthBarNode") groups=["PlayerUnits"]]
 collision_layer = 4
 script = ExtResource("1_pjrmx")
 health = 8.0
 type = 3
+healthBarNode = NodePath("HealthBar")
 
 [node name="Movement" type="Node2D" parent="."]
 position = Vector2(0, -57.6581)
@@ -83,6 +85,10 @@ shape = SubResource("RectangleShape2D_asgvg")
 position = Vector2(-167.5, -132.5)
 scale = Vector2(3.72, 3.8)
 shape = SubResource("RectangleShape2D_xqykc")
+
+[node name="HealthBar" parent="." instance=ExtResource("6_df8os")]
+position = Vector2(-198, -255)
+scale = Vector2(0.3, 0.3)
 
 [connection signal="StartedAttacking" from="Attack" to="Movement" method="_on_attack_started_attacking"]
 [connection signal="StartedAttacking" from="Attack" to="UnitBody/UnitWeapon/WeaponAnimation" method="playAnimation"]

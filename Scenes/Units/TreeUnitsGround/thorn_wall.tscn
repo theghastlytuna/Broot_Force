@@ -1,15 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2t15f7ju4x0g"]
+[gd_scene load_steps=6 format=3 uid="uid://b2t15f7ju4x0g"]
 
 [ext_resource type="Script" path="res://Scripts/Towers/Tower Scripts/ThornWall.gd" id="1_1lam0"]
 [ext_resource type="Texture2D" uid="uid://buib6rapkh83j" path="res://Art Assets/Textures/TM_overworld.png" id="2_ta6pr"]
 [ext_resource type="Script" path="res://Scripts/Towers/Attack Scripts/ThornAttack.gd" id="3_6qv0m"]
+[ext_resource type="PackedScene" uid="uid://drh5slfmagly0" path="res://Scenes/Units/HealthBar.tscn" id="4_dmci1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1tuch"]
 
-[node name="ThornWall" type="StaticBody2D" groups=["PlayerUnits"]]
+[node name="ThornWall" type="StaticBody2D" node_paths=PackedStringArray("healthBarNode") groups=["PlayerUnits"]]
 collision_layer = 4
 script = ExtResource("1_1lam0")
 health = 600.0
+healthBarNode = NodePath("HealthBar")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(0, -47)
@@ -27,5 +29,9 @@ groupToAttack = "EnemyUnits"
 position = Vector2(0, -70)
 scale = Vector2(4, 7)
 shape = SubResource("RectangleShape2D_1tuch")
+
+[node name="HealthBar" parent="." instance=ExtResource("4_dmci1")]
+position = Vector2(0, 40)
+scale = Vector2(0.15, 0.15)
 
 [connection signal="onDamaged" from="." to="Attack" method="damaged"]
