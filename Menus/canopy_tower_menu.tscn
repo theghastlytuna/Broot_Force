@@ -58,7 +58,7 @@ anchor_right = 1.0
 grow_horizontal = 0
 
 [node name="PanelContainer" type="PanelContainer" parent="Control"]
-layout_mode = 0
+layout_mode = 1
 offset_right = 340.0
 offset_bottom = 648.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_h1rti")

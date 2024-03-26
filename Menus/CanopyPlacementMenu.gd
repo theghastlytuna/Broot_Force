@@ -2,13 +2,14 @@ extends PanelContainer
 
 @export var tower_resources:Array[Resource]
 var most_recent_parentclicked:Node2D
-var open_menu = false
+@onready var open_menu = false
 var towerIndex : int
 @onready var groundMenu = get_node("/root/Overworld/LandCanvas/Control/PanelContainer")
 @onready var groundAnim = get_node("/root/Overworld/LandCanvas/Control/PanelContainer/AnimationPlayer")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
 	$NinePatchRect/MarginContainer/VBoxContainer/Confirm.visible = false
 
 func _input(event):

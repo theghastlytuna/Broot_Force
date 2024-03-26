@@ -2,7 +2,7 @@ extends PanelContainer
 
 @export var tower_resources:Array[Resource]
 var most_recent_parentclicked:Node2D
-var open_menu = false
+@onready var open_menu = false
 var towerIndex : int
 @onready var canopyMenu = get_node("/root/Overworld/CanopyCanvas/Control/PanelContainer")
 @onready var canopyAnim = get_node("/root/Overworld/CanopyCanvas/Control/PanelContainer/AnimationPlayer")
