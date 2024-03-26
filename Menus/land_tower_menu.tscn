@@ -230,7 +230,7 @@ theme_override_font_sizes/font_size = 21
 text = "
 Flytrap Cluster
 Cost: X  HP: 850   DPS: 5
-Traps a single enemy in its mouth, immobilizing them to deal damage over time"
+Melee tower that attacks up to 3 enemies at the same time"
 horizontal_alignment = 1
 autowrap_mode = 3
 

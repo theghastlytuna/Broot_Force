@@ -4,24 +4,34 @@ extends PanelContainer
 var most_recent_parentclicked:Node2D
 var open_menu = false
 var towerIndex : int
+@onready var canopyMenu = get_node("/root/Overworld/CanopyCanvas/Control/PanelContainer")
+@onready var canopyAnim = get_node("/root/Overworld/CanopyCanvas/Control/PanelContainer/AnimationPlayer")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$NinePatchRect/MarginContainer/VBoxContainer/Confirm.visible = false
+
 
 # Cancel button function
 func _on_texture_button_pressed():
 	if open_menu:
 		$AnimationPlayer.play("Hide")
 		open_menu = false
+		#Debug.Log(canopyMenu.open_menu)
 		$NinePatchRect/MarginContainer/VBoxContainer/Confirm.visible = false
 	
 
 # Node press function
 func _on_button_land_clicked(to_parent_to):
 	if !open_menu:
-		$AnimationPlayer.play("Show")
-		open_menu = true
+		if canopyMenu.open_menu:
+			canopyAnim.play("Hide")
+			$AnimationPlayer.play("Show")
+			canopyMenu.open_menu = false
+			open_menu = true
+		else:
+			$AnimationPlayer.play("Show")
+			open_menu = true
 	most_recent_parentclicked = to_parent_to
 
 # Confirm button function
