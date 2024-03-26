@@ -26,7 +26,7 @@ func _on_button_land_clicked(to_parent_to):
 
 # Confirm button function
 func _on_button_confirm():
-	most_recent_parentclicked.spawn_tower(tower_resources[towerIndex].instantiate())
+	most_recent_parentclicked.spawn_tower(tower_resources[towerIndex].instantiate(),tower_resources[towerIndex].resource_path)
 	Debug.Log("spawned tower")
 	$AnimationPlayer.play("Hide")
 	open_menu = false

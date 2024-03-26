@@ -51,12 +51,16 @@ func _ready():
 	SoundManager.set_default_ambient_sound_bus("Ambient")
 	
 	if hittable:
-		healthBar = get_node("HealthBar").get_node("TextureProgressBar")
-		healthBar.max_value = health
-		healthBar.value = health
+		setHealth(health)
 	
 	#if is_in_group("EnemyVehicle"):
 		#SoundManager.play_ambient_sound(vehicleSound)
+
+func setHealth(h):
+	healthBar = get_node("HealthBar").get_node("TextureProgressBar")
+	healthBar.max_value = health
+	healthBar.value = h
+	damageTaken = health - h
 
 ##Returns the current health of the unit
 func getHealth() -> float:

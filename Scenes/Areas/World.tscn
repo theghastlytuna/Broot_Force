@@ -93,7 +93,7 @@ spawner = NodePath("../../Spawner")
 spawnInterval = 100.0
 gameSaver = NodePath("../../SaveGame")
 rootPointSaveArcLength = 50.0
-rootPhaseTimeout = 30.0
+rootPhaseTimeout = 2.0
 
 [node name="Tip" type="Sprite2D" parent="Root/Area2D" groups=["Tip"]]
 
