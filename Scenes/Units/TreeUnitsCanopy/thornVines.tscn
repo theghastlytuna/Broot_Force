@@ -323,6 +323,7 @@ _data = {
 collision_layer = 4
 script = ExtResource("1_qcer7")
 health = 100000.0
+hittable = false
 
 [node name="Attack" type="Node2D" parent="."]
 script = ExtResource("3_q88i2")
@@ -404,7 +405,6 @@ position = Vector2(0, -137)
 
 [node name="Spine1" type="Bone2D" parent="Holder/Skeleton2D"]
 rotation = -0.44833
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 0, 0)
 
 [node name="Spine2" type="Bone2D" parent="Holder/Skeleton2D/Spine1"]
@@ -426,7 +426,6 @@ rest = Transform2D(1, 0, 0, 1, 0, 60)
 [node name="Spine5" type="Bone2D" parent="Holder/Skeleton2D/Spine1/Spine2/Spine3/Spine4"]
 position = Vector2(0, 64)
 rotation = 2.29244
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 0, 64)
 
 [node name="Head" type="Bone2D" parent="Holder/Skeleton2D/Spine1/Spine2/Spine3/Spine4/Spine5"]

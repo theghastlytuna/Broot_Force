@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://dv0aty8oydrg2"]
+[gd_scene load_steps=13 format=3 uid="uid://dv0aty8oydrg2"]
 
 [ext_resource type="Script" path="res://Scripts/Towers/Tower Scripts/ThornWall.gd" id="1_exnqm"]
 [ext_resource type="Texture2D" uid="uid://c05wm8dm7byej" path="res://Art Assets/Textures/FlowerStem.png" id="3_0m6mg"]
 [ext_resource type="Script" path="res://Scripts/Units/Attack Scripts/UnitAttack.gd" id="3_5iyqw"]
 [ext_resource type="Texture2D" uid="uid://d30er8toa543j" path="res://Art Assets/Textures/BasicStem.png" id="4_j12q8"]
 [ext_resource type="Texture2D" uid="uid://5q6umggjgim4" path="res://Art Assets/Textures/FlowerHead.png" id="5_rwnga"]
+[ext_resource type="PackedScene" uid="uid://drh5slfmagly0" path="res://Scenes/Units/HealthBar.tscn" id="6_babp6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yvunn"]
 
@@ -248,11 +249,13 @@ rest = Transform2D(1, 0, 0, 1, 0, 0)
 [node name="Spine2" type="Bone2D" parent="Node2D/Skeleton2D/Spine1"]
 position = Vector2(0, -58)
 rotation = -0.631284
+scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 0, -58)
 
 [node name="Spine3" type="Bone2D" parent="Node2D/Skeleton2D/Spine1/Spine2"]
 position = Vector2(0, -33)
 rotation = -0.651038
+scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 0, -33)
 
 [node name="Head" type="Bone2D" parent="Node2D/Skeleton2D/Spine1/Spine2/Spine3"]
@@ -269,6 +272,10 @@ libraries = {
 "": SubResource("AnimationLibrary_ww6e4")
 }
 playback_default_blend_time = 0.2
+
+[node name="HealthBar" parent="." instance=ExtResource("6_babp6")]
+position = Vector2(0, 40)
+scale = Vector2(0.15, 0.15)
 
 [connection signal="ready" from="." to="Node2D/AnimationPlayer" method="play" binds= ["Idle"]]
 [connection signal="StartedAttacking" from="Attack" to="Node2D/AnimationPlayer" method="play" binds= ["Attack"]]

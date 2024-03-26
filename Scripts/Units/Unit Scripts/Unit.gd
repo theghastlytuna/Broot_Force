@@ -3,6 +3,7 @@ class_name Unit
 
 ##The amount of health a unit has
 @export var health : float
+@export var hittable : bool = true
 @export var type: UnitType
 @export var cost: int
 ##Float which represents the percentage of poison damage negated,
@@ -49,9 +50,10 @@ func _ready():
 	SoundManager.set_default_sound_bus("Effects")
 	SoundManager.set_default_ambient_sound_bus("Ambient")
 	
-	healthBar = get_node("HealthBar").get_node("TextureProgressBar")
-	healthBar.max_value = health
-	healthBar.value = health
+	if hittable:
+		healthBar = get_node("HealthBar").get_node("TextureProgressBar")
+		healthBar.max_value = health
+		healthBar.value = health
 	
 	#if is_in_group("EnemyVehicle"):
 		#SoundManager.play_ambient_sound(vehicleSound)
@@ -62,27 +64,28 @@ func getHealth() -> float:
 
 ##A function for damaging this unit. Updates the health based on the attack damage and type provided in args.
 func damage(args : AttackArguments):
-	onDamaged.emit(args)
-	var currentDamage : float = args.attackDamage
-	if args.attackType == AttackType.POISON:
-		currentDamage *= (1 - poisonResistance)
-		#Debug.Log("Poison damage reduced by ", 100 * poisonResistance, " percent.")
-	
-	if args.attackType == AttackType.MELEE:
-		currentDamage *= (1 - meleeResistance)
-		#Debug.Log("Melee damage reduced by ", 100 * meleeResistance, " percent.")
-	
-	damageTaken += currentDamage
-	healthBar.value = health - damageTaken
-	Debug.Log("Health bar value: ", healthBar.value)
-	#Debug.LogSpace("Damage Taken " , currentDamage , name , " from " , args.from.name)
-	#Debug.Log(name, " current health: ", health - damageTaken)
-	check_death()
-	if is_in_group("EnemyHuman"):
-		var player:AudioStreamPlayer = SoundManager.play_sound(painSound)
-		player.volume_db -= 0
-	elif is_in_group("EnemyVehicle"):
-		SoundManager.play_sound(vehicleDamage)
+	if hittable:
+		onDamaged.emit(args)
+		var currentDamage : float = args.attackDamage
+		if args.attackType == AttackType.POISON:
+			currentDamage *= (1 - poisonResistance)
+			#Debug.Log("Poison damage reduced by ", 100 * poisonResistance, " percent.")
+		
+		if args.attackType == AttackType.MELEE:
+			currentDamage *= (1 - meleeResistance)
+			#Debug.Log("Melee damage reduced by ", 100 * meleeResistance, " percent.")
+		
+		damageTaken += currentDamage
+		healthBar.value = health - damageTaken
+		Debug.Log("Health bar value: ", healthBar.value)
+		#Debug.LogSpace("Damage Taken " , currentDamage , name , " from " , args.from.name)
+		#Debug.Log(name, " current health: ", health - damageTaken)
+		check_death()
+		if is_in_group("EnemyHuman"):
+			var player:AudioStreamPlayer = SoundManager.play_sound(painSound)
+			player.volume_db -= 0
+		elif is_in_group("EnemyVehicle"):
+			SoundManager.play_sound(vehicleDamage)
 
 ##Checks if the unit has died; if it has, then destroy it.
 func check_death():

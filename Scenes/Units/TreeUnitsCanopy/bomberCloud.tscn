@@ -5,9 +5,8 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yvunn"]
 
-[node name="BomberCloud" type="Node2D" node_paths=PackedStringArray("cloudSprite", "attackNode")]
+[node name="BomberCloud" type="Node2D" node_paths=PackedStringArray("attackNode")]
 script = ExtResource("1_sc6uo")
-cloudSprite = NodePath("")
 attackNode = NodePath("Attack")
 
 [node name="Attack" type="Node2D" parent="."]

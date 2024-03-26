@@ -5,11 +5,10 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1tuch"]
 
-[node name="MainTree" type="StaticBody2D" node_paths=PackedStringArray("healthBarNode") groups=["PlayerUnits"]]
+[node name="MainTree" type="StaticBody2D" groups=["PlayerUnits"]]
 collision_layer = 4
 script = ExtResource("1_d6j5j")
 health = 1500.0
-healthBarNode = NodePath("HealthBar")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, -140)
