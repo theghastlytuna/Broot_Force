@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bsg315gjaf8cf"]
+[gd_scene load_steps=9 format=3 uid="uid://bsg315gjaf8cf"]
 
 [ext_resource type="Script" path="res://Scripts/Units/Unit Scripts/Unit.gd" id="1_icljr"]
 [ext_resource type="Script" path="res://Scripts/Units/Movement Scripts/UnitMove.gd" id="2_dygt4"]
 [ext_resource type="Script" path="res://Scripts/Units/Attack Scripts/UnitAttack.gd" id="3_5dhc5"]
 [ext_resource type="PackedScene" uid="uid://bo1ek3hbsh1i0" path="res://Scenes/TestHumanSkeleton.tscn" id="5_dd4fy"]
+[ext_resource type="Texture2D" uid="uid://ba24bylssty48" path="res://Art Assets/Textures/AllyTextures/skull_parts.png" id="6_60kpx"]
 [ext_resource type="PackedScene" uid="uid://drh5slfmagly0" path="res://Scenes/Units/HealthBar.tscn" id="6_vwk45"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bwi2x"]
@@ -49,8 +50,45 @@ position = Vector2(-38, -121)
 position = Vector2(-34, -41)
 scale = Vector2(-0.17, 0.17)
 
+[node name="Spine" parent="Node2D/Parts" index="0"]
+scale = Vector2(0.238, 0.478)
+offset = Vector2(529.3, 0)
+
+[node name="Head" parent="Node2D/Parts" index="1"]
+self_modulate = Color(0, 0, 0, 1)
+rotation = -0.0634229
+scale = Vector2(-0.334, 0.334)
+offset = Vector2(-446.3, 127.8)
+texture = ExtResource("6_60kpx")
+polygon = PackedVector2Array(131, 79, 151, 294, 210, 290, 238, 256, 326, 240, 352, 127, 300, 61)
+uv = PackedVector2Array(131, 79, 151, 294, 210, 290, 238, 256, 326, 240, 352, 127, 300, 61)
+bones = ["Hip", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0), "Hip/Spine", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0), "Hip/Spine/Head", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1), "Hip/Spine/Head/TopHead", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0), "Hip/Spine/UpperArmR", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0), "Hip/Spine/UpperArmR/LowerArmR", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0), "Hip/Spine/UpperArmR/LowerArmR/HandR", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0), "Hip/Spine/UpperArmL", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0), "Hip/Spine/UpperArmL/LowerArmL", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0), "Hip/Spine/UpperArmL/LowerArmL/HandL", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0), "Hip/UpperLegR", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0), "Hip/UpperLegR/LowerLegR", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0), "Hip/UpperLegR/LowerLegR/FootR", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0), "Hip/UpperLegL", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0), "Hip/UpperLegL/LowerLegL", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0), "Hip/UpperLegL/LowerLegL/FootL", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)]
+
+[node name="Jaw" type="Polygon2D" parent="Node2D/Parts" index="2"]
+self_modulate = Color(0, 0, 0, 1)
+rotation = 0.100415
+scale = Vector2(-0.334, 0.334)
+offset = Vector2(-1902.6, -88)
+texture = ExtResource("6_60kpx")
+skeleton = NodePath("../../Skeleton2D")
+polygon = PackedVector2Array(179, 368, 208, 328, 235, 318, 231, 282, 250, 253, 301, 258, 314, 287, 295, 355, 261, 383)
+uv = PackedVector2Array(179, 368, 208, 328, 235, 318, 231, 282, 250, 253, 301, 258, 314, 287, 295, 355, 261, 383)
+bones = ["Hip", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Spine", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Spine/Head", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1), "Hip/Spine/Head/TopHead", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Spine/UpperArmR", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Spine/UpperArmR/LowerArmR", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Spine/UpperArmR/LowerArmR/HandR", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Spine/UpperArmL", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Spine/UpperArmL/LowerArmL", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Spine/UpperArmL/LowerArmL/HandL", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/UpperLegR", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/UpperLegR/LowerLegR", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/UpperLegR/LowerLegR/FootR", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/UpperLegL", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/UpperLegL/LowerLegL", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/UpperLegL/LowerLegL/FootL", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0)]
+
+[node name="Skeleton2D" parent="Node2D" index="2"]
+visible = false
+
+[node name="LowerArmR" parent="Node2D/Skeleton2D/Hip/Spine/UpperArmR" index="0"]
+scale = Vector2(0.999999, 0.999999)
+
 [node name="UpperArmL" parent="Node2D/Skeleton2D/Hip/Spine" index="2"]
 scale = Vector2(0.999999, 0.999999)
+
+[node name="LowerArmL" parent="Node2D/Skeleton2D/Hip/Spine/UpperArmL" index="0"]
+scale = Vector2(0.999999, 0.999999)
+
+[node name="UpperLegR" parent="Node2D/Skeleton2D/Hip" index="1"]
+scale = Vector2(1, 1)
 
 [node name="LowerLegR" parent="Node2D/Skeleton2D/Hip/UpperLegR" index="0"]
 scale = Vector2(1, 1)
@@ -58,9 +96,17 @@ scale = Vector2(1, 1)
 [node name="UpperLegL" parent="Node2D/Skeleton2D/Hip" index="2"]
 scale = Vector2(1, 1)
 
+[node name="LowerLegL" parent="Node2D/Skeleton2D/Hip/UpperLegL" index="0"]
+scale = Vector2(0.999999, 0.999999)
+
+[node name="AnimationPlayer" parent="Node2D" index="3"]
+playback_default_blend_time = 0.35
+
 [connection signal="ready" from="." to="Node2D/AnimationPlayer" method="play" binds= ["Walk"]]
+[connection signal="AttackedEnemy" from="Attack" to="Node2D/AnimationPlayer" method="play" binds= ["Attack"]]
 [connection signal="StartedAttacking" from="Attack" to="Movement" method="_on_attack_started_attacking"]
 [connection signal="StoppedAttacking" from="Attack" to="Movement" method="_on_attack_stopped_attacking"]
+[connection signal="StoppedAttacking" from="Attack" to="Node2D/AnimationPlayer" method="play" binds= ["Walk"]]
 [connection signal="body_entered" from="AttackArea" to="Attack" method="_on_attack_area_body_entered"]
 [connection signal="body_exited" from="AttackArea" to="Attack" method="_on_attack_area_body_exited"]
 
