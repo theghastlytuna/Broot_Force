@@ -1,20 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://daadsxgrjomlf"]
+[gd_scene load_steps=4 format=3 uid="uid://daadsxgrjomlf"]
 
 [ext_resource type="Script" path="res://Scripts/Towers/Attack Scripts/bomberCloud.gd" id="1_sc6uo"]
-[ext_resource type="Texture2D" uid="uid://bdi5uhfq0jhtc" path="res://Sprites/poison.png" id="2_bhrwt"]
 [ext_resource type="Script" path="res://Scripts/Units/Attack Scripts/UnitAttack.gd" id="3_2r27c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yvunn"]
 
 [node name="BomberCloud" type="Node2D" node_paths=PackedStringArray("cloudSprite", "attackNode")]
 script = ExtResource("1_sc6uo")
-cloudSprite = NodePath("Sprite")
+cloudSprite = NodePath("")
 attackNode = NodePath("Attack")
-
-[node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(-2.38419e-07, -70)
-scale = Vector2(0.166667, 0.518518)
-texture = ExtResource("2_bhrwt")
 
 [node name="Attack" type="Node2D" parent="."]
 script = ExtResource("3_2r27c")

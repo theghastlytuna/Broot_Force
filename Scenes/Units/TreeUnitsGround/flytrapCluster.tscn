@@ -379,7 +379,6 @@ rest = Transform2D(1, 0, 0, 1, 0, -39)
 [node name="Spine3" type="Bone2D" parent="SkeletonParent/Skeleton2D/Spine1/Spine2"]
 position = Vector2(0, -45)
 rotation = -1.43463
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 0, -45)
 
 [node name="Head" type="Bone2D" parent="SkeletonParent/Skeleton2D/Spine1/Spine2/Spine3"]
@@ -408,6 +407,7 @@ libraries = {
 }
 playback_default_blend_time = 0.2
 
+[connection signal="ready" from="." to="AnimationPlayer" method="play" binds= ["Idle"]]
 [connection signal="StartedAttacking" from="Attack" to="AnimationPlayer" method="play" binds= ["Attack"]]
 [connection signal="StoppedAttacking" from="Attack" to="AnimationPlayer" method="play" binds= ["Idle"]]
 [connection signal="body_entered" from="AttackArea" to="Attack" method="_on_attack_area_body_entered"]

@@ -32,4 +32,4 @@ func stopCloud():
 	#Disable the attack node, stop the timer, hide the poison sprite
 	attackNode.enableAttack(false)
 	lifeTimer.stop()
-	cloudSprite.visible = false
+	#cloudSprite.visible = false
