@@ -86,6 +86,9 @@ func _on_attack_area_body_exited(body : PhysicsBody2D):
 			StoppedAttacking.emit()
 
 func _on_timer_timeout():
+	if get_parent().has_method("setIsDead"):
+		if get_parent().isDead:
+			return
 	attack()
 	#print(enemyColliders[0].get_parent().getHealth())
 

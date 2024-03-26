@@ -57,8 +57,8 @@ offset = Vector2(529.3, 0)
 [node name="Head" parent="Node2D/Parts" index="1"]
 self_modulate = Color(0, 0, 0, 1)
 rotation = -0.0634229
-scale = Vector2(-0.334, 0.334)
-offset = Vector2(-446.3, 127.8)
+scale = Vector2(-0.454, 0.454)
+offset = Vector2(-376.4, -16.4)
 texture = ExtResource("6_60kpx")
 polygon = PackedVector2Array(131, 79, 151, 294, 210, 290, 238, 256, 326, 240, 352, 127, 300, 61)
 uv = PackedVector2Array(131, 79, 151, 294, 210, 290, 238, 256, 326, 240, 352, 127, 300, 61)
@@ -67,8 +67,8 @@ bones = ["Hip", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0), "Hip/Spine", PackedFloa
 [node name="Jaw" type="Polygon2D" parent="Node2D/Parts" index="2"]
 self_modulate = Color(0, 0, 0, 1)
 rotation = 0.100415
-scale = Vector2(-0.334, 0.334)
-offset = Vector2(-1902.6, -88)
+scale = Vector2(-0.454, 0.454)
+offset = Vector2(-1432.7, -192.2)
 texture = ExtResource("6_60kpx")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(179, 368, 208, 328, 235, 318, 231, 282, 250, 253, 301, 258, 314, 287, 295, 355, 261, 383)
@@ -78,17 +78,29 @@ bones = ["Hip", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Spine", Pack
 [node name="Skeleton2D" parent="Node2D" index="2"]
 visible = false
 
-[node name="LowerArmR" parent="Node2D/Skeleton2D/Hip/Spine/UpperArmR" index="0"]
+[node name="UpperArmR" parent="Node2D/Skeleton2D/Hip/Spine" index="1"]
 scale = Vector2(0.999999, 0.999999)
+
+[node name="LowerArmR" parent="Node2D/Skeleton2D/Hip/Spine/UpperArmR" index="0"]
+scale = Vector2(0.999998, 0.999998)
+
+[node name="UpperArmL" parent="Node2D/Skeleton2D/Hip/Spine" index="2"]
+scale = Vector2(0.999998, 0.999998)
 
 [node name="LowerArmL" parent="Node2D/Skeleton2D/Hip/Spine/UpperArmL" index="0"]
-scale = Vector2(0.999999, 0.999999)
+scale = Vector2(0.999998, 0.999998)
 
 [node name="UpperLegR" parent="Node2D/Skeleton2D/Hip" index="1"]
-scale = Vector2(1, 1)
+scale = Vector2(0.999999, 0.999999)
+
+[node name="LowerLegR" parent="Node2D/Skeleton2D/Hip/UpperLegR" index="0"]
+scale = Vector2(0.999999, 0.999999)
+
+[node name="UpperLegL" parent="Node2D/Skeleton2D/Hip" index="2"]
+scale = Vector2(0.999999, 0.999999)
 
 [node name="LowerLegL" parent="Node2D/Skeleton2D/Hip/UpperLegL" index="0"]
-scale = Vector2(0.999999, 0.999999)
+scale = Vector2(0.999997, 0.999997)
 
 [node name="AnimationPlayer" parent="Node2D" index="3"]
 playback_default_blend_time = 0.35
@@ -96,11 +108,12 @@ playback_default_blend_time = 0.35
 [connection signal="onDie" from="." to="Node2D/AnimationPlayer" method="play" binds= ["Die"]]
 [connection signal="ready" from="." to="Node2D/AnimationPlayer" method="play" binds= ["Walk"]]
 [connection signal="AttackedEnemy" from="Attack" to="Node2D/AnimationPlayer" method="play" binds= ["Attack"]]
+[connection signal="AttackedEnemy" from="Attack" to="Node2D/AnimationPlayer" method="queue" binds= ["Attack"]]
 [connection signal="StartedAttacking" from="Attack" to="Movement" method="_on_attack_started_attacking"]
+[connection signal="StartedAttacking" from="Attack" to="Node2D/AnimationPlayer" method="play" binds= ["Attack"]]
 [connection signal="StoppedAttacking" from="Attack" to="Movement" method="_on_attack_stopped_attacking"]
 [connection signal="StoppedAttacking" from="Attack" to="Node2D/AnimationPlayer" method="play" binds= ["Walk"]]
 [connection signal="body_entered" from="AttackArea" to="Attack" method="_on_attack_area_body_entered"]
 [connection signal="body_exited" from="AttackArea" to="Attack" method="_on_attack_area_body_exited"]
-[connection signal="OnDeath" from="Node2D" to="." method="queue_free"]
 
 [editable path="Node2D"]

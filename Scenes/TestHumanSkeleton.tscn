@@ -6,8 +6,6 @@
 
 [sub_resource type="Animation" id="Animation_1ccha"]
 resource_name = "Attack"
-length = 1.5
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -63,7 +61,7 @@ tracks/4/path = NodePath("Skeleton2D/Hip/Spine/UpperArmL/LowerArmL:rotation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.5, 0.9, 1.1),
+"times": PackedFloat32Array(0, 0.3, 0.7, 0.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [-0.192648, -0.384829, -0.280687, -0.405236]
@@ -75,7 +73,7 @@ tracks/5/path = NodePath("Skeleton2D/Hip/Spine/UpperArmL:rotation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.5, 0.9, 1.1),
+"times": PackedFloat32Array(0, 0.3, 0.7, 0.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [0.276715, 0.613306, 0.724256, 0.568771]
@@ -87,7 +85,7 @@ tracks/6/path = NodePath("Skeleton2D/Hip/Spine/UpperArmR/LowerArmR:rotation")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.5, 0.9, 1.1),
+"times": PackedFloat32Array(0, 0.3, 0.7, 0.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [-0.21308, -0.815277, -0.958734, -0.758384]
@@ -99,7 +97,7 @@ tracks/7/path = NodePath("Skeleton2D/Hip/Spine/UpperArmR:rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.5, 0.9, 1.1),
+"times": PackedFloat32Array(0, 0.3, 0.7, 0.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [-0.256616, -1.68878, -1.84633, -0.811135]
@@ -245,7 +243,6 @@ tracks/10/keys = {
 
 [sub_resource type="Animation" id="Animation_qo2el"]
 resource_name = "Idle"
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -432,8 +429,9 @@ tracks/9/keys = {
 
 [sub_resource type="Animation" id="Animation_m6mb3"]
 resource_name = "Walk"
-length = 4.0
+length = 2.0
 loop_mode = 1
+step = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -441,7 +439,7 @@ tracks/0/path = NodePath("Skeleton2D/Hip/UpperLegR:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 3.5, 4),
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1, 1.75, 2),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [-0.436332, -0.523599, 0.0, 0.261799, 0.436332, -0.436332, -0.436332]
@@ -453,7 +451,7 @@ tracks/1/path = NodePath("Skeleton2D/Hip/UpperLegR/LowerLegR:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4),
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [0.0, 0.610865, 0.261799, 0.261799, 0.0872665, 0.436332, 0.610865, 0.174533, 0.0]
@@ -465,7 +463,7 @@ tracks/2/path = NodePath("Skeleton2D/Hip/UpperLegL:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1, 1.5, 2, 2.5, 3, 3.5, 4),
+"times": PackedFloat32Array(0, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [0.436332, -0.174533, -0.436332, -0.436332, -0.436332, -0.174533, 0.261799, 0.436332]
@@ -477,7 +475,7 @@ tracks/3/path = NodePath("Skeleton2D/Hip/UpperLegL/LowerLegL:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.5, 1.5, 2, 2.5, 3, 3.5, 4),
+"times": PackedFloat32Array(0, 0.25, 0.75, 1, 1.25, 1.5, 1.75, 2),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [0.0, 0.436332, 0.145444, 0.0, 0.785398, 0.349066, 0.174533, 0.0]
@@ -489,7 +487,7 @@ tracks/4/path = NodePath("Skeleton2D/Hip:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"times": PackedFloat32Array(0, 0.5, 1, 1.25, 2),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, -25), Vector2(0, 0), Vector2(0, -25), Vector2(0, 0)]
@@ -501,7 +499,7 @@ tracks/5/path = NodePath("Skeleton2D/Hip/Spine/UpperArmR:rotation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [0.499061, 0.782082, 0.301087, -0.213584, -0.379649]
@@ -513,7 +511,7 @@ tracks/6/path = NodePath("Skeleton2D/Hip/Spine/UpperArmR/LowerArmR:rotation")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [-0.372787, -0.642578, -0.362027, -0.299512, -0.742449]
@@ -525,7 +523,7 @@ tracks/7/path = NodePath("Skeleton2D/Hip/Spine/UpperArmL:rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 1, 1.5, 2),
+"times": PackedFloat32Array(0, 0.5, 0.75, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [-0.335841, -0.0284731, 0.331614, 0.462986]
@@ -537,7 +535,7 @@ tracks/8/path = NodePath("Skeleton2D/Hip/Spine/UpperArmL/LowerArmL:rotation")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [-0.356889, -0.753539, -0.403705, -0.200072, -0.141788]
@@ -686,6 +684,7 @@ rest = Transform2D(1, 0, 0, 1, 0, -111)
 [node name="UpperArmR" type="Bone2D" parent="Skeleton2D/Hip/Spine"]
 position = Vector2(0, -213)
 rotation = 0.499061
+scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 0, -213)
 
 [node name="LowerArmR" type="Bone2D" parent="Skeleton2D/Hip/Spine/UpperArmR"]
@@ -706,6 +705,7 @@ rest = Transform2D(1, 0, 0, 1, 0, -213)
 [node name="LowerArmL" type="Bone2D" parent="Skeleton2D/Hip/Spine/UpperArmL"]
 position = Vector2(0, 90)
 rotation = -0.356889
+scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 0, 90)
 
 [node name="HandL" type="Bone2D" parent="Skeleton2D/Hip/Spine/UpperArmL/LowerArmL"]
@@ -714,12 +714,13 @@ rest = Transform2D(1, 0, 0, 1, 0, 90)
 
 [node name="UpperLegR" type="Bone2D" parent="Skeleton2D/Hip"]
 rotation = -0.229387
+scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 0, 0)
 
 [node name="LowerLegR" type="Bone2D" parent="Skeleton2D/Hip/UpperLegR"]
 position = Vector2(0, 119)
 rotation = 0.153763
-scale = Vector2(1, 1)
+scale = Vector2(0.999999, 0.999999)
 rest = Transform2D(1, 0, 0, 1, 0, 119)
 
 [node name="FootR" type="Bone2D" parent="Skeleton2D/Hip/UpperLegR/LowerLegR"]

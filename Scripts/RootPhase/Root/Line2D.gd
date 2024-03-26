@@ -152,7 +152,8 @@ func _on_area_entered(area):
 	elif area.get_parent().is_in_group("Obstacles"):
 		SoundManager.stop_ambient_sound(dirtSound)
 		
-	area.HitByRoot(self)
+	if area.has_method("HitByRoot"):
+		area.HitByRoot(self)
 	#area.get_parent().collected()
 	area.get_parent().add_to_group("COLLECTED")
 	gameSaver.saveGame() #you can remove this, its just here to immediately save your progress

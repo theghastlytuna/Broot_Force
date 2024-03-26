@@ -15,11 +15,15 @@ class_name Unit
 ##The unit's health bar
 var healthBar : TextureProgressBar
 
+var isDead : bool = false
+
 const deathSound: AudioStream = preload("res://Sounds/SFX/death.mp3")
 const painSound: AudioStream = preload("res://Sounds/SFX/pain.mp3")
 const vehicleSound: AudioStream = preload("res://Sounds/SFX/vehicle.mp3")
 const vehicleExplosion: AudioStream = preload("res://Sounds/SFX/explosion.mp3")
 const vehicleDamage: AudioStream = preload("res://Sounds/SFX/metalCrunch.mp3")
+
+
 
 #going to put the enum here so we can easily access it using Unit.UnitType
 enum UnitType{
@@ -105,7 +109,27 @@ func check_death():
 ##Destroys the unit
 func die():
 	#queue_free()
+	if isDead:
+		return
+	setIsDead()
 	onDie.emit()
+	var attackNode = find_child("Attack")
+	if not attackNode:
+		return
+	for c in attackNode.StartedAttacking.get_connections():
+		attackNode.StartedAttacking.disconnect(c["callable"])
+		
+	for c in attackNode.StoppedAttacking.get_connections():
+		attackNode.StoppedAttacking.disconnect(c["callable"])
+		
+	for c in attackNode.AttackedEnemy.get_connections():
+		attackNode.AttackedEnemy.disconnect(c["callable"])
+	
+	
+
+#its its own function so that we can tell if an attack should check for if its dead or not
+func setIsDead():
+	isDead = true
 
 func stopAnimation():
 	pass # Replace with function body.
