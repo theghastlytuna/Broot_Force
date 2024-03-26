@@ -469,6 +469,7 @@ rest = Transform2D(1, 0, 0, 1, 0, 0)
 [node name="LowerLegR" type="Bone2D" parent="Skeleton2D/Hip/UpperLegR"]
 position = Vector2(0, 119)
 rotation = 0.153763
+scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 0, 119)
 
 [node name="FootR" type="Bone2D" parent="Skeleton2D/Hip/UpperLegR/LowerLegR"]
@@ -477,6 +478,7 @@ rest = Transform2D(1, 0, 0, 1, 0, 135)
 
 [node name="UpperLegL" type="Bone2D" parent="Skeleton2D/Hip"]
 rotation = 0.157439
+scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 0, 0)
 
 [node name="LowerLegL" type="Bone2D" parent="Skeleton2D/Hip/UpperLegL"]

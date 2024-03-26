@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://brh7kxvkvq02q"]
+[gd_scene load_steps=26 format=3 uid="uid://brh7kxvkvq02q"]
 
 [ext_resource type="Script" path="res://Scenes/Areas/World.gd" id="1_j1hoq"]
 [ext_resource type="Texture2D" uid="uid://wnnrtab0skb7" path="res://Art Assets/Textures/Layer2.png" id="1_tfsmi"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://cs4yg3hh2bejv" path="res://Scenes/RootInteractables/UnitRemains/bear_remains.tscn" id="11_tewbi"]
 [ext_resource type="PackedScene" uid="uid://dym6oonfw5m5d" path="res://Scenes/RootInteractables/UnitRemains/mammoth_remains.tscn" id="12_j0mwa"]
 [ext_resource type="PackedScene" uid="uid://dsyj27gjp5q35" path="res://Scenes/UI/RootCollectionResults.tscn" id="13_y0ym3"]
+[ext_resource type="Texture2D" uid="uid://c05hmgw7ymjw0" path="res://Art Assets/Textures/main_BG.png" id="20_s0oag"]
 
 [sub_resource type="Curve" id="Curve_ebely"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.373626), 0.0, 0.0, 0, 0]
@@ -93,7 +94,7 @@ spawner = NodePath("../../Spawner")
 spawnInterval = 100.0
 gameSaver = NodePath("../../SaveGame")
 rootPointSaveArcLength = 50.0
-rootPhaseTimeout = 2.0
+rootPhaseTimeout = 30.0
 
 [node name="Tip" type="Sprite2D" parent="Root/Area2D" groups=["Tip"]]
 
@@ -217,6 +218,11 @@ layout_mode = 1
 
 [node name="RootResults" parent="CanvasLayer/UI" instance=ExtResource("13_y0ym3")]
 layout_mode = 1
+
+[node name="MainBg" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(575, -358)
+texture = ExtResource("20_s0oag")
 
 [connection signal="ChangedLayer" from="BackgroundManager" to="Root/Area2D" method="_on_background_manager_changed_layer"]
 [connection signal="area_entered" from="Root/Area2D" to="Root/Area2D" method="_on_area_entered"]
