@@ -57,7 +57,7 @@ func startRootPhase():
 	GameManager.pastRoots[(GameManager.currentRootRound)] = []
 	currentRootArray = GameManager.pastRoots[(GameManager.currentRootRound)]
 	currentRootArray.append(Vector2.ZERO)
-	$Timer.wait_time = rootPhaseTimeout
+	$Timer.wait_time = rootPhaseTimeout * (1 + GameManager.getUpgradeAmount("Duration"))
 	$Timer.start()
 
 func setStopMoving(b : bool):
@@ -74,7 +74,9 @@ func _process(delta: float) -> void:
 		lastSpawnedDepth = snappedi(global_position.y ,spawnInterval)
 		spawner.spawnObject(lastSpawnedDepth + playerCamera.get_viewport_rect().size.y)
 
-	position += transform.y * speed * delta * currentLayerMultiplier
+#Start with the forward vector, apply speed account for root upgrased, apply delta, 
+#then apply the current layer's slowdown
+	position += transform.y * (speed * (1 + GameManager.getUpgradeAmount("Speed"))) * delta * currentLayerMultiplier
 	var distanceFromLast = position.distance_to(lastPosition)
 	distanceFromLastPoint += distanceFromLast
 	spawningArcLength += distanceFromLast
@@ -83,7 +85,6 @@ func _process(delta: float) -> void:
 	if spawningArcLength >= rootPointSaveArcLength:
 		spawningArcLength = 0	
 		currentRootArray.append(global_position)
-		
 	
 	mousePosition = get_global_mouse_position()
 	var amountToRoate : float = 0
@@ -95,7 +96,6 @@ func _process(delta: float) -> void:
 	
 	amountToRoate = clampi(angleToMouse,-turningAmount,turningAmount)
 
-		
 	#check the raycasts to see if you will hit something
 	var checkWallCollision : bool = false
 	var leftObject = $CheckLeft.get_collider()
@@ -123,7 +123,7 @@ func _process(delta: float) -> void:
 			var largestDistance : float = max(leftDistance,rightDistance)
 			amountToRoate = turningAwayCurve.sample(largestDistance/100) * turningAwayForce * rotateMultiplier
 		
-	rotate(deg_to_rad(amountToRoate))
+	rotate(deg_to_rad(amountToRoate * (1 + GameManager.getUpgradeAmount("Turning"))))
 
 	var size : int = tip.points.size()-1
 	tip.points[size] = position
@@ -152,7 +152,6 @@ func _on_area_entered(area):
 	elif area.get_parent().is_in_group("Obstacles"):
 		SoundManager.stop_ambient_sound(dirtSound)
 		
-	
 	area.HitByRoot(self)
 	#area.get_parent().collected()
 	area.get_parent().add_to_group("COLLECTED")

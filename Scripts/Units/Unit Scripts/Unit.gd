@@ -57,10 +57,11 @@ func _ready():
 		#SoundManager.play_ambient_sound(vehicleSound)
 
 func setHealth(h):
-	healthBar = get_node("HealthBar").get_node("TextureProgressBar")
-	healthBar.max_value = health
-	healthBar.value = h
-	damageTaken = health - h
+	if hittable:
+		healthBar = get_node("HealthBar").get_node("TextureProgressBar")
+		healthBar.max_value = health
+		healthBar.value = h
+		damageTaken = health - h
 
 ##Returns the current health of the unit
 func getHealth() -> float:

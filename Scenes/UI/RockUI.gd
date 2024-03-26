@@ -17,7 +17,7 @@ func showUI(layer : int):
 	amountClicked = 0
 	visible = true
 	layer+=1
-	amountToClick = randi_range(layer*5,layer*7)
+	amountToClick = max(ceil(randi_range(layer*5,layer*7) * (1 - GameManager.getUpgradeAmount("Strength"))), 1)
 	$VBoxContainer/Label3.text = LocalizationManager.tr("OBSTICLE_HIT_LEFT").format({"Number":(amountToClick-amountClicked)})
 	EventManager.rootStopMoving.emit()
 	pass

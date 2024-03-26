@@ -8,4 +8,4 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func setWaterText():
-	text = tr("WATER_COLLECTED") + str(GameManager.rootPhaseStats.totalWater)
+	text = tr("WATER_COLLECTED") + str(GameManager.rootPhaseStats.waterPerRound)

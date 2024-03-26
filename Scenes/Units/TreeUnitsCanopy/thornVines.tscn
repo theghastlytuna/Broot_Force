@@ -319,11 +319,12 @@ _data = {
 "RESET": SubResource("Animation_4r6ju")
 }
 
-[node name="FlytrapCluster" type="StaticBody2D" groups=["PlayerUnits"]]
+[node name="ThornVines" type="StaticBody2D" groups=["PlayerUnits"]]
 collision_layer = 4
 script = ExtResource("1_qcer7")
 health = 100000.0
 hittable = false
+cost = 19
 
 [node name="Attack" type="Node2D" parent="."]
 script = ExtResource("3_q88i2")
@@ -417,12 +418,13 @@ rest = Transform2D(1, 0, 0, 1, 0, 62)
 [node name="Spine3" type="Bone2D" parent="Holder/Skeleton2D/Spine1/Spine2"]
 position = Vector2(0, 57)
 rotation = 0.991886
-scale = Vector2(1, 1)
+scale = Vector2(0.999999, 0.999999)
 rest = Transform2D(1, 0, 0, 1, 0, 57)
 
 [node name="Spine4" type="Bone2D" parent="Holder/Skeleton2D/Spine1/Spine2/Spine3"]
 position = Vector2(0, 60)
 rotation = 1.38001
+scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 0, 60)
 
 [node name="Spine5" type="Bone2D" parent="Holder/Skeleton2D/Spine1/Spine2/Spine3/Spine4"]

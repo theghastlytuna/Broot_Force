@@ -202,6 +202,7 @@ collision_layer = 4
 script = ExtResource("1_5x647")
 health = 100000.0
 hittable = false
+cost = 24
 
 [node name="Attack" type="Node2D" parent="." node_paths=PackedStringArray("poisonNode", "minCloudSpawn", "maxCloudSpawn")]
 script = ExtResource("3_wuled")
@@ -287,6 +288,7 @@ bones = ["Spine1", PackedFloat32Array(0, 0, 0, 0), "Spine1/Spine2", PackedFloat3
 
 [node name="Spine1" type="Bone2D" parent="SkeletonHolder/Skeleton2D"]
 rotation = -0.509315
+scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 0, 0)
 
 [node name="Spine2" type="Bone2D" parent="SkeletonHolder/Skeleton2D/Spine1"]
