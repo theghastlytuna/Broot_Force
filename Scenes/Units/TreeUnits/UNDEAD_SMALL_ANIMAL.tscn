@@ -79,6 +79,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_0nsk6"]
 resource_name = "Die"
+length = 1.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -162,6 +163,20 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [0.0, 0.130596, 0.130596]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("..")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(1.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_4j6t5"]
@@ -542,7 +557,6 @@ bone_angle = 90.0
 [node name="LegBB" type="Bone2D" parent="SkeletonHolder1Scale2/Skeleton2D/Root"]
 position = Vector2(5, 34)
 rotation = 0.236232
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 5, 34)
 auto_calculate_length_and_angle = false
 length = 139.145

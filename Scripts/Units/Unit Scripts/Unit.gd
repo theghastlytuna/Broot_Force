@@ -103,7 +103,8 @@ func check_death():
 
 ##Destroys the unit
 func die():
-	queue_free()
+	#queue_free()
+	onDie.emit()
 
 func stopAnimation():
 	pass # Replace with function body.
