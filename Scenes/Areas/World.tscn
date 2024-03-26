@@ -1,10 +1,11 @@
-[gd_scene load_steps=23 format=3 uid="uid://brh7kxvkvq02q"]
+[gd_scene load_steps=24 format=3 uid="uid://brh7kxvkvq02q"]
 
 [ext_resource type="Script" path="res://Scenes/Areas/World.gd" id="1_j1hoq"]
 [ext_resource type="Texture2D" uid="uid://wnnrtab0skb7" path="res://Art Assets/Textures/Layer2.png" id="1_tfsmi"]
 [ext_resource type="Script" path="res://Scripts/RootPhase/Spawn Management/LayerManager.gd" id="2_5ev5r"]
 [ext_resource type="Texture2D" uid="uid://6mm3q3gblhrr" path="res://icon.svg" id="3_gnh0v"]
 [ext_resource type="Script" path="res://Scripts/RootPhase/Root/Line2D.gd" id="4_uwuhp"]
+[ext_resource type="Texture2D" uid="uid://b03ebhtvnjn6r" path="res://Art Assets/Textures/root.png" id="5_s1yje"]
 [ext_resource type="Script" path="res://Scripts/RootPhase/Spawn Management/Spawner.gd" id="5_s6byk"]
 [ext_resource type="PackedScene" uid="uid://o4ow5qdj2dwa" path="res://Scenes/RootInteractables/Resources/water.tscn" id="6_coeey"]
 [ext_resource type="PackedScene" uid="uid://ca3vfsmfimr8r" path="res://Scenes/RootInteractables/Obstacles/Rock.tscn" id="7_rhly2"]
@@ -64,12 +65,16 @@ texture = ExtResource("3_gnh0v")
 
 [node name="RootLine" type="Line2D" parent="Root"]
 points = PackedVector2Array(0, 0)
+texture = ExtResource("5_s1yje")
+texture_mode = 1
 end_cap_mode = 2
 antialiased = true
 
 [node name="TipLine" type="Line2D" parent="Root"]
 points = PackedVector2Array(0, 0)
 width_curve = SubResource("Curve_ebely")
+texture = ExtResource("5_s1yje")
+texture_mode = 1
 begin_cap_mode = 2
 end_cap_mode = 2
 

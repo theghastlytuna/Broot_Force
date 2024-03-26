@@ -1,6 +1,5 @@
-[gd_scene load_steps=11 format=3 uid="uid://bo1ek3hbsh1i0"]
+[gd_scene load_steps=6 format=3 uid="uid://bo1ek3hbsh1i0"]
 
-[ext_resource type="Texture2D" uid="uid://73qddd2nftm7" path="res://Art Assets/Textures/Temporary/ground.png" id="1_6k8md"]
 [ext_resource type="Texture2D" uid="uid://ysfnqcwkk8uj" path="res://Art Assets/Textures/Temporary/HumanTex.png" id="1_a7l3s"]
 
 [sub_resource type="Animation" id="Animation_1ccha"]
@@ -323,29 +322,7 @@ _data = {
 "Walk": SubResource("Animation_m6mb3")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_t13l1"]
-animation = &"Walk"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oe7ji"]
-animation = &"Attack"
-
-[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_b3yu4"]
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_yg80i"]
-graph_offset = Vector2(-367.817, 55.3571)
-nodes/Animation/node = SubResource("AnimationNodeAnimation_oe7ji")
-nodes/Animation/position = Vector2(-120, 220)
-"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_t13l1")
-"nodes/Animation 2/position" = Vector2(-120, 100)
-nodes/AttackBlend/node = SubResource("AnimationNodeBlend2_b3yu4")
-nodes/AttackBlend/position = Vector2(80, 140)
-node_connections = [&"AttackBlend", 0, &"Animation 2", &"AttackBlend", 1, &"Animation", &"output", 0, &"AttackBlend"]
-
 [node name="Node2D" type="Node2D"]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(17, 481)
-texture = ExtResource("1_6k8md")
 
 [node name="Parts" type="Node2D" parent="."]
 
@@ -492,7 +469,6 @@ rest = Transform2D(1, 0, 0, 1, 0, 0)
 [node name="LowerLegR" type="Bone2D" parent="Skeleton2D/Hip/UpperLegR"]
 position = Vector2(0, 119)
 rotation = 0.153763
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 0, 119)
 
 [node name="FootR" type="Bone2D" parent="Skeleton2D/Hip/UpperLegR/LowerLegR"]
@@ -501,7 +477,6 @@ rest = Transform2D(1, 0, 0, 1, 0, 135)
 
 [node name="UpperLegL" type="Bone2D" parent="Skeleton2D/Hip"]
 rotation = 0.157439
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 0, 0)
 
 [node name="LowerLegL" type="Bone2D" parent="Skeleton2D/Hip/UpperLegL"]
@@ -518,11 +493,3 @@ rest = Transform2D(1, 0, 0, 1, 0, 135)
 libraries = {
 "": SubResource("AnimationLibrary_xlfy0")
 }
-
-[node name="AnimationTree" type="AnimationTree" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_xlfy0")
-}
-tree_root = SubResource("AnimationNodeBlendTree_yg80i")
-anim_player = NodePath("../AnimationPlayer")
-parameters/AttackBlend/blend_amount = 0.0

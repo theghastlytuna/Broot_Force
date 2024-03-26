@@ -270,6 +270,7 @@ rest = Transform2D(1, 0, 0, 1, 0, 29)
 [node name="Head" type="Bone2D" parent="SkeletonHolder/Skeleton2D/Spine1/Spine2/Spine3"]
 position = Vector2(0, 26)
 rotation = -0.452741
+scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 0, 26)
 auto_calculate_length_and_angle = false
 length = 42.922
