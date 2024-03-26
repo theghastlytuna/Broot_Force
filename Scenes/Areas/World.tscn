@@ -126,13 +126,13 @@ collide_with_bodies = false
 [node name="LeftWall" type="Area2D" parent="Walls" groups=["WALL"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/LeftWall"]
-position = Vector2(-1534.5, -14)
+position = Vector2(-784.5, -14)
 shape = SubResource("RectangleShape2D_kfqgj")
 
 [node name="RightWall" type="Area2D" parent="Walls" groups=["WALL"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/RightWall"]
-position = Vector2(1532, -1)
+position = Vector2(782, -1)
 shape = SubResource("RectangleShape2D_u5ugd")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -221,7 +221,8 @@ layout_mode = 1
 
 [node name="MainBg" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(575, -358)
+position = Vector2(-4, -895)
+scale = Vector2(2.5, 2.5)
 texture = ExtResource("20_s0oag")
 
 [connection signal="ChangedLayer" from="BackgroundManager" to="Root/Area2D" method="_on_background_manager_changed_layer"]
