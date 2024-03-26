@@ -26,14 +26,19 @@ func _on_button_land_clicked(to_parent_to):
 
 # Confirm button function
 func _on_button_confirm():
-	most_recent_parentclicked.spawn_tower(tower_resources[towerIndex].instantiate(),tower_resources[towerIndex].resource_path)
-	Debug.Log("spawned tower")
-	$AnimationPlayer.play("Hide")
-	open_menu = false
-	$NinePatchRect/MarginContainer/VBoxContainer/Confirm.visible = false
-	$NinePatchRect/MarginContainer/VBoxContainer/TextureRect/Text0.visible = false
-	$NinePatchRect/MarginContainer/VBoxContainer/TextureRect/Text1.visible = false
-	$NinePatchRect/MarginContainer/VBoxContainer/TextureRect/Text2.visible = false
+	var newTower = tower_resources[towerIndex].instantiate()
+	Debug.Log("Cost of tower: ", newTower.cost)
+	if (GameManager.spendWater(newTower.cost)):
+		most_recent_parentclicked.spawn_tower(newTower,tower_resources[towerIndex].resource_path)
+		Debug.Log("spawned tower")
+		$AnimationPlayer.play("Hide")
+		open_menu = false
+		$NinePatchRect/MarginContainer/VBoxContainer/Confirm.visible = false
+		$NinePatchRect/MarginContainer/VBoxContainer/TextureRect/Text0.visible = false
+		$NinePatchRect/MarginContainer/VBoxContainer/TextureRect/Text1.visible = false
+		$NinePatchRect/MarginContainer/VBoxContainer/TextureRect/Text2.visible = false
+	else:
+		newTower.queue_free()
 
 # General tower button selection function
 func _on_button_clicked(index_arg):

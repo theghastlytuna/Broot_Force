@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dq4jcfh8ylt5e"]
+[gd_scene load_steps=25 format=3 uid="uid://dq4jcfh8ylt5e"]
 
 [ext_resource type="Script" path="res://Scenes/Areas/Overworld.gd" id="1_y88pi"]
 [ext_resource type="Script" path="res://Scenes/Areas/FriendlySpawnLocation.gd" id="2_no26d"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://cugohrjbgvgjd" path="res://Menus/land_tower_menu.tscn" id="20_lxlg4"]
 [ext_resource type="Script" path="res://Scenes/Areas/UnitSpawning.gd" id="21_rchts"]
 [ext_resource type="Script" path="res://Scenes/Areas/EnemySpawner.gd" id="21_y32r6"]
+[ext_resource type="Script" path="res://Scenes/Areas/UpgradeManager.gd" id="23_03xkq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jos54"]
 size = Vector2(2104, 320)
@@ -298,6 +299,52 @@ offset_bottom = 644.0
 text = "Start Round"
 script = ExtResource("18_hqi7h")
 
+[node name="Button2" type="Button" parent="." groups=["TowerButton"]]
+offset_left = 188.0
+offset_top = 511.0
+offset_right = 324.0
+offset_bottom = 647.0
+text = "Upgrade Speed
+Cost - 20"
+
+[node name="Button3" type="Button" parent="." groups=["TowerButton"]]
+offset_left = 375.0
+offset_top = 512.0
+offset_right = 511.0
+offset_bottom = 648.0
+text = "Upgrade 
+Turn Rate
+Cost - 25"
+
+[node name="Button4" type="Button" parent="." groups=["TowerButton"]]
+offset_left = 545.0
+offset_top = 509.0
+offset_right = 681.0
+offset_bottom = 645.0
+text = "Upgrade 
+Strength
+Cost - 10
+"
+
+[node name="Button5" type="Button" parent="." groups=["TowerButton"]]
+offset_left = 723.0
+offset_top = 510.0
+offset_right = 859.0
+offset_bottom = 646.0
+text = "Upgrade 
+Resource
+Collection
+Cost - 25"
+
+[node name="Button6" type="Button" parent="." groups=["TowerButton"]]
+offset_left = 885.0
+offset_top = 512.0
+offset_right = 1021.0
+offset_bottom = 648.0
+text = "Upgrade 
+Round Time
+Cost - 15"
+
 [node name="UnitSpawningCanvas" type="CanvasLayer" parent="."]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UnitSpawningCanvas"]
@@ -315,6 +362,9 @@ grow_vertical = 0
 theme_override_constants/separation = 16
 alignment = 2
 script = ExtResource("21_rchts")
+
+[node name="UpgradeManager" type="Node2D" parent="."]
+script = ExtResource("23_03xkq")
 
 [connection signal="land_clicked" from="Tree/GroundPositions/0/CanvasLayer/Button" to="LandCanvas/Control/PanelContainer" method="_on_button_land_clicked"]
 [connection signal="pressed" from="Tree/GroundPositions/0/CanvasLayer/Button" to="Tree/GroundPositions/0/CanvasLayer/Button" method="_on_pressed"]
@@ -341,6 +391,11 @@ script = ExtResource("21_rchts")
 [connection signal="button_up" from="Button" to="CanopyCanvas/Control/PanelContainer" method="_on_texture_button_pressed"]
 [connection signal="button_up" from="Button" to="EnemySpawner" method="_on_button_button_up"]
 [connection signal="button_up" from="Button" to="Button" method="_on_button_up"]
+[connection signal="button_up" from="Button2" to="UpgradeManager" method="onUpgrade" binds= ["Speed"]]
+[connection signal="button_up" from="Button3" to="UpgradeManager" method="onUpgrade" binds= ["Turning"]]
+[connection signal="button_up" from="Button4" to="UpgradeManager" method="onUpgrade" binds= ["Strength"]]
+[connection signal="button_up" from="Button5" to="UpgradeManager" method="onUpgrade" binds= ["Resource"]]
+[connection signal="button_up" from="Button6" to="UpgradeManager" method="onUpgrade" binds= ["Duration"]]
 
 [editable path="LandCanvas"]
 [editable path="CanopyCanvas"]

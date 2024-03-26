@@ -179,6 +179,7 @@ collision_layer = 4
 script = ExtResource("1_bqnyd")
 health = 100000.0
 hittable = false
+cost = 16
 
 [node name="Attack" type="Node2D" parent="." node_paths=PackedStringArray("poisonNode")]
 script = ExtResource("3_0kxpf")
@@ -265,6 +266,7 @@ rest = Transform2D(1, 0, 0, 1, 0, 43)
 [node name="Spine3" type="Bone2D" parent="SkeletonHolder/Skeleton2D/Spine1/Spine2"]
 position = Vector2(0, 29)
 rotation = -0.706482
+scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 0, 29)
 
 [node name="Head" type="Bone2D" parent="SkeletonHolder/Skeleton2D/Spine1/Spine2/Spine3"]
