@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://6bk41el3k1he"
+path="res://.godot/imported/GPUNNET_BIAS_TRAIN.glsl-bb106d003fe7288880a20949f6499dd2.res"
+
+[deps]
+
+source_file="res://addons/neural_network/GPUNNET_BIAS_TRAIN.glsl"
+dest_files=["res://.godot/imported/GPUNNET_BIAS_TRAIN.glsl-bb106d003fe7288880a20949f6499dd2.res"]
+
+[params]
+

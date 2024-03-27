@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://372p3xt38con"
+path="res://.godot/imported/GPUNNET_FIND_DELTAS.glsl-84ae17cb64ad1ab50c184a094efa8c52.res"
+
+[deps]
+
+source_file="res://addons/neural_network/GPUNNET_FIND_DELTAS.glsl"
+dest_files=["res://.godot/imported/GPUNNET_FIND_DELTAS.glsl-84ae17cb64ad1ab50c184a094efa8c52.res"]
+
+[params]
+

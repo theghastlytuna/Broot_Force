@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://ymb0psn640oo"
+path="res://.godot/imported/GPUNNET_RUN.glsl-5f47b41e54d61d8b66cb5cf70b8fd2f1.res"
+
+[deps]
+
+source_file="res://addons/neural_network/GPUNNET_RUN.glsl"
+dest_files=["res://.godot/imported/GPUNNET_RUN.glsl-5f47b41e54d61d8b66cb5cf70b8fd2f1.res"]
+
+[params]
+
