@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dq4jcfh8ylt5e"]
+[gd_scene load_steps=25 format=3 uid="uid://dq4jcfh8ylt5e"]
 
 [ext_resource type="Script" path="res://Scenes/Areas/Overworld.gd" id="1_y88pi"]
 [ext_resource type="Script" path="res://Scenes/Areas/FriendlySpawnLocation.gd" id="2_no26d"]
@@ -23,7 +23,6 @@
 [ext_resource type="Script" path="res://Scenes/Areas/UnitSpawning.gd" id="21_rchts"]
 [ext_resource type="Script" path="res://Scenes/Areas/EnemySpawner.gd" id="21_y32r6"]
 [ext_resource type="Script" path="res://Scenes/Areas/UpgradeManager.gd" id="23_03xkq"]
-[ext_resource type="PackedScene" uid="uid://bsg315gjaf8cf" path="res://Scenes/Units/TreeUnits/UNDEAD_HUMAN.tscn" id="24_1xl6v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jos54"]
 size = Vector2(2104, 320)
@@ -363,9 +362,6 @@ grow_vertical = 0
 theme_override_constants/separation = 16
 alignment = 2
 script = ExtResource("21_rchts")
-
-[node name="Human" parent="." instance=ExtResource("24_1xl6v")]
-position = Vector2(2268, 442)
 
 [node name="UpgradeManager" type="Node2D" parent="."]
 script = ExtResource("23_03xkq")

@@ -45,6 +45,8 @@ var costsPerUpgrade : Dictionary = {
 #stuff for the current game
 var rootPhaseStats : GameData = GameData.new()
 
+var startedGame : bool = false
+
 func _ready() -> void:#in landscape mode
 	desiredResolution = get_viewport().size
 

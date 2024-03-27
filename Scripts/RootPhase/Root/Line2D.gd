@@ -156,7 +156,7 @@ func _on_area_entered(area):
 		area.HitByRoot(self)
 	#area.get_parent().collected()
 	area.get_parent().add_to_group("COLLECTED")
-	gameSaver.saveGame() #you can remove this, its just here to immediately save your progress
+
 	
 func onRootPhaseTimeout():
 	currentRootArray.append(global_position)
