@@ -132,7 +132,6 @@ collide_with_bodies = false
 [node name="RayCast2D" type="RayCast2D" parent="Root"]
 
 [node name="Left" type="RayCast2D" parent="Root"]
-visible = false
 position = Vector2(5, 0)
 target_position = Vector2(0, 200)
 hit_from_inside = true
@@ -140,7 +139,6 @@ collide_with_areas = true
 collide_with_bodies = false
 
 [node name="Right" type="RayCast2D" parent="Root"]
-visible = false
 position = Vector2(-5, 0)
 target_position = Vector2(0, 200)
 hit_from_inside = true
