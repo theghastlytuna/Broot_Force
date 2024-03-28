@@ -23,7 +23,12 @@ func instantiate_tower(path):
 	#Debug.Log("set health to " + GameManager.placedTowersHealth[towerIndex])
 
 func spawn_tower(tower, path):
+	if get_child_count() > 0:
+		for c in get_children():
+			#TODO: give yourself some resources back?
+			c.queue_free()
 	add_child(tower)
 	stashedTower = tower
-	$CanvasLayer/Button.visible = false
+	#$CanvasLayer/Button.visible = false
+	#TODO: make its style completely invisible
 	GameManager.placedTowers[towerIndex] = path

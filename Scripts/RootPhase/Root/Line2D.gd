@@ -21,6 +21,9 @@ const music: AudioStream =  preload("res://Sounds/Music/KiloWatts - Gollum Finge
 @export var wallNode : Node2D
 @export var turningAwayCurve : Curve
 @export var turningAwayForce : float
+@export var cast : RayCast2D
+@export var debugCast : RayCast2D
+@export var wallMargin : float = 50
 @export_category("Root creation")
 @export var lineRenderer : Line2D
 @export var tip : Line2D
@@ -40,6 +43,7 @@ var spawningArcLength : float = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	turningAmount = turningAmount * (1 + GameManager.getUpgradeAmount("Turning"))
 	tip.add_point(Vector2(0,0))
 	tip.add_point(Vector2(0,0))
 	
@@ -87,45 +91,52 @@ func _process(delta: float) -> void:
 		currentRootArray.append(global_position)
 	
 	mousePosition = get_global_mouse_position()
-	var amountToRoate : float = 0
+	cast.target_position = mousePosition-position
+	if mousePosition.distance_to(global_position) < 200:
+		cast.target_position = (mousePosition-position).normalized()*200
+	var desiredPosition = mousePosition
 	
-	var toMouseVector = mousePosition - global_position
-	var forward = transform.y
-	
-	var amountToTurn = turningAmount * (1 + GameManager.getUpgradeAmount("Turning"))
-	var angleToMouse : float = (rad_to_deg(forward.angle_to(toMouseVector)))
-	
-	amountToRoate = clampi(angleToMouse,-amountToTurn,amountToTurn)
-
 	#check the raycasts to see if you will hit something
 	var checkWallCollision : bool = false
-	var leftObject = $CheckLeft.get_collider()
-	var rightObject = $CheckRight.get_collider()
+	var forwardObject = cast.get_collider()
 	
-	if leftObject:
-		if leftObject.is_in_group("WALL"):
-			checkWallCollision = true
-	if rightObject:
-		if rightObject.is_in_group("WALL"):
+	
+	
+	if forwardObject:
+		if forwardObject.is_in_group("WALL"):
 			checkWallCollision = true
 
 	if checkWallCollision:
-		amountToRoate = 0
-		var leftIntersect : Vector2 = $CheckLeft.get_collision_point()
-		var rightIntersect : Vector2 = $CheckRight.get_collision_point()
 		
-		var leftDistance : float = leftIntersect.distance_to(position)
-		var rightDistance : float = rightIntersect.distance_to(position)
-		
-		if leftDistance < 100 or rightDistance < 100:
-			var rotateMultiplier = 1
-			if leftDistance > rightDistance:
-				rotateMultiplier = -1
-			var largestDistance : float = min(leftDistance,rightDistance)
-			var samplePoint : float = 1-(largestDistance/100)
-			Debug.Log(samplePoint, " ", largestDistance)
-			amountToRoate = turningAwayCurve.sample(samplePoint) * amountToTurn * rotateMultiplier
-		
+		var intersect : Vector2 = cast.get_collision_point()		
+		var distance : float = intersect.distance_to(position)
+	
+		if distance < 200:
+			
+			var upOrDown = -1
+			if intersect.y < global_position.y:
+				upOrDown = 1
+				
+			var leftOrRight = 1 #left
+			if intersect.x > global_position.x:
+				leftOrRight = -1
+			desiredPosition = intersect + Vector2(leftOrRight*wallMargin,(upOrDown*wallMargin) + (min(intersect.length(),200)*-upOrDown))
+			debugCast.target_position = desiredPosition
+			
+			#Debug.Log(desiredPosition)
+			
+
+
+	var amountToRoate : float = 0
+	
+	var desiredVector = desiredPosition - global_position
+	var forward = transform.y
+	
+	var amountToTurn = turningAmount 
+	var angleToMouse : float = (rad_to_deg(forward.angle_to(desiredVector)))
+	
+	amountToRoate = clampi(angleToMouse,-amountToTurn,amountToTurn)
+	Debug.Log(amountToRoate)
 	rotate(deg_to_rad(amountToRoate))
 
 	var size : int = tip.points.size()-1
