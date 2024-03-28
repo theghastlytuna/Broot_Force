@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://brh7kxvkvq02q"]
+[gd_scene load_steps=30 format=3 uid="uid://brh7kxvkvq02q"]
 
 [ext_resource type="Script" path="res://Scenes/Areas/World.gd" id="1_j1hoq"]
 [ext_resource type="Texture2D" uid="uid://wnnrtab0skb7" path="res://Art Assets/Textures/Layer2.png" id="1_tfsmi"]
@@ -28,7 +28,7 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.373626), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_lyvea"]
-_data = [Vector2(0, 0.0505264), 0.0, 0.282539, 0, 0, Vector2(0.758242, 1), -0.200131, 0.0, 0, 0]
+_data = [Vector2(0, 0.0505264), 0.0, 0.282539, 0, 0, Vector2(0.767635, 1), -0.200131, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4g5gk"]
@@ -38,6 +38,12 @@ size = Vector2(69, 694)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u5ugd"]
 size = Vector2(64, 742)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ivd50"]
+size = Vector2(1877, 103)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7d4vg"]
+size = Vector2(413.5, 87.5)
 
 [node name="World" type="Node2D" node_paths=PackedStringArray("oldRootHolder")]
 script = ExtResource("1_j1hoq")
@@ -66,6 +72,7 @@ texture = ExtResource("3_gnh0v")
 [node name="OldRootHolder" type="Node2D" parent="."]
 
 [node name="Root" type="Node2D" parent="."]
+position = Vector2(0, 5)
 
 [node name="RootLine" type="Line2D" parent="Root"]
 points = PackedVector2Array(0, 0)
@@ -82,15 +89,15 @@ texture_mode = 1
 begin_cap_mode = 2
 end_cap_mode = 2
 
-[node name="Area2D" type="Area2D" parent="Root" node_paths=PackedStringArray("wallNode", "cast", "debugCast", "lineRenderer", "tip", "playerCamera", "spawner", "gameSaver")]
+[node name="Area2D" type="Area2D" parent="Root" node_paths=PackedStringArray("wallNode", "debugCast", "leftCast", "rightCast", "lineRenderer", "tip", "playerCamera", "spawner", "gameSaver")]
 script = ExtResource("4_uwuhp")
-speed = 200.0
 turningAmount = 10.0
 wallNode = NodePath("../../Walls")
 turningAwayCurve = SubResource("Curve_lyvea")
 turningAwayForce = 4.0
-cast = NodePath("../CheckForward")
 debugCast = NodePath("../RayCast2D")
+leftCast = NodePath("../Left")
+rightCast = NodePath("../Right")
 lineRenderer = NodePath("../RootLine")
 tip = NodePath("../TipLine")
 playerCamera = NodePath("../../Camera2D")
@@ -98,7 +105,7 @@ spawner = NodePath("../../Spawner")
 spawnInterval = 100.0
 gameSaver = NodePath("../../SaveGame")
 rootPointSaveArcLength = 50.0
-rootPhaseTimeout = 60.0
+rootPhaseTimeout = 6000.0
 
 [node name="Tip" type="Sprite2D" parent="Root/Area2D" groups=["Tip"]]
 
@@ -109,16 +116,36 @@ shape = SubResource("CircleShape2D_4g5gk")
 [node name="Timer" type="Timer" parent="Root/Area2D"]
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Root/Area2D"]
-remote_path = NodePath("../../CheckForward")
-update_rotation = false
-update_scale = false
+position = Vector2(5, 0)
+remote_path = NodePath("../../Left")
+
+[node name="RemoteTransform2D2" type="RemoteTransform2D" parent="Root/Area2D"]
+position = Vector2(-5, 0)
+remote_path = NodePath("../../Right")
 
 [node name="CheckForward" type="RayCast2D" parent="Root"]
+position = Vector2(-5, 0)
 target_position = Vector2(0, 200)
 collide_with_areas = true
 collide_with_bodies = false
 
 [node name="RayCast2D" type="RayCast2D" parent="Root"]
+
+[node name="Left" type="RayCast2D" parent="Root"]
+visible = false
+position = Vector2(5, 0)
+target_position = Vector2(0, 200)
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="Right" type="RayCast2D" parent="Root"]
+visible = false
+position = Vector2(-5, 0)
+target_position = Vector2(0, 200)
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="Walls" type="Node2D" parent="."]
 
@@ -134,12 +161,36 @@ shape = SubResource("RectangleShape2D_kfqgj")
 position = Vector2(782, -1)
 shape = SubResource("RectangleShape2D_u5ugd")
 
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="Node2D" groups=["WALL"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Area2D"]
+position = Vector2(11.5, -51.5)
+shape = SubResource("RectangleShape2D_ivd50")
+
+[node name="Area2D2" type="Area2D" parent="Node2D" groups=["WALL"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Area2D2"]
+position = Vector2(735, 17)
+rotation = 0.785397
+shape = SubResource("RectangleShape2D_7d4vg")
+
+[node name="Area2D3" type="Area2D" parent="Node2D" groups=["WALL"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Area2D3"]
+position = Vector2(-716, 15)
+rotation = -0.785397
+shape = SubResource("RectangleShape2D_7d4vg")
+
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, 5)
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 script = ExtResource("8_c6x6d")
 
 [node name="PhantomCamera2D" type="Node2D" parent="."]
+position = Vector2(0, 5)
 script = ExtResource("7_ujx3v")
 priority_override = false
 priority = 0

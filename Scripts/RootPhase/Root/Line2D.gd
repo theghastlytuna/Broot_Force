@@ -21,8 +21,9 @@ const music: AudioStream =  preload("res://Sounds/Music/KiloWatts - Gollum Finge
 @export var wallNode : Node2D
 @export var turningAwayCurve : Curve
 @export var turningAwayForce : float
-@export var cast : RayCast2D
 @export var debugCast : RayCast2D
+@export var leftCast : RayCast2D
+@export var rightCast : RayCast2D
 @export var wallMargin : float = 50
 @export_category("Root creation")
 @export var lineRenderer : Line2D
@@ -40,9 +41,12 @@ var lastSpawnedDepth : float = 0
 var mousePosition = Vector2.ZERO
 var currentRootArray : Array
 var spawningArcLength : float = 0
+var lastNormal : Vector2
+var lastNormalT : float
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	lastNormal = Vector2.ZERO
 	turningAmount = turningAmount * (1 + GameManager.getUpgradeAmount("Turning"))
 	tip.add_point(Vector2(0,0))
 	tip.add_point(Vector2(0,0))
@@ -91,41 +95,53 @@ func _process(delta: float) -> void:
 		currentRootArray.append(global_position)
 	
 	mousePosition = get_global_mouse_position()
-	cast.target_position = mousePosition-position
-	if mousePosition.distance_to(global_position) < 200:
-		cast.target_position = (mousePosition-position).normalized()*200
+	
+	
+	
 	var desiredPosition = mousePosition
 	
 	#check the raycasts to see if you will hit something
 	var checkWallCollision : bool = false
-	var forwardObject = cast.get_collider()
+	var leftObject = leftCast.get_collider()
+	var rightObject = rightCast.get_collider()
 	
 	
 	
-	if forwardObject:
-		if forwardObject.is_in_group("WALL"):
+	if leftObject:
+		if leftObject.is_in_group("WALL"):
+			checkWallCollision = true
+			
+	if rightObject:
+		if rightObject.is_in_group("WALL"):
 			checkWallCollision = true
 
 	if checkWallCollision:
 		
-		var intersect : Vector2 = cast.get_collision_point()		
-		var distance : float = intersect.distance_to(position)
+		var intersect : Vector2 
+		var distance : float
+		var usingCast
+		
+		var Lintersect = leftCast.get_collision_point()
+		var Ldistance = Lintersect.distance_to(global_position)
+		
+		var Rintersect = rightCast.get_collision_point()
+		var Rdistance = Rintersect.distance_to(global_position)
+		
+		distance = Ldistance
+		intersect = Lintersect
+		usingCast = leftCast
+		
+		if Rdistance > Ldistance:
+			distance = Rdistance
+			intersect = Rintersect
+			usingCast = rightCast
 	
 		if distance < 200:
 			
-			var upOrDown = -1
-			if intersect.y < global_position.y:
-				upOrDown = 1
-				
-			var leftOrRight = 1 #left
-			if intersect.x > global_position.x:
-				leftOrRight = -1
-			desiredPosition = intersect + Vector2(leftOrRight*wallMargin,(upOrDown*wallMargin) + (min(intersect.length(),200)*-upOrDown))
-			debugCast.target_position = desiredPosition
+			desiredPosition = intersect + (usingCast.get_collision_normal() * wallMargin)
 			
-			#Debug.Log(desiredPosition)
-			
-
+			debugCast.global_position = intersect
+			debugCast.target_position = desiredPosition - intersect
 
 	var amountToRoate : float = 0
 	
@@ -136,7 +152,6 @@ func _process(delta: float) -> void:
 	var angleToMouse : float = (rad_to_deg(forward.angle_to(desiredVector)))
 	
 	amountToRoate = clampi(angleToMouse,-amountToTurn,amountToTurn)
-	Debug.Log(amountToRoate)
 	rotate(deg_to_rad(amountToRoate))
 
 	var size : int = tip.points.size()-1
