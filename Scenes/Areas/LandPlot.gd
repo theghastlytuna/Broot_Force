@@ -32,3 +32,11 @@ func spawn_tower(tower, path):
 	#$CanvasLayer/Button.visible = false
 	#TODO: make its style completely invisible
 	GameManager.placedTowers[towerIndex] = path
+	
+	var group : int = -1
+	for i in range(7):
+		if stashedTower.is_in_group(str(i)):
+			group = i
+			break
+	
+	GameManager.placedTowersType[towerIndex] += 0.2

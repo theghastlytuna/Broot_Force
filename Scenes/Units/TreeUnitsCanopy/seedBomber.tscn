@@ -174,7 +174,7 @@ _data = {
 "RESET": SubResource("Animation_if5h2")
 }
 
-[node name="SeedBomber" type="StaticBody2D" groups=["PlayerUnits"]]
+[node name="SeedBomber" type="StaticBody2D" groups=["6", "PlayerUnits"]]
 collision_layer = 4
 script = ExtResource("1_c6e28")
 health = 100000.0

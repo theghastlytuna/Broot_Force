@@ -17,119 +17,53 @@ var activated : bool = false
 ##Parent node to spawn units under
 @export var unitParent : Node2D
 
+var unitCosts : Dictionary
+
 signal FinishedSpawning()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	currentRoundBudget = firstRoundBudget * pow(1.2, GameManager.growthRounds - 1)
 	Debug.Log("This round's budget: ", currentRoundBudget)
-	maxUnitIndex = min(GameManager.growthRounds - 1, 6)
-	rng.randomize()
 	
-	var unitPicker : int = rng.randi_range(1, 3)
+	var Uindex = 0
+	for u in enemyUnits:
+		unitCosts[Uindex] = u.cost
+		Uindex+=1
 	
-	var meleeBudget : float
-	var rangedBudget : float
-	var vehicleBudget : float
+	var AIArray = AIManager.NN.predict(GameManager.placedTowersType)
+	Debug.Log(AIArray)
+	AIArray.sort_custom(sort_ascending)
+	var confidence : Dictionary
 	
-	var baseUnitType : String
-	var extraUnitTypes : Array
+	for i in AIArray.size():
+		confidence[AIArray[i]] = i
 	
-	if unitPicker == 1:
-		baseUnitType = "Melee"
-		extraUnitTypes = ["Vehicle", "Ranged"]
-		meleeBudget = currentRoundBudget * 0.5
-		rangedBudget = currentRoundBudget * 0.25
-		vehicleBudget = currentRoundBudget * 0.25
-		
-	elif unitPicker == 2:
-		baseUnitType = "Ranged"
-		extraUnitTypes = ["Vehicle", "Melee"]
-		meleeBudget = currentRoundBudget * 0.25
-		rangedBudget = currentRoundBudget * 0.5
-		vehicleBudget = currentRoundBudget * 0.25
-	else:
-		baseUnitType = "Vehicle"
-		extraUnitTypes = ["Ranged", "Melee"]
-		meleeBudget = currentRoundBudget * 0.25
-		rangedBudget = currentRoundBudget * 0.25
-		vehicleBudget = currentRoundBudget * 0.5
+	Debug.Log(AIArray)
 
-	Debug.Log("Base unit type: " + baseUnitType + "Extra unit types: " + extraUnitTypes[0] + " " + extraUnitTypes[1])
+	while currentRoundBudget >= 10:
+		for i in AIArray:
+			var unitIndex = confidence[i]
+			Debug.LogSpace("unit index",i," unit confidence",confidence[i],"current budget",currentRoundBudget)
+			if currentRoundBudget >= unitCosts[unitIndex]:
+				unitsToSpawn.append(enemyUnits[unitIndex])
+				currentRoundBudget -= unitCosts[unitIndex]
+				Debug.LogSpace("SPAWNED    unit index",i," unit confidence",confidence[i],"current budget",currentRoundBudget)
+				break
+			
+		
 	
-	var currentIndex : int = maxUnitIndex
-	while currentIndex >= 0:
-		if enemyUnits[currentIndex].is_in_group("Vehicle") && \
-		enemyUnits[currentIndex].cost <= vehicleBudget:
-			unitsToSpawn.append(enemyUnits[currentIndex])
-			vehicleBudget -= enemyUnits[currentIndex].cost
-			Debug.Log("Added a vehicle")
-		else:
-			currentIndex -= 1
-	
-	Debug.Log("Finished vehicles")
-	
-	currentIndex = maxUnitIndex
-	rangedBudget += vehicleBudget
-	while currentIndex >= 0:
-		if enemyUnits[currentIndex].is_in_group("Ranged") && \
-		enemyUnits[currentIndex].cost <= rangedBudget:
-			unitsToSpawn.append(enemyUnits[currentIndex])
-			rangedBudget -= enemyUnits[currentIndex].cost
-			Debug.Log("Added a ranged")
-		else:
-			currentIndex -= 1
-	
-	Debug.Log("Finished ranged")
-	
-	currentIndex = maxUnitIndex
-	meleeBudget += rangedBudget
-	while currentIndex >= 0:
-		if enemyUnits[currentIndex].is_in_group("Melee") && \
-		enemyUnits[currentIndex].cost <= meleeBudget:
-			unitsToSpawn.append(enemyUnits[currentIndex])
-			meleeBudget -= enemyUnits[currentIndex].cost
-			Debug.Log("Added a melee")
-		else:
-			currentIndex -= 1
-	Debug.Log("Finished melee")
-	#var spawnLoopNum : int = 0
-	#var budgetToSpend = currentRoundBudget * 0.5
-	#while spawnLoopNum <= 2:
-		#while currentIndex >= 0:
-			#var currentIndex : int = maxUnitIndex
-			#if spawnLoopNum == 0:
-				#if enemyUnits[currentIndex].is_in_group("Vehicle") && \
-				#enemyUnits[currentIndex].cost <= budgetToSpend:
-					#unitsToSpawn.append(enemyUnits[currentIndex])
-					#budgetToSpend -= enemyUnits[currentIndex].cost
-					#Debug.Log("Found a " + baseUnitType)
-				#else:
-					#currentIndex -= 1
-			#
-			#elif spawnLoopNum == 1:
-				#if enemyUnits[currentIndex].is_in_group(extraUnitTypes[0]) && \
-				#enemyUnits[currentIndex].cost <= budgetToSpend:
-					#unitsToSpawn.append(enemyUnits[currentIndex])
-					#budgetToSpend -= enemyUnits[currentIndex].cost
-					#Debug.Log("Found a " + extraUnitTypes[0])
-				#else:
-					#currentIndex -= 1
-			#
-			#else:
-				#if enemyUnits[currentIndex].is_in_group(extraUnitTypes[1]) && \
-				#enemyUnits[currentIndex].cost <= budgetToSpend:
-					#unitsToSpawn.append(enemyUnits[currentIndex])
-					#budgetToSpend -= enemyUnits[currentIndex].cost
-					#Debug.Log("Found a " + extraUnitTypes[1])
-				#else:
-					#currentIndex -= 1
-		#budgetToSpend += currentRoundBudget * 0.25
-		#spawnLoopNum += 1
 	unitSpawnTimer = Timer.new()
 	add_child(unitSpawnTimer)
 	unitSpawnTimer.wait_time = spawnLength / unitsToSpawn.size()
 	unitSpawnTimer.timeout.connect(spawnUnit)
+
+
+func sort_ascending(a, b):#ignore the title
+	if a > b:
+		return true
+	return false
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -138,7 +72,7 @@ func _process(delta):
 
 func spawnUnit():
 	rng.randomize()
-	
+	Debug.Log("current budget: ", currentRoundBudget)
 	var index = rng.randi_range(0, unitsToSpawn.size() - 1)
 	var newUnit = unitsToSpawn[index].duplicate()
 	

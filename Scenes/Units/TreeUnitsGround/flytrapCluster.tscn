@@ -316,7 +316,7 @@ _data = {
 "RESET": SubResource("Animation_wrkvx")
 }
 
-[node name="FlytrapCluster" type="StaticBody2D" groups=["PlayerUnits"]]
+[node name="FlytrapCluster" type="StaticBody2D" groups=["2", "PlayerUnits"]]
 collision_layer = 4
 script = ExtResource("1_dftyv")
 health = 450.0
@@ -371,7 +371,6 @@ visible = false
 
 [node name="Spine1" type="Bone2D" parent="SkeletonParent/Skeleton2D"]
 rotation = 0.476491
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 0, 0)
 
 [node name="Spine2" type="Bone2D" parent="SkeletonParent/Skeleton2D/Spine1"]
@@ -382,6 +381,7 @@ rest = Transform2D(1, 0, 0, 1, 0, -39)
 [node name="Spine3" type="Bone2D" parent="SkeletonParent/Skeleton2D/Spine1/Spine2"]
 position = Vector2(0, -45)
 rotation = -1.43463
+scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 0, -45)
 
 [node name="Head" type="Bone2D" parent="SkeletonParent/Skeleton2D/Spine1/Spine2/Spine3"]

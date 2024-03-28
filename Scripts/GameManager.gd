@@ -6,6 +6,7 @@ var currentRoundBudget : float = 0
 var availableUnits : Array[int] = [0,0,0,0,0,0]
 var placedTowers : Dictionary #number tower slot key, path resource
 var placedTowersHealth : Dictionary #number tower slot key, float health
+var placedTowersType : Array = [0,0,0,0,0,0,0] #number tower slot key, int type
 var growthRounds : int = 0
 var pastRoots : Dictionary
 

@@ -62,11 +62,11 @@ func _ready():
 func _on_attack_area_body_entered(body : PhysicsBody2D):
 	#If the detected body is in the target group
 	if body.is_in_group(groupToAttack):
-		Debug.Log(get_parent().name + " area entered")
+		#Debug.Log(get_parent().name + " area entered")
 		#If the unit isn't already attacking and attacking is enabled
 		if !isAttacking && attackEnabled:
 			#Set attacking to true, start the timer, emit the signal
-			Debug.Log(get_parent().name + "started attacking")
+			#Debug.Log(get_parent().name + "started attacking")
 			isAttacking = true
 			attackTimer.start()
 			StartedAttacking.emit()

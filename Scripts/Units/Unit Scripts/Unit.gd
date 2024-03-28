@@ -86,7 +86,7 @@ func damage(args : AttackArguments):
 		
 		damageTaken += currentDamage
 		healthBar.value = health - damageTaken
-		Debug.Log("Health bar value: ", healthBar.value)
+		#Debug.Log("Health bar value: ", healthBar.value)
 		#Debug.LogSpace("Damage Taken " , currentDamage , name , " from " , args.from.name)
 		#Debug.Log(name, " current health: ", health - damageTaken)
 		check_death()
@@ -109,10 +109,9 @@ func check_death():
 ##Destroys the unit
 func die():
 	#queue_free()
-	if isDead:
-		return
 	setIsDead()
 	onDie.emit()
+	#Debug.Log("connections",onDie.get_connections().size())
 	var attackNode = find_child("Attack")
 	if not attackNode:
 		return
@@ -125,6 +124,8 @@ func die():
 	for c in attackNode.AttackedEnemy.get_connections():
 		attackNode.AttackedEnemy.disconnect(c["callable"])
 	
+	if onDie.get_connections().size() == 0:
+		queue_free()
 	
 
 #its its own function so that we can tell if an attack should check for if its dead or not

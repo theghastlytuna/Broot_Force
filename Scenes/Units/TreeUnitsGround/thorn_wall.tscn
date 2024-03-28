@@ -7,7 +7,7 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1tuch"]
 
-[node name="ThornWall" type="StaticBody2D" groups=["PlayerUnits"]]
+[node name="ThornWall" type="StaticBody2D" groups=["0", "PlayerUnits"]]
 collision_layer = 4
 script = ExtResource("1_1lam0")
 health = 600.0

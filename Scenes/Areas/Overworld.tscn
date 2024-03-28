@@ -359,6 +359,7 @@ offset_right = -16.0
 offset_bottom = -16.0
 grow_horizontal = 0
 grow_vertical = 0
+mouse_filter = 2
 theme_override_constants/separation = 16
 alignment = 2
 script = ExtResource("21_rchts")
@@ -387,6 +388,7 @@ script = ExtResource("23_03xkq")
 [connection signal="canopy_clicked" from="Tree/CanopyPositions/4/CanvasLayer/Button" to="CanopyCanvas/Control/PanelContainer" method="_on_button_canopy_clicked"]
 [connection signal="pressed" from="Tree/CanopyPositions/4/CanvasLayer/Button" to="Tree/CanopyPositions/4/CanvasLayer/Button" method="_on_pressed"]
 [connection signal="FinishedSpawning" from="EnemySpawner" to="EnemyUnits" method="_on_enemy_spawner_finished_spawning"]
+[connection signal="button_up" from="Button" to="." method="gameReady"]
 [connection signal="button_up" from="Button" to="LandCanvas/Control/PanelContainer" method="_on_texture_button_pressed"]
 [connection signal="button_up" from="Button" to="CanopyCanvas/Control/PanelContainer" method="_on_texture_button_pressed"]
 [connection signal="button_up" from="Button" to="EnemySpawner" method="_on_button_button_up"]

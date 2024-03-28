@@ -197,7 +197,7 @@ _data = {
 "RESET": SubResource("Animation_xwwug")
 }
 
-[node name="SporeSprayer" type="StaticBody2D" groups=["PlayerUnits"]]
+[node name="SporeSprayer" type="StaticBody2D" groups=["4", "PlayerUnits"]]
 collision_layer = 4
 script = ExtResource("1_5x647")
 health = 100000.0
@@ -294,6 +294,7 @@ rest = Transform2D(1, 0, 0, 1, 0, 0)
 [node name="Spine2" type="Bone2D" parent="SkeletonHolder/Skeleton2D/Spine1"]
 position = Vector2(0, 43)
 rotation = 0.994637
+scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 0, 43)
 
 [node name="Spine3" type="Bone2D" parent="SkeletonHolder/Skeleton2D/Spine1/Spine2"]
@@ -304,7 +305,6 @@ rest = Transform2D(1, 0, 0, 1, 0, 38)
 [node name="Head" type="Bone2D" parent="SkeletonHolder/Skeleton2D/Spine1/Spine2/Spine3"]
 position = Vector2(0, 36)
 rotation = 0.0787667
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 0, 36)
 auto_calculate_length_and_angle = false
 length = 29.461
