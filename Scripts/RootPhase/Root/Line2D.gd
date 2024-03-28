@@ -92,9 +92,10 @@ func _process(delta: float) -> void:
 	var toMouseVector = mousePosition - global_position
 	var forward = transform.y
 	
+	var amountToTurn = turningAmount * (1 + GameManager.getUpgradeAmount("Turning"))
 	var angleToMouse : float = (rad_to_deg(forward.angle_to(toMouseVector)))
 	
-	amountToRoate = clampi(angleToMouse,-turningAmount,turningAmount)
+	amountToRoate = clampi(angleToMouse,-amountToTurn,amountToTurn)
 
 	#check the raycasts to see if you will hit something
 	var checkWallCollision : bool = false
@@ -120,10 +121,12 @@ func _process(delta: float) -> void:
 			var rotateMultiplier = 1
 			if leftDistance > rightDistance:
 				rotateMultiplier = -1
-			var largestDistance : float = max(leftDistance,rightDistance)
-			amountToRoate = turningAwayCurve.sample(largestDistance/100) * turningAwayForce * rotateMultiplier
+			var largestDistance : float = min(leftDistance,rightDistance)
+			var samplePoint : float = 1-(largestDistance/100)
+			Debug.Log(samplePoint, " ", largestDistance)
+			amountToRoate = turningAwayCurve.sample(samplePoint) * amountToTurn * rotateMultiplier
 		
-	rotate(deg_to_rad(amountToRoate * (1 + GameManager.getUpgradeAmount("Turning"))))
+	rotate(deg_to_rad(amountToRoate))
 
 	var size : int = tip.points.size()-1
 	tip.points[size] = position

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://brh7kxvkvq02q"]
+[gd_scene load_steps=28 format=3 uid="uid://brh7kxvkvq02q"]
 
 [ext_resource type="Script" path="res://Scenes/Areas/World.gd" id="1_j1hoq"]
 [ext_resource type="Texture2D" uid="uid://wnnrtab0skb7" path="res://Art Assets/Textures/Layer2.png" id="1_tfsmi"]
@@ -9,6 +9,8 @@
 [ext_resource type="Script" path="res://Scripts/RootPhase/Spawn Management/Spawner.gd" id="5_s6byk"]
 [ext_resource type="PackedScene" uid="uid://o4ow5qdj2dwa" path="res://Scenes/RootInteractables/Resources/water.tscn" id="6_coeey"]
 [ext_resource type="PackedScene" uid="uid://ca3vfsmfimr8r" path="res://Scenes/RootInteractables/Obstacles/Rock.tscn" id="7_rhly2"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2D.gd" id="7_ujx3v"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="8_c6x6d"]
 [ext_resource type="PackedScene" uid="uid://bc82ny27vki14" path="res://Scenes/RootInteractables/UnitRemains/DinoRemains.tscn" id="8_e761s"]
 [ext_resource type="Script" path="res://Scripts/SaveGame.gd" id="8_jhff2"]
 [ext_resource type="PackedScene" uid="uid://raxinoox6x3n" path="res://Scenes/RootInteractables/UnitRemains/squirrel_remains.tscn" id="9_gxojj"]
@@ -26,8 +28,8 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.373626), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_lyvea"]
-_data = [Vector2(0, 0.0542083), 0.0, 0.0, 0, 0, Vector2(0.791209, 0.610556), 2.01614, 2.01614, 0, 0, Vector2(0.908425, 1), 3.03766, 0.0, 0, 0]
-point_count = 3
+_data = [Vector2(0, 0.0505264), 0.0, 0.282539, 0, 0, Vector2(0.758242, 1), -0.200131, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4g5gk"]
 
@@ -83,7 +85,7 @@ end_cap_mode = 2
 [node name="Area2D" type="Area2D" parent="Root" node_paths=PackedStringArray("wallNode", "lineRenderer", "tip", "playerCamera", "spawner", "gameSaver")]
 script = ExtResource("4_uwuhp")
 speed = 200.0
-turningAmount = 1.0
+turningAmount = 10.0
 wallNode = NodePath("../../Walls")
 turningAwayCurve = SubResource("Curve_lyvea")
 turningAwayForce = 4.0
@@ -98,11 +100,6 @@ rootPhaseTimeout = 30.0
 
 [node name="Tip" type="Sprite2D" parent="Root/Area2D" groups=["Tip"]]
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Root/Area2D/Tip"]
-remote_path = NodePath("../../../../Camera2D")
-update_rotation = false
-update_scale = false
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Root/Area2D"]
 scale = Vector2(0.2, 0.2)
 shape = SubResource("CircleShape2D_4g5gk")
@@ -110,12 +107,14 @@ shape = SubResource("CircleShape2D_4g5gk")
 [node name="CheckLeft" type="RayCast2D" parent="Root/Area2D"]
 position = Vector2(5, -1)
 target_position = Vector2(0, 100)
+hit_from_inside = true
 collide_with_areas = true
 collide_with_bodies = false
 
 [node name="CheckRight" type="RayCast2D" parent="Root/Area2D"]
 position = Vector2(-5, -1)
 target_position = Vector2(0, 100)
+hit_from_inside = true
 collide_with_areas = true
 collide_with_bodies = false
 
@@ -136,8 +135,32 @@ position = Vector2(782, -1)
 shape = SubResource("RectangleShape2D_u5ugd")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position_smoothing_speed = 11.125
-rotation_smoothing_speed = 5.845
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+script = ExtResource("8_c6x6d")
+
+[node name="PhantomCamera2D" type="Node2D" parent="."]
+script = ExtResource("7_ujx3v")
+priority_override = false
+priority = 0
+zoom = Vector2(1, 1)
+follow_mode = 2
+follow_target = NodePath("../Root/Area2D/Tip")
+follow_parameters/target_offset = Vector2(0, 0)
+follow_parameters/damping = true
+follow_parameters/damping_value = 30.0
+frame_preview = true
+pixel_perfect = false
+limit/draw_limits = true
+limit/left = -10000000
+limit/top = -10000000
+limit/right = 10000000
+limit/bottom = 10000000
+limit/limit_node_target = NodePath("")
+limit/smoothed = false
+tween_parameters = null
+tween_on_load = true
+inactive_update_mode = 0
 
 [node name="Spawner" type="Node2D" parent="." node_paths=PackedStringArray("addingParent")]
 script = ExtResource("5_s6byk")
