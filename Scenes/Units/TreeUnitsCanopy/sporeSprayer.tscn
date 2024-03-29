@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cdiyjm4ro371c"]
+[gd_scene load_steps=15 format=3 uid="uid://cdiyjm4ro371c"]
 
 [ext_resource type="Script" path="res://Scripts/Towers/Tower Scripts/ThornWall.gd" id="1_5x647"]
 [ext_resource type="Script" path="res://Scripts/Towers/Attack Scripts/SporeSprayerAttack.gd" id="3_wuled"]
@@ -190,11 +190,137 @@ tracks/4/keys = {
 "values": [Vector2(0, 36)]
 }
 
+[sub_resource type="Animation" id="Animation_xqcbb"]
+resource_name = "Die"
+length = 0.6
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.309804, 0.309804, 0.309804, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton2D/Spine1:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.303263, -0.632889, -0.936793]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Skeleton2D/Spine1/Spine2:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.55554, 2.28827, 2.68117]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Skeleton2D/Spine1/Spine2/Spine3:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.080677, -2.33674, -2.72387]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Skeleton2D/Spine1/Spine2/Spine3/Head:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.215759, 0.921552, 1.49368]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 2.73208),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 0)]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("..")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vevec"]
 _data = {
 "Attack": SubResource("Animation_c4o4b"),
+"Die": SubResource("Animation_xqcbb"),
 "Idle": SubResource("Animation_61xgu"),
 "RESET": SubResource("Animation_xwwug")
+}
+
+[sub_resource type="Animation" id="Animation_dtyv1"]
+resource_name = "Grow"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SkeletonHolder:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.1, 1.2), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SkeletonHolder:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3ehju"]
+_data = {
+"Grow": SubResource("Animation_dtyv1")
 }
 
 [node name="SporeSprayer" type="StaticBody2D" groups=["PlayerUnits"]]
@@ -299,12 +425,12 @@ rest = Transform2D(1, 0, 0, 1, 0, 43)
 [node name="Spine3" type="Bone2D" parent="SkeletonHolder/Skeleton2D/Spine1/Spine2"]
 position = Vector2(0, 38)
 rotation = -0.0946328
+scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 0, 38)
 
 [node name="Head" type="Bone2D" parent="SkeletonHolder/Skeleton2D/Spine1/Spine2/Spine3"]
 position = Vector2(0, 36)
 rotation = 0.0787667
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 0, 36)
 auto_calculate_length_and_angle = false
 length = 29.461
@@ -316,7 +442,14 @@ libraries = {
 }
 playback_default_blend_time = 0.2
 
+[node name="Grow" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3ehju")
+}
+
+[connection signal="onDie" from="." to="SkeletonHolder/AnimationPlayer" method="play" binds= ["Die"]]
 [connection signal="ready" from="." to="SkeletonHolder/AnimationPlayer" method="play" binds= ["Idle"]]
+[connection signal="ready" from="." to="Grow" method="play" binds= ["Grow"]]
 [connection signal="StartedAttacking" from="Attack" to="SkeletonHolder/AnimationPlayer" method="play" binds= ["Attack"]]
 [connection signal="StoppedAttacking" from="Attack" to="SkeletonHolder/AnimationPlayer" method="play" binds= ["Idle"]]
 [connection signal="body_entered" from="AttackArea" to="Attack" method="_on_attack_area_body_entered"]
