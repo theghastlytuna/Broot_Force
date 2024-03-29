@@ -25,6 +25,7 @@ const music: AudioStream =  preload("res://Sounds/Music/KiloWatts - Gollum Finge
 @export var leftCast : RayCast2D
 @export var rightCast : RayCast2D
 @export var wallMargin : float = 50
+@export var raycastParent : Node2D
 @export_category("Root creation")
 @export var lineRenderer : Line2D
 @export var tip : Line2D
@@ -95,7 +96,7 @@ func _process(delta: float) -> void:
 		currentRootArray.append(global_position)
 	
 	mousePosition = get_global_mouse_position()
-	
+	raycastParent.rotation_degrees = rotation_degrees
 	
 	
 	var desiredPosition = mousePosition

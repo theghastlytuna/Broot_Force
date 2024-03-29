@@ -61,6 +61,7 @@ var outputArray : Array = [
 ]
 
 func _ready():
+	return
 	NN.learning_rate = 0.3
 	
 	for epoch in range(200):
