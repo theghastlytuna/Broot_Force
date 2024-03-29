@@ -64,7 +64,7 @@ func _enter_tree():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
+	return
 	var newNN : NeuralNetwork = NeuralNetwork.new(7,15,7)
 	newNN.learning_rate = 0.3
 	
@@ -82,6 +82,4 @@ func _ready():
 	pass # Replace with function body.
 
 func gameReady():
-	var sendingArray : Array
-	for t in GameManager.placedTowers.keys()
 	pass

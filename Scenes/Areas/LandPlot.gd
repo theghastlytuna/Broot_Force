@@ -25,6 +25,8 @@ func instantiate_tower(path):
 func spawn_tower(tower, path):
 	if get_child_count() > 0:
 		for c in get_children():
+			if c is CanvasLayer:
+				continue
 			#TODO: give yourself some resources back?
 			c.queue_free()
 	add_child(tower)

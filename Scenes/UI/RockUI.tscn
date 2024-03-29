@@ -1,50 +1,150 @@
-[gd_scene load_steps=4 format=3 uid="uid://bm1jicmeiq73h"]
+[gd_scene load_steps=9 format=3 uid="uid://bm1jicmeiq73h"]
 
 [ext_resource type="Texture2D" uid="uid://0jqvsnax4iop" path="res://Sprites/UI/STONE.png" id="1_565lx"]
 [ext_resource type="Script" path="res://Scenes/UI/RockUI.gd" id="1_wsd3v"]
 [ext_resource type="PackedScene" uid="uid://dxa7recdeio70" path="res://Scenes/UI/Text.tscn" id="2_x8lbq"]
+[ext_resource type="Texture2D" uid="uid://c7cndcnrhx1n7" path="res://Art Assets/Textures/UI/StoneParticle.png" id="4_xgwhs"]
 
-[node name="PanelContainer" type="PanelContainer"]
+[sub_resource type="Animation" id="Animation_y2dxj"]
+resource_name = "Show"
+length = 0.2
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.2, 1.1), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5uiwq"]
+_data = {
+"Show": SubResource("Animation_y2dxj")
+}
+
+[sub_resource type="Curve" id="Curve_q3gbw"]
+_data = [Vector2(0, 0.373626), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.21933, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_8sr3u"]
+offsets = PackedFloat32Array(0.149254, 0.850746)
+colors = PackedColorArray(0.0885598, 0.0885599, 0.0885599, 1, 0.60933, 0.60933, 0.60933, 1)
+
+[node name="CenterContainer" type="CenterContainer" node_paths=PackedStringArray("particles", "finale", "wiggleTimer")]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+use_top_left = true
 script = ExtResource("1_wsd3v")
+particles = NodePath("PanelContainer/VBoxContainer/CenterContainer/TextureButton/CPUParticles2D")
+finale = NodePath("Finale")
+wiggleTimer = NodePath("Timer")
+maxToWiggle = Vector2(10, 10)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PanelContainer"]
+libraries = {
+"": SubResource("AnimationLibrary_5uiwq")
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+mouse_filter = 2
 alignment = 1
 
-[node name="Label" parent="VBoxContainer" instance=ExtResource("2_x8lbq")]
+[node name="Label" parent="PanelContainer/VBoxContainer" instance=ExtResource("2_x8lbq")]
 layout_mode = 2
 text = "OBSTICLE_HIT"
 horizontal_alignment = 1
 
-[node name="Label2" parent="VBoxContainer" instance=ExtResource("2_x8lbq")]
+[node name="Label2" parent="PanelContainer/VBoxContainer" instance=ExtResource("2_x8lbq")]
 layout_mode = 2
 text = "OBSTICLE_INSTRUCTIONS"
 horizontal_alignment = 1
 
-[node name="Label3" parent="VBoxContainer" instance=ExtResource("2_x8lbq")]
+[node name="Label3" parent="PanelContainer/VBoxContainer" instance=ExtResource("2_x8lbq")]
 layout_mode = 2
 text = "OBSTICLE_HIT_LEFT"
 horizontal_alignment = 1
 
-[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+mouse_filter = 2
 
-[node name="TextureButton" type="TextureButton" parent="VBoxContainer/CenterContainer"]
+[node name="TextureButton" type="TextureButton" parent="PanelContainer/VBoxContainer/CenterContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture_normal = ExtResource("1_565lx")
 stretch_mode = 4
 
-[connection signal="pressed" from="VBoxContainer/CenterContainer/TextureButton" to="." method="pressed"]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="PanelContainer/VBoxContainer/CenterContainer/TextureButton"]
+position = Vector2(64, 95.8)
+emitting = false
+amount = 4
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 0.23
+texture = ExtResource("4_xgwhs")
+emission_shape = 4
+emission_points = PackedVector2Array(-25.7, 16.3, 0, -18.3, 31.9, 0)
+emission_colors = PackedColorArray()
+direction = Vector2(0, 1)
+spread = 90.0
+gravity = Vector2(0, 642.7)
+initial_velocity_max = 370.37
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_max = 1.5
+scale_amount_curve = SubResource("Curve_q3gbw")
+color_initial_ramp = SubResource("Gradient_8sr3u")
+hue_variation_min = -0.59
+hue_variation_max = 1.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.05
+
+[node name="Finale" type="CPUParticles2D" parent="."]
+position = Vector2(0, 72.8)
+emitting = false
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 0.23
+texture = ExtResource("4_xgwhs")
+emission_shape = 4
+emission_points = PackedVector2Array(-25.7, 16.3, 0, -18.3, 31.9, 0)
+emission_colors = PackedColorArray()
+direction = Vector2(0, -1)
+spread = 90.0
+gravity = Vector2(0, 642.7)
+initial_velocity_min = 444.44
+initial_velocity_max = 731.48
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 2.0
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_q3gbw")
+color_initial_ramp = SubResource("Gradient_8sr3u")
+hue_variation_min = -0.59
+hue_variation_max = 1.0
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/CenterContainer/TextureButton" to="." method="pressed"]
+[connection signal="timeout" from="Timer" to="." method="wiggleTimerTimeout"]

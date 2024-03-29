@@ -99,6 +99,7 @@ func _process(delta: float) -> void:
 	
 	
 	var desiredPosition = mousePosition
+	var amountToTurn = turningAmount 
 	
 	#check the raycasts to see if you will hit something
 	var checkWallCollision : bool = false
@@ -142,13 +143,14 @@ func _process(delta: float) -> void:
 			
 			debugCast.global_position = intersect
 			debugCast.target_position = desiredPosition - intersect
+			amountToTurn = turningAwayForce #* turningAwayCurve.sample(distance/200)
 
 	var amountToRoate : float = 0
 	
 	var desiredVector = desiredPosition - global_position
 	var forward = transform.y
 	
-	var amountToTurn = turningAmount 
+	
 	var angleToMouse : float = (rad_to_deg(forward.angle_to(desiredVector)))
 	
 	amountToRoate = clampi(angleToMouse,-amountToTurn,amountToTurn)

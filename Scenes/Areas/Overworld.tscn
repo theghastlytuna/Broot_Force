@@ -83,6 +83,7 @@ position = Vector2(230, 440)
 script = ExtResource("3_ncd5e")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Tree/GroundPositions/0"]
+layer = 4
 
 [node name="Button" type="Button" parent="Tree/GroundPositions/0/CanvasLayer" node_paths=PackedStringArray("parentnode") groups=["TowerButton"]]
 offset_left = 191.0
@@ -359,6 +360,7 @@ offset_right = -16.0
 offset_bottom = -16.0
 grow_horizontal = 0
 grow_vertical = 0
+mouse_filter = 2
 theme_override_constants/separation = 16
 alignment = 2
 script = ExtResource("21_rchts")

@@ -28,7 +28,7 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.373626), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_lyvea"]
-_data = [Vector2(0, 0.0505264), 0.0, 0.282539, 0, 0, Vector2(0.767635, 1), -0.200131, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0410062, 0, 0, Vector2(0.946058, 1), 2.80503, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4g5gk"]
@@ -91,10 +91,11 @@ end_cap_mode = 2
 
 [node name="Area2D" type="Area2D" parent="Root" node_paths=PackedStringArray("wallNode", "debugCast", "leftCast", "rightCast", "lineRenderer", "tip", "playerCamera", "spawner", "gameSaver")]
 script = ExtResource("4_uwuhp")
-turningAmount = 10.0
+speed = 500.0
+turningAmount = 1.0
 wallNode = NodePath("../../Walls")
 turningAwayCurve = SubResource("Curve_lyvea")
-turningAwayForce = 4.0
+turningAwayForce = 10.0
 debugCast = NodePath("../RayCast2D")
 leftCast = NodePath("../Left")
 rightCast = NodePath("../Right")
@@ -104,8 +105,7 @@ playerCamera = NodePath("../../Camera2D")
 spawner = NodePath("../../Spawner")
 spawnInterval = 100.0
 gameSaver = NodePath("../../SaveGame")
-rootPointSaveArcLength = 50.0
-rootPhaseTimeout = 6000.0
+rootPhaseTimeout = 15.0
 
 [node name="Tip" type="Sprite2D" parent="Root/Area2D" groups=["Tip"]]
 
