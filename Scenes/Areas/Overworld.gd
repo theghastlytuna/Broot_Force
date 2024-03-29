@@ -64,6 +64,8 @@ func _enter_tree():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	GameManager.currentRoundBudget = 400
+	Debug.Log("SETTING MONEY REMOVE LATER 400")
 	return
 	var newNN : NeuralNetwork = NeuralNetwork.new(7,15,7)
 	newNN.learning_rate = 0.3

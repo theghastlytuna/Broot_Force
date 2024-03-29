@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dv0aty8oydrg2"]
+[gd_scene load_steps=17 format=3 uid="uid://dv0aty8oydrg2"]
 
 [ext_resource type="Script" path="res://Scripts/Towers/Tower Scripts/ThornWall.gd" id="1_exnqm"]
 [ext_resource type="Texture2D" uid="uid://c05wm8dm7byej" path="res://Art Assets/Textures/FlowerStem.png" id="3_0m6mg"]
@@ -167,17 +167,131 @@ tracks/3/keys = {
 "values": [0.527778]
 }
 
+[sub_resource type="Animation" id="Animation_1nu2p"]
+resource_name = "Die"
+length = 0.6
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.3), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.376471, 0.376471, 0.376471, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Skeleton2D/Spine1:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.329299, 0.748317, 0.921381]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Skeleton2D/Spine1/Spine2:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.343111, -1.27412, -1.49863]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Skeleton2D/Spine1/Spine2/Spine3:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.398856, -1.53549, -1.77264]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Skeleton2D/Spine1/Spine2/Spine3/Head:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.428128, -0.80369, -1.25915]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("..")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ww6e4"]
 _data = {
 "Attack": SubResource("Animation_6uqap"),
+"Die": SubResource("Animation_1nu2p"),
 "Idle": SubResource("Animation_scd2d"),
 "RESET": SubResource("Animation_dnie6")
+}
+
+[sub_resource type="Animation" id="Animation_5qwt3"]
+resource_name = "Grow"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1.93187, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0.8, 1.2), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_icggd"]
+_data = {
+"Grow": SubResource("Animation_5qwt3")
 }
 
 [node name="toxicBloom" type="StaticBody2D" groups=["PlayerUnits"]]
 collision_layer = 4
 script = ExtResource("1_exnqm")
-health = 400.0
+health = 1.0
 cost = 9
 
 [node name="Attack" type="Node2D" parent="."]
@@ -243,27 +357,29 @@ uv = PackedVector2Array(8, 8, 8, 488, 448, 488, 448, 8)
 bones = ["Spine1", PackedFloat32Array(0, 0, 0, 0), "Spine1/Spine2", PackedFloat32Array(0, 0, 0, 0), "Spine1/Spine2/Spine3", PackedFloat32Array(0, 0, 0, 0), "Spine1/Spine2/Spine3/Head", PackedFloat32Array(1, 1, 1, 1)]
 
 [node name="Skeleton2D" type="Skeleton2D" parent="Node2D"]
+visible = false
 
 [node name="Spine1" type="Bone2D" parent="Node2D/Skeleton2D"]
 rotation = 0.461512
-scale = Vector2(0.999999, 0.999999)
+scale = Vector2(0.999998, 0.999998)
 rest = Transform2D(1, 0, 0, 1, 0, 0)
 
 [node name="Spine2" type="Bone2D" parent="Node2D/Skeleton2D/Spine1"]
 position = Vector2(0, -58)
 rotation = -0.631284
-scale = Vector2(0.999999, 0.999999)
+scale = Vector2(0.999998, 0.999998)
 rest = Transform2D(1, 0, 0, 1, 0, -58)
 
 [node name="Spine3" type="Bone2D" parent="Node2D/Skeleton2D/Spine1/Spine2"]
 position = Vector2(0, -33)
 rotation = -0.651038
+scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 0, -33)
 
 [node name="Head" type="Bone2D" parent="Node2D/Skeleton2D/Spine1/Spine2/Spine3"]
 position = Vector2(0, -32)
 rotation = 0.527778
-scale = Vector2(1, 1)
+scale = Vector2(0.999999, 0.999999)
 rest = Transform2D(1, 0, 0, 1, 0, -32)
 auto_calculate_length_and_angle = false
 length = 29.461
@@ -283,7 +399,14 @@ scale = Vector2(0.15, 0.15)
 position = Vector2(-54, -90)
 rotation = -1.5708
 
+[node name="GrowAndDie" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_icggd")
+}
+
+[connection signal="onDie" from="." to="Node2D/AnimationPlayer" method="play" binds= ["Die"]]
 [connection signal="ready" from="." to="Node2D/AnimationPlayer" method="play" binds= ["Idle"]]
+[connection signal="ready" from="." to="GrowAndDie" method="play" binds= ["Grow"]]
 [connection signal="AttackedEnemy" from="Attack" to="PoisonCloud" method="playAnimation"]
 [connection signal="AttackedEnemy" from="Attack" to="Node2D/AnimationPlayer" method="play" binds= ["Attack"]]
 [connection signal="AttackedEnemy" from="Attack" to="Node2D/AnimationPlayer" method="queue" binds= ["Idle"]]

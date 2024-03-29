@@ -14,21 +14,22 @@ func _ready():
 
 func _exit_tree() -> void:
 	if not stashedTower:
+		GameManager.placedTowersHealth.erase(towerIndex)
+		GameManager.placedTowers.erase(towerIndex)
 		return
 	GameManager.placedTowersHealth[towerIndex] = stashedTower.getHealth()
+	
 
 func instantiate_tower(path):
 	spawn_tower(load(path).instantiate(),path)
-	stashedTower.setHealth(GameManager.placedTowersHealth[towerIndex])
+	if GameManager.placedTowersHealth.has(towerIndex):
+		stashedTower.setHealth(GameManager.placedTowersHealth[towerIndex])
 	#Debug.Log("set health to " + GameManager.placedTowersHealth[towerIndex])
 
 func spawn_tower(tower, path):
-	if get_child_count() > 0:
-		for c in get_children():
-			if c is CanvasLayer:
-				continue
-			#TODO: give yourself some resources back?
-			c.queue_free()
+	if stashedTower:
+		stashedTower.onDie.emit()
+			
 	add_child(tower)
 	stashedTower = tower
 	#$CanvasLayer/Button.visible = false
