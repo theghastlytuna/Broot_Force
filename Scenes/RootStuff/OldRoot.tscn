@@ -7,5 +7,5 @@ point_count = 3
 [node name="OldRoot" type="Line2D"]
 width = 7.0
 width_curve = SubResource("Curve_jc5oj")
-default_color = Color(0.54902, 0.54902, 0.54902, 1)
+default_color = Color(0.439216, 0.439216, 0.439216, 0.733333)
 joint_mode = 2

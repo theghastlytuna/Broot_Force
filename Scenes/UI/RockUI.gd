@@ -25,7 +25,6 @@ func _ready() -> void:
 		var newParticle = particles.duplicate()
 		particles.get_parent().add_child(newParticle)
 		particleChildren.append(newParticle)
-	showUI(3)
 	pass
 	
 func showUI(layer : int):
