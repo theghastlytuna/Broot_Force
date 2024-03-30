@@ -7,6 +7,7 @@ signal rootStartMoving
 signal onRockUIEnd
 signal onEnterNewLayer(newLayer : int)
 signal onAllySpawned(type : int)
+signal onTowersPlaced
 
 signal onRootPhaseStart
 signal onRootPhaseEnd

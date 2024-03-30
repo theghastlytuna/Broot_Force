@@ -12,3 +12,4 @@ func _process(delta):
 
 func _on_button_up():
 	get_tree().call_group("TowerButton", "hide")
+	EventManager.onTowersPlaced.emit()

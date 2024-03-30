@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dq4jcfh8ylt5e"]
+[gd_scene load_steps=27 format=3 uid="uid://dq4jcfh8ylt5e"]
 
 [ext_resource type="Script" path="res://Scenes/Areas/Overworld.gd" id="1_y88pi"]
 [ext_resource type="Script" path="res://Scenes/Areas/FriendlySpawnLocation.gd" id="2_no26d"]
@@ -23,9 +23,16 @@
 [ext_resource type="Script" path="res://Scenes/Areas/UnitSpawning.gd" id="21_rchts"]
 [ext_resource type="Script" path="res://Scenes/Areas/EnemySpawner.gd" id="21_y32r6"]
 [ext_resource type="Script" path="res://Scenes/Areas/UpgradeManager.gd" id="23_03xkq"]
+[ext_resource type="Script" path="res://Scenes/Areas/Pcameras.gd" id="24_upgu1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jos54"]
 size = Vector2(2104, 320)
+
+[sub_resource type="Curve2D" id="Curve2D_8tavm"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 760, 325, 0, 0, 0, 0, 575, 325)
+}
+point_count = 2
 
 [node name="Overworld" type="Node2D"]
 script = ExtResource("1_y88pi")
@@ -84,6 +91,7 @@ script = ExtResource("3_ncd5e")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Tree/GroundPositions/0"]
 layer = 4
+follow_viewport_enabled = true
 
 [node name="Button" type="Button" parent="Tree/GroundPositions/0/CanvasLayer" node_paths=PackedStringArray("parentnode") groups=["TowerButton"]]
 offset_left = 191.0
@@ -101,6 +109,7 @@ script = ExtResource("3_ncd5e")
 towerIndex = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Tree/GroundPositions/1"]
+follow_viewport_enabled = true
 
 [node name="Button" type="Button" parent="Tree/GroundPositions/1/CanvasLayer" node_paths=PackedStringArray("parentnode") groups=["TowerButton"]]
 offset_left = 350.0
@@ -118,6 +127,7 @@ script = ExtResource("3_ncd5e")
 towerIndex = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Tree/GroundPositions/2"]
+follow_viewport_enabled = true
 
 [node name="Button" type="Button" parent="Tree/GroundPositions/2/CanvasLayer" node_paths=PackedStringArray("parentnode") groups=["TowerButton"]]
 offset_left = 510.0
@@ -135,6 +145,7 @@ script = ExtResource("3_ncd5e")
 towerIndex = 3
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Tree/GroundPositions/3"]
+follow_viewport_enabled = true
 
 [node name="Button" type="Button" parent="Tree/GroundPositions/3/CanvasLayer" node_paths=PackedStringArray("parentnode") groups=["TowerButton"]]
 offset_left = 670.0
@@ -152,6 +163,7 @@ script = ExtResource("3_ncd5e")
 towerIndex = 4
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Tree/GroundPositions/4"]
+follow_viewport_enabled = true
 
 [node name="Button" type="Button" parent="Tree/GroundPositions/4/CanvasLayer" node_paths=PackedStringArray("parentnode") groups=["TowerButton"]]
 offset_left = 830.0
@@ -172,6 +184,7 @@ script = ExtResource("3_ncd5e")
 towerIndex = 5
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Tree/CanopyPositions/0"]
+follow_viewport_enabled = true
 
 [node name="Button" type="Button" parent="Tree/CanopyPositions/0/CanvasLayer" node_paths=PackedStringArray("parentnode") groups=["TowerButton"]]
 offset_left = 272.0
@@ -189,6 +202,7 @@ script = ExtResource("3_ncd5e")
 towerIndex = 6
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Tree/CanopyPositions/1"]
+follow_viewport_enabled = true
 
 [node name="Button" type="Button" parent="Tree/CanopyPositions/1/CanvasLayer" node_paths=PackedStringArray("parentnode") groups=["TowerButton"]]
 offset_left = 430.0
@@ -206,6 +220,7 @@ script = ExtResource("3_ncd5e")
 towerIndex = 7
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Tree/CanopyPositions/2"]
+follow_viewport_enabled = true
 
 [node name="Button" type="Button" parent="Tree/CanopyPositions/2/CanvasLayer" node_paths=PackedStringArray("parentnode") groups=["TowerButton"]]
 offset_left = 590.0
@@ -223,6 +238,7 @@ script = ExtResource("3_ncd5e")
 towerIndex = 8
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Tree/CanopyPositions/3"]
+follow_viewport_enabled = true
 
 [node name="Button" type="Button" parent="Tree/CanopyPositions/3/CanvasLayer" node_paths=PackedStringArray("parentnode") groups=["TowerButton"]]
 offset_left = 750.0
@@ -240,6 +256,7 @@ script = ExtResource("3_ncd5e")
 towerIndex = 9
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Tree/CanopyPositions/4"]
+follow_viewport_enabled = true
 
 [node name="Button" type="Button" parent="Tree/CanopyPositions/4/CanvasLayer" node_paths=PackedStringArray("parentnode") groups=["TowerButton"]]
 offset_left = 910.0
@@ -294,33 +311,34 @@ position = Vector2(-277, 195)
 script = ExtResource("18_8vmsq")
 
 [node name="Button" type="Button" parent="." groups=["TowerButton"]]
+offset_left = 212.0
 offset_top = 508.0
-offset_right = 136.0
+offset_right = 348.0
 offset_bottom = 644.0
 text = "Start Round"
 script = ExtResource("18_hqi7h")
 
 [node name="Button2" type="Button" parent="." groups=["TowerButton"]]
-offset_left = 188.0
+offset_left = 449.0
 offset_top = 511.0
-offset_right = 324.0
+offset_right = 585.0
 offset_bottom = 647.0
 text = "Upgrade Speed
 Cost - 20"
 
 [node name="Button3" type="Button" parent="." groups=["TowerButton"]]
-offset_left = 375.0
+offset_left = 590.0
 offset_top = 512.0
-offset_right = 511.0
+offset_right = 726.0
 offset_bottom = 648.0
 text = "Upgrade 
 Turn Rate
 Cost - 25"
 
 [node name="Button4" type="Button" parent="." groups=["TowerButton"]]
-offset_left = 545.0
+offset_left = 731.0
 offset_top = 509.0
-offset_right = 681.0
+offset_right = 867.0
 offset_bottom = 645.0
 text = "Upgrade 
 Strength
@@ -328,9 +346,9 @@ Cost - 10
 "
 
 [node name="Button5" type="Button" parent="." groups=["TowerButton"]]
-offset_left = 723.0
+offset_left = 871.0
 offset_top = 510.0
-offset_right = 859.0
+offset_right = 1007.0
 offset_bottom = 646.0
 text = "Upgrade 
 Resource
@@ -338,9 +356,9 @@ Collection
 Cost - 25"
 
 [node name="Button6" type="Button" parent="." groups=["TowerButton"]]
-offset_left = 885.0
+offset_left = 1011.0
 offset_top = 512.0
-offset_right = 1021.0
+offset_right = 1147.0
 offset_bottom = 648.0
 text = "Upgrade 
 Round Time
@@ -361,12 +379,37 @@ offset_bottom = -16.0
 grow_horizontal = 0
 grow_vertical = 0
 mouse_filter = 2
-theme_override_constants/separation = 16
+theme_override_constants/separation = 8
 alignment = 2
 script = ExtResource("21_rchts")
 
 [node name="UpgradeManager" type="Node2D" parent="."]
 script = ExtResource("23_03xkq")
+
+[node name="Pcameras" type="Node2D" parent="." node_paths=PackedStringArray("pathFollower")]
+script = ExtResource("24_upgu1")
+pathFollower = NodePath("Path2D/PathFollow2D")
+secondsToMove = 1.0
+
+[node name="Camera2D" type="Camera2D" parent="Pcameras"]
+position = Vector2(760, 325)
+rotation = -3.14159
+
+[node name="Gameplay" type="Node2D" parent="Pcameras"]
+position = Vector2(575, 325)
+
+[node name="Tower" type="Node2D" parent="Pcameras"]
+position = Vector2(760, 325)
+
+[node name="Path2D" type="Path2D" parent="Pcameras"]
+curve = SubResource("Curve2D_8tavm")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Pcameras/Path2D"]
+position = Vector2(760, 325)
+rotation = 3.14159
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Pcameras/Path2D/PathFollow2D"]
+remote_path = NodePath("../../../Camera2D")
 
 [connection signal="land_clicked" from="Tree/GroundPositions/0/CanvasLayer/Button" to="LandCanvas/Control/PanelContainer" method="_on_button_land_clicked"]
 [connection signal="pressed" from="Tree/GroundPositions/0/CanvasLayer/Button" to="Tree/GroundPositions/0/CanvasLayer/Button" method="_on_pressed"]
