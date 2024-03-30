@@ -134,3 +134,12 @@ func setIsDead():
 
 func stopAnimation():
 	pass # Replace with function body.
+
+func repairUnit(budget : float):
+	var repairCost = damageTaken / health * cost
+	if repairCost <= budget:
+		damageTaken = 0
+		healthBar.value = health
+		return repairCost
+	else:
+		return -1.0
