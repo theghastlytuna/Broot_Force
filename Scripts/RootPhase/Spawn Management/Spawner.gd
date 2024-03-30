@@ -17,6 +17,8 @@ var noiseY : FastNoiseLite
 ##The node that each newly spawned object will be parented to
 @export var addingParent : Node2D
 
+var spawnInterval : float
+
 func _ready():
 	noiseY = FastNoiseLite.new()
 	noiseY.seed = 0
@@ -26,10 +28,19 @@ func _ready():
 	noiseX = FastNoiseLite.new()
 	noiseX.noise_type = FastNoiseLite.TYPE_VALUE
 	EventManager.onEnterNewLayer.connect(onNewLayer)
+	spawnInFrame()
+	pass
+	
+func spawnInFrame():
+	return
+	for i in range(spawnInterval*5,get_viewport().size.y,spawnInterval/2):
+		spawnObject(i)
+		pass
 	pass
 	
 func onNewLayer(i:int):
-	resourceDictionary = layeredResourceDictionaries[i]
+	if layeredResourceDictionaries.has(i):
+		resourceDictionary = layeredResourceDictionaries[i]
 	
 func spawnObject(depth : float):
 	var noiseValue : float = noiseY.get_noise_1d(depth)

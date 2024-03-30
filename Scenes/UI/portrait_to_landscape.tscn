@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=3 uid="uid://7e8ulypsmbwf"]
+
+[ext_resource type="Script" path="res://Scenes/UI/GoToScene.gd" id="1_4rr2g"]
+[ext_resource type="PackedScene" uid="uid://dxa7recdeio70" path="res://Scenes/UI/Text.tscn" id="1_n612f"]
+[ext_resource type="PackedScene" uid="uid://n1mg5sojwgry" path="res://Scenes/UI/Button.tscn" id="2_qs8xe"]
+
+[node name="PortraitToLandscape" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4rr2g")
+pathToScene = "res://Scenes/Areas/Overworld.tscn"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.219608, 0.0980392, 0.192157, 1)
+
+[node name="Label" parent="." instance=ExtResource("1_n612f")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "ROTATE_LANDSCAPE"
+
+[node name="Button" parent="." instance=ExtResource("2_qs8xe")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -287.0
+offset_top = -198.0
+offset_right = 287.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 64
+text = "OK"
+
+[connection signal="pressed" from="Button" to="." method="goToScene"]

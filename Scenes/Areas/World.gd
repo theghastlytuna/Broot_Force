@@ -22,5 +22,5 @@ func showOtherRoots():
 func goToOverworld():
 	GameManager.currentRootRound += 1
 	$SaveGame.saveGame()
-	get_tree().change_scene_to_file("res://Scenes/Areas/Overworld.tscn")
+	get_tree().change_scene_to_file("res://Scenes/UI/portrait_to_landscape.tscn")
 	pass

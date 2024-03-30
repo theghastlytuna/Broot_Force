@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnl0xkodeqb13"]
+
+[ext_resource type="PackedScene" uid="uid://dxa7recdeio70" path="res://Scenes/UI/Text.tscn" id="1_3i2e0"]
+[ext_resource type="Script" path="res://Scenes/UI/GoToScene.gd" id="1_vpcbh"]
+[ext_resource type="PackedScene" uid="uid://n1mg5sojwgry" path="res://Scenes/UI/Button.tscn" id="2_c4sj7"]
+
+[node name="LandscapeToPortrait" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vpcbh")
+pathToScene = "res://Scenes/Areas/World.tscn"
+setToLandscape = false
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.219608, 0.0980392, 0.192157, 1)
+
+[node name="Label" parent="." instance=ExtResource("1_3i2e0")]
+layout_mode = 1
+offset_left = 119.0
+offset_top = 238.0
+offset_right = 436.0
+offset_bottom = 283.0
+theme_override_font_sizes/font_size = 32
+text = "ROTATE_PORTRAIT"
+
+[node name="Button" parent="." instance=ExtResource("2_c4sj7")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -198.0
+offset_right = 574.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 64
+text = "OK"
+
+[connection signal="pressed" from="Button" to="." method="goToScene"]

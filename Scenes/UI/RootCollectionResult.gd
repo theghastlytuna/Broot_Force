@@ -7,13 +7,14 @@ func _ready() -> void:
 	$PanelContainer.visible = false
 	
 func showResults():
+	$AnimationPlayer.play("Show")
 	var totalUnitsCollected : int
 	for unit in GameManager.availableUnits:
 		totalUnitsCollected+=unit
 	$PanelContainer/VBoxContainer/Label2.text = LocalizationManager.tr("ROOT_RESULTS").format({"Water":(GameManager.rootPhaseStats.waterPerRound),"Unit":(totalUnitsCollected)})
-	$PanelContainer.visible = true
+	
 	EventManager.rootStopMoving.emit()	
-	$AnimationPlayer.play("Show")
+	$PanelContainer.visible = true
 	
 func goToGrowth():
 	EventManager.onGrowthPhaseStart.emit()

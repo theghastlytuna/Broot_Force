@@ -3,6 +3,7 @@ extends CanvasLayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	GameManager.setPortraitMode()
 	$Control/Options.visible = false
 
 
@@ -14,4 +15,5 @@ func _on_start_btn_pressed():
 	get_tree().change_scene_to_file("res://Scenes/Areas/World.tscn")
 
 func _on_options_btn_pressed():
+	Debug.Log("a")
 	$Control/Options.visible = true

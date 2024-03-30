@@ -13,4 +13,4 @@ func _on_enemy_spawner_finished_spawning():
 	finishedSpawning = true
 
 func goToUnderworld():
-	get_tree().change_scene_to_file("res://Scenes/Areas/World.tscn")
+	get_tree().change_scene_to_file("res://Scenes/UI/landscape_to_portrait.tscn")

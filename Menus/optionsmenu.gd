@@ -11,5 +11,11 @@ func _process(delta):
 	pass
 
 
+
 func _on_cancel_button_pressed():
 	visible = false
+
+
+func _on_visibility_changed() -> void:
+	Debug.Log("Asdf")
+	pass # Replace with function body.

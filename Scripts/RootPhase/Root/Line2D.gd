@@ -44,6 +44,9 @@ var spawningArcLength : float = 0
 var lastNormal : Vector2
 var lastNormalT : float
 
+func _enter_tree() -> void:
+	spawner.spawnInterval = spawnInterval
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	lastNormal = Vector2.ZERO
@@ -60,6 +63,9 @@ func _ready() -> void:
 	EventManager.rootStartMoving.connect(setStopMoving.bind(false))
 	EventManager.rootStopMoving.connect(setStopMoving.bind(true))
 	EventManager.onRootPhaseStart.connect(startRootPhase)
+	
+	
+	
 	
 func startRootPhase():
 	GameManager.pastRoots[(GameManager.currentRootRound)] = []
@@ -192,4 +198,6 @@ func _on_area_entered(area):
 func onRootPhaseTimeout():
 	currentRootArray.append(global_position)
 	EventManager.onRootPhaseEnd.emit()
+	Debug.Log("timeout")
+	$Timer.stop()
 	pass

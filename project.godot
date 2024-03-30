@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Broot Force"
-run/main_scene="res://Scenes/Areas/World.tscn"
+run/main_scene="res://Menus/startmenu.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
@@ -23,6 +23,11 @@ GameManager="*res://Scripts/GameManager.gd"
 ResourceHolder="*res://Scripts/RootPhase/ResourceHolder.gd"
 EventManager="*res://Scripts/EventManager.gd"
 SoundManager="*res://addons/sound_manager/sound_manager.gd"
+
+[display]
+
+window/stretch/aspect="expand"
+window/handheld/orientation=1
 
 [editor_plugins]
 

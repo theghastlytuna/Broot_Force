@@ -13,6 +13,8 @@ var currentRootRound : int = 0
 
 var desiredResolution : Vector2
 
+var usingMobile : bool = false
+
 ##This holds how many upgrades have been purchased by the player, don't change these values
 var rootUpgrades : Dictionary = {
 	"Speed": 0,
@@ -42,6 +44,8 @@ var costsPerUpgrade : Dictionary = {
 	"Resource": 25
 }
 
+var screenDimensions : Vector2 = Vector2(1280,720)#landscape
+
 #stuff for the current game
 var rootPhaseStats : GameData = GameData.new()
 
@@ -51,11 +55,19 @@ func _ready() -> void:#in landscape mode
 	desiredResolution = get_viewport().size
 
 func setLandscapeMode():
-	get_viewport().size = Vector2(desiredResolution.y,desiredResolution.x)
+	if not usingMobile:
+		return
+	var screenSize = DisplayServer.screen_get_size()
+	get_viewport().size = Vector2(screenSize.x,screenSize.y)
+	get_viewport().get_window().content_scale_factor = 2.5
 	DisplayServer.screen_set_orientation(0)
 	
 func setPortraitMode():
-	get_viewport().size = Vector2(desiredResolution.x,desiredResolution.y)
+	if not usingMobile:
+		return
+	var screenSize = DisplayServer.screen_get_size()
+	get_viewport().size = Vector2(screenSize.x,screenSize.y)
+	get_viewport().get_window().content_scale_factor = 2.5
 	DisplayServer.screen_set_orientation(1)
 
 func upgradeRoot(upgrade : String):
