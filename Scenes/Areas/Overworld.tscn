@@ -39,8 +39,8 @@ script = ExtResource("1_y88pi")
 
 [node name="MainBg" type="Sprite2D" parent="."]
 z_index = -2
-position = Vector2(825.255, 170)
-scale = Vector2(1.29415, 0.905555)
+position = Vector2(825.255, -3)
+scale = Vector2(2.69374, 1.88489)
 texture = ExtResource("2_p4gqi")
 
 [node name="FriendlySpawnLocation" type="Node2D" parent="."]
@@ -57,13 +57,13 @@ position = Vector2(1032, 432)
 scale = Vector2(0.409904, 0.409904)
 texture = ExtResource("3_p34j2")
 region_enabled = true
-region_rect = Rect2(-712, 1, 5910, 655)
+region_rect = Rect2(-712, 1, 9385, 655)
 
 [node name="Sprite2D2" type="Sprite2D" parent="Ground/Sprite2D"]
 z_index = -2
 z_as_relative = false
-position = Vector2(300.07, 404.972)
-scale = Vector2(20.3465, 5.46469)
+position = Vector2(300.07, 1322.26)
+scale = Vector2(49.3755, 27.4699)
 texture = ExtResource("3_p34j2")
 region_enabled = true
 region_rect = Rect2(0, 568, 512, 89)

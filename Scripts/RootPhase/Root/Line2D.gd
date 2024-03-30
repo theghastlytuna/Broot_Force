@@ -86,7 +86,7 @@ func _process(delta: float) -> void:
 	#spawn an object every spawnInterval pixels, if you go back up, it will not trigger
 	if global_position.y > lastSpawnedDepth + spawnInterval:
 		lastSpawnedDepth = snappedi(global_position.y ,spawnInterval)
-		spawner.spawnObject(lastSpawnedDepth + playerCamera.get_viewport_rect().size.y)
+		spawner.spawnObject(lastSpawnedDepth , (playerCamera.get_viewport_rect().size.y/2)+spawnInterval)
 
 #Start with the forward vector, apply speed account for root upgrased, apply delta, 
 #then apply the current layer's slowdown

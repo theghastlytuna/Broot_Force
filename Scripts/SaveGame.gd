@@ -1,7 +1,7 @@
 extends Node2D
 
 var saveData : GameData
-var alwaysReset : bool = true
+var alwaysReset : bool = false
 
 
 func resetData():

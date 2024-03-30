@@ -1,14 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://ckpxkhasyjkom"]
+[gd_scene load_steps=5 format=3 uid="uid://ckpxkhasyjkom"]
 
 [ext_resource type="Script" path="res://Menus/optionsmenu.gd" id="1_45swt"]
-[ext_resource type="Texture2D" uid="uid://fi2rpaj6nplo" path="res://Art Assets/Textures/DarkBrown.png" id="1_knyvl"]
 [ext_resource type="PackedScene" uid="uid://dxa7recdeio70" path="res://Scenes/UI/Text.tscn" id="2_bc4k0"]
 [ext_resource type="Texture2D" uid="uid://bn61fvr3hbar7" path="res://Art Assets/Textures/cancel.png" id="3_qnap2"]
 [ext_resource type="Script" path="res://Menus/DEBUGChangeScaleFactor.gd" id="4_nhq5r"]
-
-[sub_resource type="SystemFont" id="SystemFont_3j0xp"]
-font_names = PackedStringArray("Impact")
-subpixel_positioning = 0
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_45swt")
@@ -18,14 +13,10 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 288.0
-offset_top = 100.0
-offset_right = -288.0
-offset_bottom = -148.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Control"]
+[node name="CenterContainer" type="CenterContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -33,73 +24,52 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Control/MarginContainer"]
+[node name="Panel" type="Panel" parent="Control/CenterContainer"]
+custom_minimum_size = Vector2(500, 500)
 layout_mode = 2
-texture = ExtResource("1_knyvl")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/NinePatchRect"]
+[node name="Label" parent="Control/CenterContainer/Panel" instance=ExtResource("2_bc4k0")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
 grow_horizontal = 2
-grow_vertical = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/NinePatchRect/VBoxContainer"]
-custom_minimum_size = Vector2(0, 80)
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/NinePatchRect/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Label" parent="Control/MarginContainer/NinePatchRect/VBoxContainer/HBoxContainer/TextureRect" instance=ExtResource("2_bc4k0")]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 0.0
-offset_bottom = 0.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 15
-theme_override_fonts/font = SubResource("SystemFont_3j0xp")
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 64
 text = "OPTIONS"
-horizontal_alignment = 1
-vertical_alignment = 1
 
-[node name="MarginContainer2" type="MarginContainer" parent="Control/MarginContainer/NinePatchRect/VBoxContainer"]
-custom_minimum_size = Vector2(0, 200)
-layout_mode = 2
+[node name="TextureButton" type="TextureButton" parent="Control/CenterContainer/Panel"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -46.0
+offset_bottom = 46.0
+grow_horizontal = 0
+texture_normal = ExtResource("3_qnap2")
+ignore_texture_size = true
+stretch_mode = 0
 
-[node name="Label" parent="Control/MarginContainer/NinePatchRect/VBoxContainer" instance=ExtResource("2_bc4k0")]
-layout_mode = 2
+[node name="Label2" parent="Control/CenterContainer/Panel" instance=ExtResource("2_bc4k0")]
+layout_mode = 1
+offset_top = 180.0
+offset_bottom = 203.0
+theme_override_font_sizes/font_size = 32
 text = "SCALE_FACTOR"
 
-[node name="HSlider" type="HSlider" parent="Control/MarginContainer/NinePatchRect/VBoxContainer"]
-custom_minimum_size = Vector2(0, 72.6)
-layout_mode = 2
+[node name="HSlider" type="HSlider" parent="Control/CenterContainer/Panel"]
+custom_minimum_size = Vector2(300, 75)
+layout_mode = 0
+offset_top = 284.0
+offset_right = 8.0
+offset_bottom = 300.0
 min_value = 1.0
-max_value = 4.0
-step = 0.05
+max_value = 3.0
+step = 0.1
 value = 1.0
 script = ExtResource("4_nhq5r")
 
-[node name="TextureButton" type="TextureButton" parent="Control"]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
-offset_left = 523.0
-offset_top = -24.0
-offset_right = 603.0
-offset_bottom = 56.0
-size_flags_horizontal = 0
-texture_normal = ExtResource("3_qnap2")
-texture_pressed = ExtResource("3_qnap2")
-texture_hover = ExtResource("3_qnap2")
-ignore_texture_size = true
-stretch_mode = 4
-
-[connection signal="drag_ended" from="Control/MarginContainer/NinePatchRect/VBoxContainer/HSlider" to="Control/MarginContainer/NinePatchRect/VBoxContainer/HSlider" method="_on_drag_ended"]
-[connection signal="pressed" from="Control/TextureButton" to="." method="_on_cancel_button_pressed"]
+[connection signal="button_down" from="Control/CenterContainer/Panel/TextureButton" to="." method="_on_cancel_button_pressed"]
+[connection signal="drag_ended" from="Control/CenterContainer/Panel/HSlider" to="Control/CenterContainer/Panel/HSlider" method="_on_drag_ended"]

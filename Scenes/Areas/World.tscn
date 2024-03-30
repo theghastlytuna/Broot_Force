@@ -105,6 +105,7 @@ playerCamera = NodePath("../../Camera2D")
 spawner = NodePath("../../Spawner")
 spawnInterval = 100.0
 gameSaver = NodePath("../../SaveGame")
+rootPointSaveArcLength = 75.0
 rootPhaseTimeout = 30.0
 
 [node name="Tip" type="Sprite2D" parent="Root/Area2D" groups=["Tip"]]
@@ -237,7 +238,7 @@ Vector2(50, 60): ExtResource("12_j0mwa"),
 Vector2(61, 65): ExtResource("8_e761s"),
 Vector2(66, 100): ExtResource("7_rhly2")
 }]
-XSpread = 1000.0
+XSpread = 1250.0
 addingParent = NodePath("../Obsticles")
 
 [node name="Obsticles" type="Node2D" parent="."]

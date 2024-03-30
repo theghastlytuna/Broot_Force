@@ -125,7 +125,8 @@ func die():
 	for c in attackNode.AttackedEnemy.get_connections():
 		attackNode.AttackedEnemy.disconnect(c["callable"])
 	
-	
+	if onDie.get_connections().size() == 0:
+		queue_free()
 
 #its its own function so that we can tell if an attack should check for if its dead or not
 func setIsDead():
