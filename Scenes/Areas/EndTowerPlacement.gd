@@ -11,5 +11,5 @@ func _process(delta):
 	pass
 
 func _on_button_up():
-	get_tree().call_group("TowerButton", "hide")
+	get_tree().call_group("TowerButton", "setVisible",true)
 	EventManager.onTowersPlaced.emit()

@@ -64,6 +64,7 @@ grow_vertical = 2
 pivot_offset = Vector2(250, 324)
 script = ExtResource("1_0u6yw")
 towerResources = Array[Resource]([ExtResource("2_pc0ys"), ExtResource("3_dsyqs"), ExtResource("4_53kcy"), ExtResource("5_jdw1n"), ExtResource("6_gpwri"), ExtResource("7_qnp6l"), ExtResource("8_l7iu2")])
+freeTowers = true
 
 [node name="TabContainer" type="TabContainer" parent="Panel"]
 layout_mode = 1

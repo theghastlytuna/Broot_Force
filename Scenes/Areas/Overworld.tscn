@@ -172,7 +172,7 @@ follow_viewport_enabled = true
 
 [node name="Button" parent="Tree/CanopyPositions/0/CanvasLayer" node_paths=PackedStringArray("parentnode") instance=ExtResource("8_n4mig")]
 offset_left = 271.0
-offset_top = -21.0
+offset_top = 88.0
 offset_right = 351.0
 offset_bottom = 255.0
 parentnode = NodePath("../..")
@@ -187,7 +187,7 @@ follow_viewport_enabled = true
 
 [node name="Button" parent="Tree/CanopyPositions/1/CanvasLayer" node_paths=PackedStringArray("parentnode") instance=ExtResource("8_n4mig")]
 offset_left = 434.0
-offset_top = -21.0
+offset_top = 153.0
 offset_right = 514.0
 offset_bottom = 255.0
 parentnode = NodePath("../..")
@@ -202,7 +202,7 @@ follow_viewport_enabled = true
 
 [node name="Button" parent="Tree/CanopyPositions/2/CanvasLayer" node_paths=PackedStringArray("parentnode") instance=ExtResource("8_n4mig")]
 offset_left = 591.0
-offset_top = -21.0
+offset_top = 143.0
 offset_right = 671.0
 offset_bottom = 255.0
 parentnode = NodePath("../..")
@@ -217,7 +217,7 @@ follow_viewport_enabled = true
 
 [node name="Button" parent="Tree/CanopyPositions/3/CanvasLayer" node_paths=PackedStringArray("parentnode") instance=ExtResource("8_n4mig")]
 offset_left = 752.0
-offset_top = -21.0
+offset_top = 126.0
 offset_right = 832.0
 offset_bottom = 255.0
 parentnode = NodePath("../..")
@@ -232,7 +232,7 @@ follow_viewport_enabled = true
 
 [node name="Button" parent="Tree/CanopyPositions/4/CanvasLayer" node_paths=PackedStringArray("parentnode") instance=ExtResource("8_n4mig")]
 offset_left = 907.0
-offset_top = -21.0
+offset_top = 130.0
 offset_right = 987.0
 offset_bottom = 255.0
 parentnode = NodePath("../..")
