@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dq4jcfh8ylt5e"]
+[gd_scene load_steps=26 format=3 uid="uid://dq4jcfh8ylt5e"]
 
 [ext_resource type="Script" path="res://Scenes/Areas/Overworld.gd" id="1_y88pi"]
 [ext_resource type="Script" path="res://Scenes/Areas/FriendlySpawnLocation.gd" id="2_no26d"]
@@ -16,11 +16,8 @@
 [ext_resource type="PackedScene" uid="uid://mlvq353kw0c1" path="res://Scenes/Units/TreeUnitsGround/MainTree.tscn" id="7_dtyo1"]
 [ext_resource type="PackedScene" uid="uid://cvn6nev5hshj5" path="res://Scenes/Units/EnemyUnits/BulldozerEnemy.tscn" id="8_dsl38"]
 [ext_resource type="PackedScene" uid="uid://8uq74ff3xyc" path="res://Scenes/UI/CanopyButton.tscn" id="8_n4mig"]
-[ext_resource type="Script" path="res://Scenes/Areas/CanopyButton.gd" id="9_d41nc"]
 [ext_resource type="Script" path="res://Scenes/Areas/EnemyUnitsHolder.gd" id="18_8vmsq"]
 [ext_resource type="Script" path="res://Scenes/Areas/EndTowerPlacement.gd" id="18_hqi7h"]
-[ext_resource type="PackedScene" uid="uid://bi0fa577rl8s6" path="res://Menus/canopy_tower_menu.tscn" id="19_ovhgu"]
-[ext_resource type="PackedScene" uid="uid://cugohrjbgvgjd" path="res://Menus/land_tower_menu.tscn" id="20_lxlg4"]
 [ext_resource type="Script" path="res://Scenes/Areas/UnitSpawning.gd" id="21_rchts"]
 [ext_resource type="Script" path="res://Scenes/Areas/EnemySpawner.gd" id="21_y32r6"]
 [ext_resource type="Script" path="res://Scenes/Areas/UpgradeManager.gd" id="23_03xkq"]
@@ -188,12 +185,11 @@ towerIndex = 5
 [node name="CanvasLayer" type="CanvasLayer" parent="Tree/CanopyPositions/0"]
 follow_viewport_enabled = true
 
-[node name="Button" parent="Tree/CanopyPositions/0/CanvasLayer" node_paths=PackedStringArray("parentnode") instance=ExtResource("8_n4mig")]
+[node name="Button" parent="Tree/CanopyPositions/0/CanvasLayer" instance=ExtResource("8_n4mig")]
 offset_left = 271.0
-offset_top = 116.0
+offset_top = -21.0
 offset_right = 351.0
 offset_bottom = 255.0
-parentnode = NodePath("../..")
 
 [node name="1" type="Node2D" parent="Tree/CanopyPositions"]
 position = Vector2(448, 570)
@@ -203,15 +199,11 @@ towerIndex = 6
 [node name="CanvasLayer" type="CanvasLayer" parent="Tree/CanopyPositions/1"]
 follow_viewport_enabled = true
 
-[node name="Button" type="Button" parent="Tree/CanopyPositions/1/CanvasLayer" node_paths=PackedStringArray("parentnode") groups=["TowerButton"]]
-offset_left = 430.0
-offset_top = 116.0
-offset_right = 510.0
+[node name="Button" parent="Tree/CanopyPositions/1/CanvasLayer" instance=ExtResource("8_n4mig")]
+offset_left = 434.0
+offset_top = -21.0
+offset_right = 514.0
 offset_bottom = 255.0
-theme_override_font_sizes/font_size = 10
-text = "+"
-script = ExtResource("9_d41nc")
-parentnode = NodePath("../..")
 
 [node name="2" type="Node2D" parent="Tree/CanopyPositions"]
 position = Vector2(608, 570)
@@ -221,15 +213,11 @@ towerIndex = 7
 [node name="CanvasLayer" type="CanvasLayer" parent="Tree/CanopyPositions/2"]
 follow_viewport_enabled = true
 
-[node name="Button" type="Button" parent="Tree/CanopyPositions/2/CanvasLayer" node_paths=PackedStringArray("parentnode") groups=["TowerButton"]]
-offset_left = 590.0
-offset_top = 115.0
-offset_right = 670.0
-offset_bottom = 254.0
-theme_override_font_sizes/font_size = 10
-text = "+"
-script = ExtResource("9_d41nc")
-parentnode = NodePath("../..")
+[node name="Button" parent="Tree/CanopyPositions/2/CanvasLayer" instance=ExtResource("8_n4mig")]
+offset_left = 591.0
+offset_top = -21.0
+offset_right = 671.0
+offset_bottom = 255.0
 
 [node name="3" type="Node2D" parent="Tree/CanopyPositions"]
 position = Vector2(768, 570)
@@ -239,15 +227,11 @@ towerIndex = 8
 [node name="CanvasLayer" type="CanvasLayer" parent="Tree/CanopyPositions/3"]
 follow_viewport_enabled = true
 
-[node name="Button" type="Button" parent="Tree/CanopyPositions/3/CanvasLayer" node_paths=PackedStringArray("parentnode") groups=["TowerButton"]]
-offset_left = 750.0
-offset_top = 115.0
-offset_right = 830.0
-offset_bottom = 254.0
-theme_override_font_sizes/font_size = 10
-text = "+"
-script = ExtResource("9_d41nc")
-parentnode = NodePath("../..")
+[node name="Button" parent="Tree/CanopyPositions/3/CanvasLayer" instance=ExtResource("8_n4mig")]
+offset_left = 752.0
+offset_top = -21.0
+offset_right = 832.0
+offset_bottom = 255.0
 
 [node name="4" type="Node2D" parent="Tree/CanopyPositions"]
 position = Vector2(928, 570)
@@ -257,26 +241,16 @@ towerIndex = 9
 [node name="CanvasLayer" type="CanvasLayer" parent="Tree/CanopyPositions/4"]
 follow_viewport_enabled = true
 
-[node name="Button" type="Button" parent="Tree/CanopyPositions/4/CanvasLayer" node_paths=PackedStringArray("parentnode") groups=["TowerButton"]]
-offset_left = 910.0
-offset_top = 116.0
-offset_right = 990.0
+[node name="Button" parent="Tree/CanopyPositions/4/CanvasLayer" instance=ExtResource("8_n4mig")]
+offset_left = 907.0
+offset_top = -21.0
+offset_right = 987.0
 offset_bottom = 255.0
-theme_override_font_sizes/font_size = 10
-text = "+"
-script = ExtResource("9_d41nc")
-parentnode = NodePath("../..")
 
 [node name="MainTree" parent="Tree" instance=ExtResource("7_dtyo1")]
 position = Vector2(1071, 438)
 collision_mask = 0
 health = 100.0
-
-[node name="LandCanvas" parent="." instance=ExtResource("20_lxlg4")]
-visible = false
-
-[node name="CanopyCanvas" parent="." instance=ExtResource("19_ovhgu")]
-visible = false
 
 [node name="EnemySpawner" type="Node2D" parent="." node_paths=PackedStringArray("enemyUnits", "unitParent")]
 position = Vector2(-170, 438)
@@ -419,27 +393,12 @@ remote_path = NodePath("../../../Camera2D")
 
 [node name="CanvasLayer" parent="." instance=ExtResource("25_hidf4")]
 
-[connection signal="land_clicked" from="Tree/GroundPositions/0/CanvasLayer/Button" to="LandCanvas/Control/PanelContainer" method="_on_button_land_clicked"]
 [connection signal="pressed" from="Tree/GroundPositions/0/CanvasLayer/Button" to="Tree/GroundPositions/0/CanvasLayer/Button" method="_on_pressed"]
-[connection signal="land_clicked" from="Tree/GroundPositions/1/CanvasLayer/Button" to="LandCanvas/Control/PanelContainer" method="_on_button_land_clicked"]
 [connection signal="pressed" from="Tree/GroundPositions/1/CanvasLayer/Button" to="Tree/GroundPositions/1/CanvasLayer/Button" method="_on_pressed"]
-[connection signal="land_clicked" from="Tree/GroundPositions/2/CanvasLayer/Button" to="LandCanvas/Control/PanelContainer" method="_on_button_land_clicked"]
 [connection signal="pressed" from="Tree/GroundPositions/2/CanvasLayer/Button" to="Tree/GroundPositions/2/CanvasLayer/Button" method="_on_pressed"]
-[connection signal="land_clicked" from="Tree/GroundPositions/3/CanvasLayer/Button" to="LandCanvas/Control/PanelContainer" method="_on_button_land_clicked"]
 [connection signal="pressed" from="Tree/GroundPositions/3/CanvasLayer/Button" to="Tree/GroundPositions/3/CanvasLayer/Button" method="_on_pressed"]
-[connection signal="land_clicked" from="Tree/GroundPositions/4/CanvasLayer/Button" to="LandCanvas/Control/PanelContainer" method="_on_button_land_clicked"]
 [connection signal="pressed" from="Tree/GroundPositions/4/CanvasLayer/Button" to="Tree/GroundPositions/4/CanvasLayer/Button" method="_on_pressed"]
-[connection signal="canopy_clicked" from="Tree/CanopyPositions/1/CanvasLayer/Button" to="CanopyCanvas/Control/PanelContainer" method="_on_button_canopy_clicked"]
-[connection signal="pressed" from="Tree/CanopyPositions/1/CanvasLayer/Button" to="Tree/CanopyPositions/1/CanvasLayer/Button" method="_on_pressed"]
-[connection signal="canopy_clicked" from="Tree/CanopyPositions/2/CanvasLayer/Button" to="CanopyCanvas/Control/PanelContainer" method="_on_button_canopy_clicked"]
-[connection signal="pressed" from="Tree/CanopyPositions/2/CanvasLayer/Button" to="Tree/CanopyPositions/2/CanvasLayer/Button" method="_on_pressed"]
-[connection signal="canopy_clicked" from="Tree/CanopyPositions/3/CanvasLayer/Button" to="CanopyCanvas/Control/PanelContainer" method="_on_button_canopy_clicked"]
-[connection signal="pressed" from="Tree/CanopyPositions/3/CanvasLayer/Button" to="Tree/CanopyPositions/3/CanvasLayer/Button" method="_on_pressed"]
-[connection signal="canopy_clicked" from="Tree/CanopyPositions/4/CanvasLayer/Button" to="CanopyCanvas/Control/PanelContainer" method="_on_button_canopy_clicked"]
-[connection signal="pressed" from="Tree/CanopyPositions/4/CanvasLayer/Button" to="Tree/CanopyPositions/4/CanvasLayer/Button" method="_on_pressed"]
 [connection signal="FinishedSpawning" from="EnemySpawner" to="EnemyUnits" method="_on_enemy_spawner_finished_spawning"]
-[connection signal="button_up" from="Button" to="LandCanvas/Control/PanelContainer" method="_on_texture_button_pressed"]
-[connection signal="button_up" from="Button" to="CanopyCanvas/Control/PanelContainer" method="_on_texture_button_pressed"]
 [connection signal="button_up" from="Button" to="EnemySpawner" method="_on_button_button_up"]
 [connection signal="button_up" from="Button" to="Button" method="_on_button_up"]
 [connection signal="button_up" from="Button2" to="UpgradeManager" method="onUpgrade" binds= ["Speed"]]
@@ -447,6 +406,3 @@ remote_path = NodePath("../../../Camera2D")
 [connection signal="button_up" from="Button4" to="UpgradeManager" method="onUpgrade" binds= ["Strength"]]
 [connection signal="button_up" from="Button5" to="UpgradeManager" method="onUpgrade" binds= ["Resource"]]
 [connection signal="button_up" from="Button6" to="UpgradeManager" method="onUpgrade" binds= ["Duration"]]
-
-[editable path="LandCanvas"]
-[editable path="CanopyCanvas"]
