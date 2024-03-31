@@ -188,11 +188,12 @@ towerIndex = 5
 [node name="CanvasLayer" type="CanvasLayer" parent="Tree/CanopyPositions/0"]
 follow_viewport_enabled = true
 
-[node name="Button" parent="Tree/CanopyPositions/0/CanvasLayer" instance=ExtResource("8_n4mig")]
+[node name="Button" parent="Tree/CanopyPositions/0/CanvasLayer" node_paths=PackedStringArray("parentnode") instance=ExtResource("8_n4mig")]
 offset_left = 271.0
 offset_top = 116.0
 offset_right = 351.0
 offset_bottom = 255.0
+parentnode = NodePath("../..")
 
 [node name="1" type="Node2D" parent="Tree/CanopyPositions"]
 position = Vector2(448, 570)

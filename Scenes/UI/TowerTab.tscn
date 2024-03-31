@@ -1,0 +1,69 @@
+[gd_scene load_steps=5 format=3 uid="uid://b77s6mr6cb5ta"]
+
+[ext_resource type="Texture2D" uid="uid://bkgve4vsrsmnc" path="res://Art Assets/Textures/Icons/TAB.png" id="1_1tq7j"]
+
+[sub_resource type="Animation" id="Animation_ahsbs"]
+resource_name = "Bob"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(0.329877, 2.63902, 0.183011),
+"update": 0,
+"values": [Vector2(-70, -139), Vector2(-70, -161), Vector2(-70, -139)]
+}
+
+[sub_resource type="Animation" id="Animation_qvs4q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-70, -139)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7371k"]
+_data = {
+"Bob": SubResource("Animation_ahsbs"),
+"RESET": SubResource("Animation_qvs4q")
+}
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -70.0
+offset_top = -139.0
+offset_right = 69.0
+offset_bottom = -0.000213623
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("1_1tq7j")
+expand_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TextureRect"]
+libraries = {
+"": SubResource("AnimationLibrary_7371k")
+}
+
+[connection signal="ready" from="TextureRect" to="TextureRect/AnimationPlayer" method="play" binds= ["Bob"]]

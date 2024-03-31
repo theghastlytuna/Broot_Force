@@ -6,7 +6,7 @@ func _enter_tree():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	GameManager.currentRoundBudget = 15
+	GameManager.currentRoundBudget = 34
 	pass # Replace with function body.
 
 func gameReady():

@@ -1,12 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://8uq74ff3xyc"]
+[gd_scene load_steps=3 format=3 uid="uid://8uq74ff3xyc"]
 
 [ext_resource type="Script" path="res://Scenes/Areas/CanopyButton.gd" id="1_bq04j"]
+[ext_resource type="PackedScene" uid="uid://b77s6mr6cb5ta" path="res://Scenes/UI/TowerTab.tscn" id="2_ltfd0"]
 
 [node name="Button" type="Button" groups=["TowerButton"]]
+offset_top = -137.0
 offset_right = 80.0
 offset_bottom = 139.0
+theme_override_constants/outline_size = 0
 theme_override_font_sizes/font_size = 10
-text = "+"
+flat = true
 script = ExtResource("1_bq04j")
+
+[node name="TextureRect" parent="." instance=ExtResource("2_ltfd0")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]
