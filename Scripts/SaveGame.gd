@@ -46,6 +46,8 @@ func loadData():
 		GameManager.growthRounds = saveData.growthRounds
 		GameManager.currentRootRound = saveData.rootRounds 
 		GameManager.rootUpgrades = saveData.rootUpgrades
+		if GameManager.rootUpgrades.size() == 0:
+			GameManager.rootUpgrades = {"Speed": 0,"Turning": 0,"Duration": 0,"Strength": 0,"Resource": 0}
 	else:
 		saveData = GameData.new()
 		saveData.availableUnits = []
