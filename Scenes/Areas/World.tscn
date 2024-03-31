@@ -214,11 +214,6 @@ inactive_update_mode = 0
 
 [node name="Spawner" type="Node2D" parent="." node_paths=PackedStringArray("addingParent")]
 script = ExtResource("5_s6byk")
-resourceDictionary = {
-Vector2(0, 10): ExtResource("6_coeey"),
-Vector2(11, 21): ExtResource("7_rhly2"),
-Vector2(22, 25): ExtResource("9_gxojj")
-}
 layeredResourceDictionaries = [{
 Vector2(0, 30): ExtResource("6_coeey"),
 Vector2(31, 45): ExtResource("9_gxojj"),
@@ -238,7 +233,7 @@ Vector2(50, 60): ExtResource("12_j0mwa"),
 Vector2(61, 65): ExtResource("8_e761s"),
 Vector2(66, 100): ExtResource("7_rhly2")
 }]
-XSpread = 1250.0
+XSpread = 1000.0
 addingParent = NodePath("../Obsticles")
 
 [node name="Obsticles" type="Node2D" parent="."]

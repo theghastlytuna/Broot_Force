@@ -247,6 +247,7 @@ position = Vector2(-170, 438)
 script = ExtResource("21_y32r6")
 enemyUnits = [NodePath("Factories/AxeEnemy"), NodePath("Factories/PistolEnemy"), NodePath("Factories/BulldozerEnemy"), NodePath("Factories/ChainsawEnemy"), NodePath("Factories/ShotgunEnemy"), NodePath("Factories/ExcavatorEnemy"), NodePath("Factories/SoldierEnemy")]
 unitParent = NodePath("../EnemyUnits")
+roundsPerNewUnit = 1
 
 [node name="Factories" type="Node2D" parent="EnemySpawner"]
 position = Vector2(-953, 955)

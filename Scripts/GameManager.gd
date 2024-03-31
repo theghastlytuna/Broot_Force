@@ -50,6 +50,9 @@ var screenDimensions : Vector2 = Vector2(1280,720)#landscape
 var rootPhaseStats : GameData = GameData.new()
 
 var startedGame : bool = false
+var towerCosts : Array#the array of towers is in the TowerUI script in the overworld
+var towerType : Array
+var towerHPs : Array
 
 func _ready() -> void:#in landscape mode
 	desiredResolution = get_viewport().size
@@ -92,13 +95,13 @@ func towerCost(type : Unit.TowerType):
 	#SEED_BOMBER,
 	#BOMBER_FRUIT,
 	#SPORE_SPRAYER
-	return [5,12,9,19,29,16,24][type]#JORDAN WHAT ARE THESE PRICES?!?!?!
+	return towerCosts[type]
 	
 func towerPlacementType(type : Unit.TowerType):
 	return ["GROUND","GROUND","GROUND","CANOPY","CANOPY","CANOPY","CANOPY"][type]
 	
 func towerHP(type : Unit.TowerType):
-	return [250,200,150,250,200,1500,250][type]#some prices are fake
+	return towerHPs[type]#some prices are fake
 	pass
 
 func spendWater(water : int):

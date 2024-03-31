@@ -1,6 +1,7 @@
 extends Panel
 
 @export var towerResources : Array[Resource]
+@export var freeTowers : bool = false
 var nodeToPlaceTower : Node2D
 var towerIndex : int = -1
 var showing : bool = false
@@ -9,6 +10,15 @@ func _ready() -> void:
 	visible = false
 	EventManager.onCanopyClicked.connect(showTowers)
 	EventManager.onGroundClicked.connect(showTowers)
+	var index = 0
+	for t in towerResources:
+		var newTower = t.instantiate()
+		GameManager.towerCosts.append(0)
+		GameManager.towerHPs.append(0)
+		GameManager.towerCosts[index] = (newTower.cost)
+		GameManager.towerHPs[index] = (newTower.health)
+		index+=1
+		pass
 
 func showTowers(toShow : Array, placement : Node2D):
 	towerIndex = -1
@@ -64,7 +74,7 @@ func confirmClicked():
 		towerIndex = -1
 		return
 	
-	if not (GameManager.spendWater(GameManager.towerCost(towerIndex))):
+	if not (GameManager.spendWater(GameManager.towerCost(towerIndex))) and not freeTowers:
 		$TabContainer/BUILD/Build.text = "NOT_ENOUGH_MONEY"
 		setBuildButtonColor(Color.RED)
 		return

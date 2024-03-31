@@ -7,10 +7,9 @@ var noiseY : FastNoiseLite
 ##Everytime the spawner finds a place where a resource should spawn, it picks a random number between 0-100 to determine which resource will spawn in that location.
 ##The Vector2 respresents the range in which the random number must be between (min and max are inclusive) in order for that resource to spawn.
 ##The resource is the resource that will be instantiated in that location.
-@export var resourceDictionary : Dictionary#Vector2(min,max),Resource
-
-##The resourceDictionary that will be swapped in when you go to a new layer
 @export var layeredResourceDictionaries : Array #array of dictionaries with vec2 and resource key value pairs
+
+var layerIndex : int = 0
 
 ##How many pixels the newly spawned resource can be from Y=0 (in both the positive and negative directions)
 @export var XSpread : float
@@ -39,15 +38,14 @@ func spawnInFrame():
 	pass
 	
 func onNewLayer(i:int):
-	if layeredResourceDictionaries.has(i):
-		resourceDictionary = layeredResourceDictionaries[i]
+	layerIndex = i
 	
 func spawnObject(depth : float, desiredYOffset : float = 0):
 	var noiseValue : float = noiseY.get_noise_1d(depth)
 	var percentNoiseValue : int = fposmod(noiseValue+1,1)*100 #random seeded value from 0-100
 	#go through every resource and check if the percentNoiseValue is between the numbers in its vec2
 	var hadSpawned : bool = false
-	for vec in resourceDictionary.keys():
+	for vec in layeredResourceDictionaries[layerIndex].keys():
 		if percentNoiseValue >= vec.x and percentNoiseValue <= vec.y:
 			#if so, set the seed of noiseX to the depth so we can have a consistent seed for where on the X axis to place the object
 			hadSpawned = true
@@ -56,7 +54,7 @@ func spawnObject(depth : float, desiredYOffset : float = 0):
 			var xPosition : float = noiseXValue * XSpread# multiply it by Xspread to get the X position we will place this object
 			
 			#make a new node, set its position, and add it to a parent
-			var newResource : Node2D = resourceDictionary[vec].instantiate()
+			var newResource : Node2D = layeredResourceDictionaries[layerIndex][vec].instantiate()
 			newResource.global_position = Vector2(xPosition,depth+desiredYOffset)
 			if GameManager.depthsCollected.has(depth):
 				newResource.add_to_group("COLLECTED")

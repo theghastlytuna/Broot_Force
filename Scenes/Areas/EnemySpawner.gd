@@ -16,14 +16,18 @@ var activated : bool = false
 @export var spawnLength : float = 30
 ##Parent node to spawn units under
 @export var unitParent : Node2D
+##budget multiplier
+@export var budgetFactor : float = 1.2
+##the number of rounds until a new unit will spawn
+@export var roundsPerNewUnit : int
 
 signal FinishedSpawning()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	currentRoundBudget = firstRoundBudget * pow(1.2, GameManager.growthRounds - 1)
+	currentRoundBudget = firstRoundBudget * pow(budgetFactor, GameManager.growthRounds - 1)
 	Debug.Log("This round's budget: ", currentRoundBudget)
-	maxUnitIndex = min(GameManager.growthRounds - 1, 6)
+	maxUnitIndex = min(floori(GameManager.growthRounds/roundsPerNewUnit), 6)
 	rng.randomize()
 	
 	var unitPicker : int = rng.randi_range(1, 3)
