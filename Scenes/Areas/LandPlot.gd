@@ -3,11 +3,14 @@ extends Node2D
 @export var towerIndex : int
 var stashedTower : Node2D
 
+signal onTowerPlacedOnSlot(placed:bool)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if GameManager.placedTowers.has(towerIndex):
 		instantiate_tower(GameManager.placedTowers[towerIndex])
 		
+	onTowerPlacedOnSlot.emit(false)
 	#EventManager.onGrowthPhaseEnd.connect(setTowerHealth)
 	pass # Replace with function body.
 
@@ -32,6 +35,7 @@ func spawn_tower(tower, path):
 			
 	add_child(tower)
 	stashedTower = tower
+	onTowerPlacedOnSlot.emit(true)
 	#$CanvasLayer/Button.visible = false
 	#TODO: make its style completely invisible
 	GameManager.placedTowers[towerIndex] = path

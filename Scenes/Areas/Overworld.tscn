@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://c05hmgw7ymjw0" path="res://Art Assets/Textures/main_BG.png" id="2_p4gqi"]
 [ext_resource type="Script" path="res://Scenes/Areas/LandPlot.gd" id="3_ncd5e"]
 [ext_resource type="Texture2D" uid="uid://cog42c6avtfrv" path="res://Art Assets/Textures/floor.png" id="3_p34j2"]
-[ext_resource type="Script" path="res://Scenes/Areas/GroundButton.gd" id="3_wo8c8"]
 [ext_resource type="Texture2D" uid="uid://buib6rapkh83j" path="res://Art Assets/Textures/TM_overworld.png" id="4_jfqio"]
 [ext_resource type="PackedScene" uid="uid://duugxlocnnohp" path="res://Scenes/Units/EnemyUnits/ExcavatorEnemy.tscn" id="6_0e3rg"]
 [ext_resource type="PackedScene" uid="uid://xq6s5a6jdktr" path="res://Scenes/Units/EnemyUnits/ShotgunEnemy.tscn" id="6_8r0hn"]
@@ -13,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cde8tgxvy6y1g" path="res://Scenes/Units/EnemyUnits/PistolEnemy.tscn" id="6_iyl61"]
 [ext_resource type="PackedScene" uid="uid://b8qn8je4ge20n" path="res://Scenes/Units/EnemyUnits/AxeEnemy.tscn" id="6_onj2u"]
 [ext_resource type="PackedScene" uid="uid://b5frixg7n146p" path="res://Scenes/Units/EnemyUnits/ChainsawEnemy.tscn" id="6_yaxo3"]
+[ext_resource type="PackedScene" uid="uid://dv1gxbtbtoul6" path="res://Scenes/UI/GroundButton.tscn" id="7_bq51c"]
 [ext_resource type="PackedScene" uid="uid://mlvq353kw0c1" path="res://Scenes/Units/TreeUnitsGround/MainTree.tscn" id="7_dtyo1"]
 [ext_resource type="PackedScene" uid="uid://cvn6nev5hshj5" path="res://Scenes/Units/EnemyUnits/BulldozerEnemy.tscn" id="8_dsl38"]
 [ext_resource type="PackedScene" uid="uid://8uq74ff3xyc" path="res://Scenes/UI/CanopyButton.tscn" id="8_n4mig"]
@@ -92,14 +92,11 @@ script = ExtResource("3_ncd5e")
 layer = 4
 follow_viewport_enabled = true
 
-[node name="Button" type="Button" parent="Tree/GroundPositions/0/CanvasLayer" node_paths=PackedStringArray("parentnode") groups=["TowerButton"]]
+[node name="Button" parent="Tree/GroundPositions/0/CanvasLayer" node_paths=PackedStringArray("parentnode") instance=ExtResource("7_bq51c")]
 offset_left = 191.0
-offset_top = 300.0
+offset_top = 305.0
 offset_right = 271.0
 offset_bottom = 439.0
-theme_override_font_sizes/font_size = 10
-text = "+"
-script = ExtResource("3_wo8c8")
 parentnode = NodePath("../..")
 
 [node name="1" type="Node2D" parent="Tree/GroundPositions"]
@@ -110,14 +107,11 @@ towerIndex = 1
 [node name="CanvasLayer" type="CanvasLayer" parent="Tree/GroundPositions/1"]
 follow_viewport_enabled = true
 
-[node name="Button" type="Button" parent="Tree/GroundPositions/1/CanvasLayer" node_paths=PackedStringArray("parentnode") groups=["TowerButton"]]
-offset_left = 350.0
-offset_top = 300.0
-offset_right = 430.0
+[node name="Button" parent="Tree/GroundPositions/1/CanvasLayer" node_paths=PackedStringArray("parentnode") instance=ExtResource("7_bq51c")]
+offset_left = 351.0
+offset_top = 305.0
+offset_right = 431.0
 offset_bottom = 439.0
-theme_override_font_sizes/font_size = 10
-text = "+"
-script = ExtResource("3_wo8c8")
 parentnode = NodePath("../..")
 
 [node name="2" type="Node2D" parent="Tree/GroundPositions"]
@@ -128,14 +122,11 @@ towerIndex = 2
 [node name="CanvasLayer" type="CanvasLayer" parent="Tree/GroundPositions/2"]
 follow_viewport_enabled = true
 
-[node name="Button" type="Button" parent="Tree/GroundPositions/2/CanvasLayer" node_paths=PackedStringArray("parentnode") groups=["TowerButton"]]
-offset_left = 510.0
-offset_top = 300.0
-offset_right = 590.0
+[node name="Button" parent="Tree/GroundPositions/2/CanvasLayer" node_paths=PackedStringArray("parentnode") instance=ExtResource("7_bq51c")]
+offset_left = 511.0
+offset_top = 305.0
+offset_right = 591.0
 offset_bottom = 439.0
-theme_override_font_sizes/font_size = 10
-text = "+"
-script = ExtResource("3_wo8c8")
 parentnode = NodePath("../..")
 
 [node name="3" type="Node2D" parent="Tree/GroundPositions"]
@@ -146,14 +137,11 @@ towerIndex = 3
 [node name="CanvasLayer" type="CanvasLayer" parent="Tree/GroundPositions/3"]
 follow_viewport_enabled = true
 
-[node name="Button" type="Button" parent="Tree/GroundPositions/3/CanvasLayer" node_paths=PackedStringArray("parentnode") groups=["TowerButton"]]
+[node name="Button" parent="Tree/GroundPositions/3/CanvasLayer" node_paths=PackedStringArray("parentnode") instance=ExtResource("7_bq51c")]
 offset_left = 670.0
-offset_top = 300.0
+offset_top = 305.0
 offset_right = 750.0
 offset_bottom = 439.0
-theme_override_font_sizes/font_size = 10
-text = "+"
-script = ExtResource("3_wo8c8")
 parentnode = NodePath("../..")
 
 [node name="4" type="Node2D" parent="Tree/GroundPositions"]
@@ -164,14 +152,11 @@ towerIndex = 4
 [node name="CanvasLayer" type="CanvasLayer" parent="Tree/GroundPositions/4"]
 follow_viewport_enabled = true
 
-[node name="Button" type="Button" parent="Tree/GroundPositions/4/CanvasLayer" node_paths=PackedStringArray("parentnode") groups=["TowerButton"]]
-offset_left = 830.0
-offset_top = 300.0
-offset_right = 910.0
+[node name="Button" parent="Tree/GroundPositions/4/CanvasLayer" node_paths=PackedStringArray("parentnode") instance=ExtResource("7_bq51c")]
+offset_left = 829.0
+offset_top = 305.0
+offset_right = 909.0
 offset_bottom = 439.0
-theme_override_font_sizes/font_size = 10
-text = "+"
-script = ExtResource("3_wo8c8")
 parentnode = NodePath("../..")
 
 [node name="CanopyPositions" type="Node2D" parent="Tree"]
@@ -185,11 +170,12 @@ towerIndex = 5
 [node name="CanvasLayer" type="CanvasLayer" parent="Tree/CanopyPositions/0"]
 follow_viewport_enabled = true
 
-[node name="Button" parent="Tree/CanopyPositions/0/CanvasLayer" instance=ExtResource("8_n4mig")]
+[node name="Button" parent="Tree/CanopyPositions/0/CanvasLayer" node_paths=PackedStringArray("parentnode") instance=ExtResource("8_n4mig")]
 offset_left = 271.0
 offset_top = -21.0
 offset_right = 351.0
 offset_bottom = 255.0
+parentnode = NodePath("../..")
 
 [node name="1" type="Node2D" parent="Tree/CanopyPositions"]
 position = Vector2(448, 570)
@@ -199,11 +185,12 @@ towerIndex = 6
 [node name="CanvasLayer" type="CanvasLayer" parent="Tree/CanopyPositions/1"]
 follow_viewport_enabled = true
 
-[node name="Button" parent="Tree/CanopyPositions/1/CanvasLayer" instance=ExtResource("8_n4mig")]
+[node name="Button" parent="Tree/CanopyPositions/1/CanvasLayer" node_paths=PackedStringArray("parentnode") instance=ExtResource("8_n4mig")]
 offset_left = 434.0
 offset_top = -21.0
 offset_right = 514.0
 offset_bottom = 255.0
+parentnode = NodePath("../..")
 
 [node name="2" type="Node2D" parent="Tree/CanopyPositions"]
 position = Vector2(608, 570)
@@ -213,11 +200,12 @@ towerIndex = 7
 [node name="CanvasLayer" type="CanvasLayer" parent="Tree/CanopyPositions/2"]
 follow_viewport_enabled = true
 
-[node name="Button" parent="Tree/CanopyPositions/2/CanvasLayer" instance=ExtResource("8_n4mig")]
+[node name="Button" parent="Tree/CanopyPositions/2/CanvasLayer" node_paths=PackedStringArray("parentnode") instance=ExtResource("8_n4mig")]
 offset_left = 591.0
 offset_top = -21.0
 offset_right = 671.0
 offset_bottom = 255.0
+parentnode = NodePath("../..")
 
 [node name="3" type="Node2D" parent="Tree/CanopyPositions"]
 position = Vector2(768, 570)
@@ -227,11 +215,12 @@ towerIndex = 8
 [node name="CanvasLayer" type="CanvasLayer" parent="Tree/CanopyPositions/3"]
 follow_viewport_enabled = true
 
-[node name="Button" parent="Tree/CanopyPositions/3/CanvasLayer" instance=ExtResource("8_n4mig")]
+[node name="Button" parent="Tree/CanopyPositions/3/CanvasLayer" node_paths=PackedStringArray("parentnode") instance=ExtResource("8_n4mig")]
 offset_left = 752.0
 offset_top = -21.0
 offset_right = 832.0
 offset_bottom = 255.0
+parentnode = NodePath("../..")
 
 [node name="4" type="Node2D" parent="Tree/CanopyPositions"]
 position = Vector2(928, 570)
@@ -241,11 +230,12 @@ towerIndex = 9
 [node name="CanvasLayer" type="CanvasLayer" parent="Tree/CanopyPositions/4"]
 follow_viewport_enabled = true
 
-[node name="Button" parent="Tree/CanopyPositions/4/CanvasLayer" instance=ExtResource("8_n4mig")]
+[node name="Button" parent="Tree/CanopyPositions/4/CanvasLayer" node_paths=PackedStringArray("parentnode") instance=ExtResource("8_n4mig")]
 offset_left = 907.0
 offset_top = -21.0
 offset_right = 987.0
 offset_bottom = 255.0
+parentnode = NodePath("../..")
 
 [node name="MainTree" parent="Tree" instance=ExtResource("7_dtyo1")]
 position = Vector2(1071, 438)
@@ -393,11 +383,6 @@ remote_path = NodePath("../../../Camera2D")
 
 [node name="CanvasLayer" parent="." instance=ExtResource("25_hidf4")]
 
-[connection signal="pressed" from="Tree/GroundPositions/0/CanvasLayer/Button" to="Tree/GroundPositions/0/CanvasLayer/Button" method="_on_pressed"]
-[connection signal="pressed" from="Tree/GroundPositions/1/CanvasLayer/Button" to="Tree/GroundPositions/1/CanvasLayer/Button" method="_on_pressed"]
-[connection signal="pressed" from="Tree/GroundPositions/2/CanvasLayer/Button" to="Tree/GroundPositions/2/CanvasLayer/Button" method="_on_pressed"]
-[connection signal="pressed" from="Tree/GroundPositions/3/CanvasLayer/Button" to="Tree/GroundPositions/3/CanvasLayer/Button" method="_on_pressed"]
-[connection signal="pressed" from="Tree/GroundPositions/4/CanvasLayer/Button" to="Tree/GroundPositions/4/CanvasLayer/Button" method="_on_pressed"]
 [connection signal="FinishedSpawning" from="EnemySpawner" to="EnemyUnits" method="_on_enemy_spawner_finished_spawning"]
 [connection signal="button_up" from="Button" to="EnemySpawner" method="_on_button_button_up"]
 [connection signal="button_up" from="Button" to="Button" method="_on_button_up"]

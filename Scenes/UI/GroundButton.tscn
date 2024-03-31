@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://dv1gxbtbtoul6"]
+
+[ext_resource type="Script" path="res://Scenes/Areas/GroundButton.gd" id="1_bmu3v"]
+[ext_resource type="PackedScene" uid="uid://b77s6mr6cb5ta" path="res://Scenes/UI/TowerTab.tscn" id="2_eboow"]
+
+[node name="Button" type="Button" groups=["TowerButton"]]
+offset_top = -137.0
+offset_right = 80.0
+offset_bottom = -3.0
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 10
+flat = true
+script = ExtResource("1_bmu3v")
+
+[node name="TextureRect" parent="." instance=ExtResource("2_eboow")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TextureRect" parent="TextureRect" index="0"]
+self_modulate = Color(0.941176, 0.552941, 0.784314, 1)
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
+
+[editable path="TextureRect"]
