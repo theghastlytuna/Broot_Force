@@ -40,6 +40,16 @@ enum AttackType{
 	VEHICLE,
 	POISON
 	}
+	
+enum TowerType{
+	THORN_WALL,
+	FLYTRAP_CLUSTER,
+	TOXIC_BLOOM,
+	THORN_VINES,
+	SEED_BOMBER,
+	BOMBER_FRUIT,
+	SPORE_SPRAYER
+	}
 
 #this is the total amount of damage taken
 #im doing it like this in case we want units to be able to heal themselves later, there has to be a way to have a units max health

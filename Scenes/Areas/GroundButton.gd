@@ -12,4 +12,4 @@ func _process(delta):
 	pass
 
 func _on_pressed():
-	land_clicked.emit(parentnode)
+	EventManager.onGroundClicked.emit([0,1,2],parentnode)

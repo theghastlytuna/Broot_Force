@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://8uq74ff3xyc"]
+
+[ext_resource type="Script" path="res://Scenes/Areas/CanopyButton.gd" id="1_bq04j"]
+
+[node name="Button" type="Button" groups=["TowerButton"]]
+offset_right = 80.0
+offset_bottom = 139.0
+theme_override_font_sizes/font_size = 10
+text = "+"
+script = ExtResource("1_bq04j")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

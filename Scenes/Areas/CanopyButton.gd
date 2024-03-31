@@ -12,4 +12,4 @@ func _process(delta):
 	pass
 
 func _on_pressed():
-	canopy_clicked.emit(parentnode)
+	EventManager.onCanopyClicked.emit([3,4,5,6],parentnode)

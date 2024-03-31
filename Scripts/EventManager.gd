@@ -13,3 +13,6 @@ signal onRootPhaseStart
 signal onRootPhaseEnd
 signal onGrowthPhaseStart
 signal onGrowthPhaseEnd
+
+signal onCanopyClicked(towersToShow : Array, parent : Node2D)
+signal onGroundClicked(towersToShow : Array,parent : Node2D)

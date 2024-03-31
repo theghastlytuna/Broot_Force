@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dq4jcfh8ylt5e"]
+[gd_scene load_steps=29 format=3 uid="uid://dq4jcfh8ylt5e"]
 
 [ext_resource type="Script" path="res://Scenes/Areas/Overworld.gd" id="1_y88pi"]
 [ext_resource type="Script" path="res://Scenes/Areas/FriendlySpawnLocation.gd" id="2_no26d"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://b5frixg7n146p" path="res://Scenes/Units/EnemyUnits/ChainsawEnemy.tscn" id="6_yaxo3"]
 [ext_resource type="PackedScene" uid="uid://mlvq353kw0c1" path="res://Scenes/Units/TreeUnitsGround/MainTree.tscn" id="7_dtyo1"]
 [ext_resource type="PackedScene" uid="uid://cvn6nev5hshj5" path="res://Scenes/Units/EnemyUnits/BulldozerEnemy.tscn" id="8_dsl38"]
+[ext_resource type="PackedScene" uid="uid://8uq74ff3xyc" path="res://Scenes/UI/CanopyButton.tscn" id="8_n4mig"]
 [ext_resource type="Script" path="res://Scenes/Areas/CanopyButton.gd" id="9_d41nc"]
 [ext_resource type="Script" path="res://Scenes/Areas/EnemyUnitsHolder.gd" id="18_8vmsq"]
 [ext_resource type="Script" path="res://Scenes/Areas/EndTowerPlacement.gd" id="18_hqi7h"]
@@ -24,6 +25,7 @@
 [ext_resource type="Script" path="res://Scenes/Areas/EnemySpawner.gd" id="21_y32r6"]
 [ext_resource type="Script" path="res://Scenes/Areas/UpgradeManager.gd" id="23_03xkq"]
 [ext_resource type="Script" path="res://Scenes/Areas/Pcameras.gd" id="24_upgu1"]
+[ext_resource type="PackedScene" uid="uid://b0ylmtf8821bl" path="res://Scenes/UI/TowerUI.tscn" id="25_hidf4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jos54"]
 size = Vector2(2104, 320)
@@ -186,15 +188,11 @@ towerIndex = 5
 [node name="CanvasLayer" type="CanvasLayer" parent="Tree/CanopyPositions/0"]
 follow_viewport_enabled = true
 
-[node name="Button" type="Button" parent="Tree/CanopyPositions/0/CanvasLayer" node_paths=PackedStringArray("parentnode") groups=["TowerButton"]]
-offset_left = 272.0
+[node name="Button" parent="Tree/CanopyPositions/0/CanvasLayer" instance=ExtResource("8_n4mig")]
+offset_left = 271.0
 offset_top = 116.0
-offset_right = 352.0
+offset_right = 351.0
 offset_bottom = 255.0
-theme_override_font_sizes/font_size = 10
-text = "+"
-script = ExtResource("9_d41nc")
-parentnode = NodePath("../..")
 
 [node name="1" type="Node2D" parent="Tree/CanopyPositions"]
 position = Vector2(448, 570)
@@ -274,8 +272,10 @@ collision_mask = 0
 health = 100.0
 
 [node name="LandCanvas" parent="." instance=ExtResource("20_lxlg4")]
+visible = false
 
 [node name="CanopyCanvas" parent="." instance=ExtResource("19_ovhgu")]
+visible = false
 
 [node name="EnemySpawner" type="Node2D" parent="." node_paths=PackedStringArray("enemyUnits", "unitParent")]
 position = Vector2(-170, 438)
@@ -311,55 +311,60 @@ position = Vector2(-277, 195)
 script = ExtResource("18_8vmsq")
 
 [node name="Button" type="Button" parent="." groups=["TowerButton"]]
-offset_left = 212.0
-offset_top = 508.0
-offset_right = 348.0
-offset_bottom = 644.0
+offset_left = 200.0
+offset_top = 491.0
+offset_right = 336.0
+offset_bottom = 627.0
 text = "Start Round"
 script = ExtResource("18_hqi7h")
 
 [node name="Button2" type="Button" parent="." groups=["TowerButton"]]
-offset_left = 449.0
+offset_left = 358.0
 offset_top = 511.0
-offset_right = 585.0
+offset_right = 494.0
 offset_bottom = 647.0
+scale = Vector2(0.75, 0.75)
 text = "Upgrade Speed
 Cost - 20"
 
 [node name="Button3" type="Button" parent="." groups=["TowerButton"]]
-offset_left = 590.0
+offset_left = 477.0
 offset_top = 512.0
-offset_right = 726.0
+offset_right = 613.0
 offset_bottom = 648.0
+scale = Vector2(0.75, 0.75)
 text = "Upgrade 
 Turn Rate
 Cost - 25"
 
 [node name="Button4" type="Button" parent="." groups=["TowerButton"]]
-offset_left = 731.0
+offset_left = 591.0
 offset_top = 509.0
-offset_right = 867.0
+offset_right = 727.0
 offset_bottom = 645.0
+scale = Vector2(0.75, 0.75)
 text = "Upgrade 
 Strength
 Cost - 10
 "
 
 [node name="Button5" type="Button" parent="." groups=["TowerButton"]]
-offset_left = 871.0
+offset_left = 697.0
 offset_top = 510.0
-offset_right = 1007.0
+offset_right = 833.0
 offset_bottom = 646.0
+scale = Vector2(0.75, 0.75)
 text = "Upgrade 
 Resource
 Collection
 Cost - 25"
 
 [node name="Button6" type="Button" parent="." groups=["TowerButton"]]
-offset_left = 1011.0
+offset_left = 806.0
 offset_top = 512.0
-offset_right = 1147.0
+offset_right = 942.0
 offset_bottom = 648.0
+scale = Vector2(0.75, 0.75)
 text = "Upgrade 
 Round Time
 Cost - 15"
@@ -411,6 +416,8 @@ rotation = 3.14159
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Pcameras/Path2D/PathFollow2D"]
 remote_path = NodePath("../../../Camera2D")
 
+[node name="CanvasLayer" parent="." instance=ExtResource("25_hidf4")]
+
 [connection signal="land_clicked" from="Tree/GroundPositions/0/CanvasLayer/Button" to="LandCanvas/Control/PanelContainer" method="_on_button_land_clicked"]
 [connection signal="pressed" from="Tree/GroundPositions/0/CanvasLayer/Button" to="Tree/GroundPositions/0/CanvasLayer/Button" method="_on_pressed"]
 [connection signal="land_clicked" from="Tree/GroundPositions/1/CanvasLayer/Button" to="LandCanvas/Control/PanelContainer" method="_on_button_land_clicked"]
@@ -421,8 +428,6 @@ remote_path = NodePath("../../../Camera2D")
 [connection signal="pressed" from="Tree/GroundPositions/3/CanvasLayer/Button" to="Tree/GroundPositions/3/CanvasLayer/Button" method="_on_pressed"]
 [connection signal="land_clicked" from="Tree/GroundPositions/4/CanvasLayer/Button" to="LandCanvas/Control/PanelContainer" method="_on_button_land_clicked"]
 [connection signal="pressed" from="Tree/GroundPositions/4/CanvasLayer/Button" to="Tree/GroundPositions/4/CanvasLayer/Button" method="_on_pressed"]
-[connection signal="canopy_clicked" from="Tree/CanopyPositions/0/CanvasLayer/Button" to="CanopyCanvas/Control/PanelContainer" method="_on_button_canopy_clicked"]
-[connection signal="pressed" from="Tree/CanopyPositions/0/CanvasLayer/Button" to="Tree/CanopyPositions/0/CanvasLayer/Button" method="_on_pressed"]
 [connection signal="canopy_clicked" from="Tree/CanopyPositions/1/CanvasLayer/Button" to="CanopyCanvas/Control/PanelContainer" method="_on_button_canopy_clicked"]
 [connection signal="pressed" from="Tree/CanopyPositions/1/CanvasLayer/Button" to="Tree/CanopyPositions/1/CanvasLayer/Button" method="_on_pressed"]
 [connection signal="canopy_clicked" from="Tree/CanopyPositions/2/CanvasLayer/Button" to="CanopyCanvas/Control/PanelContainer" method="_on_button_canopy_clicked"]

@@ -84,6 +84,23 @@ func overworldNewRound():
 	Debug.Log("Total water: ", totalWater)
 	return outputWater
 
+func towerCost(type : Unit.TowerType):
+	#THORN_WALL,
+	#FLYTRAP_CLUSTER,
+	#TOXIC_BLOOM,
+	#THORN_VINES,
+	#SEED_BOMBER,
+	#BOMBER_FRUIT,
+	#SPORE_SPRAYER
+	return [5,12,9,19,29,16,24][type]#JORDAN WHAT ARE THESE PRICES?!?!?!
+	
+func towerPlacementType(type : Unit.TowerType):
+	return ["GROUND","GROUND","GROUND","CANOPY","CANOPY","CANOPY","CANOPY"][type]
+	
+func towerHP(type : Unit.TowerType):
+	return [250,200,150,250,200,1500,250][type]#some prices are fake
+	pass
+
 func spendWater(water : int):
 	#Only spend water
 	if water > currentRoundBudget:
