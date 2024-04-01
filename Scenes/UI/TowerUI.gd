@@ -48,21 +48,21 @@ func showTowers(toShow : Array, placement : Node2D):
 	
 	$TabContainer/BUILD/Build.text = "CLOSE"
 	setBuildButtonColor(Color.WHITE)
-	$Health.visible = false
-	$Type.visible = false
+	$TabContainer/BUILD/Health.visible = false
+	$TabContainer/BUILD/Type.visible = false
 	
 	pass
 
 func towerClicked(clickedType : Unit.TowerType):
-	$Health/Label.text = "HP: " + str(GameManager.towerHP(clickedType))
+	$TabContainer/BUILD/Health/Label.text = "HP: " + str(GameManager.towerHP(clickedType))
 	#$Health/Label.add_theme_color_override("font_color",Color.RED)
 	
-	$Type/Label.text = GameManager.towerPlacementType(clickedType)
+	$TabContainer/BUILD/Type/Label.text = GameManager.towerPlacementType(clickedType)
 	towerIndex = clickedType
 	$TabContainer/BUILD/Build.text = "BUILD"
 	setBuildButtonColor(Color.WEB_GREEN)
-	$Health.visible = true
-	$Type.visible = true
+	$TabContainer/BUILD/Health.visible = true
+	$TabContainer/BUILD/Type.visible = true
 	pass
 	
 func confirmClicked():

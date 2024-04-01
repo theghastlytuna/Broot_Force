@@ -7,6 +7,11 @@ var isVisible : bool
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	parentnode.onTowerPlacedOnSlot.connect(setVisible)
+	if GameManager.growthRounds == 1:
+		$TextureRect/TextureRect2.visible = true
+		$TextureRect/TextureRect2/AnimationPlayer.play("Spin")
+	else:
+		$TextureRect/TextureRect2.visible = false
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
