@@ -39,4 +39,4 @@ func spawn_tower(tower, path):
 			group = i
 			break
 	
-	GameManager.placedTowersType[towerIndex] += 0.2
+	GameManager.placedTowersType[group] += 0.2

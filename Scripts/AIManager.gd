@@ -4,8 +4,8 @@ var NN : NeuralNetwork = NeuralNetwork.new(7,15,7)
 
 var inputArray : Array = [
 	[0.4,   0.2, 0.2, 0.2, 0.4, 0.4, 0 ],
-	[0.2,   0,   0,   0,   0,   0,   0 ],
 	[0, 0.2, 0,   0,   0,   0,   0 ],
+	[0.2,   0,   0,   0,   0,   0,   0 ],
 	[0, 0,   0.2, 0,   0,   0,   0 ],
 	[0, 0,   0,   0.2, 0,   0,   0 ],
 	[0, 0,   0,   0,   0.2, 0,   0 ],
@@ -33,8 +33,8 @@ var inputArray : Array = [
 
 var outputArray : Array = [
 	[0, 0, 0.5, 0, 0, 1, 0.25 ],
-	[0, 0.25, 0, 0, 0.5, 0, 1 ],
 	[0, 0, 0.5, 0.25, 0, 1, 0 ],
+	[0, 0.25, 0, 0, 0.5, 0, 1 ],
 	[0, 0.25, 0, 0, 0.5, 0, 1 ],
 	[0.25, 0, 0, 0.5, 0, 0, 1 ],
 	[0, 0, 0.5, 0, 0, 1, 0.25 ],
@@ -70,9 +70,9 @@ func _ready():
 			
 			NN.train(inputArray[i],outputArray[i])
 			
-	Debug.Log(NN.predict(inputArray[0]))	
-	Debug.Log(NN.predict(inputArray[2]))	
-	Debug.Log(NN.predict(inputArray[inputArray.size()-1]))
 
-	
+
+	Debug.Log(NN.predict(inputArray[0]))	
+	Debug.Log(NN.predict(inputArray[1]))
+
 	pass # Replace with function body.
