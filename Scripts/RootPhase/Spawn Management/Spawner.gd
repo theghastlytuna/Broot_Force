@@ -56,6 +56,7 @@ func spawnObject(depth : float, desiredYOffset : float = 0):
 			#make a new node, set its position, and add it to a parent
 			var newResource : Node2D = layeredResourceDictionaries[layerIndex][vec].instantiate()
 			newResource.global_position = Vector2(xPosition,depth+desiredYOffset)
+			newResource.depth = depth
 			if GameManager.depthsCollected.has(depth):
 				newResource.add_to_group("COLLECTED")
 				newResource.modulate = Color(0.5,0.5,0.5)

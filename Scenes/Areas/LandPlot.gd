@@ -9,7 +9,8 @@ signal onTowerPlacedOnSlot(placed:bool)
 func _ready():
 	if GameManager.placedTowers.has(towerIndex):
 		instantiate_tower(GameManager.placedTowers[towerIndex])
-		
+		onTowerPlacedOnSlot.emit(true)
+		return
 	onTowerPlacedOnSlot.emit(false)
 	#EventManager.onGrowthPhaseEnd.connect(setTowerHealth)
 	pass # Replace with function body.

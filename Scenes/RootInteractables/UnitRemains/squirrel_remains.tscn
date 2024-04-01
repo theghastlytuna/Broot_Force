@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://raxinoox6x3n"]
+[gd_scene load_steps=4 format=3 uid="uid://raxinoox6x3n"]
 
 [ext_resource type="Script" path="res://Scripts/RootPhase/Interactable Scripts/remainsInteractable.gd" id="1_70yla"]
+[ext_resource type="Script" path="res://Scenes/RootInteractables/Resources/UnitDepthHolder.gd" id="1_sov7f"]
 [ext_resource type="Texture2D" uid="uid://d165oon1qnfat" path="res://Sprites/UnitSkeletons/squirrel.png" id="2_s0mdq"]
 
 [node name="SquirrelRemains" type="Node2D" groups=["UnitRemains"]]
+script = ExtResource("1_sov7f")
 
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource("1_70yla")

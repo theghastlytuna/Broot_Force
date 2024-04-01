@@ -13,3 +13,6 @@ func _process(delta):
 func _on_button_up():
 	get_tree().call_group("TowerButton", "setVisible",true)
 	EventManager.onTowersPlaced.emit()
+	visible = false
+
+	

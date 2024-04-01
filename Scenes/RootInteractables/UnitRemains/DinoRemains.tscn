@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://bc82ny27vki14"]
+[gd_scene load_steps=4 format=3 uid="uid://bc82ny27vki14"]
 
 [ext_resource type="Texture2D" uid="uid://bkgdycrjdjw8y" path="res://Sprites/UnitSkeletons/trex.png" id="1_2vutc"]
+[ext_resource type="Script" path="res://Scenes/RootInteractables/Resources/UnitDepthHolder.gd" id="1_bxmmu"]
 [ext_resource type="Script" path="res://Scripts/RootPhase/Interactable Scripts/remainsInteractable.gd" id="1_q776p"]
 
 [node name="DinoRemains" type="Node2D" groups=["UnitRemains"]]
+script = ExtResource("1_bxmmu")
 
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource("1_q776p")

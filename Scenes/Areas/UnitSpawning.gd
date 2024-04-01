@@ -5,6 +5,7 @@ var allButtons : Array
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	visible = false
 	var index : int = 0
 	thisRoundUnits = GameManager.availableUnits
 	for unitAmt in GameManager.availableUnits:
@@ -15,6 +16,12 @@ func _ready() -> void:
 			newChild.find_child("Button").pressed.connect(clicked.bind(index))
 			allButtons.append(newChild)
 		index+=1
+		
+	EventManager.onTowersPlaced.connect(showButtons)
+func showButtons():
+	visible = true
+	$AnimationPlayer.play("Show")
+	pass
 			
 func clicked(typeToSpawn : int):
 	if thisRoundUnits[typeToSpawn] > 0:

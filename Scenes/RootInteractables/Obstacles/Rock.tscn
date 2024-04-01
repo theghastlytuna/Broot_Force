@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://ca3vfsmfimr8r"]
+[gd_scene load_steps=4 format=3 uid="uid://ca3vfsmfimr8r"]
 
+[ext_resource type="Script" path="res://Scenes/RootInteractables/Resources/UnitDepthHolder.gd" id="1_iqyke"]
 [ext_resource type="Script" path="res://Scenes/RootInteractables/Obstacles/Rock.gd" id="1_kb8lt"]
 [ext_resource type="Texture2D" uid="uid://cbgl38xufrejw" path="res://Sprites/Obstacles/rock.png" id="1_xgt3x"]
 
 [node name="Rock" type="Node2D" groups=["Obstacles"]]
+script = ExtResource("1_iqyke")
 
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource("1_kb8lt")
