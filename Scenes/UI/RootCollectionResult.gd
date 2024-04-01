@@ -17,5 +17,6 @@ func showResults():
 	$PanelContainer.visible = true
 	
 func goToGrowth():
+	GameManager.totalWater += GameManager.rootPhaseStats.waterPerRound
 	EventManager.onGrowthPhaseStart.emit()
 	SoundManager.stop_all_ambient_sounds()
