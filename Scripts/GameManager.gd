@@ -1,7 +1,13 @@
 extends Node
 
 var depthsCollected : Array[float]
-var totalWater : float = 0
+var totalWater : float = 0:
+	get:
+		Debug.Log("GET GM TOTAL_WATER:",totalWater)
+		return totalWater
+	set(value):
+		Debug.Log("SET GM TOTAL_WATER:",value)
+		totalWater = value
 var currentRoundBudget : float = 0
 var availableUnits : Array[int] = [0,0,0,0,0,0]
 var placedTowers : Dictionary #number tower slot key, path resource
@@ -97,6 +103,7 @@ func getUpgradeAmount(upgrade : String):
 	return rootUpgrades[upgrade] * valuesPerUpgrade[upgrade]
 
 func overworldNewRound():
+	Debug.LogSpace(rootPhaseStats.waterPerRound,totalWater)
 	var outputWater = rootPhaseStats.waterPerRound
 	totalWater += rootPhaseStats.waterPerRound
 	rootPhaseStats.waterPerRound = 0
