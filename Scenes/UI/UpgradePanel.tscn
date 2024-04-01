@@ -1,15 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://ynk4kdrvxbod"]
+[gd_scene load_steps=5 format=3 uid="uid://bipesrwb7bbyk"]
 
-[ext_resource type="Script" path="res://Scenes/UI/TowerInfoPanel.gd" id="1_ux4vh"]
-[ext_resource type="Texture2D" uid="uid://nw88hgtaqq32" path="res://Art Assets/Textures/Head.png" id="2_s3l1i"]
-[ext_resource type="PackedScene" uid="uid://dxa7recdeio70" path="res://Scenes/UI/Text.tscn" id="3_h0cdu"]
-[ext_resource type="Texture2D" uid="uid://c3gso2m7cj2om" path="res://Art Assets/Textures/Icons/Water.png" id="4_hvfak"]
+[ext_resource type="Script" path="res://Scenes/UI/UpgradePanel.gd" id="1_5i55f"]
+[ext_resource type="Texture2D" uid="uid://nw88hgtaqq32" path="res://Art Assets/Textures/Head.png" id="2_urk5c"]
+[ext_resource type="PackedScene" uid="uid://dxa7recdeio70" path="res://Scenes/UI/Text.tscn" id="3_khusw"]
+[ext_resource type="Texture2D" uid="uid://c3gso2m7cj2om" path="res://Art Assets/Textures/Icons/Water.png" id="4_qcnuh"]
 
 [node name="Panel" type="Panel"]
-custom_minimum_size = Vector2(500, 100)
+custom_minimum_size = Vector2(490, 100)
 offset_right = 500.0
 offset_bottom = 100.0
-script = ExtResource("1_ux4vh")
+script = ExtResource("1_5i55f")
 
 [node name="Icon" type="TextureRect" parent="."]
 layout_mode = 1
@@ -21,11 +21,11 @@ offset_top = -35.0
 offset_right = 80.0
 offset_bottom = 35.0
 grow_vertical = 2
-texture = ExtResource("2_s3l1i")
+texture = ExtResource("2_urk5c")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Title" parent="." instance=ExtResource("3_h0cdu")]
+[node name="Title" parent="." instance=ExtResource("3_khusw")]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -36,7 +36,7 @@ offset_right = 228.0
 offset_bottom = 11.5
 grow_vertical = 2
 theme_override_font_sizes/font_size = 32
-text = "FLYTRAP CLUSTER"
+text = "STRENGTH"
 
 [node name="water" type="TextureRect" parent="."]
 layout_mode = 1
@@ -51,11 +51,11 @@ offset_right = -62.0
 offset_bottom = 19.0
 grow_horizontal = 0
 grow_vertical = 2
-texture = ExtResource("4_hvfak")
+texture = ExtResource("4_qcnuh")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Cost" parent="water" instance=ExtResource("3_h0cdu")]
+[node name="Cost" parent="water" instance=ExtResource("3_khusw")]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -79,5 +79,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 flat = true
+
+[node name="Level" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -155.0
+offset_top = -17.0
+offset_right = -115.0
+offset_bottom = 17.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "5/5"
 
 [connection signal="pressed" from="Button" to="." method="clicked"]

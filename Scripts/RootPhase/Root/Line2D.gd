@@ -50,7 +50,7 @@ func _enter_tree() -> void:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	lastNormal = Vector2.ZERO
-	turningAmount = turningAmount * (1 + GameManager.getUpgradeAmount("Turning"))
+	turningAmount = turningAmount * (1 + GameManager.getUpgradeAmount("TURNING"))
 	tip.add_point(Vector2(0,0))
 	tip.add_point(Vector2(0,0))
 	
@@ -71,7 +71,7 @@ func startRootPhase():
 	GameManager.pastRoots[(GameManager.currentRootRound)] = []
 	currentRootArray = GameManager.pastRoots[(GameManager.currentRootRound)]
 	currentRootArray.append(Vector2.ZERO)
-	$Timer.wait_time = rootPhaseTimeout * (1 + GameManager.getUpgradeAmount("Duration"))
+	$Timer.wait_time = rootPhaseTimeout * (1 + GameManager.getUpgradeAmount("DURATION"))
 	$Timer.start()
 
 func setStopMoving(b : bool):
@@ -90,7 +90,7 @@ func _process(delta: float) -> void:
 
 #Start with the forward vector, apply speed account for root upgrased, apply delta, 
 #then apply the current layer's slowdown
-	position += transform.y * (speed * (1 + GameManager.getUpgradeAmount("Speed"))) * delta * currentLayerMultiplier
+	position += transform.y * (speed * (1 + GameManager.getUpgradeAmount("SPEED"))) * delta * currentLayerMultiplier
 	var distanceFromLast = position.distance_to(lastPosition)
 	distanceFromLastPoint += distanceFromLast
 	spawningArcLength += distanceFromLast

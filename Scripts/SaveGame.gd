@@ -47,7 +47,9 @@ func loadData():
 		GameManager.currentRootRound = saveData.rootRounds 
 		GameManager.rootUpgrades = saveData.rootUpgrades
 		if GameManager.rootUpgrades.size() == 0:
-			GameManager.rootUpgrades = {"Speed": 0,"Turning": 0,"Duration": 0,"Strength": 0,"Resource": 0}
+			GameManager.rootUpgrades = {"SPEED": 0,"TURNING": 0,"DURATION": 0,"STRENGTH": 0,"RESOURCE": 0}
+		if GameManager.rootUpgrades.has("Speed"):
+			GameManager.rootUpgrades = {"SPEED": 0,"TURNING": 0,"DURATION": 0,"STRENGTH": 0,"RESOURCE": 0}
 	else:
 		saveData = GameData.new()
 		saveData.availableUnits = []
@@ -59,6 +61,6 @@ func loadData():
 		saveData.pastRoots = {}
 		saveData.growthRounds = 0
 		saveData.rootRounds = 0
-		saveData.rootUpgrades = {"Speed": 0,"Turning": 0,"Duration": 0,"Strength": 0,"Resource": 0}
+		saveData.rootUpgrades = {"SPEED": 0,"TURNING": 0,"DURATION": 0,"STRENGTH": 0,"RESOURCE": 0}
 		saveGame()
 	pass

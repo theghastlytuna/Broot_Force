@@ -31,7 +31,7 @@ func showUI(layer : int):
 	amountClicked = 0
 	$PanelContainer.visible = true
 	layer+=1
-	amountToClick = max(ceil(randi_range(layer*5,layer*7) * (1 - GameManager.getUpgradeAmount("Strength"))), 1)
+	amountToClick = max(ceil(randi_range(layer*5,layer*7) * (1 - GameManager.getUpgradeAmount("STRENGTH"))), 1)
 	$PanelContainer/VBoxContainer/Label3.text = LocalizationManager.tr("OBSTICLE_HIT_LEFT").format({"Number":(amountToClick-amountClicked)})
 	EventManager.rootStopMoving.emit()
 	timesWiggled = 0

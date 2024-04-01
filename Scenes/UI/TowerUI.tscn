@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b0ylmtf8821bl"]
+[gd_scene load_steps=15 format=3 uid="uid://wxbanrg0ocrg"]
 
 [ext_resource type="Script" path="res://Scenes/UI/TowerUI.gd" id="1_0u6yw"]
 [ext_resource type="PackedScene" uid="uid://dxa7recdeio70" path="res://Scenes/UI/Text.tscn" id="1_cgxx0"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ba6ewlavv28ho" path="res://Scenes/Units/TreeUnitsCanopy/seedBomber.tscn" id="6_gpwri"]
 [ext_resource type="PackedScene" uid="uid://dcfycayg8y1hf" path="res://Scenes/Units/TreeUnitsCanopy/bomberFruit.tscn" id="7_qnp6l"]
 [ext_resource type="PackedScene" uid="uid://cdiyjm4ro371c" path="res://Scenes/Units/TreeUnitsCanopy/sporeSprayer.tscn" id="8_l7iu2"]
+[ext_resource type="Script" path="res://Scenes/UI/UpgradeUI.gd" id="11_vrbit"]
 
 [sub_resource type="Animation" id="Animation_dmfn2"]
 resource_name = "Hide"
@@ -62,9 +63,6 @@ anchor_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 2
 pivot_offset = Vector2(250, 324)
-script = ExtResource("1_0u6yw")
-towerResources = Array[Resource]([ExtResource("2_pc0ys"), ExtResource("3_dsyqs"), ExtResource("4_53kcy"), ExtResource("5_jdw1n"), ExtResource("6_gpwri"), ExtResource("7_qnp6l"), ExtResource("8_l7iu2")])
-freeTowers = true
 
 [node name="TabContainer" type="TabContainer" parent="Panel"]
 layout_mode = 1
@@ -77,9 +75,17 @@ theme_override_font_sizes/font_size = 48
 tab_alignment = 1
 current_tab = 1
 
-[node name="BUILD" type="Control" parent="Panel/TabContainer"]
+[node name="BUILD" type="Control" parent="Panel/TabContainer" node_paths=PackedStringArray("animationPlayer", "type", "health", "confirm", "container", "topParent")]
 visible = false
 layout_mode = 2
+script = ExtResource("1_0u6yw")
+towerResources = Array[Resource]([ExtResource("2_pc0ys"), ExtResource("3_dsyqs"), ExtResource("4_53kcy"), ExtResource("5_jdw1n"), ExtResource("6_gpwri"), ExtResource("7_qnp6l"), ExtResource("8_l7iu2")])
+animationPlayer = NodePath("../../AnimationPlayer")
+type = NodePath("Type/Label")
+health = NodePath("Health/Label")
+confirm = NodePath("Build")
+container = NodePath("VBoxContainer")
+topParent = NodePath("../..")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/TabContainer/BUILD"]
 layout_mode = 1
@@ -156,20 +162,26 @@ size_flags_horizontal = 5
 size_flags_vertical = 5
 color = Color(0.447059, 0.823529, 0.580392, 1)
 
-[node name="Upgrade" type="Control" parent="Panel/TabContainer"]
+[node name="UPGRADE" type="Control" parent="Panel/TabContainer" node_paths=PackedStringArray("container", "confirmButton", "animationPlayer", "description")]
 layout_mode = 2
+script = ExtResource("11_vrbit")
+container = NodePath("ScrollContainer/VBoxContainer")
+confirmButton = NodePath("Button")
+animationPlayer = NodePath("../../AnimationPlayer")
+description = NodePath("Description")
+unlimitedUpgrades = true
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Panel/TabContainer/Upgrade"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/TabContainer/UPGRADE"]
 custom_minimum_size = Vector2(0, 400)
 layout_mode = 2
 offset_right = 500.0
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/TabContainer/Upgrade/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/TabContainer/UPGRADE/ScrollContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Panel/TabContainer/Upgrade"]
+[node name="Description" type="Label" parent="Panel/TabContainer/UPGRADE"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -180,7 +192,7 @@ theme_override_font_sizes/font_size = 24
 autowrap_mode = 3
 clip_text = true
 
-[node name="Button" parent="Panel/TabContainer/Upgrade" instance=ExtResource("1_djtw0")]
+[node name="Button" parent="Panel/TabContainer/UPGRADE" instance=ExtResource("1_djtw0")]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 1
 anchors_preset = 12
@@ -198,4 +210,5 @@ libraries = {
 "": SubResource("AnimationLibrary_iv3ep")
 }
 
-[connection signal="pressed" from="Panel/TabContainer/BUILD/Build" to="Panel" method="confirmClicked"]
+[connection signal="pressed" from="Panel/TabContainer/BUILD/Build" to="Panel/TabContainer/BUILD" method="confirmClicked"]
+[connection signal="pressed" from="Panel/TabContainer/UPGRADE/Button" to="Panel/TabContainer/UPGRADE" method="confirmUpgrade"]

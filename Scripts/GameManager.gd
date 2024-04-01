@@ -17,32 +17,49 @@ var usingMobile : bool = true
 
 ##This holds how many upgrades have been purchased by the player, don't change these values
 var rootUpgrades : Dictionary = {
-	"Speed": 0,
-	"Turning": 0,
-	"Duration": 0,
-	"Strength": 0,
-	"Resource": 0
+	"SPEED": 0,
+	"TURNING": 0,
+	"DURATION": 0,
+	"STRENGTH": 0,
+	"RESOURCE": 0
+}
+
+##This is the maximum number of upgrades the player can make per type
+var maxRootUpgrades : Dictionary = {
+	"SPEED": 5,
+	"TURNING": 3,
+	"DURATION": 5,
+	"STRENGTH": 3,
+	"RESOURCE": 5
 }
 
 ##This holds how much each upgrade boosts the root's characteristics (from 0-1, where 1 is a 100 percent increase. 
 ##Edit these to change how effective each upgrade is.
 var valuesPerUpgrade : Dictionary = {
-	"Speed": 0.1,
-	"Turning": 0.1,
-	"Duration": 0.2,
-	"Strength": 0.2,
-	"Resource": 0.05
+	"SPEED": 0.1,
+	"TURNING": 0.1,
+	"DURATION": 0.2,
+	"STRENGTH": 0.2,
+	"RESOURCE": 0.05
 }
 
 ##This holds the water cost to buy each type of root upgrade. 
 ##Edit these to change how much each upgrade costs.
 var costsPerUpgrade : Dictionary = {
-	"Speed": 20,
-	"Turning": 25,
-	"Duration": 15,
-	"Strength": 10,
-	"Resource": 25
+	"SPEED": 20,
+	"TURNING": 25,
+	"DURATION": 15,
+	"STRENGTH": 10,
+	"RESOURCE": 25
 }
+
+enum UpgradeType{
+		SPEED,
+		TURNING,
+		DURATION,
+		STRENGTH,
+		RESOURCE
+	}
 
 var screenDimensions : Vector2 = Vector2(1280,720)#landscape
 
