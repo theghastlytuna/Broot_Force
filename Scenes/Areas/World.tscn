@@ -61,7 +61,7 @@ region_rect = Rect2(0, 0, 100, 1500)
 script = ExtResource("2_5ev5r")
 layerHeight = 3000.0
 playerCam = NodePath("../Camera2D")
-layerArray = [["res://Art Assets/Textures/Layer1.jpg", 1.0], ["res://Art Assets/Textures/Layer2.png", 0.7], ["res://Art Assets/Textures/Layer3.jpg", 0.5], ["res://Art Assets/Textures/Temporary/lava.png", 0.5]]
+layerArray = [["res://Art Assets/Textures/Layer1.jpg", 1.0], ["res://Art Assets/Textures/Layer2.png", 0.7], ["res://Art Assets/Textures/Layer3.jpg", 0.5], ["res://Art Assets/Textures/hellGround.png", 0.5]]
 
 [node name="Icon" type="Sprite2D" parent="."]
 visible = false
@@ -91,7 +91,7 @@ end_cap_mode = 2
 
 [node name="Area2D" type="Area2D" parent="Root" node_paths=PackedStringArray("wallNode", "debugCast", "leftCast", "rightCast", "lineRenderer", "tip", "playerCamera", "spawner", "gameSaver")]
 script = ExtResource("4_uwuhp")
-speed = 150.0
+speed = 1000.0
 turningAmount = 1.0
 wallNode = NodePath("../../Walls")
 turningAwayCurve = SubResource("Curve_lyvea")
@@ -106,7 +106,7 @@ spawner = NodePath("../../Spawner")
 spawnInterval = 100.0
 gameSaver = NodePath("../../SaveGame")
 rootPointSaveArcLength = 75.0
-rootPhaseTimeout = 30.0
+rootPhaseTimeout = 1000.0
 
 [node name="Tip" type="Sprite2D" parent="Root/Area2D" groups=["Tip"]]
 
