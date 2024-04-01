@@ -108,7 +108,8 @@ end_cap_mode = 2
 
 [node name="Area2D" type="Area2D" parent="Root" node_paths=PackedStringArray("wallNode", "debugCast", "leftCast", "rightCast", "raycastParent", "lineRenderer", "tip", "playerCamera", "spawner", "gameSaver")]
 script = ExtResource("4_uwuhp")
-turningAmount = 10.0
+speed = 200.0
+turningAmount = 2.0
 wallNode = NodePath("../../Walls")
 turningAwayCurve = SubResource("Curve_lyvea")
 turningAwayForce = 4.0
@@ -123,7 +124,7 @@ spawner = NodePath("../../Spawner")
 spawnInterval = 100.0
 gameSaver = NodePath("../../SaveGame")
 rootPointSaveArcLength = 50.0
-rootPhaseTimeout = 150.0
+rootPhaseTimeout = 30.0
 
 [node name="Tip" type="Sprite2D" parent="Root/Area2D" groups=["Tip"]]
 
