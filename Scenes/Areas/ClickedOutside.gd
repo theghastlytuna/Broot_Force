@@ -7,6 +7,7 @@ func _ready() -> void:
 	setText(GameManager.totalWater)
 
 func setText(i):
+	Debug.Log("d",i)
 	$TextureRect/Label.text = str(i)
 
 func _on_button_2_pressed() -> void:

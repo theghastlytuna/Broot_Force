@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://ckpxkhasyjkom"]
+[gd_scene load_steps=6 format=3 uid="uid://ckpxkhasyjkom"]
 
 [ext_resource type="Script" path="res://Menus/optionsmenu.gd" id="1_45swt"]
 [ext_resource type="PackedScene" uid="uid://dxa7recdeio70" path="res://Scenes/UI/Text.tscn" id="2_bc4k0"]
 [ext_resource type="Texture2D" uid="uid://bn61fvr3hbar7" path="res://Art Assets/Textures/cancel.png" id="3_qnap2"]
 [ext_resource type="Script" path="res://Menus/DEBUGChangeScaleFactor.gd" id="4_nhq5r"]
+[ext_resource type="Script" path="res://Menus/ResetGame.gd" id="5_30o40"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_45swt")
@@ -54,22 +55,32 @@ stretch_mode = 0
 
 [node name="Label2" parent="Control/CenterContainer/Panel" instance=ExtResource("2_bc4k0")]
 layout_mode = 1
-offset_top = 180.0
-offset_bottom = 203.0
+offset_top = 106.0
+offset_right = 229.0
+offset_bottom = 151.0
 theme_override_font_sizes/font_size = 32
 text = "SCALE_FACTOR"
 
 [node name="HSlider" type="HSlider" parent="Control/CenterContainer/Panel"]
 custom_minimum_size = Vector2(300, 75)
 layout_mode = 0
-offset_top = 284.0
-offset_right = 8.0
-offset_bottom = 300.0
+offset_top = 163.0
+offset_right = 300.0
+offset_bottom = 238.0
 min_value = 1.0
 max_value = 3.0
 step = 0.1
 value = 1.0
 script = ExtResource("4_nhq5r")
+
+[node name="Button" type="Button" parent="Control/CenterContainer/Panel"]
+layout_mode = 0
+offset_top = 252.0
+offset_right = 209.0
+offset_bottom = 294.0
+theme_override_font_sizes/font_size = 24
+text = "RESET SAVE DATA"
+script = ExtResource("5_30o40")
 
 [connection signal="button_down" from="Control/CenterContainer/Panel/TextureButton" to="." method="_on_cancel_button_pressed"]
 [connection signal="drag_ended" from="Control/CenterContainer/Panel/HSlider" to="Control/CenterContainer/Panel/HSlider" method="_on_drag_ended"]

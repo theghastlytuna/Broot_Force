@@ -112,10 +112,8 @@ func _process(delta: float) -> void:
 	
 	if rootPositionOverride != Vector2.ZERO:
 		var distanceToOverride = global_position.distance_to(rootPositionOverride)
-		Debug.Log(distanceToOverride)
 		if distanceToOverride <= distanceOfAffect:
 			desiredPosition = lerp(desiredPosition,rootPositionOverride,lerpCurve.sample(distanceToOverride/distanceOfAffect))
-			Debug.Log(desiredPosition)
 	var amountToTurn = turningAmount 
 	
 	#check the raycasts to see if you will hit something

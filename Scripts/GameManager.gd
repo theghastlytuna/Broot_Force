@@ -1,7 +1,8 @@
 extends Node
 
 var depthsCollected : Array[float]
-var totalWater : float = 0:
+var totalWater : float = 0
+var currentRoundBudget : float = 0:
 	get:
 		Debug.Log("GET GM TOTAL_WATER:",totalWater)
 		return totalWater
@@ -9,7 +10,7 @@ var totalWater : float = 0:
 		Debug.Log("SET GM TOTAL_WATER:",value)
 		EventManager.onWaterChanged.emit(value)
 		totalWater = value
-var currentRoundBudget : float = 0
+
 var availableUnits : Array[int] = [0,0,0,0,0,0]
 var placedTowers : Dictionary #number tower slot key, path resource
 var placedTowersHealth : Dictionary #number tower slot key, float health

@@ -23,6 +23,7 @@ GameManager="*res://Scripts/GameManager.gd"
 ResourceHolder="*res://Scripts/RootPhase/ResourceHolder.gd"
 EventManager="*res://Scripts/EventManager.gd"
 SoundManager="*res://addons/sound_manager/sound_manager.gd"
+SaveManager="*res://Scripts/SaveManager.gd"
 
 [display]
 

@@ -32,7 +32,7 @@ _data = [Vector2(0, 0), 0.0, 0.0410062, 0, 0, Vector2(0.946058, 1), 2.80503, 0.0
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_0f50l"]
-_data = [Vector2(0, 0.494505), 0.0, 0.0, 0, 0, Vector2(0.751037, 1), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.505494), 0.0, 0.0, 0, 0, Vector2(0.751037, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4g5gk"]
@@ -111,7 +111,6 @@ spawnInterval = 100.0
 gameSaver = NodePath("../../SaveGame")
 rootPointSaveArcLength = 75.0
 rootPhaseTimeout = 30.0
-rootPositionOverride = Vector2(0, 1000)
 distanceOfAffect = 500.0
 lerpCurve = SubResource("Curve_0f50l")
 
