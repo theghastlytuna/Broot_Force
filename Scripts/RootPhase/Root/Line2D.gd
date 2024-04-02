@@ -36,7 +36,10 @@ const music: AudioStream =  preload("res://Sounds/Music/KiloWatts - Gollum Finge
 @export var rootPointSaveArcLength : float = 200
 @export_category("Root Phase Variables")
 @export var rootPhaseTimeout : float
-
+@export_category("Root tutorial")
+@export var rootPositionOverride : Vector2 = Vector2.ZERO
+@export var distanceOfAffect :float #the distnace from the position override where the root will start moving towards the override position
+@export var lerpCurve : Curve #how the position will be lerped as you get closer
 var lastSpawnedDepth : float = 0
 var mousePosition = Vector2.ZERO
 var currentRootArray : Array
@@ -105,6 +108,14 @@ func _process(delta: float) -> void:
 	
 	
 	var desiredPosition = mousePosition
+	
+	
+	if rootPositionOverride != Vector2.ZERO:
+		var distanceToOverride = global_position.distance_to(rootPositionOverride)
+		Debug.Log(distanceToOverride)
+		if distanceToOverride <= distanceOfAffect:
+			desiredPosition = lerp(desiredPosition,rootPositionOverride,lerpCurve.sample(distanceToOverride/distanceOfAffect))
+			Debug.Log(desiredPosition)
 	var amountToTurn = turningAmount 
 	
 	#check the raycasts to see if you will hit something
