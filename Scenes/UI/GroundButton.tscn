@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dv1gxbtbtoul6"]
+[gd_scene load_steps=11 format=3 uid="uid://reahr0ehb04v"]
 
 [ext_resource type="Script" path="res://Scenes/Areas/GroundButton.gd" id="1_bmu3v"]
 [ext_resource type="Texture2D" uid="uid://c1n5csep25isl" path="res://Art Assets/Textures/Sprout.png" id="2_3trsm"]

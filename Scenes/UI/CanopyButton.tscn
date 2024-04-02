@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://8uq74ff3xyc"]
+[gd_scene load_steps=11 format=3 uid="uid://bw1t5ni4rr070"]
 
 [ext_resource type="Script" path="res://Scenes/Areas/CanopyButton.gd" id="1_bq04j"]
 [ext_resource type="Texture2D" uid="uid://c1n5csep25isl" path="res://Art Assets/Textures/Sprout.png" id="2_4dkdq"]
@@ -191,6 +191,7 @@ libraries = {
 [node name="TextureRect2" type="TextureRect" parent="Control/TextureRect"]
 self_modulate = Color(1, 0.884965, 0, 0.455709)
 show_behind_parent = true
+layout_mode = 0
 offset_left = -0.182171
 offset_top = -24.7009
 offset_right = 105.818

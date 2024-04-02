@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://ckpxkhasyjkom"]
+[gd_scene load_steps=7 format=3 uid="uid://ckpxkhasyjkom"]
 
 [ext_resource type="Script" path="res://Menus/optionsmenu.gd" id="1_45swt"]
 [ext_resource type="PackedScene" uid="uid://dxa7recdeio70" path="res://Scenes/UI/Text.tscn" id="2_bc4k0"]
 [ext_resource type="Texture2D" uid="uid://bn61fvr3hbar7" path="res://Art Assets/Textures/cancel.png" id="3_qnap2"]
 [ext_resource type="Script" path="res://Menus/DEBUGChangeScaleFactor.gd" id="4_nhq5r"]
 [ext_resource type="Script" path="res://Menus/ResetGame.gd" id="5_30o40"]
+[ext_resource type="Script" path="res://Menus/setVolume.gd" id="6_ar82d"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_45swt")
@@ -82,5 +83,24 @@ theme_override_font_sizes/font_size = 24
 text = "RESET SAVE DATA"
 script = ExtResource("5_30o40")
 
+[node name="Label3" type="Label" parent="Control/CenterContainer/Panel"]
+layout_mode = 0
+offset_top = 314.0
+offset_right = 129.0
+offset_bottom = 337.0
+text = "SOUND VOLUME"
+
+[node name="HSlider2" type="HSlider" parent="Control/CenterContainer/Panel"]
+custom_minimum_size = Vector2(350, 75)
+layout_mode = 0
+offset_top = 375.0
+offset_right = 8.0
+offset_bottom = 391.0
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("6_ar82d")
+
 [connection signal="button_down" from="Control/CenterContainer/Panel/TextureButton" to="." method="_on_cancel_button_pressed"]
 [connection signal="drag_ended" from="Control/CenterContainer/Panel/HSlider" to="Control/CenterContainer/Panel/HSlider" method="_on_drag_ended"]
+[connection signal="drag_ended" from="Control/CenterContainer/Panel/HSlider2" to="Control/CenterContainer/Panel/HSlider2" method="_on_drag_ended"]

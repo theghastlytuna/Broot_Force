@@ -4,6 +4,7 @@ func _enter_tree():
 	GameManager.growthRounds += 1
 	EventManager.onGrowthPhaseEnd.connect(growthOver)
 	#GameManager.overworldNewRound()
+	SaveManager.loadData()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

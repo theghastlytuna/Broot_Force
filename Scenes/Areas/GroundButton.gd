@@ -6,6 +6,7 @@ var isVisible : bool
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	isVisible = true
 	parentnode.onTowerPlacedOnSlot.connect(setVisible)
 	if GameManager.growthRounds == 1:
 		$TextureRect/TextureRect2.visible = true
