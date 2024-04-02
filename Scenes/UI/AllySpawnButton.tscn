@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dlwpwc416tn4y"]
 
 [ext_resource type="Script" path="res://AllySpawning.gd" id="1_nc3ph"]
-[ext_resource type="Texture2D" uid="uid://d2oro3qnu8jmm" path="res://Art Assets/Textures/Icons/UndeadUnits/UNDEAD_SMALL_ANIMAL.png" id="2_038kf"]
+[ext_resource type="Texture2D" uid="uid://cpg3lscwuv0ig" path="res://Art Assets/Textures/AllyIcons/UNDEAD_HUMAN.png" id="2_230ld"]
 [ext_resource type="PackedScene" uid="uid://dxa7recdeio70" path="res://Scenes/UI/Text.tscn" id="3_mkqo8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_taks7"]
@@ -15,11 +15,12 @@ script = ExtResource("1_nc3ph")
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+modulate = Color(100, 100, 100, 1)
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
-texture = ExtResource("2_038kf")
+texture = ExtResource("2_230ld")
 expand_mode = 1
-stretch_mode = 4
+stretch_mode = 5
 
 [node name="Label" parent="VBoxContainer" instance=ExtResource("3_mkqo8")]
 layout_mode = 2

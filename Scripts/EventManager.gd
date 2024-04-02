@@ -14,5 +14,9 @@ signal onRootPhaseEnd
 signal onGrowthPhaseStart
 signal onGrowthPhaseEnd
 
+signal onWaterChanged(newWater : float)
+
+signal onClickedOutsideUI
+
 signal onCanopyClicked(towersToShow : Array, parent : Node2D)
 signal onGroundClicked(towersToShow : Array,parent : Node2D)

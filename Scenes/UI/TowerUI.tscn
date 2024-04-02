@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://wxbanrg0ocrg"]
+[gd_scene load_steps=17 format=3 uid="uid://wxbanrg0ocrg"]
 
 [ext_resource type="Script" path="res://Scenes/UI/TowerUI.gd" id="1_0u6yw"]
 [ext_resource type="PackedScene" uid="uid://dxa7recdeio70" path="res://Scenes/UI/Text.tscn" id="1_cgxx0"]
 [ext_resource type="PackedScene" uid="uid://n1mg5sojwgry" path="res://Scenes/UI/Button.tscn" id="1_djtw0"]
+[ext_resource type="Script" path="res://Scenes/UI/BuildUpgrade.gd" id="1_gua7v"]
 [ext_resource type="PackedScene" uid="uid://b2t15f7ju4x0g" path="res://Scenes/Units/TreeUnitsGround/thorn_wall.tscn" id="2_pc0ys"]
 [ext_resource type="PackedScene" uid="uid://dfgsbnatkyqsl" path="res://Scenes/Units/TreeUnitsGround/flytrapCluster.tscn" id="3_dsyqs"]
 [ext_resource type="PackedScene" uid="uid://dv0aty8oydrg2" path="res://Scenes/Units/TreeUnitsGround/toxicBloom.tscn" id="4_53kcy"]
@@ -11,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dcfycayg8y1hf" path="res://Scenes/Units/TreeUnitsCanopy/bomberFruit.tscn" id="7_qnp6l"]
 [ext_resource type="PackedScene" uid="uid://cdiyjm4ro371c" path="res://Scenes/Units/TreeUnitsCanopy/sporeSprayer.tscn" id="8_l7iu2"]
 [ext_resource type="Script" path="res://Scenes/UI/UpgradeUI.gd" id="11_vrbit"]
+[ext_resource type="PackedScene" uid="uid://ynk4kdrvxbod" path="res://Scenes/UI/TowerInfo.tscn" id="13_2xllf"]
 
 [sub_resource type="Animation" id="Animation_dmfn2"]
 resource_name = "Hide"
@@ -63,6 +65,7 @@ anchor_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 2
 pivot_offset = Vector2(250, 324)
+script = ExtResource("1_gua7v")
 
 [node name="TabContainer" type="TabContainer" parent="Panel"]
 layout_mode = 1
@@ -85,6 +88,7 @@ type = NodePath("Type/Label")
 health = NodePath("Health/Label")
 confirm = NodePath("Build")
 container = NodePath("VBoxContainer")
+freeTowers = true
 topParent = NodePath("../..")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/TabContainer/BUILD"]
@@ -162,13 +166,14 @@ size_flags_horizontal = 5
 size_flags_vertical = 5
 color = Color(0.447059, 0.823529, 0.580392, 1)
 
-[node name="UPGRADE" type="Control" parent="Panel/TabContainer" node_paths=PackedStringArray("container", "confirmButton", "animationPlayer", "description")]
+[node name="UPGRADE" type="Control" parent="Panel/TabContainer" node_paths=PackedStringArray("container", "confirmButton", "animationPlayer", "description", "towerPanel")]
 layout_mode = 2
 script = ExtResource("11_vrbit")
 container = NodePath("ScrollContainer/VBoxContainer")
 confirmButton = NodePath("Button")
 animationPlayer = NodePath("../../AnimationPlayer")
 description = NodePath("Description")
+towerPanel = NodePath("ScrollContainer/VBoxContainer/Panel")
 unlimitedUpgrades = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Panel/TabContainer/UPGRADE"]
@@ -180,6 +185,27 @@ vertical_scroll_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/TabContainer/UPGRADE/ScrollContainer"]
 layout_mode = 2
+
+[node name="Label" parent="Panel/TabContainer/UPGRADE/ScrollContainer/VBoxContainer" instance=ExtResource("1_cgxx0")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "TOWER_UPDRADE"
+
+[node name="HSeparator2" type="HSeparator" parent="Panel/TabContainer/UPGRADE/ScrollContainer/VBoxContainer" groups=["Persist"]]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Panel" parent="Panel/TabContainer/UPGRADE/ScrollContainer/VBoxContainer" groups=["Persist", "TowerUpgradeIcon"] instance=ExtResource("13_2xllf")]
+layout_mode = 2
+
+[node name="Label2" parent="Panel/TabContainer/UPGRADE/ScrollContainer/VBoxContainer" instance=ExtResource("1_cgxx0")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "ROOT_UPGRADE"
+
+[node name="HSeparator" type="HSeparator" parent="Panel/TabContainer/UPGRADE/ScrollContainer/VBoxContainer" groups=["Persist"]]
+layout_mode = 2
+theme_override_constants/separation = 16
 
 [node name="Description" type="Label" parent="Panel/TabContainer/UPGRADE"]
 layout_mode = 1

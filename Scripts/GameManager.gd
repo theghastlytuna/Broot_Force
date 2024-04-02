@@ -7,14 +7,35 @@ var totalWater : float = 0:
 		return totalWater
 	set(value):
 		Debug.Log("SET GM TOTAL_WATER:",value)
+		EventManager.onWaterChanged.emit(value)
 		totalWater = value
 var currentRoundBudget : float = 0
 var availableUnits : Array[int] = [0,0,0,0,0,0]
 var placedTowers : Dictionary #number tower slot key, path resource
 var placedTowersHealth : Dictionary #number tower slot key, float health
+var s : Dictionary #number tower slot key, int type #this method is so stupid
 var growthRounds : int = 0
 var pastRoots : Dictionary
+var towerList : Array = [
+	preload("res://Scenes/Units/TreeUnitsGround/thorn_wall.tscn"),
+	preload("res://Scenes/Units/TreeUnitsGround/flytrapCluster.tscn"),
+	preload("res://Scenes/Units/TreeUnitsGround/toxicBloom.tscn"),
+	preload("res://Scenes/Units/TreeUnitsCanopy/thornVines.tscn"),
+	preload("res://Scenes/Units/TreeUnitsCanopy/seedBomber.tscn"),
+	preload("res://Scenes/Units/TreeUnitsCanopy/bomberFruit.tscn"),
+	preload("res://Scenes/Units/TreeUnitsCanopy/sporeSprayer.tscn")
+	
+	
+	
+]
 
+#THORN_WALL,
+	#FLYTRAP_CLUSTER,
+	#TOXIC_BLOOM,
+	#THORN_VINES,
+	#SEED_BOMBER,
+	#BOMBER_FRUIT,
+	#SPORE_SPRAYER
 var currentRootRound : int = 0
 
 var desiredResolution : Vector2

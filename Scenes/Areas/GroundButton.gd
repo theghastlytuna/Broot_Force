@@ -20,7 +20,7 @@ func _process(delta):
 
 func setVisible(b : bool):
 	#visible = !b
-	disabled = b
+	#disabled = b
 	if !b:
 		$TextureRect/AnimationPlayer.play("Sprout")
 		$TextureRect/AnimationPlayer.queue("Bob")
@@ -32,4 +32,5 @@ func setVisible(b : bool):
 	
 
 func _on_pressed():
+	Debug.Log("sdf")
 	EventManager.onGroundClicked.emit([0,1,2],parentnode)

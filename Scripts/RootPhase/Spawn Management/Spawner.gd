@@ -39,6 +39,8 @@ func spawnInFrame():
 	
 func onNewLayer(i:int):
 	layerIndex = i
+	if layerIndex >= layeredResourceDictionaries.size():
+		layerIndex = layeredResourceDictionaries.size()-1
 	
 func spawnObject(depth : float, desiredYOffset : float = 0):
 	var noiseValue : float = noiseY.get_noise_1d(depth)

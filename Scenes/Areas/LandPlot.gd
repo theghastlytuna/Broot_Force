@@ -2,7 +2,7 @@ extends Node2D
 
 @export var towerIndex : int
 var stashedTower : Node2D
-
+var towerType = -1
 signal onTowerPlacedOnSlot(placed:bool)
 
 # Called when the node enters the scene tree for the first time.
@@ -24,19 +24,18 @@ func _exit_tree() -> void:
 	GameManager.placedTowersHealth[towerIndex] = stashedTower.getHealth()
 	
 
-func instantiate_tower(path):
-	spawn_tower(load(path).instantiate(),path)
+func instantiate_tower(type):
+	spawn_tower(type)
 	if GameManager.placedTowersHealth.has(towerIndex):
 		stashedTower.setHealth(GameManager.placedTowersHealth[towerIndex])
 	#Debug.Log("set health to " + GameManager.placedTowersHealth[towerIndex])
 
-func spawn_tower(tower, path):
+func spawn_tower(type):
 	if stashedTower:
 		stashedTower.onDie.emit()
 			
-	add_child(tower)
-	stashedTower = tower
+	stashedTower = GameManager.towerList[type].instantiate()
+	add_child(stashedTower)
 	onTowerPlacedOnSlot.emit(true)
-	#$CanvasLayer/Button.visible = false
-	#TODO: make its style completely invisible
-	GameManager.placedTowers[towerIndex] = path
+	GameManager.placedTowers[towerIndex] = type
+	towerType = type

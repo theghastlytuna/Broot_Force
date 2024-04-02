@@ -19,7 +19,7 @@ func _process(delta):
 	pass
 	
 func setVisible(b : bool):
-	disabled = b
+	#disabled = b
 	if !b:
 		$Control/TextureRect/AnimationPlayer.play("Sprout")
 		$Control/TextureRect/AnimationPlayer.queue("Bob")

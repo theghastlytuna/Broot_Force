@@ -83,7 +83,7 @@ func confirmClicked():
 		confirm.text = "NOT_ENOUGH_MONEY"
 		setBuildButtonColor(Color.RED)
 		return
-	nodeToPlaceTower.spawn_tower(towerResources[towerIndex].instantiate(),towerResources[towerIndex].resource_path)
+	nodeToPlaceTower.spawn_tower(towerIndex)
 	animationPlayer.queue("Hide")
 	showing = false
 	nodeToPlaceTower = null
