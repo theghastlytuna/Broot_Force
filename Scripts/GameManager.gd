@@ -41,7 +41,7 @@ var currentRootRound : int = 0
 
 var desiredResolution : Vector2
 
-var usingMobile : bool = true
+var usingMobile : bool = false
 
 ##This holds how many upgrades have been purchased by the player, don't change these values
 var rootUpgrades : Dictionary = {

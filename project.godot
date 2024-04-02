@@ -27,12 +27,17 @@ SaveManager="*res://Scripts/SaveManager.gd"
 
 [display]
 
+window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/handheld/orientation=1
 
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/Godot-4-Neural-Network-main/addons/neural_net/plugin.cfg", "res://addons/localization_editor/plugin.cfg", "res://addons/neural_net/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/sound_manager/plugin.cfg")
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
 
 [internationalization]
 

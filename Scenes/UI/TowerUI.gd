@@ -72,6 +72,8 @@ func towerClicked(clickedType : Unit.TowerType):
 	pass
 	
 func confirmClicked():
+	if not showing:
+		return
 	if towerIndex == -1 or nodeToPlaceTower == null:
 		animationPlayer.queue("Hide")
 		showing = false
