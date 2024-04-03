@@ -146,7 +146,7 @@ func stopAnimation():
 	pass # Replace with function body.
 
 func getRepairCost() -> float:
-	return damageTaken / health * cost
+	return floor(damageTaken / health * cost)
 
 func repairUnit(budget : float):
 	var repairCost = getRepairCost()

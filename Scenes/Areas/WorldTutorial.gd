@@ -7,7 +7,8 @@ extends Control
 var followingObject : Node2D
 
 func _ready() -> void:
-	startTutorial()
+	if GameManager.currentRootRound == 0:
+		startTutorial()
 
 func setTutorialText(s : String, v : Vector2):
 	tutorialText.text = s
@@ -25,7 +26,7 @@ func startTutorial():
 	EventManager.rootStopMoving.emit()
 	#movementNode.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	movementNode.gui_input.connect(onMovementEntered)
-	setTutorialText("WORLD_TUTORIAL_1",Vector2(get_viewport().size.x/2,(get_viewport().size.y/2)+300))
+	setTutorialText("WORLD_TUTORIAL_1",Vector2(get_viewport().size.x/2,(get_viewport().size.y)-tutorialText.size.y))
 	movementNode.mouse_filter = Control.MOUSE_FILTER_STOP
 	pass
 

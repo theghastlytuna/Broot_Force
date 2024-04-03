@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dq4jcfh8ylt5e"]
+[gd_scene load_steps=37 format=3 uid="uid://dq4jcfh8ylt5e"]
 
 [ext_resource type="Script" path="res://Scenes/Areas/Overworld.gd" id="1_y88pi"]
 [ext_resource type="Script" path="res://Scenes/Areas/FriendlySpawnLocation.gd" id="2_no26d"]
@@ -25,6 +25,18 @@
 [ext_resource type="Script" path="res://Scenes/Areas/UpgradeManager.gd" id="23_03xkq"]
 [ext_resource type="Script" path="res://Scenes/Areas/Pcameras.gd" id="24_upgu1"]
 [ext_resource type="PackedScene" uid="uid://wxbanrg0ocrg" path="res://Scenes/UI/TowerUI.tscn" id="25_hidf4"]
+[ext_resource type="Script" path="res://Scenes/Areas/OverworldTutorial.gd" id="26_rwx5d"]
+[ext_resource type="PackedScene" uid="uid://dxa7recdeio70" path="res://Scenes/UI/Text.tscn" id="27_kurgd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_24g8k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q3s25"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bx3r5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pupja"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_toe0j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jos54"]
 size = Vector2(2104, 320)
@@ -73,9 +85,17 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 14.0
+offset_left = -487.0
+offset_top = -331.0
+offset_right = 616.0
+offset_bottom = 345.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_24g8k")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_q3s25")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_bx3r5")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_pupja")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_toe0j")
 flat = true
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer2/OnScreenUI"]
@@ -406,6 +426,51 @@ rotation = 3.14159
 remote_path = NodePath("../../../Camera2D")
 
 [node name="CanvasLayer" parent="." instance=ExtResource("25_hidf4")]
+
+[node name="Tutorial" type="CanvasLayer" parent="."]
+
+[node name="OverworldTutorial" type="Control" parent="Tutorial" node_paths=PackedStringArray("tutorialText", "tutorialContainer", "exampleSprout", "startButton", "waterMeter")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("26_rwx5d")
+tutorialText = NodePath("CenterContainer/Tutorial Text")
+tutorialContainer = NodePath("CenterContainer")
+exampleSprout = NodePath("../../Tree/GroundPositions/3/CanvasLayer/Button")
+startButton = NodePath("../../CanvasLayer2/Button")
+waterMeter = NodePath("../../CanvasLayer2/OnScreenUI/TextureRect")
+
+[node name="Movement" type="Control" parent="Tutorial/OverworldTutorial"]
+layout_mode = 1
+anchor_top = 0.566
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.76804
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="CenterContainer" type="CenterContainer" parent="Tutorial/OverworldTutorial"]
+layout_mode = 0
+offset_left = 89.0
+offset_top = 46.0
+offset_right = 89.0
+offset_bottom = 46.0
+mouse_filter = 2
+use_top_left = true
+
+[node name="Tutorial Text" parent="Tutorial/OverworldTutorial/CenterContainer" instance=ExtResource("27_kurgd")]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 48
+text = "Asdfsdf"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="CanvasLayer2/OnScreenUI/Button2" to="CanvasLayer2/OnScreenUI" method="_on_button_2_pressed"]
 [connection signal="button_up" from="CanvasLayer2/Button" to="CanvasLayer2/Button" method="_on_button_up"]
