@@ -20,6 +20,7 @@ attackNode = NodePath("Attack")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 modulate = Color(1, 1, 1, 0.431373)
+z_index = 100
 position = Vector2(0, -70)
 emitting = false
 amount = 3

@@ -1,53 +1,14 @@
-[gd_scene load_steps=18 format=3 uid="uid://b5frixg7n146p"]
+[gd_scene load_steps=14 format=3 uid="uid://b5frixg7n146p"]
 
 [ext_resource type="Script" path="res://Scripts/Units/Unit Scripts/Unit.gd" id="1_lg6fk"]
 [ext_resource type="Script" path="res://Scripts/Units/Movement Scripts/UnitMove.gd" id="2_owplk"]
 [ext_resource type="Script" path="res://Scripts/Units/Attack Scripts/UnitAttack.gd" id="3_2blaa"]
 [ext_resource type="Texture2D" uid="uid://csjrkbbpxmxpt" path="res://Art Assets/Textures/Temporary/Units/HumanOutlined.png" id="4_6r8kt"]
 [ext_resource type="Texture2D" uid="uid://d22624vbppux6" path="res://Art Assets/Textures/Temporary/Weapons/chainsaw.png" id="5_83inm"]
-[ext_resource type="Script" path="res://Scripts/Units/Animation/AnimationSignalGiver.gd" id="6_84m67"]
 [ext_resource type="Texture2D" uid="uid://cd7u5p8gmtffc" path="res://Art Assets/Textures/Temporary/hardhat.png" id="7_7kh67"]
 [ext_resource type="PackedScene" uid="uid://drh5slfmagly0" path="res://Scenes/Units/HealthBar.tscn" id="8_np1cl"]
 [ext_resource type="Texture2D" uid="uid://ysfnqcwkk8uj" path="res://Art Assets/Textures/Temporary/HumanTex.png" id="9_wp3og"]
 [ext_resource type="AnimationLibrary" uid="uid://bkud5on776d4l" path="res://Scenes/Units/EnemyUnits/EnemyAnims/EnemyAnimLibrary.res" id="10_8bakm"]
-
-[sub_resource type="Animation" id="Animation_nfk13"]
-resource_name = "BaseSwing"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0.0, 1.56494, 0.0]
-}
-
-[sub_resource type="Animation" id="Animation_ocqxi"]
-resource_name = "ChainsawSwing"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [-0.567594, 0.320223, 0.320223, -0.567594]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_wufuj"]
-_data = {
-"BaseSwing": SubResource("Animation_nfk13"),
-"ChainsawSwing": SubResource("Animation_ocqxi")
-}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fkmxp"]
 size = Vector2(90, 112)
@@ -101,9 +62,9 @@ moveSpeed = 75.0
 [node name="Attack" type="Node2D" parent="."]
 position = Vector2(0.25, -28.75)
 script = ExtResource("3_2blaa")
-attackDamage = 3.0
-timeToAttack = 0.3
-timeAfterAttack = 0.7
+attackDamage = 6.0
+timeToAttack = 0.4
+timeAfterAttack = 1.6
 groupToAttack = "PlayerUnits"
 
 [node name="UnitBody" type="Sprite2D" parent="."]
@@ -115,17 +76,9 @@ texture = ExtResource("4_6r8kt")
 
 [node name="UnitWeapon" type="Sprite2D" parent="UnitBody"]
 position = Vector2(132.344, -63.2924)
-rotation = -0.567594
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("5_83inm")
 offset = Vector2(272.021, -75.4116)
-
-[node name="WeaponAnimation" type="AnimationPlayer" parent="UnitBody/UnitWeapon"]
-libraries = {
-"": SubResource("AnimationLibrary_wufuj")
-}
-script = ExtResource("6_84m67")
-animationToPlay = "ChainsawSwing"
 
 [node name="Sprite2D" type="Sprite2D" parent="UnitBody"]
 position = Vector2(-16, -240)
@@ -303,8 +256,7 @@ rest = Transform2D(1, 0, 0, 1, -1, -17)
 
 [node name="Chest" type="Bone2D" parent="Skeleton2D/Hip"]
 position = Vector2(0, -5)
-rotation = 0.103524
-scale = Vector2(1, 1)
+rotation = 0.261799
 rest = Transform2D(1, 0, 0, 1, 0, -5)
 
 [node name="Head" type="Bone2D" parent="Skeleton2D/Hip/Chest"]
@@ -317,13 +269,12 @@ bone_angle = 0.0
 
 [node name="UpperArmL" type="Bone2D" parent="Skeleton2D/Hip/Chest"]
 position = Vector2(0, -12)
-rotation = 0.372709
-scale = Vector2(1, 1)
+rotation = 0.523598
 rest = Transform2D(0.707108, -0.707106, 0.707106, 0.707108, 0, -12)
 
 [node name="LowerArmL" type="Bone2D" parent="Skeleton2D/Hip/Chest/UpperArmL"]
 position = Vector2(9.41753e-06, 8.48528)
-rotation = 1.49166
+rotation = 1.57079
 scale = Vector2(1, 1)
 rest = Transform2D(2.22127e-06, 1, -1, 2.22127e-06, 9.41753e-06, 8.48528)
 auto_calculate_length_and_angle = false
@@ -332,13 +283,12 @@ bone_angle = 0.0
 
 [node name="UpperArmR" type="Bone2D" parent="Skeleton2D/Hip/Chest"]
 position = Vector2(0, -12)
-rotation = -2.43932
-scale = Vector2(1, 1)
+rotation = -1.8326
 rest = Transform2D(0.707108, 0.707106, -0.707106, 0.707108, 0, -12)
 
 [node name="LowerArmR" type="Bone2D" parent="Skeleton2D/Hip/Chest/UpperArmR"]
 position = Vector2(-8.22544e-06, 7.07107)
-rotation = 1.33338
+rotation = 1.57079
 rest = Transform2D(2.22127e-06, 1, -1, 2.22127e-06, -8.22544e-06, 7.07107)
 auto_calculate_length_and_angle = false
 length = 7.0
@@ -351,7 +301,6 @@ rest = Transform2D(1, 0, 0, 1, 7.07106, 2.69413e-05)
 
 [node name="UpperLegL" type="Bone2D" parent="Skeleton2D/Hip"]
 rotation = 1.83259
-scale = Vector2(1, 1)
 rest = Transform2D(-0.707104, 0.707109, -0.707109, -0.707104, 0, 0)
 
 [node name="LowerLegL" type="Bone2D" parent="Skeleton2D/Hip/UpperLegL"]
@@ -370,7 +319,6 @@ bone_angle = 0.0
 
 [node name="UpperLegR" type="Bone2D" parent="Skeleton2D/Hip"]
 rotation = 1.309
-scale = Vector2(1, 1)
 rest = Transform2D(0.707108, 0.707106, -0.707106, 0.707108, 0, 0)
 
 [node name="LowerLegR" type="Bone2D" parent="Skeleton2D/Hip/UpperLegR"]
@@ -386,9 +334,10 @@ libraries = {
 "EnemyAnimLibrary": ExtResource("10_8bakm")
 }
 
+[connection signal="ready" from="." to="Skeleton2D/AnimationPlayer" method="play" binds= ["EnemyAnimLibrary/walk"]]
 [connection signal="StartedAttacking" from="Attack" to="Movement" method="_on_attack_started_attacking"]
-[connection signal="StartedAttacking" from="Attack" to="UnitBody/UnitWeapon/WeaponAnimation" method="playAnimation"]
+[connection signal="StartedAttacking" from="Attack" to="Skeleton2D/AnimationPlayer" method="play" binds= ["EnemyAnimLibrary/Chainsaw_Attack"]]
 [connection signal="StoppedAttacking" from="Attack" to="Movement" method="_on_attack_stopped_attacking"]
-[connection signal="StoppedAttacking" from="Attack" to="UnitBody/UnitWeapon/WeaponAnimation" method="stopAnimation"]
+[connection signal="StoppedAttacking" from="Attack" to="Skeleton2D/AnimationPlayer" method="play" binds= ["EnemyAnimLibrary/walk"]]
 [connection signal="body_entered" from="AttackArea" to="Attack" method="_on_attack_area_body_entered"]
 [connection signal="body_exited" from="AttackArea" to="Attack" method="_on_attack_area_body_exited"]

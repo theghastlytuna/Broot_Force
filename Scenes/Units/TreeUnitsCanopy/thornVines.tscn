@@ -486,7 +486,6 @@ shape = SubResource("RectangleShape2D_cj6o5")
 
 [node name="Holder" type="Node2D" parent="."]
 position = Vector2(0, -138)
-scale = Vector2(0.513333, 0.56)
 
 [node name="Parts" type="Node2D" parent="Holder"]
 position = Vector2(0, 138)

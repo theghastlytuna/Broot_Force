@@ -12,12 +12,12 @@
 [ext_resource type="PackedScene" uid="uid://xq6s5a6jdktr" path="res://Scenes/Units/EnemyUnits/ShotgunEnemy.tscn" id="6_8r0hn"]
 [ext_resource type="PackedScene" uid="uid://b4ixdpakfx4g7" path="res://Scenes/Units/EnemyUnits/SoldierEnemy.tscn" id="6_bf8lv"]
 [ext_resource type="PackedScene" uid="uid://cde8tgxvy6y1g" path="res://Scenes/Units/EnemyUnits/PistolEnemy.tscn" id="6_iyl61"]
-[ext_resource type="PackedScene" uid="uid://b8qn8je4ge20n" path="res://Scenes/Units/EnemyUnits/AxeEnemy.tscn" id="6_onj2u"]
 [ext_resource type="PackedScene" uid="uid://b5frixg7n146p" path="res://Scenes/Units/EnemyUnits/ChainsawEnemy.tscn" id="6_yaxo3"]
 [ext_resource type="PackedScene" uid="uid://reahr0ehb04v" path="res://Scenes/UI/GroundButton.tscn" id="7_bq51c"]
 [ext_resource type="PackedScene" uid="uid://mlvq353kw0c1" path="res://Scenes/Units/TreeUnitsGround/MainTree.tscn" id="7_dtyo1"]
 [ext_resource type="PackedScene" uid="uid://cvn6nev5hshj5" path="res://Scenes/Units/EnemyUnits/BulldozerEnemy.tscn" id="8_dsl38"]
 [ext_resource type="PackedScene" uid="uid://bw1t5ni4rr070" path="res://Scenes/UI/CanopyButton.tscn" id="8_n4mig"]
+[ext_resource type="PackedScene" uid="uid://dvb651rfb6s5s" path="res://Scenes/Units/EnemyUnits/AxeEnemy.tscn" id="14_r63wr"]
 [ext_resource type="Script" path="res://Scenes/Areas/EnemyUnitsHolder.gd" id="18_8vmsq"]
 [ext_resource type="Script" path="res://Scenes/Areas/EndTowerPlacement.gd" id="18_hqi7h"]
 [ext_resource type="Script" path="res://Scenes/Areas/UnitSpawning.gd" id="21_rchts"]
@@ -342,15 +342,14 @@ health = 100.0
 [node name="EnemySpawner" type="Node2D" parent="." node_paths=PackedStringArray("enemyUnits", "unitParent")]
 position = Vector2(-170, 438)
 script = ExtResource("21_y32r6")
-enemyUnits = [NodePath("Factories/AxeEnemy"), NodePath("Factories/PistolEnemy"), NodePath("Factories/BulldozerEnemy"), NodePath("Factories/ChainsawEnemy"), NodePath("Factories/ShotgunEnemy"), NodePath("Factories/ExcavatorEnemy"), NodePath("Factories/SoldierEnemy")]
+enemyUnits = [NodePath("Factories/AxeEnemy2"), NodePath("Factories/PistolEnemy"), NodePath("Factories/BulldozerEnemy"), NodePath("Factories/ChainsawEnemy"), NodePath("Factories/ShotgunEnemy"), NodePath("Factories/ExcavatorEnemy"), NodePath("Factories/SoldierEnemy")]
 unitParent = NodePath("../EnemyUnits")
 roundsPerNewUnit = 1
 
 [node name="Factories" type="Node2D" parent="EnemySpawner"]
 position = Vector2(-953, 955)
 
-[node name="AxeEnemy" parent="EnemySpawner/Factories" instance=ExtResource("6_onj2u")]
-position = Vector2(-374, 79)
+[node name="AxeEnemy2" parent="EnemySpawner/Factories" instance=ExtResource("14_r63wr")]
 
 [node name="BulldozerEnemy" parent="EnemySpawner/Factories" instance=ExtResource("8_dsl38")]
 position = Vector2(-458, 156)
@@ -358,37 +357,131 @@ position = Vector2(-458, 156)
 [node name="ChainsawEnemy" parent="EnemySpawner/Factories" instance=ExtResource("6_yaxo3")]
 position = Vector2(-182, 178)
 
-[node name="LowerArmL" parent="EnemySpawner/Factories/ChainsawEnemy/Skeleton2D/Hip/Chest/UpperArmL" index="0"]
+[node name="Hip" parent="EnemySpawner/Factories/ChainsawEnemy/Skeleton2D" index="0"]
+position = Vector2(-1, -15.0034)
+
+[node name="Chest" parent="EnemySpawner/Factories/ChainsawEnemy/Skeleton2D/Hip" index="0"]
+rotation = 0.0
+
+[node name="UpperArmL" parent="EnemySpawner/Factories/ChainsawEnemy/Skeleton2D/Hip/Chest" index="1"]
+rotation = 0.341601
 scale = Vector2(1, 1)
 
-[node name="LowerArmR" parent="EnemySpawner/Factories/ChainsawEnemy/Skeleton2D/Hip/Chest/UpperArmR" index="0"]
+[node name="LowerArmL" parent="EnemySpawner/Factories/ChainsawEnemy/Skeleton2D/Hip/Chest/UpperArmL" index="0"]
+scale = Vector2(0.999999, 0.999999)
+
+[node name="UpperArmR" parent="EnemySpawner/Factories/ChainsawEnemy/Skeleton2D/Hip/Chest" index="2"]
+rotation = -0.341601
 scale = Vector2(1, 1)
 
 [node name="UpperLegL" parent="EnemySpawner/Factories/ChainsawEnemy/Skeleton2D/Hip" index="1"]
+rotation = 0.905813
+scale = Vector2(1, 1)
+
+[node name="LowerLegL" parent="EnemySpawner/Factories/ChainsawEnemy/Skeleton2D/Hip/UpperLegL" index="0"]
+rotation = 0.910938
+scale = Vector2(1, 1)
+
+[node name="UpperLegR" parent="EnemySpawner/Factories/ChainsawEnemy/Skeleton2D/Hip" index="2"]
+rotation = 1.9922
+scale = Vector2(1, 1)
+
+[node name="LowerLegR" parent="EnemySpawner/Factories/ChainsawEnemy/Skeleton2D/Hip/UpperLegR" index="0"]
+rotation = 0.398061
 scale = Vector2(1, 1)
 
 [node name="ExcavatorEnemy" parent="EnemySpawner/Factories" instance=ExtResource("6_0e3rg")]
-position = Vector2(-379, 92)
+position = Vector2(-582, 82)
 
 [node name="PistolEnemy" parent="EnemySpawner/Factories" instance=ExtResource("6_iyl61")]
 position = Vector2(-245, 103)
+
+[node name="Hip" parent="EnemySpawner/Factories/PistolEnemy/Skeleton2D" index="0"]
+position = Vector2(-1, -15.0034)
+
+[node name="UpperArmL" parent="EnemySpawner/Factories/PistolEnemy/Skeleton2D/Hip/Chest" index="1"]
+rotation = 0.341601
+scale = Vector2(1, 1)
+
+[node name="LowerArmL" parent="EnemySpawner/Factories/PistolEnemy/Skeleton2D/Hip/Chest/UpperArmL" index="0"]
+rotation = 1.57079
 
 [node name="UpperArmR" parent="EnemySpawner/Factories/PistolEnemy/Skeleton2D/Hip/Chest" index="2"]
 scale = Vector2(1, 1)
 
 [node name="UpperLegL" parent="EnemySpawner/Factories/PistolEnemy/Skeleton2D/Hip" index="1"]
+rotation = 0.905813
+scale = Vector2(1, 1)
+
+[node name="LowerLegL" parent="EnemySpawner/Factories/PistolEnemy/Skeleton2D/Hip/UpperLegL" index="0"]
+rotation = 0.910938
+scale = Vector2(1, 1)
+
+[node name="UpperLegR" parent="EnemySpawner/Factories/PistolEnemy/Skeleton2D/Hip" index="2"]
+rotation = 1.9922
+scale = Vector2(1, 1)
+
+[node name="LowerLegR" parent="EnemySpawner/Factories/PistolEnemy/Skeleton2D/Hip/UpperLegR" index="0"]
+rotation = 0.398061
 scale = Vector2(1, 1)
 
 [node name="ShotgunEnemy" parent="EnemySpawner/Factories" instance=ExtResource("6_8r0hn")]
 position = Vector2(-525, 186)
 
+[node name="Hip" parent="EnemySpawner/Factories/ShotgunEnemy/Skeleton2D" index="0"]
+position = Vector2(-1, -15.0034)
+
+[node name="UpperArmL" parent="EnemySpawner/Factories/ShotgunEnemy/Skeleton2D/Hip/Chest" index="1"]
+scale = Vector2(1, 1)
+
+[node name="LowerArmL" parent="EnemySpawner/Factories/ShotgunEnemy/Skeleton2D/Hip/Chest/UpperArmL" index="0"]
+rotation = 1.57079
+
+[node name="UpperArmR" parent="EnemySpawner/Factories/ShotgunEnemy/Skeleton2D/Hip/Chest" index="2"]
+scale = Vector2(1, 1)
+
 [node name="UpperLegL" parent="EnemySpawner/Factories/ShotgunEnemy/Skeleton2D/Hip" index="1"]
+rotation = 0.905813
+scale = Vector2(1, 1)
+
+[node name="LowerLegL" parent="EnemySpawner/Factories/ShotgunEnemy/Skeleton2D/Hip/UpperLegL" index="0"]
+rotation = 0.910938
+scale = Vector2(1, 1)
+
+[node name="UpperLegR" parent="EnemySpawner/Factories/ShotgunEnemy/Skeleton2D/Hip" index="2"]
+rotation = 1.9922
+scale = Vector2(1, 1)
+
+[node name="LowerLegR" parent="EnemySpawner/Factories/ShotgunEnemy/Skeleton2D/Hip/UpperLegR" index="0"]
+rotation = 0.398061
 scale = Vector2(1, 1)
 
 [node name="SoldierEnemy" parent="EnemySpawner/Factories" instance=ExtResource("6_bf8lv")]
 position = Vector2(-277, 195)
 
+[node name="Hip" parent="EnemySpawner/Factories/SoldierEnemy/Skeleton2D" index="0"]
+position = Vector2(-1, -15.0034)
+
+[node name="UpperArmL" parent="EnemySpawner/Factories/SoldierEnemy/Skeleton2D/Hip/Chest" index="1"]
+scale = Vector2(1, 1)
+
+[node name="UpperArmR" parent="EnemySpawner/Factories/SoldierEnemy/Skeleton2D/Hip/Chest" index="2"]
+scale = Vector2(1, 1)
+
 [node name="UpperLegL" parent="EnemySpawner/Factories/SoldierEnemy/Skeleton2D/Hip" index="1"]
+rotation = 0.905813
+scale = Vector2(1, 1)
+
+[node name="LowerLegL" parent="EnemySpawner/Factories/SoldierEnemy/Skeleton2D/Hip/UpperLegL" index="0"]
+rotation = 0.910938
+scale = Vector2(1, 1)
+
+[node name="UpperLegR" parent="EnemySpawner/Factories/SoldierEnemy/Skeleton2D/Hip" index="2"]
+rotation = 1.9922
+scale = Vector2(1, 1)
+
+[node name="LowerLegR" parent="EnemySpawner/Factories/SoldierEnemy/Skeleton2D/Hip/UpperLegR" index="0"]
+rotation = 0.398061
 scale = Vector2(1, 1)
 
 [node name="EnemyUnits" type="Node2D" parent="."]

@@ -67,7 +67,7 @@ position = Vector2(-0.293892, -57.5428)
 script = ExtResource("3_vaoh0")
 attackDamage = 24.0
 attackType = 2
-timeToAttack = 2.0
+timeToAttack = 3.0
 numberOfTargets = 5
 groupToAttack = "PlayerUnits"
 
