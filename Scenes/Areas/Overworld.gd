@@ -1,7 +1,7 @@
 extends Node2D
 
 func _enter_tree():
-	GameManager.growthRounds += 1
+	GameManager.growthRounds += 20
 	EventManager.onGrowthPhaseEnd.connect(growthOver)
 	#GameManager.overworldNewRound()
 

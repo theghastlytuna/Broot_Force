@@ -16,6 +16,7 @@ enum AttackType{
 var enemyBodies : Array[PhysicsBody2D]
 
 var attackTimer : Timer
+var postAttackTimer : Timer
 
 ##Damage per attack
 @export var attackDamage : float = 1
@@ -23,14 +24,20 @@ var attackTimer : Timer
 ##The type of attack this is
 @export var attackType : AttackType
 
-##Amount of time in seconds to attack
-@export var timePerAttack : float = 1
+##Amount of time in seconds needed to attack
+@export var timeToAttack : float = 1
+
+##Amount of time in seconds needed after attacking before starting attack timer again
+@export var timeAfterAttack : float = 0
 
 ##Number of targets that one attack hits
 @export var numberOfTargets : int = 1
 
 ##The group that this attack will exclusively attack
 @export var groupToAttack : String
+
+##If true, only attacks once and must be set to attacking to attack again
+@export var oneShot : bool = false
 
 #Keeps track of if the unit's attack is enabled
 var attackEnabled : bool = true
@@ -50,16 +57,38 @@ signal AttackedEnemy
 func _ready():
 	#Set up the attack timer so that it shares its duration with the attack speed
 	attackTimer = Timer.new()
-	attackTimer.wait_time = timePerAttack
+	attackTimer.wait_time = timeToAttack
 	attackTimer.autostart = false
+	attackTimer.one_shot = true
 	attackTimer.stop()
 	#Connect the timer's timeout to the attack method, so that the unit attacks at the proper attack speed
 	attackTimer.timeout.connect(attack)
 	add_child(attackTimer)
 	
+	postAttackTimer = Timer.new()
+	postAttackTimer.wait_time = timeAfterAttack
+	postAttackTimer.autostart = false
+	postAttackTimer.one_shot = true
+	postAttackTimer.stop()
+	add_child(postAttackTimer)
+	
+	if timeToAttack <= 0.05:
+		attackTimer.wait_time = 0.05
+		postAttackTimer.wait_time -= 0.05
+	elif timeAfterAttack <= 0.05:
+		attackTimer.wait_time = timeToAttack - 0.05
+		postAttackTimer.wait_time = 0.05
+	else:
+		attackTimer.wait_time = timeToAttack
+		postAttackTimer.wait_time = timeAfterAttack
+	
+	attackTimer.timeout.connect(postAttackTimer.start)
+	postAttackTimer.timeout.connect(attackTimer.start)
+	
 	SoundManager.set_default_sound_bus("Effects")
 
 func _on_attack_area_body_entered(body : PhysicsBody2D):
+	
 	#If the detected body is in the target group
 	if body.is_in_group(groupToAttack):
 		Debug.Log(get_parent().name + " area entered")
@@ -83,6 +112,7 @@ func _on_attack_area_body_exited(body : PhysicsBody2D):
 			#Nobody left to attack, so stop attacking, stop the timer, emit the signal
 			isAttacking = false
 			attackTimer.stop()
+			postAttackTimer.stop()
 			StoppedAttacking.emit()
 
 func _on_timer_timeout():
@@ -104,6 +134,9 @@ func attack():
 		unitsAttacked += 1
 	
 	AttackedEnemy.emit()
+	
+	if oneShot:
+		enableAttack(false)
 	
 	if get_parent().is_in_group("EnemyUnits"):
 		if attackType == AttackType.MELEE:
@@ -129,3 +162,6 @@ func enableAttack(attacking : bool):
 		isAttacking = true;
 		attackTimer.start()
 		StartedAttacking.emit()
+
+func testDebug():
+	Debug.Log("post attack timer started")

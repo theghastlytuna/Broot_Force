@@ -1,24 +1,49 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7koih8c4fa8d"]
+[gd_scene load_steps=7 format=3 uid="uid://b7koih8c4fa8d"]
 
-[ext_resource type="Script" path="res://Scripts/Towers/Attack Scripts/bomberCloud.gd" id="1_yju8d"]
-[ext_resource type="Texture2D" uid="uid://bdi5uhfq0jhtc" path="res://Sprites/poison.png" id="2_v0br4"]
+[ext_resource type="Script" path="res://Scripts/Towers/Attack Scripts/lingeringCloud.gd" id="1_bvbal"]
+[ext_resource type="Texture2D" uid="uid://ub6bq1i8qws8" path="res://Art Assets/Textures/GasCloudPurple.png" id="2_17dia"]
 [ext_resource type="Script" path="res://Scripts/Units/Attack Scripts/UnitAttack.gd" id="3_s3eoq"]
+
+[sub_resource type="Curve" id="Curve_2l76g"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.264368, 1), -3.85305, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_4ngjo"]
+offsets = PackedFloat32Array(0, 0.154506, 0.781116, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yvunn"]
 
-[node name="SporeCloud" type="Node2D" node_paths=PackedStringArray("cloudSprite", "attackNode")]
-script = ExtResource("1_yju8d")
-cloudSprite = NodePath("Sprite")
+[node name="SporeCloud" type="Node2D" node_paths=PackedStringArray("attackNode")]
+script = ExtResource("1_bvbal")
 attackNode = NodePath("Attack")
 
-[node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(-7.62939e-06, -70)
-scale = Vector2(0.5, 0.518518)
-texture = ExtResource("2_v0br4")
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+modulate = Color(1, 1, 1, 0.431373)
+position = Vector2(0, -70)
+emitting = false
+amount = 3
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+texture = ExtResource("2_17dia")
+spread = 20.0
+gravity = Vector2(0, 0)
+angular_velocity_min = -2.0
+angular_velocity_max = 2.0
+scale_amount_min = 0.3
+scale_amount_max = 0.3
+scale_amount_curve = SubResource("Curve_2l76g")
+color = Color(1, 1, 1, 0.823529)
+color_ramp = SubResource("Gradient_4ngjo")
 
 [node name="Attack" type="Node2D" parent="."]
 script = ExtResource("3_s3eoq")
-attackDamage = 4.0
+attackDamage = 0.0
+attackType = 3
+timeToAttack = 0.0
+timeAfterAttack = 1.0
 numberOfTargets = 999
 groupToAttack = "EnemyUnits"
 

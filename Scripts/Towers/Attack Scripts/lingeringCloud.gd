@@ -1,13 +1,18 @@
 extends Node2D
 
 @export var lifetime : float = 2
-@export var cloudSprite : Sprite2D
 @export var attackNode : Node2D
+@export var damage : float
+
+var poisonParticles : CPUParticles2D 
 
 var lifeTimer : Timer = Timer.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	attackNode.attackDamage = damage
+	poisonParticles = $CPUParticles2D
+	poisonParticles.lifetime = lifetime
 	#Set up the timer that keeps track of the cloud's lifetime
 	lifeTimer.wait_time = lifetime + 0.1
 	lifeTimer.autostart = false
@@ -25,7 +30,8 @@ func startCloud():
 	#Enable the attack node, start the timer, make the poison sprite visible
 	attackNode.enableAttack(true)
 	lifeTimer.start()
-	cloudSprite.visible = true
+	#cloudSprite.visible = true
+	poisonParticles.emitting = true
 
 func stopCloud():
 	Debug.Log("Attack DISABLED for cloud")

@@ -67,7 +67,8 @@ position = Vector2(-0.0673752, -54.323)
 script = ExtResource("3_vswf4")
 attackDamage = 12.0
 attackType = 2
-timePerAttack = 2.0
+timeToAttack = 2.0
+numberOfTargets = 4
 groupToAttack = "PlayerUnits"
 
 [node name="UnitBody" type="Sprite2D" parent="."]

@@ -1,9 +1,12 @@
 extends "res://Scripts/Units/Attack Scripts/UnitAttack.gd"
 
-#var poisonCloud  = preload("res://Scenes/Units/TreeUnitsCanopy/bomberCloud.tscn")
-#@export var poisonLocation : Node2D
-@export var poisonNode : Node2D
+@export var initialDamage : float = 1
+@export var poisonDamage : float = 1
 
-func attack():
+@export var fruitBomb : Node2D
+@export var poisonCloud : Node2D
+
+func _ready():
 	super()
-	poisonNode.startCloud()
+	fruitBomb.damage = initialDamage
+	poisonCloud.damage = poisonDamage

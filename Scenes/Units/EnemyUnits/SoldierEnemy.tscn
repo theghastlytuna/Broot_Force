@@ -52,13 +52,12 @@ size = Vector2(92, 114)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dcjwa"]
 
-[node name="SoldierEnemy" type="CharacterBody2D" node_paths=PackedStringArray("healthBarNode") groups=["EnemyHuman", "EnemyUnits", "Ranged"]]
+[node name="SoldierEnemy" type="CharacterBody2D" groups=["EnemyHuman", "EnemyUnits", "Ranged"]]
 collision_layer = 2
 script = ExtResource("1_ptiun")
 health = 14.0
 cost = 60
 meleeResistance = 0.2
-healthBarNode = NodePath("HealthBar")
 
 [node name="Movement" type="Node2D" parent="."]
 position = Vector2(0.25, -28.75)
@@ -70,7 +69,8 @@ position = Vector2(0.25, -28.75)
 script = ExtResource("3_d3io2")
 attackDamage = 2.0
 attackType = 1
-timePerAttack = 0.5
+timeToAttack = 0.1
+timeAfterAttack = 0.4
 numberOfTargets = 2
 groupToAttack = "PlayerUnits"
 

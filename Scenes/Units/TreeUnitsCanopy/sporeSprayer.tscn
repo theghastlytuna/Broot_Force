@@ -332,11 +332,13 @@ cost = 24
 
 [node name="Attack" type="Node2D" parent="." node_paths=PackedStringArray("poisonNode", "minCloudSpawn", "maxCloudSpawn")]
 script = ExtResource("3_wuled")
+poisonDamage = 4.0
 poisonNode = NodePath("../SporeCloud")
 minCloudSpawn = NodePath("../MinSpawn")
 maxCloudSpawn = NodePath("../MaxSpawn")
 attackDamage = 0.0
-timePerAttack = 3.0
+timeToAttack = 0.0
+timeAfterAttack = 2.5
 numberOfTargets = 0
 groupToAttack = "EnemyUnits"
 
@@ -414,24 +416,25 @@ bones = ["Spine1", PackedFloat32Array(0, 0, 0, 0), "Spine1/Spine2", PackedFloat3
 
 [node name="Spine1" type="Bone2D" parent="SkeletonHolder/Skeleton2D"]
 rotation = -0.509315
-scale = Vector2(1, 1)
+scale = Vector2(0.999999, 0.999999)
 rest = Transform2D(1, 0, 0, 1, 0, 0)
 
 [node name="Spine2" type="Bone2D" parent="SkeletonHolder/Skeleton2D/Spine1"]
 position = Vector2(0, 43)
 rotation = 0.994637
+scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 0, 43)
 
 [node name="Spine3" type="Bone2D" parent="SkeletonHolder/Skeleton2D/Spine1/Spine2"]
 position = Vector2(0, 38)
 rotation = -0.0946328
-scale = Vector2(1, 1)
+scale = Vector2(0.999999, 0.999999)
 rest = Transform2D(1, 0, 0, 1, 0, 38)
 
 [node name="Head" type="Bone2D" parent="SkeletonHolder/Skeleton2D/Spine1/Spine2/Spine3"]
 position = Vector2(0, 36)
 rotation = 0.0787667
-scale = Vector2(1, 1)
+scale = Vector2(0.999998, 0.999998)
 rest = Transform2D(1, 0, 0, 1, 0, 36)
 auto_calculate_length_and_angle = false
 length = 29.461
@@ -451,7 +454,10 @@ libraries = {
 [connection signal="onDie" from="." to="SkeletonHolder/AnimationPlayer" method="play" binds= ["Die"]]
 [connection signal="ready" from="." to="SkeletonHolder/AnimationPlayer" method="play" binds= ["Idle"]]
 [connection signal="ready" from="." to="Grow" method="play" binds= ["Grow"]]
+[connection signal="AttackedEnemy" from="Attack" to="SporeCloud" method="startCloud"]
 [connection signal="StartedAttacking" from="Attack" to="SkeletonHolder/AnimationPlayer" method="play" binds= ["Attack"]]
 [connection signal="StoppedAttacking" from="Attack" to="SkeletonHolder/AnimationPlayer" method="play" binds= ["Idle"]]
 [connection signal="body_entered" from="AttackArea" to="Attack" method="_on_attack_area_body_entered"]
 [connection signal="body_exited" from="AttackArea" to="Attack" method="_on_attack_area_body_exited"]
+
+[editable path="SporeCloud"]

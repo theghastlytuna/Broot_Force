@@ -1,11 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://ba6ewlavv28ho"]
+[gd_scene load_steps=18 format=3 uid="uid://ba6ewlavv28ho"]
 
 [ext_resource type="Script" path="res://Scripts/Towers/Tower Scripts/ThornWall.gd" id="1_c6e28"]
+[ext_resource type="Script" path="res://Scenes/Units/TreeUnitsCanopy/SeedBombAttack.gd" id="2_1gc0n"]
 [ext_resource type="Texture2D" uid="uid://dmr3xxaqx0hv6" path="res://Art Assets/Textures/Stem.png" id="3_lbrck"]
-[ext_resource type="Script" path="res://Scripts/Units/Attack Scripts/UnitAttack.gd" id="3_lrkr1"]
 [ext_resource type="Texture2D" uid="uid://c05wm8dm7byej" path="res://Art Assets/Textures/FlowerStem.png" id="3_wgggw"]
 [ext_resource type="Texture2D" uid="uid://d30er8toa543j" path="res://Art Assets/Textures/BasicStem.png" id="4_hatd2"]
 [ext_resource type="Texture2D" uid="uid://mfe8tlc876" path="res://Art Assets/Textures/SeedBomber.png" id="5_bjjte"]
+[ext_resource type="PackedScene" uid="uid://wy27bktj28c1" path="res://Scenes/Units/TreeUnitsCanopy/seedBomb.tscn" id="7_uq1e5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yvunn"]
 
@@ -62,6 +63,96 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [0.0, 0.0, 0.0, -0.328456, -0.663524, -0.676018, -0.676018, -0.0498521, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_148ds"]
+resource_name = "Die"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton2D/Spine1:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.172034, 1.00501, 1.15907]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton2D/Spine1/Spine2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.398036, -1.22169, -1.3744]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Skeleton2D/Spine1/Spine2/Spine3:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.181095, -1.44421]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Skeleton2D/Spine1/Spine2/Spine3/Head:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.901634, -1.03417]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1.86607),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.317647, 0.317647, 0.317647, 1)]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("..")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_emdlt"]
@@ -167,96 +258,6 @@ tracks/3/keys = {
 "values": [0.0]
 }
 
-[sub_resource type="Animation" id="Animation_148ds"]
-resource_name = "Die"
-length = 0.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Skeleton2D/Spine1:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0.172034, 1.00501, 1.15907]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Skeleton2D/Spine1/Spine2:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [-0.398036, -1.22169, -1.3744]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Skeleton2D/Spine1/Spine2/Spine3:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.181095, -1.44421]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Skeleton2D/Spine1/Spine2/Spine3/Head:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0.0, -0.901634, -1.03417]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".:scale")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1.86607),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(0, 0)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath(".:modulate")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(0.317647, 0.317647, 0.317647, 1)]
-}
-tracks/6/type = "method"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("..")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0.6),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"queue_free"
-}]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sbplj"]
 _data = {
 "Attack": SubResource("Animation_7sx1w"),
@@ -299,6 +300,8 @@ _data = {
 "Grow": SubResource("Animation_hvxkt")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jndmk"]
+
 [node name="SeedBomber" type="StaticBody2D" groups=["PlayerUnits"]]
 collision_layer = 4
 script = ExtResource("1_c6e28")
@@ -306,11 +309,13 @@ health = 100000.0
 hittable = false
 cost = 29
 
-[node name="Attack" type="Node2D" parent="."]
-script = ExtResource("3_lrkr1")
-attackDamage = 4.0
-timePerAttack = 2.0
-numberOfTargets = 999
+[node name="Attack" type="Node2D" parent="." node_paths=PackedStringArray("seedBomb")]
+script = ExtResource("2_1gc0n")
+bombDamage = 4.0
+seedBomb = NodePath("../SeedBomb")
+attackDamage = 0.0
+timeToAttack = 1.5
+timeAfterAttack = 0.5
 groupToAttack = "EnemyUnits"
 
 [node name="AttackArea" type="Area2D" parent="."]
@@ -372,27 +377,28 @@ uv = PackedVector2Array(88, 88, 88, 472, 408, 472, 424, 88)
 bones = ["Spine1", PackedFloat32Array(0, 0, 0, 0), "Spine1/Spine2", PackedFloat32Array(0, 0, 0, 0), "Spine1/Spine2/Spine3", PackedFloat32Array(0, 0, 0, 0), "Spine1/Spine2/Spine3/Head", PackedFloat32Array(1, 1, 1, 1)]
 
 [node name="Skeleton2D" type="Skeleton2D" parent="SkeletonHolder"]
+visible = false
 
 [node name="Spine1" type="Bone2D" parent="SkeletonHolder/Skeleton2D"]
 rotation = 0.441121
-scale = Vector2(0.999998, 0.999998)
+scale = Vector2(0.999997, 0.999997)
 rest = Transform2D(1, 0, 0, 1, 0, 0)
 
 [node name="Spine2" type="Bone2D" parent="SkeletonHolder/Skeleton2D/Spine1"]
 position = Vector2(0, 34)
 rotation = -0.951648
-scale = Vector2(0.999999, 0.999999)
+scale = Vector2(0.999998, 0.999998)
 rest = Transform2D(1, 0, 0, 1, 0, 34)
 
 [node name="Spine3" type="Bone2D" parent="SkeletonHolder/Skeleton2D/Spine1/Spine2"]
 position = Vector2(0, 29)
 rotation = 0.422413
-scale = Vector2(1, 1)
+scale = Vector2(0.999999, 0.999999)
 rest = Transform2D(1, 0, 0, 1, 0, 29)
 
 [node name="Head" type="Bone2D" parent="SkeletonHolder/Skeleton2D/Spine1/Spine2/Spine3"]
 position = Vector2(0, 35)
-scale = Vector2(1, 1)
+scale = Vector2(0.999999, 0.999999)
 rest = Transform2D(1, 0, 0, 1, 0, 35)
 auto_calculate_length_and_angle = false
 length = 29.461
@@ -409,10 +415,35 @@ libraries = {
 "": SubResource("AnimationLibrary_p3mmc")
 }
 
+[node name="SeedBomb" parent="." node_paths=PackedStringArray("startingNode", "targetNode") instance=ExtResource("7_uq1e5")]
+position = Vector2(50, -132)
+startingNode = NodePath("../SeedBombStart")
+targetNode = NodePath("../SeedBombTarget")
+speed = 1000.0
+
+[node name="SeedBombStart" type="Node2D" parent="."]
+position = Vector2(-28, -35)
+
+[node name="SeedBombTarget" type="Node2D" parent="."]
+position = Vector2(-173, 220)
+
+[node name="BombAttackArea" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="Hitbox" type="CollisionShape2D" parent="BombAttackArea"]
+position = Vector2(-160, 150)
+scale = Vector2(4, 7)
+shape = SubResource("RectangleShape2D_jndmk")
+
 [connection signal="onDie" from="." to="SkeletonHolder/AnimationPlayer" method="play" binds= ["Die"]]
 [connection signal="ready" from="." to="SkeletonHolder/AnimationPlayer" method="play" binds= ["Idle"]]
 [connection signal="ready" from="." to="Grow" method="play" binds= ["Grow"]]
+[connection signal="AttackedEnemy" from="Attack" to="SeedBomb" method="reset"]
 [connection signal="StartedAttacking" from="Attack" to="SkeletonHolder/AnimationPlayer" method="play" binds= ["Attack"]]
 [connection signal="StoppedAttacking" from="Attack" to="SkeletonHolder/AnimationPlayer" method="play" binds= ["Idle"]]
 [connection signal="body_entered" from="AttackArea" to="Attack" method="_on_attack_area_body_entered"]
 [connection signal="body_exited" from="AttackArea" to="Attack" method="_on_attack_area_body_exited"]
+[connection signal="body_entered" from="BombAttackArea" to="SeedBomb/Attack" method="_on_attack_area_body_entered"]
+[connection signal="body_exited" from="BombAttackArea" to="SeedBomb/Attack" method="_on_attack_area_body_exited"]
+
+[editable path="SeedBomb"]

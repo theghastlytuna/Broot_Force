@@ -67,7 +67,9 @@ moveSpeed = 75.0
 [node name="Attack" type="Node2D" parent="."]
 position = Vector2(0.25, -28.75)
 script = ExtResource("3_2blaa")
-attackDamage = 2.0
+attackDamage = 3.0
+timeToAttack = 0.3
+timeAfterAttack = 0.7
 groupToAttack = "PlayerUnits"
 
 [node name="UnitBody" type="Sprite2D" parent="."]
@@ -78,7 +80,7 @@ texture = ExtResource("4_6r8kt")
 
 [node name="UnitWeapon" type="Sprite2D" parent="UnitBody"]
 position = Vector2(132.344, -63.2924)
-rotation = -0.131059
+rotation = -0.567594
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("5_83inm")
 offset = Vector2(272.021, -75.4116)
