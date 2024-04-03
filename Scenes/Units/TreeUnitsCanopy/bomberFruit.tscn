@@ -14,7 +14,7 @@
 
 [sub_resource type="Animation" id="Animation_v24f5"]
 resource_name = "Attack"
-length = 6.0
+length = 8.0
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -23,7 +23,7 @@ tracks/0/path = NodePath("Skeleton2D/Spine1:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.6, 0.7, 0.9, 1.2, 6),
+"times": PackedFloat32Array(0, 0.1, 0.6, 0.7, 0.9, 1.2, 8),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [-0.800523, -0.9123, -0.187987, -0.0562921, -0.122571, -0.426644, -0.800523]
@@ -35,7 +35,7 @@ tracks/1/path = NodePath("Skeleton2D/Spine1/Spine2:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.6, 0.7, 0.9, 1.2, 6),
+"times": PackedFloat32Array(0, 0.1, 0.6, 0.7, 0.9, 1.2, 8),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [1.8677, 2.13712, 0.48052, 0.143379, 0.304663, 1.08647, 1.8677]
@@ -294,7 +294,7 @@ collision_layer = 4
 script = ExtResource("1_bqnyd")
 health = 100000.0
 hittable = false
-cost = 16
+cost = 365
 
 [node name="Attack" type="Node2D" parent="." node_paths=PackedStringArray("fruitBomb", "poisonCloud")]
 script = ExtResource("3_0kxpf")
@@ -304,7 +304,7 @@ fruitBomb = NodePath("../FruitBomb")
 poisonCloud = NodePath("../BomberCloud")
 attackDamage = 0.0
 timeToAttack = 0.7
-timeAfterAttack = 5.3
+timeAfterAttack = 7.3
 groupToAttack = "EnemyUnits"
 
 [node name="AttackArea" type="Area2D" parent="."]
@@ -377,6 +377,7 @@ rest = Transform2D(1, 0, 0, 1, 0, 0)
 [node name="Spine2" type="Bone2D" parent="SkeletonHolder/Skeleton2D/Spine1"]
 position = Vector2(0, 43)
 rotation = 1.8677
+scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 0, 43)
 
 [node name="Spine3" type="Bone2D" parent="SkeletonHolder/Skeleton2D/Spine1/Spine2"]

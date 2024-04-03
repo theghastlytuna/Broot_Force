@@ -16,7 +16,7 @@ radius = 3.49462
 [node name="Human" type="CharacterBody2D" groups=["PlayerUnits"]]
 collision_layer = 4
 script = ExtResource("1_icljr")
-health = 12.0
+health = 25.0
 type = 1
 
 [node name="Movement" type="Node2D" parent="."]
@@ -95,11 +95,14 @@ scale = Vector2(0.999998, 0.999998)
 [node name="UpperLegR" parent="Node2D/Skeleton2D/Hip" index="1"]
 scale = Vector2(0.999999, 0.999999)
 
+[node name="LowerLegR" parent="Node2D/Skeleton2D/Hip/UpperLegR" index="0"]
+scale = Vector2(0.999999, 0.999999)
+
 [node name="UpperLegL" parent="Node2D/Skeleton2D/Hip" index="2"]
 scale = Vector2(0.999998, 0.999998)
 
 [node name="LowerLegL" parent="Node2D/Skeleton2D/Hip/UpperLegL" index="0"]
-scale = Vector2(0.999996, 0.999996)
+scale = Vector2(0.999995, 0.999995)
 
 [node name="AnimationPlayer" parent="Node2D" index="3"]
 playback_default_blend_time = 0.35

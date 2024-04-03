@@ -450,23 +450,22 @@ _data = {
 [node name="FlytrapCluster" type="StaticBody2D" groups=["PlayerUnits"]]
 collision_layer = 4
 script = ExtResource("1_dftyv")
-health = 200.0
-cost = 12
+health = 70.0
+cost = 60
 
 [node name="Attack" type="Node2D" parent="."]
 script = ExtResource("3_jv5v0")
-attackDamage = 7.0
+attackDamage = 4.0
 timeToAttack = 0.3
 timeAfterAttack = 0.7
-numberOfTargets = 3
 groupToAttack = "EnemyUnits"
 
 [node name="AttackArea" type="Area2D" parent="."]
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
-position = Vector2(-20, -70)
-scale = Vector2(6, 7)
+position = Vector2(-15, -70)
+scale = Vector2(5.5, 7)
 shape = SubResource("RectangleShape2D_yvunn")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
@@ -513,6 +512,7 @@ rest = Transform2D(1, 0, 0, 1, 0, 0)
 [node name="Spine2" type="Bone2D" parent="SkeletonParent/Skeleton2D/Spine1"]
 position = Vector2(0, -39)
 rotation = -1.13185
+scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 0, -39)
 
 [node name="Spine3" type="Bone2D" parent="SkeletonParent/Skeleton2D/Spine1/Spine2"]
@@ -524,7 +524,6 @@ rest = Transform2D(1, 0, 0, 1, 0, -45)
 [node name="Head" type="Bone2D" parent="SkeletonParent/Skeleton2D/Spine1/Spine2/Spine3"]
 position = Vector2(2.675, -42)
 rotation = 1.36491
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 0, -43)
 
 [node name="Jaw" type="Bone2D" parent="SkeletonParent/Skeleton2D/Spine1/Spine2/Spine3/Head"]

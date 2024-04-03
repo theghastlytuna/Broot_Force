@@ -292,20 +292,21 @@ _data = {
 [node name="Mammoth" type="CharacterBody2D" groups=["PlayerUnits"]]
 collision_layer = 4
 script = ExtResource("1_pjrmx")
-health = 8.0
+health = 68.0
 type = 3
 
 [node name="Movement" type="Node2D" parent="."]
 position = Vector2(0, -57.6581)
 script = ExtResource("2_0mbfe")
-moveSpeed = -100.0
+moveSpeed = -66.0
 
 [node name="Attack" type="Node2D" parent="."]
 position = Vector2(0, -57.6581)
 script = ExtResource("3_qbfl6")
-attackDamage = 16.0
+attackDamage = 7.0
 timeToAttack = 0.8
 timeAfterAttack = 0.5
+numberOfTargets = 3
 groupToAttack = "EnemyUnits"
 
 [node name="AttackArea" type="Area2D" parent="."]
@@ -413,7 +414,6 @@ bone_angle = 99.473
 [node name="LegFB" type="Bone2D" parent="SkeletonHolderScaled/Skeleton2D/Root/BackSpine/FrontSpine"]
 position = Vector2(1, 23)
 rotation = -0.0472179
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 1, 23)
 auto_calculate_length_and_angle = false
 length = 320.275

@@ -53,19 +53,19 @@ size = Vector2(200, 200)
 [node name="ExcavatorEnemy" type="CharacterBody2D" groups=["EnemyUnits", "EnemyVehicle", "Vehicle"]]
 collision_layer = 2
 script = ExtResource("1_4bc3o")
-health = 80.0
+health = 90.0
 cost = 130
 poisonResistance = 0.4
 
 [node name="Movement" type="Node2D" parent="."]
 position = Vector2(-0.293892, -57.5428)
 script = ExtResource("2_fisyd")
-moveSpeed = 60.0
+moveSpeed = 40.0
 
 [node name="Attack" type="Node2D" parent="."]
 position = Vector2(-0.293892, -57.5428)
 script = ExtResource("3_vaoh0")
-attackDamage = 24.0
+attackDamage = 28.0
 attackType = 2
 timeToAttack = 3.0
 numberOfTargets = 5

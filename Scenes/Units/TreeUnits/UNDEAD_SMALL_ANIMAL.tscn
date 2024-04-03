@@ -415,12 +415,12 @@ _data = {
 [node name="Squirrel" type="CharacterBody2D" groups=["PlayerUnits"]]
 collision_layer = 4
 script = ExtResource("1_5a3xh")
-health = 8.0
+health = 12.0
 
 [node name="Movement" type="Node2D" parent="."]
 position = Vector2(-34, -57.6581)
 script = ExtResource("2_3cfxi")
-moveSpeed = -100.0
+moveSpeed = -200.0
 
 [node name="Attack" type="Node2D" parent="."]
 position = Vector2(-34, -57.6581)
@@ -549,7 +549,7 @@ bone_angle = 90.0
 [node name="LegBT" type="Bone2D" parent="SkeletonHolder1Scale2/Skeleton2D/Root"]
 position = Vector2(5, 34)
 rotation = -0.365292
-scale = Vector2(1, 1)
+scale = Vector2(0.999999, 0.999999)
 rest = Transform2D(1, 0, 0, 1, 5, 34)
 auto_calculate_length_and_angle = false
 length = 137.145
@@ -558,7 +558,6 @@ bone_angle = 90.0
 [node name="LegBB" type="Bone2D" parent="SkeletonHolder1Scale2/Skeleton2D/Root"]
 position = Vector2(5, 34)
 rotation = 0.236232
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 5, 34)
 auto_calculate_length_and_angle = false
 length = 139.145

@@ -462,11 +462,11 @@ collision_layer = 4
 script = ExtResource("1_qcer7")
 health = 100000.0
 hittable = false
-cost = 19
+cost = 80
 
 [node name="Attack" type="Node2D" parent="."]
 script = ExtResource("3_q88i2")
-attackDamage = 7.5
+attackDamage = 2.0
 timeToAttack = 0.6
 timeAfterAttack = 0.9
 groupToAttack = "EnemyUnits"
@@ -545,7 +545,6 @@ position = Vector2(0, 1)
 
 [node name="Spine1" type="Bone2D" parent="Holder/Skeleton2D"]
 rotation = -0.44833
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 0, 0)
 
 [node name="Spine2" type="Bone2D" parent="Holder/Skeleton2D/Spine1"]

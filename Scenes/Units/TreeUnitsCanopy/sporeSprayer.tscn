@@ -12,7 +12,7 @@
 
 [sub_resource type="Animation" id="Animation_c4o4b"]
 resource_name = "Attack"
-length = 2.5
+length = 5.0
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -21,7 +21,7 @@ tracks/0/path = NodePath("Skeleton2D/Spine1:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 2, 2.5),
+"times": PackedFloat32Array(0, 0.45, 3, 4.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [-0.303263, -0.509315, 0.417947, -0.303263]
@@ -33,7 +33,7 @@ tracks/1/path = NodePath("Skeleton2D/Spine1/Spine2:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3, 2, 2.5),
+"times": PackedFloat32Array(0, 0.45, 3, 4.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [0.55554, 1.39441, -1.3188, 0.55554]
@@ -45,7 +45,7 @@ tracks/2/path = NodePath("Skeleton2D/Spine1/Spine2/Spine3:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.3, 2, 2.5),
+"times": PackedFloat32Array(0, 0.45, 3, 4.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [-0.080677, -0.403188, 0.510659, -0.080677]
@@ -57,7 +57,7 @@ tracks/3/path = NodePath("Skeleton2D/Spine1/Spine2/Spine3/Head:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.3, 2, 2.5),
+"times": PackedFloat32Array(0, 0.45, 3, 4.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [-0.215759, -0.31892, 0.0511442, -0.215759]
@@ -69,7 +69,7 @@ tracks/4/path = NodePath("Skeleton2D/Spine1/Spine2/Spine3/Head:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.5, 0.7, 0.9, 1.1, 1.3, 1.5, 1.7, 1.9, 2, 2.5),
+"times": PackedFloat32Array(0, 0.45, 0.75, 1.05, 1.35, 1.65, 1.95, 2.25, 2.55, 2.85, 3, 4.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(0, 36), Vector2(0, 36), Vector2(0, 39), Vector2(0, 30.5), Vector2(0, 36.6), Vector2(0, 26.2), Vector2(0, 35.5), Vector2(0, 28.8), Vector2(0, 38.38), Vector2(0, 30.193), Vector2(0, 36), Vector2(0, 36)]
@@ -328,7 +328,7 @@ collision_layer = 4
 script = ExtResource("1_5x647")
 health = 100000.0
 hittable = false
-cost = 24
+cost = 290
 
 [node name="Attack" type="Node2D" parent="." node_paths=PackedStringArray("poisonNode", "minCloudSpawn", "maxCloudSpawn")]
 script = ExtResource("3_wuled")
@@ -338,7 +338,7 @@ minCloudSpawn = NodePath("../MinSpawn")
 maxCloudSpawn = NodePath("../MaxSpawn")
 attackDamage = 0.0
 timeToAttack = 0.0
-timeAfterAttack = 2.5
+timeAfterAttack = 5.0
 numberOfTargets = 0
 groupToAttack = "EnemyUnits"
 
@@ -428,7 +428,7 @@ rest = Transform2D(1, 0, 0, 1, 0, 43)
 [node name="Spine3" type="Bone2D" parent="SkeletonHolder/Skeleton2D/Spine1/Spine2"]
 position = Vector2(0, 38)
 rotation = -0.0946328
-scale = Vector2(0.999999, 0.999999)
+scale = Vector2(0.999998, 0.999998)
 rest = Transform2D(1, 0, 0, 1, 0, 38)
 
 [node name="Head" type="Bone2D" parent="SkeletonHolder/Skeleton2D/Spine1/Spine2/Spine3"]
