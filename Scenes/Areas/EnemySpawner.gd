@@ -25,7 +25,7 @@ signal FinishedSpawning()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	currentRoundBudget = firstRoundBudget * pow(budgetFactor, GameManager.growthRounds - 1)
+	currentRoundBudget = firstRoundBudget * pow(budgetFactor, GameManager.growthRounds)
 	Debug.Log("This round's budget: ", currentRoundBudget)
 	maxUnitIndex = min(floori(GameManager.growthRounds/roundsPerNewUnit), 6)
 	rng.randomize()

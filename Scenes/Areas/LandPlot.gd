@@ -23,13 +23,11 @@ func _exit_tree() -> void:
 		return
 	GameManager.placedTowersHealth[towerIndex] = stashedTower.getHealth()
 	
-
 func instantiate_tower(type):
 	spawn_tower(type)
 	if GameManager.placedTowersHealth.has(towerIndex):
 		stashedTower.setHealth(GameManager.placedTowersHealth[towerIndex])
 	#Debug.Log("set health to " + GameManager.placedTowersHealth[towerIndex])
-
 func spawn_tower(type):
 	if stashedTower:
 		stashedTower.onDie.emit()

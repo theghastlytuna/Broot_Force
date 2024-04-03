@@ -57,7 +57,7 @@ signal AttackedEnemy
 func _ready():
 	#Set up the attack timer so that it shares its duration with the attack speed
 	attackTimer = Timer.new()
-	attackTimer.wait_time = timeToAttack
+	#attackTimer.wait_time = timeToAttack
 	attackTimer.autostart = false
 	attackTimer.one_shot = true
 	attackTimer.stop()
@@ -66,15 +66,18 @@ func _ready():
 	add_child(attackTimer)
 	
 	postAttackTimer = Timer.new()
-	postAttackTimer.wait_time = timeAfterAttack
+	#postAttackTimer.wait_time = timeAfterAttack
 	postAttackTimer.autostart = false
 	postAttackTimer.one_shot = true
 	postAttackTimer.stop()
 	add_child(postAttackTimer)
 	
-	if timeToAttack <= 0.05:
+	if timeToAttack <= 0.05 && timeAfterAttack <= 0:
 		attackTimer.wait_time = 0.05
-		postAttackTimer.wait_time -= 0.05
+		postAttackTimer.wait_time = 0.05
+	elif timeToAttack <= 0.05:
+		attackTimer.wait_time = 0.05
+		postAttackTimer.wait_time = timeAfterAttack - 0.05
 	elif timeAfterAttack <= 0.05:
 		attackTimer.wait_time = timeToAttack - 0.05
 		postAttackTimer.wait_time = 0.05

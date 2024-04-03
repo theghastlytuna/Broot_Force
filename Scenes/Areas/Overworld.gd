@@ -1,10 +1,10 @@
 extends Node2D
 
 func _enter_tree():
-	GameManager.growthRounds += 20
 	EventManager.onGrowthPhaseEnd.connect(growthOver)
 	#GameManager.overworldNewRound()
 	SaveManager.loadData()
+	GameManager.growthRounds += 20
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

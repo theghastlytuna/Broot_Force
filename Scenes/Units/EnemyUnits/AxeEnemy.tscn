@@ -59,7 +59,6 @@ texture = ExtResource("4_bme4p")
 
 [node name="UnitWeapon" type="Sprite2D" parent="UnitBody"]
 position = Vector2(140, -60)
-rotation = 1.56494
 scale = Vector2(0.45, 0.45)
 texture = ExtResource("5_1qufm")
 offset = Vector2(120.381, -169.567)

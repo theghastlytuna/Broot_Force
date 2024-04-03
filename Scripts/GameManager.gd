@@ -15,7 +15,13 @@ var availableUnits : Array[int] = [0,0,0,0,0,0]
 var placedTowers : Dictionary #number tower slot key, path resource
 var placedTowersHealth : Dictionary #number tower slot key, float health
 var s : Dictionary #number tower slot key, int type #this method is so stupid
-var growthRounds : int = 0
+var growthRounds : int = 0:
+	get:
+		Debug.Log("GET GM GROWTHROUNDS:",growthRounds)
+		return growthRounds
+	set(value):
+		Debug.Log("SET GM GROWTHROUNDS:",value)
+		growthRounds = value
 var pastRoots : Dictionary
 var towerList : Array = [
 	preload("res://Scenes/Units/TreeUnitsGround/thorn_wall.tscn"),

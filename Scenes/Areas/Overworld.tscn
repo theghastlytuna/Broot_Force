@@ -444,15 +444,6 @@ exampleSprout = NodePath("../../Tree/GroundPositions/3/CanvasLayer/Button")
 startButton = NodePath("../../CanvasLayer2/Button")
 waterMeter = NodePath("../../CanvasLayer2/OnScreenUI/TextureRect")
 
-[node name="Movement" type="Control" parent="Tutorial/OverworldTutorial"]
-layout_mode = 1
-anchor_top = 0.566
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -1.76804
-grow_horizontal = 2
-grow_vertical = 0
-
 [node name="CenterContainer" type="CenterContainer" parent="Tutorial/OverworldTutorial"]
 layout_mode = 0
 offset_left = 89.0
@@ -476,3 +467,9 @@ vertical_alignment = 1
 [connection signal="button_up" from="CanvasLayer2/Button" to="CanvasLayer2/Button" method="_on_button_up"]
 [connection signal="button_up" from="CanvasLayer2/Button" to="EnemySpawner" method="_on_button_button_up"]
 [connection signal="FinishedSpawning" from="EnemySpawner" to="EnemyUnits" method="_on_enemy_spawner_finished_spawning"]
+
+[editable path="EnemySpawner/Factories/ChainsawEnemy"]
+[editable path="EnemySpawner/Factories/ExcavatorEnemy"]
+[editable path="EnemySpawner/Factories/PistolEnemy"]
+[editable path="EnemySpawner/Factories/ShotgunEnemy"]
+[editable path="EnemySpawner/Factories/SoldierEnemy"]
