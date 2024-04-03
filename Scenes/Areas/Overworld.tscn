@@ -358,17 +358,38 @@ position = Vector2(-458, 156)
 [node name="ChainsawEnemy" parent="EnemySpawner/Factories" instance=ExtResource("6_yaxo3")]
 position = Vector2(-182, 178)
 
+[node name="LowerArmL" parent="EnemySpawner/Factories/ChainsawEnemy/Skeleton2D/Hip/Chest/UpperArmL" index="0"]
+scale = Vector2(1, 1)
+
+[node name="LowerArmR" parent="EnemySpawner/Factories/ChainsawEnemy/Skeleton2D/Hip/Chest/UpperArmR" index="0"]
+scale = Vector2(1, 1)
+
+[node name="UpperLegL" parent="EnemySpawner/Factories/ChainsawEnemy/Skeleton2D/Hip" index="1"]
+scale = Vector2(1, 1)
+
 [node name="ExcavatorEnemy" parent="EnemySpawner/Factories" instance=ExtResource("6_0e3rg")]
 position = Vector2(-379, 92)
 
 [node name="PistolEnemy" parent="EnemySpawner/Factories" instance=ExtResource("6_iyl61")]
 position = Vector2(-245, 103)
 
+[node name="UpperArmR" parent="EnemySpawner/Factories/PistolEnemy/Skeleton2D/Hip/Chest" index="2"]
+scale = Vector2(1, 1)
+
+[node name="UpperLegL" parent="EnemySpawner/Factories/PistolEnemy/Skeleton2D/Hip" index="1"]
+scale = Vector2(1, 1)
+
 [node name="ShotgunEnemy" parent="EnemySpawner/Factories" instance=ExtResource("6_8r0hn")]
 position = Vector2(-525, 186)
 
+[node name="UpperLegL" parent="EnemySpawner/Factories/ShotgunEnemy/Skeleton2D/Hip" index="1"]
+scale = Vector2(1, 1)
+
 [node name="SoldierEnemy" parent="EnemySpawner/Factories" instance=ExtResource("6_bf8lv")]
 position = Vector2(-277, 195)
+
+[node name="UpperLegL" parent="EnemySpawner/Factories/SoldierEnemy/Skeleton2D/Hip" index="1"]
+scale = Vector2(1, 1)
 
 [node name="EnemyUnits" type="Node2D" parent="."]
 script = ExtResource("18_8vmsq")

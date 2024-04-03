@@ -467,6 +467,7 @@ bone_angle = 0.0
 
 [node name="UpperLegL" type="Bone2D" parent="Skeleton2D/Hip"]
 rotation = 2.35619
+scale = Vector2(1, 1)
 rest = Transform2D(-0.707104, 0.707109, -0.707109, -0.707104, 0, 0)
 
 [node name="LowerLegL" type="Bone2D" parent="Skeleton2D/Hip/UpperLegL"]
@@ -482,6 +483,7 @@ rest = Transform2D(0.707108, 0.707106, -0.707106, 0.707108, 0, 0)
 
 [node name="LowerLegR" type="Bone2D" parent="Skeleton2D/Hip/UpperLegR"]
 position = Vector2(9.8995, 1.10944e-05)
+scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 9.8995, 1.10944e-05)
 auto_calculate_length_and_angle = false
 length = 8.0
