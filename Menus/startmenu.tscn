@@ -1,19 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://bekhboua6usq5"]
+[gd_scene load_steps=10 format=3 uid="uid://bekhboua6usq5"]
 
 [ext_resource type="Script" path="res://Menus/startmenu.gd" id="1_itp7l"]
-[ext_resource type="Texture2D" uid="uid://cr1kf01q33b8e" path="res://Art Assets/Textures/Placeholder.png" id="2_2no1v"]
+[ext_resource type="Texture2D" uid="uid://b7dedeltjfx4o" path="res://Art Assets/Textures/Poster_Image.png" id="2_0iflw"]
 [ext_resource type="Shader" path="res://Art Assets/Textures/gradient.gdshader" id="3_wbn1q"]
-[ext_resource type="PackedScene" uid="uid://dxa7recdeio70" path="res://Scenes/UI/Text.tscn" id="4_wneya"]
 [ext_resource type="PackedScene" uid="uid://n1mg5sojwgry" path="res://Scenes/UI/Button.tscn" id="5_du0bb"]
+[ext_resource type="Texture2D" uid="uid://cn5jh7mv45d8f" path="res://Art Assets/Textures/logo.png" id="5_iambq"]
 [ext_resource type="PackedScene" uid="uid://ckpxkhasyjkom" path="res://Menus/optionsmenu.tscn" id="6_yw2jt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1sncq"]
 shader = ExtResource("3_wbn1q")
 shader_parameter/blur = 1.58
 shader_parameter/brightness = 0.779
-
-[sub_resource type="SystemFont" id="SystemFont_6s1vc"]
-font_names = PackedStringArray("MV Boli")
 
 [sub_resource type="SystemFont" id="SystemFont_orxkd"]
 font_names = PackedStringArray("Impact")
@@ -34,12 +31,14 @@ grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="Control"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 2
+anchor_top = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_2no1v")
+offset_top = -869.0
+offset_right = 1159.0
+grow_vertical = 0
+texture = ExtResource("2_0iflw")
+expand_mode = 1
 
 [node name="Options" parent="Control" instance=ExtResource("6_yw2jt")]
 layer = 2
@@ -62,23 +61,28 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_top = 100
+theme_override_constants/margin_top = 30
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/OuterMargin"]
 layout_mode = 2
 
-[node name="Label" parent="Control/OuterMargin/VBoxContainer" instance=ExtResource("4_wneya")]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/OuterMargin/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 15
-theme_override_fonts/font = SubResource("SystemFont_6s1vc")
-theme_override_font_sizes/font_size = 80
-text = "BROOT FORCE"
-horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/OuterMargin/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+
+[node name="TextureRect" type="TextureRect" parent="Control/OuterMargin/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("5_iambq")
+stretch_mode = 5
 
 [node name="MarginContainer" type="MarginContainer" parent="Control/OuterMargin/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_top = 80
+theme_override_constants/margin_top = 40
 
 [node name="Control" type="Control" parent="Control/OuterMargin/VBoxContainer"]
 layout_mode = 2
