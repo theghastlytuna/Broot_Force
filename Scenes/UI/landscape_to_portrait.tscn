@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dwa24demt5qhy"]
+[gd_scene load_steps=5 format=3 uid="uid://dwa24demt5qhy"]
 
 [ext_resource type="PackedScene" uid="uid://dxa7recdeio70" path="res://Scenes/UI/Text.tscn" id="1_3i2e0"]
+[ext_resource type="Theme" uid="uid://cijo74ih8dhqb" path="res://Art Assets/Textures/UI/BrootTheme.tres" id="1_l6mu6"]
 [ext_resource type="Script" path="res://Scenes/UI/GoToScene.gd" id="1_vpcbh"]
 [ext_resource type="PackedScene" uid="uid://n1mg5sojwgry" path="res://Scenes/UI/Button.tscn" id="2_c4sj7"]
 
@@ -11,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_l6mu6")
 script = ExtResource("1_vpcbh")
 pathToScene = "res://Scenes/Areas/World.tscn"
 setToLandscape = false

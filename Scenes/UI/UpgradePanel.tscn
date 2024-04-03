@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bipesrwb7bbyk"]
+[gd_scene load_steps=6 format=3 uid="uid://bipesrwb7bbyk"]
 
 [ext_resource type="Script" path="res://Scenes/UI/UpgradePanel.gd" id="1_5i55f"]
+[ext_resource type="Theme" uid="uid://cijo74ih8dhqb" path="res://Art Assets/Textures/UI/BrootTheme.tres" id="1_tics3"]
 [ext_resource type="Texture2D" uid="uid://nw88hgtaqq32" path="res://Art Assets/Textures/Head.png" id="2_urk5c"]
 [ext_resource type="PackedScene" uid="uid://dxa7recdeio70" path="res://Scenes/UI/Text.tscn" id="3_khusw"]
 [ext_resource type="Texture2D" uid="uid://c3gso2m7cj2om" path="res://Art Assets/Textures/Icons/Water.png" id="4_qcnuh"]
@@ -10,6 +11,7 @@ custom_minimum_size = Vector2(490, 100)
 offset_right = 500.0
 offset_bottom = 100.0
 mouse_filter = 2
+theme = ExtResource("1_tics3")
 script = ExtResource("1_5i55f")
 
 [node name="Icon" type="TextureRect" parent="."]

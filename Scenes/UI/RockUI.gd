@@ -15,6 +15,7 @@ var originalPosition : Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	pivot_offset = size/2
 	$PanelContainer.visible = false
 	originalPosition = global_position	
 	EventManager.onShowRockUI.connect(showUI)
@@ -26,6 +27,7 @@ func _ready() -> void:
 		particles.get_parent().add_child(newParticle)
 		particleChildren.append(newParticle)
 	pass
+	showUI(0)
 	
 func showUI(layer : int):
 	amountClicked = 0
@@ -50,6 +52,7 @@ func pressed():
 		SoundManager.play_ambient_sound(dirtSound)
 		finale.emitting = true
 	else:
+		
 		wiggle()
 		for p in particleChildren:
 			if p.emitting:
@@ -60,15 +63,19 @@ func pressed():
 	pass
 	
 func wiggle():
+	originalPosition = global_position
 	wiggleTimer.paused = false
 	wiggleTimer.start()
+	
 	pass
 	
 func wiggleTimerTimeout():
-	global_position = originalPosition + Vector2(randf_range(-1,1)*maxToWiggle.x,randf_range(-1,1)*maxToWiggle.y)
+	var currentOffset = Vector2(randf_range(-1,1)*maxToWiggle.x,randf_range(-1,1)*maxToWiggle.y)
+	global_position = originalPosition + currentOffset
 	timesWiggled += 1
 	if timesWiggled >= timesToWiggle:
-		global_position = originalPosition
 		wiggleTimer.stop()
 		timesWiggled = 0
+		global_position = originalPosition
+	
 	pass

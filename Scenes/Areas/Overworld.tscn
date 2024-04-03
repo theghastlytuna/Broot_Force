@@ -1,10 +1,11 @@
-[gd_scene load_steps=37 format=3 uid="uid://dq4jcfh8ylt5e"]
+[gd_scene load_steps=38 format=3 uid="uid://dq4jcfh8ylt5e"]
 
 [ext_resource type="Script" path="res://Scenes/Areas/Overworld.gd" id="1_y88pi"]
 [ext_resource type="Script" path="res://Scenes/Areas/FriendlySpawnLocation.gd" id="2_no26d"]
 [ext_resource type="Texture2D" uid="uid://c05hmgw7ymjw0" path="res://Art Assets/Textures/main_BG.png" id="2_p4gqi"]
 [ext_resource type="Script" path="res://Scenes/Areas/ClickedOutside.gd" id="2_vakrj"]
 [ext_resource type="Script" path="res://Scenes/Areas/LandPlot.gd" id="3_ncd5e"]
+[ext_resource type="Theme" uid="uid://cijo74ih8dhqb" path="res://Art Assets/Textures/UI/BrootTheme.tres" id="3_ovu8j"]
 [ext_resource type="Texture2D" uid="uid://cog42c6avtfrv" path="res://Art Assets/Textures/floor.png" id="3_p34j2"]
 [ext_resource type="Texture2D" uid="uid://c3gso2m7cj2om" path="res://Art Assets/Textures/Icons/Water.png" id="3_w0sjs"]
 [ext_resource type="Texture2D" uid="uid://buib6rapkh83j" path="res://Art Assets/Textures/TM_overworld.png" id="4_jfqio"]
@@ -91,6 +92,7 @@ offset_right = 616.0
 offset_bottom = 345.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_ovu8j")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_24g8k")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_q3s25")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_bx3r5")
@@ -130,6 +132,7 @@ offset_left = 20.0
 offset_top = 491.0
 offset_right = 156.0
 offset_bottom = 627.0
+theme = ExtResource("3_ovu8j")
 text = "Start Round"
 script = ExtResource("18_hqi7h")
 
@@ -358,36 +361,36 @@ position = Vector2(-458, 156)
 position = Vector2(-182, 178)
 
 [node name="Hip" parent="EnemySpawner/Factories/ChainsawEnemy/Skeleton2D" index="0"]
-position = Vector2(-1, -15.0034)
+position = Vector2(-1, -15.4894)
 
 [node name="Chest" parent="EnemySpawner/Factories/ChainsawEnemy/Skeleton2D/Hip" index="0"]
 rotation = 0.0
 
 [node name="UpperArmL" parent="EnemySpawner/Factories/ChainsawEnemy/Skeleton2D/Hip/Chest" index="1"]
-rotation = 0.341601
-scale = Vector2(1, 1)
+rotation = -0.289971
+scale = Vector2(0.999999, 0.999999)
 
 [node name="LowerArmL" parent="EnemySpawner/Factories/ChainsawEnemy/Skeleton2D/Hip/Chest/UpperArmL" index="0"]
 scale = Vector2(0.999999, 0.999999)
 
 [node name="UpperArmR" parent="EnemySpawner/Factories/ChainsawEnemy/Skeleton2D/Hip/Chest" index="2"]
-rotation = -0.341601
-scale = Vector2(1, 1)
+rotation = 0.289971
+scale = Vector2(0.999999, 0.999999)
 
 [node name="UpperLegL" parent="EnemySpawner/Factories/ChainsawEnemy/Skeleton2D/Hip" index="1"]
-rotation = 0.905813
-scale = Vector2(1, 1)
+rotation = 1.88894
+scale = Vector2(0.999999, 0.999999)
 
 [node name="LowerLegL" parent="EnemySpawner/Factories/ChainsawEnemy/Skeleton2D/Hip/UpperLegL" index="0"]
-rotation = 0.910938
-scale = Vector2(1, 1)
+rotation = 0.53574
+scale = Vector2(0.999999, 0.999999)
 
 [node name="UpperLegR" parent="EnemySpawner/Factories/ChainsawEnemy/Skeleton2D/Hip" index="2"]
-rotation = 1.9922
-scale = Vector2(1, 1)
+rotation = 0.903216
+scale = Vector2(0.999999, 0.999999)
 
 [node name="LowerLegR" parent="EnemySpawner/Factories/ChainsawEnemy/Skeleton2D/Hip/UpperLegR" index="0"]
-rotation = 0.398061
+rotation = 0.773259
 scale = Vector2(1, 1)
 
 [node name="ExcavatorEnemy" parent="EnemySpawner/Factories" instance=ExtResource("6_0e3rg")]
@@ -397,91 +400,91 @@ position = Vector2(-582, 82)
 position = Vector2(-245, 103)
 
 [node name="Hip" parent="EnemySpawner/Factories/PistolEnemy/Skeleton2D" index="0"]
-position = Vector2(-1, -15.0034)
+position = Vector2(-1, -15.4894)
 
 [node name="UpperArmL" parent="EnemySpawner/Factories/PistolEnemy/Skeleton2D/Hip/Chest" index="1"]
-rotation = 0.341601
-scale = Vector2(1, 1)
+rotation = -0.289971
+scale = Vector2(0.999999, 0.999999)
 
 [node name="LowerArmL" parent="EnemySpawner/Factories/PistolEnemy/Skeleton2D/Hip/Chest/UpperArmL" index="0"]
 rotation = 1.57079
 
 [node name="UpperArmR" parent="EnemySpawner/Factories/PistolEnemy/Skeleton2D/Hip/Chest" index="2"]
-scale = Vector2(1, 1)
+scale = Vector2(0.999999, 0.999999)
 
 [node name="UpperLegL" parent="EnemySpawner/Factories/PistolEnemy/Skeleton2D/Hip" index="1"]
-rotation = 0.905813
-scale = Vector2(1, 1)
+rotation = 1.88894
+scale = Vector2(0.999999, 0.999999)
 
 [node name="LowerLegL" parent="EnemySpawner/Factories/PistolEnemy/Skeleton2D/Hip/UpperLegL" index="0"]
-rotation = 0.910938
-scale = Vector2(1, 1)
+rotation = 0.53574
+scale = Vector2(0.999999, 0.999999)
 
 [node name="UpperLegR" parent="EnemySpawner/Factories/PistolEnemy/Skeleton2D/Hip" index="2"]
-rotation = 1.9922
-scale = Vector2(1, 1)
+rotation = 0.903216
+scale = Vector2(0.999999, 0.999999)
 
 [node name="LowerLegR" parent="EnemySpawner/Factories/PistolEnemy/Skeleton2D/Hip/UpperLegR" index="0"]
-rotation = 0.398061
+rotation = 0.773259
 scale = Vector2(1, 1)
 
 [node name="ShotgunEnemy" parent="EnemySpawner/Factories" instance=ExtResource("6_8r0hn")]
 position = Vector2(-525, 186)
 
 [node name="Hip" parent="EnemySpawner/Factories/ShotgunEnemy/Skeleton2D" index="0"]
-position = Vector2(-1, -15.0034)
+position = Vector2(-1, -15.4894)
 
 [node name="UpperArmL" parent="EnemySpawner/Factories/ShotgunEnemy/Skeleton2D/Hip/Chest" index="1"]
-scale = Vector2(1, 1)
+scale = Vector2(0.999999, 0.999999)
 
 [node name="LowerArmL" parent="EnemySpawner/Factories/ShotgunEnemy/Skeleton2D/Hip/Chest/UpperArmL" index="0"]
 rotation = 1.57079
 
 [node name="UpperArmR" parent="EnemySpawner/Factories/ShotgunEnemy/Skeleton2D/Hip/Chest" index="2"]
-scale = Vector2(1, 1)
+scale = Vector2(0.999999, 0.999999)
 
 [node name="UpperLegL" parent="EnemySpawner/Factories/ShotgunEnemy/Skeleton2D/Hip" index="1"]
-rotation = 0.905813
-scale = Vector2(1, 1)
+rotation = 1.88894
+scale = Vector2(0.999999, 0.999999)
 
 [node name="LowerLegL" parent="EnemySpawner/Factories/ShotgunEnemy/Skeleton2D/Hip/UpperLegL" index="0"]
-rotation = 0.910938
-scale = Vector2(1, 1)
+rotation = 0.53574
+scale = Vector2(0.999999, 0.999999)
 
 [node name="UpperLegR" parent="EnemySpawner/Factories/ShotgunEnemy/Skeleton2D/Hip" index="2"]
-rotation = 1.9922
-scale = Vector2(1, 1)
+rotation = 0.903216
+scale = Vector2(0.999999, 0.999999)
 
 [node name="LowerLegR" parent="EnemySpawner/Factories/ShotgunEnemy/Skeleton2D/Hip/UpperLegR" index="0"]
-rotation = 0.398061
+rotation = 0.773259
 scale = Vector2(1, 1)
 
 [node name="SoldierEnemy" parent="EnemySpawner/Factories" instance=ExtResource("6_bf8lv")]
 position = Vector2(-277, 195)
 
 [node name="Hip" parent="EnemySpawner/Factories/SoldierEnemy/Skeleton2D" index="0"]
-position = Vector2(-1, -15.0034)
+position = Vector2(-1, -15.4894)
 
 [node name="UpperArmL" parent="EnemySpawner/Factories/SoldierEnemy/Skeleton2D/Hip/Chest" index="1"]
-scale = Vector2(1, 1)
+scale = Vector2(0.999999, 0.999999)
 
 [node name="UpperArmR" parent="EnemySpawner/Factories/SoldierEnemy/Skeleton2D/Hip/Chest" index="2"]
-scale = Vector2(1, 1)
+scale = Vector2(0.999999, 0.999999)
 
 [node name="UpperLegL" parent="EnemySpawner/Factories/SoldierEnemy/Skeleton2D/Hip" index="1"]
-rotation = 0.905813
-scale = Vector2(1, 1)
+rotation = 1.88894
+scale = Vector2(0.999999, 0.999999)
 
 [node name="LowerLegL" parent="EnemySpawner/Factories/SoldierEnemy/Skeleton2D/Hip/UpperLegL" index="0"]
-rotation = 0.910938
-scale = Vector2(1, 1)
+rotation = 0.53574
+scale = Vector2(0.999999, 0.999999)
 
 [node name="UpperLegR" parent="EnemySpawner/Factories/SoldierEnemy/Skeleton2D/Hip" index="2"]
-rotation = 1.9922
-scale = Vector2(1, 1)
+rotation = 0.903216
+scale = Vector2(0.999999, 0.999999)
 
 [node name="LowerLegR" parent="EnemySpawner/Factories/SoldierEnemy/Skeleton2D/Hip/UpperLegR" index="0"]
-rotation = 0.398061
+rotation = 0.773259
 scale = Vector2(1, 1)
 
 [node name="EnemyUnits" type="Node2D" parent="."]
@@ -503,6 +506,7 @@ offset_bottom = -17.0
 grow_horizontal = 0
 grow_vertical = 0
 mouse_filter = 2
+theme = ExtResource("3_ovu8j")
 theme_override_constants/separation = 8
 script = ExtResource("21_rchts")
 
@@ -573,7 +577,6 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 48
-text = "Asdfsdf"
 horizontal_alignment = 1
 vertical_alignment = 1
 

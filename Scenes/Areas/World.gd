@@ -7,6 +7,7 @@ func _ready() -> void:
 	showOtherRoots()
 	EventManager.onRootPhaseStart.emit()
 	EventManager.onGrowthPhaseStart.connect(goToOverworld)
+	GameManager.setPortraitMode()
 	
 
 func showOtherRoots():

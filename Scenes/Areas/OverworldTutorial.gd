@@ -8,8 +8,8 @@ extends Control
 var followingObject : Node2D
 
 func _ready() -> void:
-	if GameManager.growthRounds == 0:
-		startTutorial()
+	#if GameManager.growthRounds == 0:
+	startTutorial()
 
 func setTutorialText(s : String, v : Vector2):
 	tutorialText.text = s
@@ -32,6 +32,13 @@ func startTutorial():
 	pass
 	
 func clickedSprout(arg1,arg2):
+	setTutorialText("OVERWORLD_TUTORIAL_2",Vector2.ZERO)
+	followObject(exampleSprout,Vector2(0,-tutorialText.size.y/2))
 	EventManager.onGroundClicked.disconnect(clickedSprout)
 	EventManager.onCanopyClicked.disconnect(clickedSprout)
+	EventManager.onPlacedTower.connect(startRound)
 	pass
+	
+func startRound():
+	setTutorialText("OVERWORLD_TUTORIAL_3",Vector2.ZERO)
+	followObject(startButton,Vector2((startButton.size.x/2) + (tutorialText.size.x/2) + 50,startButton.size.y/2))

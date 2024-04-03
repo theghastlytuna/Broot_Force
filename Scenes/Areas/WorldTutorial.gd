@@ -15,7 +15,7 @@ func setTutorialText(s : String, v : Vector2):
 	tutorialContainer.global_position = v
 	pass
 	
-func followObject(node : Node2D, offset : Vector2 = Vector2.ZERO):
+func followObject(node : Node, offset : Vector2 = Vector2.ZERO):
 	if node == null:
 		tutorialContainer.call_deferred("reparent",self)
 		return
@@ -27,6 +27,7 @@ func startTutorial():
 	#movementNode.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	movementNode.gui_input.connect(onMovementEntered)
 	setTutorialText("WORLD_TUTORIAL_1",Vector2(get_viewport().size.x/2,(get_viewport().size.y)-tutorialText.size.y))
+	followObject(movementNode, Vector2(movementNode.size.x/2,movementNode.size.y/2))
 	movementNode.mouse_filter = Control.MOUSE_FILTER_STOP
 	pass
 

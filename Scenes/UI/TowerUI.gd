@@ -69,6 +69,7 @@ func towerClicked(clickedType : Unit.TowerType):
 	setBuildButtonColor(Color.WEB_GREEN)
 	health.visible = true
 	type.visible = true
+	EventManager.onSelectedTowerToPlace.emit()
 	pass
 	
 func confirmClicked():
@@ -90,6 +91,7 @@ func confirmClicked():
 	showing = false
 	nodeToPlaceTower = null
 	towerIndex = -1
+	EventManager.onPlacedTower.emit()
 	
 func setBuildButtonColor(c : Color):
 	confirm.add_theme_color_override("font_color",c)

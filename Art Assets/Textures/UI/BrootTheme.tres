@@ -1,28 +1,29 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://cijo74ih8dhqb"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://cijo74ih8dhqb"]
 
-[ext_resource type="Texture2D" uid="uid://dti277gkevh8w" path="res://Art Assets/Textures/UI/UIBG2.png" id="1_6c4t7"]
+[ext_resource type="Texture2D" uid="uid://d2b43de32udfe" path="res://Art Assets/Textures/UI/buttonTex.png" id="1_876en"]
+[ext_resource type="Texture2D" uid="uid://bq38yl718mppb" path="res://Art Assets/Textures/UI/UI_post.png" id="1_u7fv7"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r1w1d"]
-texture = ExtResource("1_6c4t7")
+texture = ExtResource("1_876en")
 texture_margin_left = 16.0
 texture_margin_top = 16.0
 texture_margin_right = 16.0
 texture_margin_bottom = 16.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dsy5g"]
-texture = ExtResource("1_6c4t7")
-texture_margin_left = 16.0
-texture_margin_top = 16.0
-texture_margin_right = 16.0
-texture_margin_bottom = 16.0
+texture = ExtResource("1_u7fv7")
+texture_margin_left = 32.0
+texture_margin_top = 32.0
+texture_margin_right = 32.0
+texture_margin_bottom = 32.0
 modulate_color = Color(0.737255, 0.737255, 0.737255, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vrpsf"]
-texture = ExtResource("1_6c4t7")
-texture_margin_left = 16.0
-texture_margin_top = 16.0
-texture_margin_right = 16.0
-texture_margin_bottom = 16.0
+texture = ExtResource("1_u7fv7")
+texture_margin_left = 32.0
+texture_margin_top = 32.0
+texture_margin_right = 32.0
+texture_margin_bottom = 32.0
 modulate_color = Color(0.811765, 0.811765, 0.811765, 1)
 
 [resource]

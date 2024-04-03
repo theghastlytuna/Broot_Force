@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://c70infue40452"]
+[gd_scene load_steps=5 format=3 uid="uid://c70infue40452"]
 
 [ext_resource type="Script" path="res://Scenes/UI/GoToScene.gd" id="1_4rr2g"]
 [ext_resource type="PackedScene" uid="uid://dxa7recdeio70" path="res://Scenes/UI/Text.tscn" id="1_n612f"]
+[ext_resource type="Theme" uid="uid://cijo74ih8dhqb" path="res://Art Assets/Textures/UI/BrootTheme.tres" id="1_pr3ip"]
 [ext_resource type="PackedScene" uid="uid://n1mg5sojwgry" path="res://Scenes/UI/Button.tscn" id="2_qs8xe"]
 
 [node name="PortraitToLandscape" type="Control"]
@@ -11,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_pr3ip")
 script = ExtResource("1_4rr2g")
 pathToScene = "res://Scenes/Areas/Overworld.tscn"
 
