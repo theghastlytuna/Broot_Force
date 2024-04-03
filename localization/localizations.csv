@@ -31,3 +31,7 @@ NOT_ENOUGH_MONEY,Not enough money!
 GROUND,Ground
 CANOPY,Canopy
 TURNING_DESCRIPTION,Makes the root make sharper turns
+WORLD_TUTORIAL_1,Drag your finger to move your root!
+WORLD_TUTORIAL_2,Avoid rocks to save time!
+WORLD_TUTORIAL_3,Collect water to grow your tree!
+WORLD_TUTORIAL_4,Collect units to defend yourself!

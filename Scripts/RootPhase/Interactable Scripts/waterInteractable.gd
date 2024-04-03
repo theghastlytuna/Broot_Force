@@ -10,5 +10,9 @@ func HitByRoot(area: Area2D):
 	#GameManager.waterPerRound += water	
 	GameManager.rootPhaseStats.waterPerRound += water
 	EventManager.onWaterCollected.emit()
+	EventManager.onHitWater.emit()
 	super(area)
+	
+func _ready() -> void:
+	EventManager.onSpawnedWater.emit(get_parent())
 

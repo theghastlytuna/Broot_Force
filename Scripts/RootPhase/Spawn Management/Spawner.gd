@@ -42,6 +42,7 @@ func onNewLayer(i:int):
 	if layerIndex >= layeredResourceDictionaries.size():
 		layerIndex = layeredResourceDictionaries.size()-1
 	
+	
 func spawnObject(depth : float, desiredYOffset : float = 0):
 	var noiseValue : float = noiseY.get_noise_1d(depth)
 	var percentNoiseValue : int = fposmod(noiseValue+1,1)*100 #random seeded value from 0-100

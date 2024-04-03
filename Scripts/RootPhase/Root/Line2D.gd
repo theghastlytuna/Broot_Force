@@ -106,14 +106,13 @@ func _process(delta: float) -> void:
 	mousePosition = get_global_mouse_position()
 	
 	
-	
 	var desiredPosition = mousePosition
 	
 	
 	if rootPositionOverride != Vector2.ZERO:
 		var distanceToOverride = global_position.distance_to(rootPositionOverride)
 		if distanceToOverride <= distanceOfAffect:
-			desiredPosition = lerp(desiredPosition,rootPositionOverride,lerpCurve.sample(distanceToOverride/distanceOfAffect))
+			desiredPosition = lerp(desiredPosition,rootPositionOverride,lerpCurve.sample(1-(distanceToOverride/distanceOfAffect)))
 	var amountToTurn = turningAmount 
 	
 	#check the raycasts to see if you will hit something
