@@ -16,6 +16,7 @@
 [sub_resource type="Animation" id="Animation_6uqap"]
 resource_name = "Attack"
 length = 1.5
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -292,15 +293,14 @@ _data = {
 [node name="toxicBloom" type="StaticBody2D" groups=["PlayerUnits"]]
 collision_layer = 4
 script = ExtResource("1_exnqm")
-health = 150.0
+health = 10000.0
 cost = 9
 
 [node name="Attack" type="Node2D" parent="."]
 script = ExtResource("3_5iyqw")
-attackDamage = 6.0
 attackType = 3
-timeToAttack = 0.5
-timeAfterAttack = 1.0
+timeToAttack = 0.8
+timeAfterAttack = 0.7
 numberOfTargets = 9999
 groupToAttack = "EnemyUnits"
 
