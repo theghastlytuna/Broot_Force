@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://daadsxgrjomlf"]
+
+[ext_resource type="Script" path="res://Scripts/Towers/Attack Scripts/lingeringCloud.gd" id="1_sc6uo"]
+[ext_resource type="Script" path="res://Scripts/Units/Attack Scripts/UnitAttack.gd" id="3_2r27c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yvunn"]
+
+[node name="BomberCloud" type="Node2D" node_paths=PackedStringArray("attackNode")]
+script = ExtResource("1_sc6uo")
+attackNode = NodePath("Attack")
+
+[node name="Attack" type="Node2D" parent="."]
+script = ExtResource("3_2r27c")
+attackDamage = 3.0
+numberOfTargets = 999
+groupToAttack = "EnemyUnits"
+
+[node name="AttackArea" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(0, -70)
+scale = Vector2(4, 7)
+shape = SubResource("RectangleShape2D_yvunn")
+
+[connection signal="body_entered" from="AttackArea" to="Attack" method="_on_attack_area_body_entered"]
+[connection signal="body_exited" from="AttackArea" to="Attack" method="_on_attack_area_body_exited"]

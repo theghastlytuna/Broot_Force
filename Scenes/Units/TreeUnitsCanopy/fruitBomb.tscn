@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://sln23xek132g"]
+
+[ext_resource type="Script" path="res://Scenes/Units/TreeUnitsCanopy/fruitBomb.gd" id="1_ae4ej"]
+[ext_resource type="Script" path="res://Scripts/Units/Attack Scripts/UnitAttack.gd" id="2_nfvna"]
+[ext_resource type="Texture2D" uid="uid://6mm3q3gblhrr" path="res://icon.svg" id="3_o3tlf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f1ue1"]
+
+[node name="FruitBomb" type="CharacterBody2D" node_paths=PackedStringArray("bombSprite", "attackNode")]
+collision_layer = 8
+script = ExtResource("1_ae4ej")
+speed = 500.0
+bombSprite = NodePath("Sprite2D")
+attackNode = NodePath("Attack")
+
+[node name="Attack" type="Node2D" parent="."]
+script = ExtResource("2_nfvna")
+attackDamage = 16.0
+timeToAttack = 0.0
+timeAfterAttack = 1000.0
+numberOfTargets = 999
+groupToAttack = "EnemyUnits"
+oneShot = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("3_o3tlf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_f1ue1")

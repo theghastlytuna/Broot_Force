@@ -436,7 +436,8 @@ moveSpeed = -100.0
 position = Vector2(0, -57.6581)
 script = ExtResource("3_7uai5")
 attackDamage = 30.0
-timePerAttack = 2.0
+timeToAttack = 0.6
+timeAfterAttack = 0.9
 groupToAttack = "EnemyUnits"
 
 [node name="AttackArea" type="Area2D" parent="."]
@@ -517,7 +518,6 @@ rest = Transform2D(1, 0, 0, 1, 379, 314)
 [node name="BottomSpine" type="Bone2D" parent="SkeletonScaled/Skeleton2D/Root"]
 position = Vector2(31, -52)
 rotation = -0.404311
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 31, -52)
 
 [node name="TopSpine" type="Bone2D" parent="SkeletonScaled/Skeleton2D/Root/BottomSpine"]
@@ -527,7 +527,6 @@ rest = Transform2D(1, 0, 0, 1, -173, -169)
 [node name="Head" type="Bone2D" parent="SkeletonScaled/Skeleton2D/Root/BottomSpine/TopSpine"]
 position = Vector2(-22, -32)
 rotation = 0.116167
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, -22, -32)
 auto_calculate_length_and_angle = false
 length = 110.654
@@ -551,6 +550,7 @@ bone_angle = 18.947
 [node name="LegL" type="Bone2D" parent="SkeletonScaled/Skeleton2D/Root"]
 position = Vector2(-13, -32)
 rotation = 0.317981
+scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, -13, -32)
 auto_calculate_length_and_angle = false
 length = 224.638
@@ -559,7 +559,6 @@ bone_angle = -246.316
 [node name="LegR" type="Bone2D" parent="SkeletonScaled/Skeleton2D/Root"]
 position = Vector2(-1, -31)
 rotation = -0.632979
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, -1, -31)
 auto_calculate_length_and_angle = false
 length = 231.368

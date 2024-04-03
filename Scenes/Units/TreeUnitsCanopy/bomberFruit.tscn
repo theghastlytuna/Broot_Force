@@ -1,11 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://dcfycayg8y1hf"]
+[gd_scene load_steps=17 format=3 uid="uid://dcfycayg8y1hf"]
 
 [ext_resource type="Script" path="res://Scripts/Towers/Tower Scripts/ThornWall.gd" id="1_bqnyd"]
 [ext_resource type="Script" path="res://Scripts/Towers/Attack Scripts/BombfruitAttack.gd" id="3_0kxpf"]
-[ext_resource type="PackedScene" uid="uid://daadsxgrjomlf" path="res://Scenes/Units/TreeUnitsCanopy/bomberCloud.tscn" id="4_3n000"]
+[ext_resource type="PackedScene" uid="uid://kchkish2eydc" path="res://Scenes/Units/TreeUnitsCanopy/bomberCloud.tscn" id="4_3n000"]
 [ext_resource type="Texture2D" uid="uid://c05wm8dm7byej" path="res://Art Assets/Textures/FlowerStem.png" id="4_fy32x"]
 [ext_resource type="Texture2D" uid="uid://d30er8toa543j" path="res://Art Assets/Textures/BasicStem.png" id="4_x48wa"]
 [ext_resource type="Texture2D" uid="uid://db738cv3vv4w7" path="res://Art Assets/Textures/Bulb.png" id="5_yq4s1"]
+[ext_resource type="PackedScene" uid="uid://sln23xek132g" path="res://Scenes/Units/TreeUnitsCanopy/fruitBomb.tscn" id="6_tbd8s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yvunn"]
 
@@ -13,7 +14,7 @@
 
 [sub_resource type="Animation" id="Animation_v24f5"]
 resource_name = "Attack"
-length = 1.2
+length = 6.0
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -22,10 +23,10 @@ tracks/0/path = NodePath("Skeleton2D/Spine1:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.3, 0.6, 0.7, 0.9, 1.2),
+"times": PackedFloat32Array(0, 0.1, 0.6, 0.7, 0.9, 1.2, 6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [-0.426644, -0.800523, -0.9123, -0.187987, -0.0562921, -0.122571, -0.426644]
+"values": [-0.800523, -0.9123, -0.187987, -0.0562921, -0.122571, -0.426644, -0.800523]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -34,10 +35,10 @@ tracks/1/path = NodePath("Skeleton2D/Spine1/Spine2:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.3, 0.6, 0.7, 0.9, 1.2),
+"times": PackedFloat32Array(0, 0.1, 0.6, 0.7, 0.9, 1.2, 6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [1.08647, 1.8677, 2.13712, 0.48052, 0.143379, 0.304663, 1.08647]
+"values": [1.8677, 2.13712, 0.48052, 0.143379, 0.304663, 1.08647, 1.8677]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -46,10 +47,10 @@ tracks/2/path = NodePath("Skeleton2D/Spine1/Spine2/Spine3:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.3, 0.6, 0.7, 0.9, 1.2),
+"times": PackedFloat32Array(0, 0.1, 0.6, 0.7, 0.9, 1.2, 6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [-0.525294, -0.706482, -0.777152, -0.272654, -0.103551, -0.175435, -0.525294]
+"values": [-0.706482, -0.777152, -0.272654, -0.103551, -0.175435, -0.525294, -0.706482]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -58,10 +59,10 @@ tracks/3/path = NodePath("Skeleton2D/Spine1/Spine2/Spine3/Head:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.3, 0.6, 0.7, 1.2),
+"times": PackedFloat32Array(0, 0.1, 0.6, 0.7, 1.2, 6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [-0.179083, -0.452741, -0.517097, -0.0787786, -0.00133959, -0.179083]
+"values": [-0.452741, -0.517097, -0.0787786, -0.00133959, -0.179083, -0.452741]
 }
 
 [sub_resource type="Animation" id="Animation_kw5my"]
@@ -295,18 +296,22 @@ health = 100000.0
 hittable = false
 cost = 16
 
-[node name="Attack" type="Node2D" parent="." node_paths=PackedStringArray("poisonNode")]
+[node name="Attack" type="Node2D" parent="." node_paths=PackedStringArray("fruitBomb", "poisonCloud")]
 script = ExtResource("3_0kxpf")
-poisonNode = NodePath("../BomberCloud")
-attackDamage = 16.0
-timePerAttack = 6.0
+initialDamage = 16.0
+poisonDamage = 3.0
+fruitBomb = NodePath("../FruitBomb")
+poisonCloud = NodePath("../BomberCloud")
+attackDamage = 0.0
+timeToAttack = 0.7
+timeAfterAttack = 5.3
 groupToAttack = "EnemyUnits"
 
 [node name="AttackArea" type="Area2D" parent="."]
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
-position = Vector2(0, 40)
+position = Vector2(0, 39)
 scale = Vector2(4, 18)
 shape = SubResource("RectangleShape2D_yvunn")
 
@@ -315,12 +320,8 @@ position = Vector2(0, -70)
 scale = Vector2(4, 7)
 shape = SubResource("RectangleShape2D_cj6o5")
 
-[node name="BomberCloud" parent="." instance=ExtResource("4_3n000")]
-position = Vector2(0, 180)
-
 [node name="SkeletonHolder" type="Node2D" parent="."]
 position = Vector2(0, -139)
-scale = Vector2(1e-05, 1e-05)
 
 [node name="Parts" type="Node2D" parent="SkeletonHolder"]
 
@@ -366,10 +367,11 @@ uv = PackedVector2Array(88, 88, 88, 472, 408, 472, 424, 88)
 bones = ["Spine1", PackedFloat32Array(0, 0, 0, 0), "Spine1/Spine2", PackedFloat32Array(0, 0, 0, 0), "Spine1/Spine2/Spine3", PackedFloat32Array(0, 0, 0, 0), "Spine1/Spine2/Spine3/Head", PackedFloat32Array(1, 1, 1, 1)]
 
 [node name="Skeleton2D" type="Skeleton2D" parent="SkeletonHolder"]
+visible = false
 
 [node name="Spine1" type="Bone2D" parent="SkeletonHolder/Skeleton2D"]
 rotation = -0.800523
-scale = Vector2(1, 1)
+scale = Vector2(0.999999, 0.999999)
 rest = Transform2D(1, 0, 0, 1, 0, 0)
 
 [node name="Spine2" type="Bone2D" parent="SkeletonHolder/Skeleton2D/Spine1"]
@@ -381,12 +383,13 @@ rest = Transform2D(1, 0, 0, 1, 0, 43)
 [node name="Spine3" type="Bone2D" parent="SkeletonHolder/Skeleton2D/Spine1/Spine2"]
 position = Vector2(0, 29)
 rotation = -0.706482
+scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 0, 29)
 
 [node name="Head" type="Bone2D" parent="SkeletonHolder/Skeleton2D/Spine1/Spine2/Spine3"]
 position = Vector2(0, 26)
 rotation = -0.452741
-scale = Vector2(0.999999, 0.999999)
+scale = Vector2(0.999998, 0.999998)
 rest = Transform2D(1, 0, 0, 1, 0, 26)
 auto_calculate_length_and_angle = false
 length = 42.922
@@ -403,10 +406,39 @@ libraries = {
 "": SubResource("AnimationLibrary_s5dv5")
 }
 
+[node name="fruitBombStart" type="Node2D" parent="."]
+position = Vector2(0, -5)
+
+[node name="fruitBombTarget" type="Node2D" parent="."]
+position = Vector2(0, 221)
+
+[node name="FruitBomb" parent="." node_paths=PackedStringArray("startingNode", "targetNode") instance=ExtResource("6_tbd8s")]
+position = Vector2(127, 35)
+startingNode = NodePath("../fruitBombStart")
+targetNode = NodePath("../fruitBombTarget")
+
+[node name="BomberCloud" parent="." instance=ExtResource("4_3n000")]
+position = Vector2(0, 219)
+
+[node name="BombAttackArea" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BombAttackArea"]
+position = Vector2(0, 149)
+scale = Vector2(4, 7)
+shape = SubResource("RectangleShape2D_yvunn")
+
 [connection signal="onDie" from="." to="SkeletonHolder/AnimationPlayer" method="play" binds= ["Die"]]
 [connection signal="ready" from="." to="SkeletonHolder/AnimationPlayer" method="play" binds= ["Idle"]]
 [connection signal="ready" from="." to="Grow" method="play" binds= ["Grow"]]
+[connection signal="AttackedEnemy" from="Attack" to="FruitBomb" method="reset"]
 [connection signal="StartedAttacking" from="Attack" to="SkeletonHolder/AnimationPlayer" method="play" binds= ["Attack"]]
 [connection signal="StoppedAttacking" from="Attack" to="SkeletonHolder/AnimationPlayer" method="play" binds= ["Idle"]]
 [connection signal="body_entered" from="AttackArea" to="Attack" method="_on_attack_area_body_entered"]
 [connection signal="body_exited" from="AttackArea" to="Attack" method="_on_attack_area_body_exited"]
+[connection signal="BombDetonated" from="FruitBomb" to="BomberCloud" method="startCloud"]
+[connection signal="body_entered" from="BombAttackArea" to="FruitBomb/Attack" method="_on_attack_area_body_entered"]
+[connection signal="body_exited" from="BombAttackArea" to="FruitBomb/Attack" method="_on_attack_area_body_exited"]
+
+[editable path="FruitBomb"]
+[editable path="BomberCloud"]

@@ -304,7 +304,8 @@ moveSpeed = -100.0
 position = Vector2(0, -57.6581)
 script = ExtResource("3_qbfl6")
 attackDamage = 16.0
-timePerAttack = 2.0
+timeToAttack = 0.8
+timeAfterAttack = 0.5
 groupToAttack = "EnemyUnits"
 
 [node name="AttackArea" type="Area2D" parent="."]
@@ -403,6 +404,7 @@ bone_angle = -167.0
 [node name="LegFT" type="Bone2D" parent="SkeletonHolderScaled/Skeleton2D/Root/BackSpine/FrontSpine"]
 position = Vector2(-9, 20)
 rotation = 0.0506175
+scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, -9, 20)
 auto_calculate_length_and_angle = false
 length = 338.4
@@ -411,6 +413,7 @@ bone_angle = 99.473
 [node name="LegFB" type="Bone2D" parent="SkeletonHolderScaled/Skeleton2D/Root/BackSpine/FrontSpine"]
 position = Vector2(1, 23)
 rotation = -0.0472179
+scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 1, 23)
 auto_calculate_length_and_angle = false
 length = 320.275
