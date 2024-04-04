@@ -545,7 +545,6 @@ position = Vector2(0, 1)
 
 [node name="Spine1" type="Bone2D" parent="Holder/Skeleton2D"]
 rotation = -0.44833
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 0, 0)
 
 [node name="Spine2" type="Bone2D" parent="Holder/Skeleton2D/Spine1"]
