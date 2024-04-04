@@ -36,6 +36,7 @@ const music: AudioStream =  preload("res://Sounds/Music/KiloWatts - Gollum Finge
 @export var rootPointSaveArcLength : float = 200
 @export_category("Root Phase Variables")
 @export var rootPhaseTimeout : float
+@export var timerDisplay : Label
 @export_category("Root tutorial")
 @export var rootPositionOverride : Vector2 = Vector2.ZERO
 @export var distanceOfAffect :float #the distnace from the position override where the root will start moving towards the override position
@@ -84,7 +85,9 @@ func setStopMoving(b : bool):
 func _process(delta: float) -> void:
 	if stopMoving:
 		return
-		
+	
+	timerDisplay.text = str(floor($Timer.time_left))
+	
 	wallNode.global_position.y = global_position.y
 	#spawn an object every spawnInterval pixels, if you go back up, it will not trigger
 	if global_position.y > lastSpawnedDepth + spawnInterval:
