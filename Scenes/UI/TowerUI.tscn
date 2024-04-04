@@ -1,5 +1,6 @@
-[gd_scene load_steps=17 format=3 uid="uid://wxbanrg0ocrg"]
+[gd_scene load_steps=19 format=3 uid="uid://wxbanrg0ocrg"]
 
+[ext_resource type="Theme" uid="uid://cijo74ih8dhqb" path="res://Art Assets/Textures/UI/BrootTheme.tres" id="1_0oc0g"]
 [ext_resource type="Script" path="res://Scenes/UI/TowerUI.gd" id="1_0u6yw"]
 [ext_resource type="PackedScene" uid="uid://dxa7recdeio70" path="res://Scenes/UI/Text.tscn" id="1_cgxx0"]
 [ext_resource type="PackedScene" uid="uid://n1mg5sojwgry" path="res://Scenes/UI/Button.tscn" id="1_djtw0"]
@@ -13,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://cdiyjm4ro371c" path="res://Scenes/Units/TreeUnitsCanopy/sporeSprayer.tscn" id="8_l7iu2"]
 [ext_resource type="Script" path="res://Scenes/UI/UpgradeUI.gd" id="11_vrbit"]
 [ext_resource type="PackedScene" uid="uid://ynk4kdrvxbod" path="res://Scenes/UI/TowerInfo.tscn" id="13_2xllf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s8qkn"]
 
 [sub_resource type="Animation" id="Animation_dmfn2"]
 resource_name = "Hide"
@@ -65,6 +68,7 @@ anchor_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 2
 pivot_offset = Vector2(250, 324)
+theme = ExtResource("1_0oc0g")
 script = ExtResource("1_gua7v")
 
 [node name="TabContainer" type="TabContainer" parent="Panel"]
@@ -75,6 +79,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 48
+theme_override_styles/panel = SubResource("StyleBoxEmpty_s8qkn")
 tab_alignment = 1
 current_tab = 1
 

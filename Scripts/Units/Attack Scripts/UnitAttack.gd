@@ -72,7 +72,7 @@ func _ready():
 	postAttackTimer.stop()
 	add_child(postAttackTimer)
 	
-	if timeToAttack <= 0.05 && timeAfterAttack <= 0:
+	if timeToAttack <= 0.05 && timeAfterAttack <= 0.05:
 		attackTimer.wait_time = 0.05
 		postAttackTimer.wait_time = 0.05
 	elif timeToAttack <= 0.05:

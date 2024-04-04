@@ -35,7 +35,7 @@ point_count = 2
 offsets = PackedFloat32Array(0.149254, 0.850746)
 colors = PackedColorArray(0.0885598, 0.0885599, 0.0885599, 1, 0.60933, 0.60933, 0.60933, 1)
 
-[node name="CenterContainer" type="CenterContainer" node_paths=PackedStringArray("particles", "finale", "wiggleTimer")]
+[node name="CenterContainer" type="CenterContainer"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -43,6 +43,11 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="." node_paths=PackedStringArray("particles", "finale", "wiggleTimer")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 mouse_filter = 2
 use_top_left = true
 script = ExtResource("1_wsd3v")
@@ -51,49 +56,49 @@ finale = NodePath("Finale")
 wiggleTimer = NodePath("Timer")
 maxToWiggle = Vector2(10, 10)
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="PanelContainer"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CenterContainer/PanelContainer"]
 libraries = {
 "": SubResource("AnimationLibrary_5uiwq")
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer"]
 layout_mode = 2
 mouse_filter = 2
 alignment = 1
 
-[node name="Label" parent="PanelContainer/VBoxContainer" instance=ExtResource("2_x8lbq")]
+[node name="Label" parent="CenterContainer/PanelContainer/VBoxContainer" instance=ExtResource("2_x8lbq")]
 layout_mode = 2
 text = "OBSTICLE_HIT"
 horizontal_alignment = 1
 
-[node name="Label2" parent="PanelContainer/VBoxContainer" instance=ExtResource("2_x8lbq")]
+[node name="Label2" parent="CenterContainer/PanelContainer/VBoxContainer" instance=ExtResource("2_x8lbq")]
 layout_mode = 2
 text = "OBSTICLE_INSTRUCTIONS"
 horizontal_alignment = 1
 
-[node name="Label3" parent="PanelContainer/VBoxContainer" instance=ExtResource("2_x8lbq")]
+[node name="Label3" parent="CenterContainer/PanelContainer/VBoxContainer" instance=ExtResource("2_x8lbq")]
 layout_mode = 2
 text = "OBSTICLE_HIT_LEFT"
 horizontal_alignment = 1
 
-[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/VBoxContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="TextureButton" type="TextureButton" parent="PanelContainer/VBoxContainer/CenterContainer"]
+[node name="TextureButton" type="TextureButton" parent="CenterContainer/PanelContainer/VBoxContainer/CenterContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture_normal = ExtResource("1_565lx")
 stretch_mode = 4
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="PanelContainer/VBoxContainer/CenterContainer/TextureButton"]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="CenterContainer/PanelContainer/VBoxContainer/CenterContainer/TextureButton"]
 position = Vector2(64, 95.8)
 emitting = false
 amount = 4
@@ -118,10 +123,10 @@ color_initial_ramp = SubResource("Gradient_8sr3u")
 hue_variation_min = -0.59
 hue_variation_max = 1.0
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="CenterContainer"]
 wait_time = 0.05
 
-[node name="Finale" type="CPUParticles2D" parent="."]
+[node name="Finale" type="CPUParticles2D" parent="CenterContainer"]
 position = Vector2(0, 72.8)
 emitting = false
 one_shot = true
@@ -146,5 +151,5 @@ color_initial_ramp = SubResource("Gradient_8sr3u")
 hue_variation_min = -0.59
 hue_variation_max = 1.0
 
-[connection signal="pressed" from="PanelContainer/VBoxContainer/CenterContainer/TextureButton" to="." method="pressed"]
-[connection signal="timeout" from="Timer" to="." method="wiggleTimerTimeout"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/CenterContainer/TextureButton" to="CenterContainer" method="pressed"]
+[connection signal="timeout" from="CenterContainer/Timer" to="CenterContainer" method="wiggleTimerTimeout"]

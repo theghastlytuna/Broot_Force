@@ -8,8 +8,8 @@ extends Control
 var followingObject : Node2D
 
 func _ready() -> void:
-	if GameManager.growthRounds == 0:
-		startTutorial()
+	#if GameManager.growthRounds == 0:
+	EventManager.onGrowthPhaseStart.connect(startTutorial)
 
 func setTutorialText(s : String, v : Vector2):
 	tutorialText.text = s
@@ -24,14 +24,24 @@ func followObject(node : Node, offset : Vector2 = Vector2.ZERO):
 	tutorialContainer.global_position = node.global_position + offset
 
 func startTutorial():
-	setTutorialText("OVERWORLD_TUTORIAL_1",Vector2.ZERO)
-	followObject(exampleSprout,Vector2(0,-tutorialText.size.y/2))
-	EventManager.onGroundClicked.connect(clickedSprout)
-	EventManager.onCanopyClicked.connect(clickedSprout)
+	if GameManager.growthRounds == 0:
+		setTutorialText("OVERWORLD_TUTORIAL_1",Vector2.ZERO)
+		followObject(exampleSprout,Vector2(0,-tutorialText.size.y/2))
+		EventManager.onGroundClicked.connect(clickedSprout)
+		EventManager.onCanopyClicked.connect(clickedSprout)
+		return
+	setTutorialText("",Vector2.ZERO)
 	
 	pass
 	
 func clickedSprout(arg1,arg2):
+	setTutorialText("OVERWORLD_TUTORIAL_2",Vector2.ZERO)
+	followObject(exampleSprout,Vector2(0,-tutorialText.size.y/2))
 	EventManager.onGroundClicked.disconnect(clickedSprout)
 	EventManager.onCanopyClicked.disconnect(clickedSprout)
+	EventManager.onPlacedTower.connect(startRound)
 	pass
+	
+func startRound():
+	setTutorialText("OVERWORLD_TUTORIAL_3",Vector2.ZERO)
+	followObject(startButton,Vector2((startButton.size.x/2) + (tutorialText.size.x/2) + 50,startButton.size.y/2))

@@ -69,6 +69,7 @@ func towerClicked(clickedType : Unit.TowerType):
 	setBuildButtonColor(Color.WEB_GREEN)
 	health.visible = true
 	type.visible = true
+	EventManager.onSelectedTowerToPlace.emit()
 	pass
 	
 func confirmClicked():
@@ -81,7 +82,10 @@ func confirmClicked():
 		towerIndex = -1
 		return
 	
-	if not (GameManager.spendWater(GameManager.towerCost(towerIndex))) and not freeTowers:
+	var waterToSpend = GameManager.towerCost(towerIndex)
+	if freeTowers:
+		waterToSpend = 0
+	if not (GameManager.spendWater(waterToSpend)):
 		confirm.text = "NOT_ENOUGH_MONEY"
 		setBuildButtonColor(Color.RED)
 		return
@@ -90,6 +94,7 @@ func confirmClicked():
 	showing = false
 	nodeToPlaceTower = null
 	towerIndex = -1
+	EventManager.onPlacedTower.emit()
 	
 func setBuildButtonColor(c : Color):
 	confirm.add_theme_color_override("font_color",c)

@@ -1,15 +1,17 @@
 extends Node
 
 var depthsCollected : Array[float]
-var totalWater : float = 0
-var currentRoundBudget : float = 0:
+#every round, waterToAddPerRound adds the rootPhaseStats.waterPerRound to itself, then we add waterToAddPerRound to waterBank to get the total amount of water the player can spend that round
+#this is done in world.gd in the goToOverworld function
+var waterBank : float = 0
+var waterToAddPerRound : float = 0:
 	get:
-		Debug.Log("GET GM TOTAL_WATER:",totalWater)
-		return totalWater
+		Debug.Log("GET GM TOTAL_WATER:",waterToAddPerRound)
+		return waterToAddPerRound
 	set(value):
 		Debug.Log("SET GM TOTAL_WATER:",value)
 		EventManager.onWaterChanged.emit(value)
-		totalWater = value
+		waterToAddPerRound = value
 
 var availableUnits : Array[int] = [0,0,0,0,0,0]
 var placedTowers : Dictionary #number tower slot key, path resource
@@ -47,7 +49,7 @@ var currentRootRound : int = 0
 
 var desiredResolution : Vector2
 
-var usingMobile : bool = false
+var usingMobile : bool = true
 
 ##This holds how many upgrades have been purchased by the player, don't change these values
 var rootUpgrades : Dictionary = {
@@ -130,15 +132,6 @@ func upgradeRoot(upgrade : String):
 func getUpgradeAmount(upgrade : String):
 	return rootUpgrades[upgrade] * valuesPerUpgrade[upgrade]
 
-func overworldNewRound():
-	Debug.LogSpace(rootPhaseStats.waterPerRound,totalWater)
-	var outputWater = rootPhaseStats.waterPerRound
-	totalWater += rootPhaseStats.waterPerRound
-	rootPhaseStats.waterPerRound = 0
-	currentRoundBudget = totalWater
-	Debug.Log("Total water: ", totalWater)
-	return outputWater
-
 func towerCost(type : Unit.TowerType):
 	#THORN_WALL,
 	#FLYTRAP_CLUSTER,
@@ -158,11 +151,11 @@ func towerHP(type : Unit.TowerType):
 
 func spendWater(water : int):
 	#Only spend water
-	if water > currentRoundBudget:
+	if water > waterBank:
 		Debug.Log("Not enough money, bozo!!")
 		return false
 	else:
-		Debug.Log("Budget before spending: ", currentRoundBudget)
-		currentRoundBudget -= water
-		Debug.Log("Budget after spending: ", currentRoundBudget)
+		Debug.Log("bank before spending: ", waterBank)
+		waterBank -= water
+		Debug.Log("bank after spending: ", waterBank)
 		return true

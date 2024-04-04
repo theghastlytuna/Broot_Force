@@ -11,7 +11,7 @@ func showResults():
 	var totalUnitsCollected : int
 	for unit in GameManager.availableUnits:
 		totalUnitsCollected+=unit
-	$PanelContainer/VBoxContainer/Label2.text = LocalizationManager.tr("ROOT_RESULTS").format({"Water":(GameManager.rootPhaseStats.waterPerRound),"Unit":(totalUnitsCollected)})
+	$PanelContainer/VBoxContainer/Label2.text = LocalizationManager.tr("ROOT_RESULTS").format({"Water":(GameManager.rootPhaseStats.waterToAddPerRound),"Unit":(totalUnitsCollected)})
 	
 	EventManager.rootStopMoving.emit()	
 	$PanelContainer.visible = true

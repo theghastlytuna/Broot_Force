@@ -4,7 +4,7 @@ extends Control
 
 func _ready() -> void:
 	EventManager.onWaterChanged.connect(setText)
-	setText(GameManager.totalWater)
+	setText(GameManager.waterBank)
 
 func setText(i):
 	Debug.Log("d",i)

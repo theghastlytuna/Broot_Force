@@ -16,7 +16,7 @@ var originalPosition : Vector2
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$PanelContainer.visible = false
-	originalPosition = global_position	
+	originalPosition = position	
 	EventManager.onShowRockUI.connect(showUI)
 	SoundManager.set_default_ambient_sound_bus("Ambient")
 	SoundManager.set_default_sound_bus("Effects")
@@ -65,10 +65,10 @@ func wiggle():
 	pass
 	
 func wiggleTimerTimeout():
-	global_position = originalPosition + Vector2(randf_range(-1,1)*maxToWiggle.x,randf_range(-1,1)*maxToWiggle.y)
+	position = originalPosition + Vector2(randf_range(-1,1)*maxToWiggle.x,randf_range(-1,1)*maxToWiggle.y)
 	timesWiggled += 1
 	if timesWiggled >= timesToWiggle:
-		global_position = originalPosition
+		position = originalPosition
 		wiggleTimer.stop()
 		timesWiggled = 0
 	pass
