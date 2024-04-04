@@ -9,7 +9,7 @@ func _ready() -> void:
 	showOtherRoots()
 	EventManager.onRootPhaseStart.emit()
 	EventManager.onGrowthPhaseStart.connect(goToOverworld)
-	GameManager.rootPhaseStats.availableUnits.clear()
+	GameManager.rootPhaseStats.availableUnits = [0,0,0,0,0,0,0]
 	GameManager.setPortraitMode()
 	
 

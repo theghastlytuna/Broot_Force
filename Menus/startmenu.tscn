@@ -1,10 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://bekhboua6usq5"]
+[gd_scene load_steps=11 format=3 uid="uid://bekhboua6usq5"]
 
 [ext_resource type="Script" path="res://Menus/startmenu.gd" id="1_itp7l"]
 [ext_resource type="Texture2D" uid="uid://b7dedeltjfx4o" path="res://Art Assets/Textures/Poster_Image.png" id="2_0iflw"]
-[ext_resource type="Texture2D" uid="uid://cr1kf01q33b8e" path="res://Art Assets/Textures/Placeholder.png" id="2_2no1v"]
 [ext_resource type="Theme" uid="uid://cijo74ih8dhqb" path="res://Art Assets/Textures/UI/BrootTheme.tres" id="2_r6nwn"]
-
 [ext_resource type="Shader" path="res://Art Assets/Textures/gradient.gdshader" id="3_wbn1q"]
 [ext_resource type="PackedScene" uid="uid://n1mg5sojwgry" path="res://Scenes/UI/Button.tscn" id="5_du0bb"]
 [ext_resource type="Texture2D" uid="uid://cn5jh7mv45d8f" path="res://Art Assets/Textures/logo.png" id="5_iambq"]

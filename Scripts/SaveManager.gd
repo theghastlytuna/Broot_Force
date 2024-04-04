@@ -54,7 +54,7 @@ func loadData():
 			GameManager.rootUpgrades = {"SPEED": 0,"TURNING": 0,"DURATION": 0,"STRENGTH": 0,"RESOURCE": 0}
 	else:
 		saveData = GameData.new()
-		saveData.availableUnits = []
+		saveData.availableUnits = [0, 0, 0, 0, 0, 0, 0]
 		saveData.waterToAddPerRound = 0
 		saveData.waterBank = 0
 		saveData.depthsCollected = []
