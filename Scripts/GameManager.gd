@@ -31,6 +31,8 @@ var towerList : Array = [
 	
 ]
 
+var ySeed : int
+
 #THORN_WALL,
 	#FLYTRAP_CLUSTER,
 	#TOXIC_BLOOM,

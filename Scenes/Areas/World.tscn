@@ -65,6 +65,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 100, 1500)
 
 [node name="BackgroundManager" type="Node2D" parent="." node_paths=PackedStringArray("playerCam")]
+modulate = Color(0.619608, 0.619608, 0.619608, 1)
 script = ExtResource("2_5ev5r")
 layerHeight = 3000.0
 playerCam = NodePath("../Camera2D")

@@ -11,4 +11,5 @@ class_name GameData
 @export var growthRounds : int
 @export var rootRounds : int
 @export var rootUpgrades : Dictionary
+@export var ySeed : int
 

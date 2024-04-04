@@ -12,6 +12,7 @@ func _process(delta):
 	pass
 
 func _on_new_game():
+	GameManager.ySeed = randi()
 	SaveManager.resetData()
 	get_tree().change_scene_to_file("res://Scenes/Areas/World.tscn")
 

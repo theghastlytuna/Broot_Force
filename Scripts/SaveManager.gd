@@ -27,6 +27,7 @@ func saveGame():
 	saveData.growthRounds = GameManager.growthRounds
 	saveData.rootRounds = GameManager.currentRootRound
 	saveData.rootUpgrades = GameManager.rootUpgrades
+	saveData.ySeed = GameManager.ySeed
 	ResourceSaver.save(saveData,"user://Data.tres")
 
 func startGame() -> void:
@@ -51,6 +52,7 @@ func loadData():
 		GameManager.growthRounds = saveData.growthRounds
 		GameManager.currentRootRound = saveData.rootRounds 
 		GameManager.rootUpgrades = saveData.rootUpgrades
+		GameManager.ySeed = saveData.ySeed
 		if GameManager.rootUpgrades.size() == 0:
 			GameManager.rootUpgrades = {"SPEED": 0,"TURNING": 0,"DURATION": 0,"STRENGTH": 0,"RESOURCE": 0}
 		if GameManager.rootUpgrades.has("Speed"):
@@ -68,5 +70,6 @@ func loadData():
 		saveData.growthRounds = 0
 		saveData.rootRounds = 0
 		saveData.rootUpgrades = {"SPEED": 0,"TURNING": 0,"DURATION": 0,"STRENGTH": 0,"RESOURCE": 0}
+		saveData.ySeed = 0
 		saveGame()
 	pass

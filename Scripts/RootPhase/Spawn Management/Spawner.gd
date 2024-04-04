@@ -20,7 +20,7 @@ var spawnInterval : float
 
 func _ready():
 	noiseY = FastNoiseLite.new()
-	noiseY.seed = 0
+	noiseY.seed = GameManager.ySeed
 	noiseY.noise_type = FastNoiseLite.TYPE_VALUE
 	noiseY.fractal_octaves = 4
 	
