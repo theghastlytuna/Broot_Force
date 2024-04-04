@@ -57,8 +57,8 @@ func spawnedRock(r : Node2D):
 func spawnedWater(w : Node2D):
 	#collect water to get extra resources!
 	setTutorialText("WORLD_TUTORIAL_3",Vector2.ZERO)
-	root.rootPositionOverride = w.global_position
-	root.distanceOfAffect = root.global_position.distance_to(w.global_position)
+	#root.rootPositionOverride = w.global_position
+	#root.distanceOfAffect = root.global_position.distance_to(w.global_position)
 	followObject(w,Vector2(0,-tutorialText.size.y))
 	EventManager.onSpawnedWater.disconnect(spawnedWater)
 	EventManager.onHitWater.connect(collectedWater)
@@ -67,20 +67,20 @@ func spawnedWater(w : Node2D):
 func collectedWater():
 	EventManager.onHitWater.disconnect(collectedWater)
 	EventManager.onSpawnedUnit.connect(spawnUnit)
-	root.rootPositionOverride = Vector2.ZERO
-	root.distanceOfAffect = 0
+	#root.rootPositionOverride = Vector2.ZERO
+	#root.distanceOfAffect = 0
 	
 func spawnUnit(u : Node2D):
 	EventManager.onSpawnedUnit.disconnect(spawnUnit)
 	EventManager.onHitUnit.connect(collectedUnit)
 	setTutorialText("WORLD_TUTORIAL_4",Vector2.ZERO)
-	root.rootPositionOverride = u.global_position
-	root.distanceOfAffect = 1000
+	#root.rootPositionOverride = u.global_position
+	#root.distanceOfAffect = 1000
 	followObject(u,Vector2(0,-tutorialText.size.y))
 	pass
 
 func collectedUnit():
 	EventManager.onHitUnit.disconnect(collectedUnit)
-	root.rootPositionOverride = Vector2.ZERO
-	root.distanceOfAffect = 0
+	#root.rootPositionOverride = Vector2.ZERO
+	#root.distanceOfAffect = 0
 	pass

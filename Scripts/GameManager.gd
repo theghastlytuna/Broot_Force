@@ -104,24 +104,28 @@ func _ready() -> void:#in landscape mode
 	desiredResolution = get_viewport().size
 
 func setLandscapeMode():
+	DisplayServer.screen_set_orientation(0)
 	if not usingMobile:
 		return
 	var screenSize = DisplayServer.screen_get_size()
 	var newRes = Vector2i(desiredResolution.x,desiredResolution.y)
-	get_viewport().size = newRes
+	#get_viewport().size = newRes
 	#DisplayServer.window_set_size(newRes)
-	#get_viewport().get_window().content_scale_factor = 2.5
-	DisplayServer.screen_set_orientation(0)
+	
+	get_viewport().get_window().content_scale_factor = 1
+	
 	
 func setPortraitMode():
+	DisplayServer.screen_set_orientation(1)
 	if not usingMobile:
 		return
 	var screenSize = DisplayServer.screen_get_size()
 	var newRes = Vector2i(desiredResolution.y,desiredResolution.x)
-	get_viewport().size = newRes
+	
+	#get_viewport().size = newRes
 	#DisplayServer.window_set_size(newRes)
-	#get_viewport().get_window().content_scale_factor = 2.5
-	DisplayServer.screen_set_orientation(1)
+	get_viewport().get_window().content_scale_factor = 2
+	
 
 func upgradeRoot(upgrade : String):
 	spendWater(costsPerUpgrade[upgrade])

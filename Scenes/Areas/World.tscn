@@ -22,7 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://dym6oonfw5m5d" path="res://Scenes/RootInteractables/UnitRemains/mammoth_remains.tscn" id="12_j0mwa"]
 [ext_resource type="PackedScene" uid="uid://dsyj27gjp5q35" path="res://Scenes/UI/RootCollectionResults.tscn" id="13_y0ym3"]
 [ext_resource type="Texture2D" uid="uid://c05hmgw7ymjw0" path="res://Art Assets/Textures/main_BG.png" id="20_s0oag"]
-[ext_resource type="PackedScene" path="res://Scenes/UI/win_game.tscn" id="22_pyxfx"]
+[ext_resource type="PackedScene" uid="uid://qa0xdbklqhm" path="res://Scenes/UI/win_game.tscn" id="22_pyxfx"]
 [ext_resource type="Script" path="res://Scenes/Areas/WorldTutorial.gd" id="23_tu0jm"]
 [ext_resource type="PackedScene" uid="uid://dxa7recdeio70" path="res://Scenes/UI/Text.tscn" id="24_xj83t"]
 
