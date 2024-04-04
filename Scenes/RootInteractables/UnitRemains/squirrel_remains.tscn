@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/RootPhase/Interactable Scripts/remainsInteractable.gd" id="1_70yla"]
 [ext_resource type="Script" path="res://Scenes/RootInteractables/Resources/UnitDepthHolder.gd" id="1_sov7f"]
-[ext_resource type="Texture2D" uid="uid://d165oon1qnfat" path="res://Sprites/UnitSkeletons/squirrel.png" id="2_s0mdq"]
+[ext_resource type="Texture2D" uid="uid://cdduckl4pn80t" path="res://Sprites/UnitSkeletons/UG_squirrel.png" id="3_b1i1t"]
 
 [node name="SquirrelRemains" type="Node2D" groups=["UnitRemains"]]
 script = ExtResource("1_sov7f")
@@ -12,7 +12,7 @@ script = ExtResource("1_70yla")
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D"]
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("2_s0mdq")
+texture = ExtResource("3_b1i1t")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
 polygon = PackedVector2Array(15, 26, 1, 8, -2, -8, -16, -8, -23, -2, -35, -1, -36, 19, -30, 19, -30, 30, -9, 30, -1, 51, -3, 58, 3, 62, 8, 53, 12, 36, 37, 21, 34, 15)

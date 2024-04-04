@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3rmq871487g8"
-path="res://.godot/imported/water.png-db5a9cf832c12397728f0b5e207b3278.ctex"
+uid="uid://cdduckl4pn80t"
+path="res://.godot/imported/UG_squirrel.png-828fc7eb8359b981cc5766ca6cfd9efb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Collectables/water.png"
-dest_files=["res://.godot/imported/water.png-db5a9cf832c12397728f0b5e207b3278.ctex"]
+source_file="res://Sprites/UnitSkeletons/UG_squirrel.png"
+dest_files=["res://.godot/imported/UG_squirrel.png-828fc7eb8359b981cc5766ca6cfd9efb.ctex"]
 
 [params]
 

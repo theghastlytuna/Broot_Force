@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3rmq871487g8"
-path="res://.godot/imported/water.png-db5a9cf832c12397728f0b5e207b3278.ctex"
+uid="uid://d1xfwf7e4alir"
+path="res://.godot/imported/UG_trex.png-1f9ee932430987a2017c0fb2d5ab72f8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Collectables/water.png"
-dest_files=["res://.godot/imported/water.png-db5a9cf832c12397728f0b5e207b3278.ctex"]
+source_file="res://Sprites/UnitSkeletons/UG_trex.png"
+dest_files=["res://.godot/imported/UG_trex.png-1f9ee932430987a2017c0fb2d5ab72f8.ctex"]
 
 [params]
 

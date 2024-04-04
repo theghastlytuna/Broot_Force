@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3rmq871487g8"
-path="res://.godot/imported/water.png-db5a9cf832c12397728f0b5e207b3278.ctex"
+uid="uid://kitx4y78ady3"
+path="res://.godot/imported/UG_mammoth.png-289d7a54e5d77a6983d49329a0f587b1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Collectables/water.png"
-dest_files=["res://.godot/imported/water.png-db5a9cf832c12397728f0b5e207b3278.ctex"]
+source_file="res://Sprites/UnitSkeletons/UG_mammoth.png"
+dest_files=["res://.godot/imported/UG_mammoth.png-289d7a54e5d77a6983d49329a0f587b1.ctex"]
 
 [params]
 

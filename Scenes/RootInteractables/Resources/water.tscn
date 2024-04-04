@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://o4ow5qdj2dwa"]
 
-[ext_resource type="Texture2D" uid="uid://b3rmq871487g8" path="res://Sprites/Collectables/Water.png" id="1_462i3"]
 [ext_resource type="Script" path="res://Scripts/RootPhase/Interactable Scripts/waterInteractable.gd" id="1_l4ccs"]
 [ext_resource type="Script" path="res://Scenes/RootInteractables/Resources/UnitDepthHolder.gd" id="1_xn53j"]
+[ext_resource type="Texture2D" uid="uid://b3rmq871487g8" path="res://Sprites/Collectables/water.png" id="2_28wp6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oqbvq"]
 size = Vector2(85, 69)
@@ -12,12 +12,13 @@ script = ExtResource("1_xn53j")
 
 [node name="Water" type="Sprite2D" parent="."]
 scale = Vector2(0.333, 0.333)
-texture = ExtResource("1_462i3")
+texture = ExtResource("2_28wp6")
 
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource("1_l4ccs")
 waterPerLayer = Array[Vector2]([Vector2(3, 10), Vector2(12, 35), Vector2(39, 56), Vector2(60, 80)])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(2.5, 5.5)
+position = Vector2(2.5, 0)
+scale = Vector2(1.51151, 1.39938)
 shape = SubResource("RectangleShape2D_oqbvq")
