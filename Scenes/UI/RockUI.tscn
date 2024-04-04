@@ -74,16 +74,19 @@ alignment = 1
 
 [node name="Label" parent="CenterContainer/PanelContainer/VBoxContainer" instance=ExtResource("2_x8lbq")]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "OBSTICLE_HIT"
 horizontal_alignment = 1
 
 [node name="Label2" parent="CenterContainer/PanelContainer/VBoxContainer" instance=ExtResource("2_x8lbq")]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "OBSTICLE_INSTRUCTIONS"
 horizontal_alignment = 1
 
 [node name="Label3" parent="CenterContainer/PanelContainer/VBoxContainer" instance=ExtResource("2_x8lbq")]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "OBSTICLE_HIT_LEFT"
 horizontal_alignment = 1
 
@@ -93,7 +96,7 @@ mouse_filter = 2
 
 [node name="TextureButton" type="TextureButton" parent="CenterContainer/PanelContainer/VBoxContainer/CenterContainer"]
 texture_filter = 1
-custom_minimum_size = Vector2(128, 128)
+custom_minimum_size = Vector2(256, 256)
 layout_mode = 2
 texture_normal = ExtResource("1_565lx")
 stretch_mode = 4

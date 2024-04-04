@@ -34,7 +34,6 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1e-05, 1e-05)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 use_top_left = true
@@ -53,16 +52,18 @@ layout_mode = 2
 
 [node name="Label" parent="PanelContainer/VBoxContainer" instance=ExtResource("2_6c1od")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 64
 text = "TIME_UP"
 horizontal_alignment = 1
 
 [node name="Label2" parent="PanelContainer/VBoxContainer" instance=ExtResource("2_6c1od")]
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "ROOT_RESULTS"
 horizontal_alignment = 1
 
 [node name="Button" parent="PanelContainer/VBoxContainer" instance=ExtResource("3_141ya")]
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "GO_TO_GROWTH"

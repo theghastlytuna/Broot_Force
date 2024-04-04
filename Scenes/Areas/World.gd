@@ -9,6 +9,7 @@ func _ready() -> void:
 	showOtherRoots()
 	EventManager.onRootPhaseStart.emit()
 	EventManager.onGrowthPhaseStart.connect(goToOverworld)
+	GameManager.rootPhaseStats.availableUnits.clear()
 	GameManager.setPortraitMode()
 	
 
@@ -28,7 +29,7 @@ func goToOverworld():
 	GameManager.waterToAddPerRound += GameManager.rootPhaseStats.waterToAddPerRound
 	GameManager.waterBank += GameManager.waterToAddPerRound
 	GameManager.rootPhaseStats.waterToAddPerRound = 0
-	GameManager.rootPhaseStats.availableUnits.clear()
+	
 	
 	SaveManager.saveGame()
 	SaveManager.loadData()

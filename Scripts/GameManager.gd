@@ -107,7 +107,9 @@ func setLandscapeMode():
 	if not usingMobile:
 		return
 	var screenSize = DisplayServer.screen_get_size()
-	#get_viewport().size = Vector2(desiredResolution.x,desiredResolution.y)
+	var newRes = Vector2i(desiredResolution.x,desiredResolution.y)
+	get_viewport().size = newRes
+	DisplayServer.window_set_size(newRes)
 	#get_viewport().get_window().content_scale_factor = 2.5
 	DisplayServer.screen_set_orientation(0)
 	
@@ -115,7 +117,9 @@ func setPortraitMode():
 	if not usingMobile:
 		return
 	var screenSize = DisplayServer.screen_get_size()
-	#get_viewport().size = Vector2(desiredResolution.y,desiredResolution.x)
+	var newRes = Vector2i(desiredResolution.y,desiredResolution.x)
+	get_viewport().size = newRes
+	DisplayServer.window_set_size(newRes)
 	#get_viewport().get_window().content_scale_factor = 2.5
 	DisplayServer.screen_set_orientation(1)
 
