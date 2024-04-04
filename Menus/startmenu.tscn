@@ -97,7 +97,7 @@ anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -576.0
 offset_right = 576.0
-offset_bottom = 185.0
+offset_bottom = 271.0
 grow_horizontal = 2
 color = Color(0, 0, 0, 0.439216)
 
@@ -116,7 +116,24 @@ size_flags_horizontal = 4
 theme_override_constants/outline_size = 15
 theme_override_fonts/font = SubResource("SystemFont_orxkd")
 theme_override_font_sizes/font_size = 36
-text = "PLAY_GAME"
+text = "NEW_GAME"
+
+[node name="Button3" parent="Control/OuterMargin/VBoxContainer/Control/ColorRect" instance=ExtResource("5_du0bb")]
+custom_minimum_size = Vector2(300, 70)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -150.0
+offset_top = 97.0
+offset_right = 150.0
+offset_bottom = 174.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = SubResource("SystemFont_orxkd")
+theme_override_font_sizes/font_size = 36
+text = "CONTINUE_GAME"
 
 [node name="Button2" parent="Control/OuterMargin/VBoxContainer/Control/ColorRect" instance=ExtResource("5_du0bb")]
 custom_minimum_size = Vector2(300, 70)
@@ -139,5 +156,8 @@ theme_override_font_sizes/font_size = 36
 text = "SETTINGS"
 
 [connection signal="visibility_changed" from="Control/Options" to="Control/Options" method="_on_visibility_changed"]
-[connection signal="pressed" from="Control/OuterMargin/VBoxContainer/Control/ColorRect/Button" to="." method="_on_start_btn_pressed"]
+[connection signal="pressed" from="Control/OuterMargin/VBoxContainer/Control/ColorRect/Button" to="." method="_on_new_game"]
+[connection signal="pressed" from="Control/OuterMargin/VBoxContainer/Control/ColorRect/Button3" to="." method="_on_continue_game"]
 [connection signal="pressed" from="Control/OuterMargin/VBoxContainer/Control/ColorRect/Button2" to="." method="_on_options_btn_pressed"]
+
+[editable path="Control/Options"]

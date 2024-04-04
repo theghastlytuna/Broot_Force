@@ -2,13 +2,15 @@ extends Node
 
 var saveData : GameData
 var alwaysReset : bool = false
-
+var existingData : bool = false
 
 func resetData():
 	saveData = GameData.new()
 	saveGame()
+	existingData = false
 
 func saveGame():
+	existingData = true
 	if not saveData:
 		resetData()
 	var collectedUnits = get_tree().get_nodes_in_group("COLLECTED")
@@ -37,6 +39,7 @@ func startGame() -> void:
 	
 func loadData():
 	if FileAccess.file_exists("user://Data.tres"):
+		existingData = true
 		saveData = load("user://Data.tres")
 		GameManager.availableUnits = saveData.availableUnits
 		GameManager.waterToAddPerRound = saveData.waterToAddPerRound
@@ -53,6 +56,7 @@ func loadData():
 		if GameManager.rootUpgrades.has("Speed"):
 			GameManager.rootUpgrades = {"SPEED": 0,"TURNING": 0,"DURATION": 0,"STRENGTH": 0,"RESOURCE": 0}
 	else:
+		existingData = false
 		saveData = GameData.new()
 		saveData.availableUnits = [0, 0, 0, 0, 0, 0, 0]
 		saveData.waterToAddPerRound = 0

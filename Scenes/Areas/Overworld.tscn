@@ -404,7 +404,7 @@ rotation = -0.480974
 scale = Vector2(0.999998, 0.999998)
 
 [node name="UpperArmR" parent="EnemySpawner/Factories/PistolEnemy/Skeleton2D/Hip/Chest" index="2"]
-scale = Vector2(0.999998, 0.999998)
+scale = Vector2(0.999997, 0.999997)
 
 [node name="UpperLegL" parent="EnemySpawner/Factories/PistolEnemy/Skeleton2D/Hip" index="1"]
 rotation = 2.15324

@@ -11,8 +11,14 @@ func _ready():
 func _process(delta):
 	pass
 
-func _on_start_btn_pressed():
+func _on_new_game():
+	SaveManager.resetData()
 	get_tree().change_scene_to_file("res://Scenes/Areas/World.tscn")
+
+func _on_continue_game():
+	SaveManager.loadData()
+	if SaveManager.existingData:
+		get_tree().change_scene_to_file("res://Scenes/Areas/World.tscn")
 
 func _on_options_btn_pressed():
 	Debug.Log("a")
