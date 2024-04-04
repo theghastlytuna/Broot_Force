@@ -8,8 +8,8 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_taks7"]
 
 [node name="AllySpawning" type="PanelContainer"]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 130.0
+offset_bottom = 149.0
 theme = ExtResource("1_kueod")
 script = ExtResource("1_nc3ph")
 
@@ -18,7 +18,7 @@ layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
 modulate = Color(100, 100, 100, 1)
-custom_minimum_size = Vector2(128, 128)
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme = ExtResource("1_kueod")
 texture = ExtResource("2_230ld")
@@ -27,9 +27,11 @@ stretch_mode = 5
 
 [node name="Label" parent="VBoxContainer" instance=ExtResource("3_mkqo8")]
 layout_mode = 2
+theme_override_font_sizes/font_size = 12
 text = "[SQUIRREL]"
 horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_taks7")
+action_mode = 0
