@@ -4,6 +4,7 @@ extends "res://Scripts/RootPhase/Interactable Scripts/InteractableBehaviour.gd"
 
 func HitByRoot(area: Area2D):
 	GameManager.availableUnits[unitType] += 1
+	GameManager.rootPhaseStats.availableUnits[unitType] += 1
 	EventManager.onHitUnit.emit()
 	super(area)
 	

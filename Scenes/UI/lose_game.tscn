@@ -1,0 +1,78 @@
+[gd_scene load_steps=7 format=3 uid="uid://f8m3vbehjbk5"]
+
+[ext_resource type="Theme" uid="uid://cijo74ih8dhqb" path="res://Art Assets/Textures/UI/BrootTheme.tres" id="1_kyfwx"]
+[ext_resource type="Script" path="res://Scenes/UI/LoseGame.gd" id="2_yd57e"]
+[ext_resource type="PackedScene" uid="uid://dxa7recdeio70" path="res://Scenes/UI/Text.tscn" id="3_uhawe"]
+[ext_resource type="PackedScene" uid="uid://n1mg5sojwgry" path="res://Scenes/UI/Button.tscn" id="4_qdulb"]
+
+[sub_resource type="Animation" id="Animation_y2dxj"]
+resource_name = "Show"
+length = 0.2
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.2, 1.1), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5uiwq"]
+_data = {
+"Show": SubResource("Animation_y2dxj")
+}
+
+[node name="LoseGame" type="CenterContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_kyfwx")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+use_top_left = true
+script = ExtResource("2_yd57e")
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CenterContainer/PanelContainer"]
+libraries = {
+"": SubResource("AnimationLibrary_5uiwq")
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Label" parent="CenterContainer/PanelContainer/VBoxContainer" instance=ExtResource("3_uhawe")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "GAME_LOSE"
+horizontal_alignment = 1
+
+[node name="Button" parent="CenterContainer/PanelContainer/VBoxContainer" instance=ExtResource("4_qdulb")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 32
+text = "OK"
+
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/Button" to="CenterContainer" method="_on_button_pressed"]

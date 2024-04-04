@@ -9,6 +9,8 @@ func resetData():
 	saveGame()
 
 func saveGame():
+	if not saveData:
+		resetData()
 	var collectedUnits = get_tree().get_nodes_in_group("COLLECTED")
 	for n in collectedUnits:
 		saveData.depthsCollected.append(n.depth)

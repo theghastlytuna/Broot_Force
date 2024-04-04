@@ -10,7 +10,7 @@ func _ready() -> void:
 	EventManager.onRootPhaseStart.connect(shouldStartTutorial)
 	
 func shouldStartTutorial():
-	if GameManager.currentRootRound == 0 and GameManager.pastRoots.size() == 0:
+	if GameManager.currentRootRound == 0 :
 		startTutorial()
 		return
 	setTutorialText("",Vector2.ZERO)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://brh7kxvkvq02q"]
+[gd_scene load_steps=34 format=3 uid="uid://brh7kxvkvq02q"]
 
 [ext_resource type="Script" path="res://Scenes/Areas/World.gd" id="1_j1hoq"]
 [ext_resource type="Texture2D" uid="uid://wnnrtab0skb7" path="res://Art Assets/Textures/Layer2.png" id="1_tfsmi"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://dym6oonfw5m5d" path="res://Scenes/RootInteractables/UnitRemains/mammoth_remains.tscn" id="12_j0mwa"]
 [ext_resource type="PackedScene" uid="uid://dsyj27gjp5q35" path="res://Scenes/UI/RootCollectionResults.tscn" id="13_y0ym3"]
 [ext_resource type="Texture2D" uid="uid://c05hmgw7ymjw0" path="res://Art Assets/Textures/main_BG.png" id="20_s0oag"]
+[ext_resource type="PackedScene" uid="uid://qa0xdbklqhm" path="res://Scenes/UI/win_game.tscn" id="22_pyxfx"]
 [ext_resource type="Script" path="res://Scenes/Areas/WorldTutorial.gd" id="23_tu0jm"]
 [ext_resource type="PackedScene" uid="uid://dxa7recdeio70" path="res://Scenes/UI/Text.tscn" id="24_xj83t"]
 
@@ -264,9 +265,12 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -118.0
-offset_bottom = 23.0
+offset_left = -186.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 44.0
 grow_horizontal = 0
+theme_override_font_sizes/font_size = 24
 text = "WATER_COUNT"
 horizontal_alignment = 2
 vertical_alignment = 1
@@ -294,6 +298,16 @@ layout_mode = 1
 
 [node name="RootResults" parent="CanvasLayer/UI" instance=ExtResource("13_y0ym3")]
 layout_mode = 1
+
+[node name="WinGame" parent="CanvasLayer/UI" instance=ExtResource("22_pyxfx")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="Tutorial" type="CanvasLayer" parent="."]
 

@@ -9,7 +9,7 @@ func _ready() -> void:
 func showResults():
 	$AnimationPlayer.play("Show")
 	var totalUnitsCollected : int
-	for unit in GameManager.availableUnits:
+	for unit in GameManager.rootPhaseStats.availableUnits:
 		totalUnitsCollected+=unit
 	$PanelContainer/VBoxContainer/Label2.text = LocalizationManager.tr("ROOT_RESULTS").format({"Water":(GameManager.rootPhaseStats.waterToAddPerRound),"Unit":(totalUnitsCollected)})
 	

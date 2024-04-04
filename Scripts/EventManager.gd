@@ -10,6 +10,8 @@ signal onAllySpawned(type : int)
 signal onPlacedTower
 signal onSelectedTowerToPlace
 signal onTowersPlaced
+signal GameWon
+signal GameLose
 
 signal onRootPhaseStart
 signal onRootPhaseEnd
