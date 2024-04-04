@@ -25,10 +25,12 @@ func setVisible(b : bool):
 		$Control/TextureRect/AnimationPlayer.play("Sprout")
 		$Control/TextureRect/AnimationPlayer.queue("Bob")
 		isVisible = true
+		mouse_filter = Control.MOUSE_FILTER_PASS
 	else :
 		if isVisible:
 			$Control/TextureRect/AnimationPlayer.play("Retreat")
 		isVisible = false
+		mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 func _on_pressed():
 	EventManager.onCanopyClicked.emit([3,4,5,6],parentnode)
