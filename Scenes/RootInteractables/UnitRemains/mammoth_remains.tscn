@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/RootInteractables/Resources/UnitDepthHolder.gd" id="1_4i8q1"]
 [ext_resource type="Script" path="res://Scripts/RootPhase/Interactable Scripts/remainsInteractable.gd" id="1_f7tjr"]
-[ext_resource type="Texture2D" uid="uid://bh1efljfrqsej" path="res://Sprites/UnitSkeletons/mammoth.png" id="2_wpc6n"]
+[ext_resource type="Texture2D" uid="uid://kitx4y78ady3" path="res://Sprites/UnitSkeletons/UG_mammoth.png" id="3_2yxau"]
 
 [node name="DinoRemains" type="Node2D" groups=["UnitRemains"]]
 script = ExtResource("1_4i8q1")
@@ -13,7 +13,7 @@ unitType = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D"]
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("2_wpc6n")
+texture = ExtResource("3_2yxau")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
 polygon = PackedVector2Array(-18, -67, -7, -46, 54, -32, 62, -14, 57, -10, 50, -25, 51, 4, 47, 69, 27, 69, 21, 60, 26, 44, 32, -3, 14, 12, 1, 12, 2, 46, -3, 73, -37, 73, -30, 54, -23, 20, -21, -7, -15, -14, -17, -30, -26, -24, -36, -23, -42, -8, -56, -7, -76, -36, -68, -44, -52, -22, -40, -53)

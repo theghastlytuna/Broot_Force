@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/RootInteractables/Resources/UnitDepthHolder.gd" id="1_iqyke"]
 [ext_resource type="Script" path="res://Scenes/RootInteractables/Obstacles/Rock.gd" id="1_kb8lt"]
-[ext_resource type="Texture2D" uid="uid://cbgl38xufrejw" path="res://Sprites/Obstacles/rock.png" id="1_xgt3x"]
+[ext_resource type="Texture2D" uid="uid://lxenfriodnym" path="res://Sprites/Obstacles/rocks.png" id="3_mfcum"]
 
 [node name="Rock" type="Node2D" groups=["Obstacles"]]
 script = ExtResource("1_iqyke")
@@ -12,7 +12,7 @@ script = ExtResource("1_kb8lt")
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D"]
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("1_xgt3x")
+texture = ExtResource("3_mfcum")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
-polygon = PackedVector2Array(-41, 21, -17, -7, 1, -28, 15, -30, 29, -10, 32, 5, 38, 26, -26, 30)
+polygon = PackedVector2Array(-47, 12, -25, -28, 0, -34, 26, -27, 31, -9, 44, -2, 40, 29, -25, 34)

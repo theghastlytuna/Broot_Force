@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/RootInteractables/Resources/UnitDepthHolder.gd" id="1_kehwy"]
 [ext_resource type="Script" path="res://Scripts/RootPhase/Interactable Scripts/remainsInteractable.gd" id="1_vtiyn"]
-[ext_resource type="Texture2D" uid="uid://cqowv4buk0ibv" path="res://Sprites/UnitSkeletons/bear.png" id="2_02xsr"]
+[ext_resource type="Texture2D" uid="uid://bpnbqbm6qmblf" path="res://Sprites/UnitSkeletons/UG_bear.png" id="3_mmhpn"]
 
 [node name="DinoRemains" type="Node2D" groups=["UnitRemains"]]
 script = ExtResource("1_kehwy")
@@ -13,7 +13,7 @@ unitType = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D"]
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("2_02xsr")
+texture = ExtResource("3_mmhpn")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
 polygon = PackedVector2Array(-35, -26, -13, -19, 62, -11, 62, 14, 55, 39, 64, 63, 35, 68, 32, 54, 44, 8, 37, 1, 4, 29, -1, 74, -19, 71, -15, 60, -10, 58, -15, 14, -36, 68, -49, 61, -29, 13, -17, 0, -29, -7, -62, 13, -69, -8)
