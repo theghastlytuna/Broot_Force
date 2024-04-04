@@ -78,7 +78,11 @@ func confirmUpgrade():
 		setConfirmButtonColour(Color.ORANGE_RED)
 		confirmButton.text = "MAX_LEVEL"
 		return
-	if not GameManager.spendWater(GameManager.costsPerUpgrade[upgradeType]) and not unlimitedUpgrades:
+		
+	var amountToSpend = GameManager.costsPerUpgrade[upgradeType]
+	if unlimitedUpgrades:
+		amountToSpend = 0
+	if not GameManager.spendWater(amountToSpend):
 		setConfirmButtonColour(Color.RED)
 		confirmButton.text = "NOT_ENOUGH_MONEY"
 		return
