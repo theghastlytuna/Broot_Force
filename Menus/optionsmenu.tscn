@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ckpxkhasyjkom"]
+[gd_scene load_steps=11 format=3 uid="uid://ckpxkhasyjkom"]
 
 [ext_resource type="Script" path="res://Menus/optionsmenu.gd" id="1_45swt"]
 [ext_resource type="PackedScene" uid="uid://dxa7recdeio70" path="res://Scenes/UI/Text.tscn" id="2_bc4k0"]
@@ -7,6 +7,15 @@
 [ext_resource type="Script" path="res://Menus/DEBUGChangeScaleFactor.gd" id="4_nhq5r"]
 [ext_resource type="Script" path="res://Menus/ResetGame.gd" id="5_30o40"]
 [ext_resource type="Script" path="res://Menus/setVolume.gd" id="6_ar82d"]
+
+[sub_resource type="SystemFont" id="SystemFont_8as7q"]
+font_names = PackedStringArray("Impact")
+
+[sub_resource type="SystemFont" id="SystemFont_dijne"]
+font_names = PackedStringArray("Impact")
+
+[sub_resource type="SystemFont" id="SystemFont_kytbb"]
+font_names = PackedStringArray("Impact")
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_45swt")
@@ -38,9 +47,14 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
+offset_left = -109.0
+offset_top = 10.0
+offset_right = 109.0
+offset_bottom = 89.0
 grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = SubResource("SystemFont_8as7q")
 theme_override_font_sizes/font_size = 64
 text = "OPTIONS"
 
@@ -50,8 +64,10 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -46.0
-offset_bottom = 46.0
+offset_left = -103.0
+offset_top = 18.0
+offset_right = -28.0
+offset_bottom = 93.0
 grow_horizontal = 0
 texture_normal = ExtResource("3_qnap2")
 ignore_texture_size = true
@@ -59,17 +75,22 @@ stretch_mode = 0
 
 [node name="Label2" parent="Control/CenterContainer/Panel" instance=ExtResource("2_bc4k0")]
 layout_mode = 1
+offset_left = 30.0
 offset_top = 106.0
-offset_right = 229.0
+offset_right = 259.0
 offset_bottom = 151.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = SubResource("SystemFont_dijne")
 theme_override_font_sizes/font_size = 32
 text = "SCALE_FACTOR"
 
 [node name="HSlider" type="HSlider" parent="Control/CenterContainer/Panel"]
 custom_minimum_size = Vector2(300, 75)
 layout_mode = 0
+offset_left = 30.0
 offset_top = 163.0
-offset_right = 300.0
+offset_right = 330.0
 offset_bottom = 238.0
 min_value = 1.0
 max_value = 3.0
@@ -79,26 +100,33 @@ script = ExtResource("4_nhq5r")
 
 [node name="Button" type="Button" parent="Control/CenterContainer/Panel"]
 layout_mode = 0
+offset_left = 30.0
 offset_top = 252.0
-offset_right = 209.0
-offset_bottom = 294.0
+offset_right = 263.0
+offset_bottom = 318.0
 theme_override_font_sizes/font_size = 24
 text = "RESET SAVE DATA"
 script = ExtResource("5_30o40")
 
 [node name="Label3" type="Label" parent="Control/CenterContainer/Panel"]
 layout_mode = 0
-offset_top = 314.0
-offset_right = 129.0
-offset_bottom = 337.0
+offset_left = 28.0
+offset_top = 345.0
+offset_right = 221.0
+offset_bottom = 385.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = SubResource("SystemFont_kytbb")
+theme_override_font_sizes/font_size = 32
 text = "SOUND VOLUME"
 
 [node name="HSlider2" type="HSlider" parent="Control/CenterContainer/Panel"]
 custom_minimum_size = Vector2(350, 75)
 layout_mode = 0
+offset_left = 30.0
 offset_top = 375.0
-offset_right = 8.0
-offset_bottom = 391.0
+offset_right = 380.0
+offset_bottom = 450.0
 max_value = 2.0
 step = 0.05
 value = 1.0

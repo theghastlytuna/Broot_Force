@@ -81,8 +81,10 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 48
 theme_override_styles/panel = SubResource("StyleBoxEmpty_s8qkn")
 tab_alignment = 1
+current_tab = 1
 
 [node name="BUILD" type="Control" parent="Panel/TabContainer" node_paths=PackedStringArray("animationPlayer", "type", "health", "confirm", "container", "topParent")]
+visible = false
 layout_mode = 2
 script = ExtResource("1_0u6yw")
 towerResources = Array[Resource]([ExtResource("2_pc0ys"), ExtResource("3_dsyqs"), ExtResource("4_53kcy"), ExtResource("5_jdw1n"), ExtResource("6_gpwri"), ExtResource("7_qnp6l"), ExtResource("8_l7iu2")])
@@ -170,7 +172,6 @@ size_flags_vertical = 5
 color = Color(0.447059, 0.823529, 0.580392, 1)
 
 [node name="UPGRADE" type="Control" parent="Panel/TabContainer" node_paths=PackedStringArray("container", "confirmButton", "animationPlayer", "description", "towerPanel")]
-visible = false
 layout_mode = 2
 script = ExtResource("11_vrbit")
 container = NodePath("ScrollContainer/VBoxContainer")
@@ -212,12 +213,18 @@ layout_mode = 2
 theme_override_constants/separation = 16
 
 [node name="Description" type="Label" parent="Panel/TabContainer/UPGRADE"]
+custom_minimum_size = Vector2(450, 100)
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = 12
+anchor_top = 1.0
 anchor_right = 1.0
-offset_top = 400.0
-offset_bottom = 470.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = -200.0
+offset_right = -10.0
+offset_bottom = -100.0
 grow_horizontal = 2
+grow_vertical = 0
 theme_override_font_sizes/font_size = 24
 autowrap_mode = 3
 clip_text = true
