@@ -62,7 +62,7 @@ func _ready() -> void:
 	SoundManager.set_default_music_bus("Music")
 	
 	SoundManager.play_ambient_sound(dirtSound)
-	SoundManager.play_music(music)
+	var musicPlayer: AudioStreamPlayer = SoundManager.play_music(music, 0, "Music")
 	EventManager.rootStartMoving.connect(setStopMoving.bind(false))
 	EventManager.rootStopMoving.connect(setStopMoving.bind(true))
 	EventManager.onRootPhaseStart.connect(startRootPhase)
