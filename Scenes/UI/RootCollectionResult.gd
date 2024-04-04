@@ -1,12 +1,16 @@
 extends Control
 
-
+var called : bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	EventManager.onRootPhaseEnd.connect(showResults)
 	$PanelContainer.visible = false
+	called = false
 	
 func showResults():
+	if called:
+		return
+	called = true
 	$AnimationPlayer.play("Show")
 	var totalUnitsCollected : int
 	for unit in GameManager.rootPhaseStats.availableUnits:

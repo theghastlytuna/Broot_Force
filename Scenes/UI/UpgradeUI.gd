@@ -19,6 +19,7 @@ func _ready() -> void:
 	confirmButton.text = "CLOSE"
 	
 func setTower(towersToShow : Array, parent : Node2D):
+	upgradeToUpgrade = -1
 	if not parent.stashedTower:
 		get_tree().call_group("Persist", "hide")
 		return
@@ -60,7 +61,7 @@ func selectUpgrade(type : int):
 	
 func confirmUpgrade():
 	if upgradeToUpgrade <0:
-		animationPlayer.play("Close")
+		animationPlayer.play("Hide")
 		return
 		
 	if towerSlot:

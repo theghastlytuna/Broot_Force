@@ -18,6 +18,7 @@ func _ready() -> void:
 	$PanelContainer.visible = false
 	originalPosition = position	
 	EventManager.onShowRockUI.connect(showUI)
+	EventManager.onGrowthPhaseEnd.connect(hideUI)
 	SoundManager.set_default_ambient_sound_bus("Ambient")
 	SoundManager.set_default_sound_bus("Effects")
 	particleChildren.append(particles)
@@ -44,11 +45,7 @@ func pressed():
 	$PanelContainer/VBoxContainer/Label3.text = LocalizationManager.tr("OBSTICLE_HIT_LEFT").format({"Number":(amountToClick-amountClicked)})
 	
 	if amountClicked >= amountToClick:
-		$PanelContainer.visible = false
-		EventManager.onRockUIEnd.emit()
-		EventManager.rootStartMoving.emit()
-		SoundManager.play_ambient_sound(dirtSound)
-		finale.emitting = true
+		hideUI()
 	else:
 		wiggle()
 		for p in particleChildren:
@@ -58,6 +55,13 @@ func pressed():
 			break
 		
 	pass
+	
+func hideUI():
+	$PanelContainer.visible = false
+	EventManager.onRockUIEnd.emit()
+	EventManager.rootStartMoving.emit()
+	SoundManager.play_ambient_sound(dirtSound)
+	finale.emitting = true
 	
 func wiggle():
 	wiggleTimer.paused = false
