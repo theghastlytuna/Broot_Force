@@ -65,7 +65,7 @@ var maxRootUpgrades : Dictionary = {
 ##This holds how much each upgrade boosts the root's characteristics (from 0-1, where 1 is a 100 percent increase. 
 ##Edit these to change how effective each upgrade is.
 var valuesPerUpgrade : Dictionary = {
-	"SPEED": 0.1,
+	"SPEED": 0.3,
 	"TURNING": 0.1,
 	"DURATION": 0.2,
 	"STRENGTH": 0.2,
