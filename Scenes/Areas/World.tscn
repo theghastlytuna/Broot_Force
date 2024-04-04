@@ -256,8 +256,6 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -5.0
-offset_right = -5.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -293,6 +291,11 @@ script = ExtResource("11_cjjht")
 
 [node name="RockUI" parent="CanvasLayer/UI" instance=ExtResource("11_623x4")]
 layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 
 [node name="RootResults" parent="CanvasLayer/UI" instance=ExtResource("13_y0ym3")]
 layout_mode = 1
