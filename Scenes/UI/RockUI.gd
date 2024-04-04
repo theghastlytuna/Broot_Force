@@ -26,7 +26,6 @@ func _ready() -> void:
 		particles.get_parent().add_child(newParticle)
 		particleChildren.append(newParticle)
 	pass
-	showUI(0)
 	
 func showUI(layer : int):
 	amountClicked = 0

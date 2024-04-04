@@ -7,8 +7,14 @@ extends Control
 var followingObject : Node2D
 
 func _ready() -> void:
-	if GameManager.currentRootRound == 0:
+	EventManager.onRootPhaseStart.connect(shouldStartTutorial)
+	
+func shouldStartTutorial():
+	if GameManager.currentRootRound == 0 and GameManager.pastRoots.size() == 0:
 		startTutorial()
+		return
+	setTutorialText("",Vector2.ZERO)
+	movementNode.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 func setTutorialText(s : String, v : Vector2):
 	tutorialText.text = s

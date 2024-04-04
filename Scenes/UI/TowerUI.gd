@@ -82,7 +82,10 @@ func confirmClicked():
 		towerIndex = -1
 		return
 	
-	if not (GameManager.spendWater(GameManager.towerCost(towerIndex))) and not freeTowers:
+	var waterToSpend = GameManager.towerCost(towerIndex)
+	if freeTowers:
+		waterToSpend = 0
+	if not (GameManager.spendWater(waterToSpend)):
 		confirm.text = "NOT_ENOUGH_MONEY"
 		setBuildButtonColor(Color.RED)
 		return
