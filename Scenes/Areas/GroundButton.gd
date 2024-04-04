@@ -26,10 +26,12 @@ func setVisible(b : bool):
 		$TextureRect/AnimationPlayer.play("Sprout")
 		$TextureRect/AnimationPlayer.queue("Bob")
 		isVisible = true
+		mouse_filter = Control.MOUSE_FILTER_PASS
 	else:
 		if isVisible:
 			$TextureRect/AnimationPlayer.play("Retreat")
 		isVisible = false
+		mouse_filter = Control.MOUSE_FILTER_IGNORE
 	
 
 func _on_pressed():
