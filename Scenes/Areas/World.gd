@@ -5,6 +5,7 @@ extends Node2D
 func _ready() -> void:
 	#$SaveGame.startGame()
 	SaveManager.loadData()
+	Debug.Log("root round ",GameManager.currentRootRound)
 	showOtherRoots()
 	EventManager.onRootPhaseStart.emit()
 	EventManager.onGrowthPhaseStart.connect(goToOverworld)
@@ -26,7 +27,10 @@ func goToOverworld():
 	
 	GameManager.waterToAddPerRound += GameManager.rootPhaseStats.waterToAddPerRound
 	GameManager.waterBank += GameManager.waterToAddPerRound
+	GameManager.rootPhaseStats.waterToAddPerRound = 0
 	
 	SaveManager.saveGame()
+	SaveManager.loadData()
+	Debug.Log("next root round will be ",GameManager.currentRootRound)
 	get_tree().change_scene_to_file("res://Scenes/UI/portrait_to_landscape.tscn")
 	pass

@@ -95,6 +95,9 @@ scale = Vector2(0.999998, 0.999998)
 [node name="UpperLegR" parent="Node2D/Skeleton2D/Hip" index="1"]
 scale = Vector2(0.999999, 0.999999)
 
+[node name="LowerLegR" parent="Node2D/Skeleton2D/Hip/UpperLegR" index="0"]
+scale = Vector2(0.999999, 0.999999)
+
 [node name="UpperLegL" parent="Node2D/Skeleton2D/Hip" index="2"]
 scale = Vector2(0.999998, 0.999998)
 
