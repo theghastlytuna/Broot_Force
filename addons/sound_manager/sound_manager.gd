@@ -103,6 +103,8 @@ func set_default_sound_bus(bus: String) -> void:
 func set_default_ui_sound_bus(bus: String) -> void:
 	ui_sound_effects.bus = bus
 
+func is_sound_playing(resource: AudioStream = null) -> bool:
+	return sound_effects.is_playing(resource)
 
 #endregion
 

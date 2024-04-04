@@ -13,4 +13,6 @@ func _ready():
 	pass # Replace with function body.
 
 func growthOver():
+	SaveManager.saveGame()
+	SaveManager.loadData()
 	get_tree().change_scene_to_file("res://Scenes/UI/landscape_to_portrait.tscn")

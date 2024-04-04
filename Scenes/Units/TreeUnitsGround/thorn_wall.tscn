@@ -76,8 +76,8 @@ _data = {
 [node name="ThornWall" type="StaticBody2D" groups=["PlayerUnits"]]
 collision_layer = 4
 script = ExtResource("1_1lam0")
-health = 250.0
-cost = 5
+health = 200.0
+cost = 120
 
 [node name="ScaleParent" type="Node2D" parent="."]
 
@@ -90,7 +90,6 @@ region_rect = Rect2(1568, 2000, 471, 554)
 
 [node name="Attack" type="Node2D" parent="."]
 script = ExtResource("3_6qv0m")
-attackDamage = 4.0
 groupToAttack = "EnemyUnits"
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]

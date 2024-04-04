@@ -67,8 +67,7 @@ func _ready():
 	if hittable:
 		setHealth(health)
 	
-	#if is_in_group("EnemyVehicle"):
-		#SoundManager.play_ambient_sound(vehicleSound)
+
 
 func setHealth(h):
 	if hittable:
@@ -101,20 +100,23 @@ func damage(args : AttackArguments):
 		#Debug.Log(name, " current health: ", health - damageTaken)
 		check_death()
 		if is_in_group("EnemyHuman"):
-			var player:AudioStreamPlayer = SoundManager.play_sound(painSound)
-			player.volume_db -= 0
+			if !SoundManager.is_sound_playing(painSound):
+				var player:AudioStreamPlayer = SoundManager.play_sound(painSound)
+				player.volume_db -= 0
 		elif is_in_group("EnemyVehicle"):
-			SoundManager.play_sound(vehicleDamage)
+			if !SoundManager.is_sound_playing(vehicleDamage):
+				SoundManager.play_sound(vehicleDamage)
 
 ##Checks if the unit has died; if it has, then destroy it.
 func check_death():
 	if damageTaken >= health:
 		die()
 		if is_in_group("EnemyHuman"):
-			SoundManager.play_sound(deathSound)
+			if !SoundManager.is_sound_playing(deathSound):
+				SoundManager.play_sound(deathSound)
 		elif is_in_group("EnemyVehicle"):
-			SoundManager.play_sound(vehicleExplosion)
-			#SoundManager.stop_ambient_sound(vehicleSound)
+			if !SoundManager.is_sound_playing(vehicleExplosion):
+				SoundManager.play_sound(vehicleExplosion)
 
 ##Destroys the unit
 func die():

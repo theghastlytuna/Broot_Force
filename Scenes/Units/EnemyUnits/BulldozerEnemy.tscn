@@ -65,7 +65,7 @@ moveSpeed = 50.0
 [node name="Attack" type="Node2D" parent="."]
 position = Vector2(-0.0673752, -54.323)
 script = ExtResource("3_vswf4")
-attackDamage = 12.0
+attackDamage = 16.0
 attackType = 2
 timeToAttack = 2.0
 numberOfTargets = 4
