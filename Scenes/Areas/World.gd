@@ -28,6 +28,7 @@ func goToOverworld():
 	GameManager.waterToAddPerRound += GameManager.rootPhaseStats.waterToAddPerRound
 	GameManager.waterBank += GameManager.waterToAddPerRound
 	GameManager.rootPhaseStats.waterToAddPerRound = 0
+	GameManager.rootPhaseStats.availableUnits.clear()
 	
 	SaveManager.saveGame()
 	SaveManager.loadData()

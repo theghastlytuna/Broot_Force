@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dq4jcfh8ylt5e"]
+[gd_scene load_steps=39 format=3 uid="uid://dq4jcfh8ylt5e"]
 
 [ext_resource type="Script" path="res://Scenes/Areas/Overworld.gd" id="1_y88pi"]
 [ext_resource type="Script" path="res://Scenes/Areas/FriendlySpawnLocation.gd" id="2_no26d"]
@@ -24,6 +24,7 @@
 [ext_resource type="Script" path="res://Scenes/Areas/UnitSpawning.gd" id="21_rchts"]
 [ext_resource type="Script" path="res://Scenes/Areas/EnemySpawner.gd" id="21_y32r6"]
 [ext_resource type="Script" path="res://Scenes/Areas/UpgradeManager.gd" id="23_03xkq"]
+[ext_resource type="PackedScene" uid="uid://f8m3vbehjbk5" path="res://Scenes/UI/lose_game.tscn" id="24_20yns"]
 [ext_resource type="Script" path="res://Scenes/Areas/Pcameras.gd" id="24_upgu1"]
 [ext_resource type="PackedScene" uid="uid://wxbanrg0ocrg" path="res://Scenes/UI/TowerUI.tscn" id="25_hidf4"]
 [ext_resource type="Script" path="res://Scenes/Areas/OverworldTutorial.gd" id="26_rwx5d"]
@@ -361,40 +362,40 @@ position = Vector2(-458, 156)
 position = Vector2(-182, 178)
 
 [node name="Hip" parent="EnemySpawner/Factories/ChainsawEnemy/Skeleton2D" index="0"]
-position = Vector2(-1, -17.6797)
+position = Vector2(-1, -14.6166)
 
 [node name="Chest" parent="EnemySpawner/Factories/ChainsawEnemy/Skeleton2D/Hip" index="0"]
 rotation = 0.0
 
 [node name="UpperArmL" parent="EnemySpawner/Factories/ChainsawEnemy/Skeleton2D/Hip/Chest" index="1"]
-rotation = 0.00257051
-scale = Vector2(0.999999, 0.999999)
+rotation = -0.408968
+scale = Vector2(0.999998, 0.999998)
 
 [node name="LowerArmL" parent="EnemySpawner/Factories/ChainsawEnemy/Skeleton2D/Hip/Chest/UpperArmL" index="0"]
 rotation = 1.57079
 scale = Vector2(0.999999, 0.999999)
 
 [node name="UpperArmR" parent="EnemySpawner/Factories/ChainsawEnemy/Skeleton2D/Hip/Chest" index="2"]
-rotation = -0.00257051
-scale = Vector2(0.999999, 0.999999)
+rotation = 0.408968
+scale = Vector2(0.999998, 0.999998)
 
 [node name="LowerArmR" parent="EnemySpawner/Factories/ChainsawEnemy/Skeleton2D/Hip/Chest/UpperArmR" index="0"]
 rotation = 1.57079
 
 [node name="UpperLegL" parent="EnemySpawner/Factories/ChainsawEnemy/Skeleton2D/Hip" index="1"]
-rotation = 1.5658
-scale = Vector2(0.999999, 0.999999)
+rotation = 2.10524
+scale = Vector2(0.999998, 0.999998)
 
 [node name="LowerLegL" parent="EnemySpawner/Factories/ChainsawEnemy/Skeleton2D/Hip/UpperLegL" index="0"]
-rotation = 0.0068537
-scale = Vector2(0.999999, 0.999999)
+rotation = 0.250953
+scale = Vector2(0.999998, 0.999998)
 
 [node name="UpperLegR" parent="EnemySpawner/Factories/ChainsawEnemy/Skeleton2D/Hip" index="2"]
-rotation = 1.31414
-scale = Vector2(0.999999, 0.999999)
+rotation = 0.665704
+scale = Vector2(0.999998, 0.999998)
 
 [node name="LowerLegR" parent="EnemySpawner/Factories/ChainsawEnemy/Skeleton2D/Hip/UpperLegR" index="0"]
-rotation = 1.30215
+rotation = 1.00381
 scale = Vector2(1, 1)
 
 [node name="ExcavatorEnemy" parent="EnemySpawner/Factories" instance=ExtResource("6_0e3rg")]
@@ -404,91 +405,91 @@ position = Vector2(-582, 82)
 position = Vector2(-245, 103)
 
 [node name="Hip" parent="EnemySpawner/Factories/PistolEnemy/Skeleton2D" index="0"]
-position = Vector2(-1, -17.6797)
+position = Vector2(-1, -14.6166)
 
 [node name="UpperArmL" parent="EnemySpawner/Factories/PistolEnemy/Skeleton2D/Hip/Chest" index="1"]
-rotation = 0.00257051
-scale = Vector2(0.999999, 0.999999)
+rotation = -0.408968
+scale = Vector2(0.999998, 0.999998)
 
 [node name="LowerArmL" parent="EnemySpawner/Factories/PistolEnemy/Skeleton2D/Hip/Chest/UpperArmL" index="0"]
 rotation = 1.57079
 
 [node name="UpperArmR" parent="EnemySpawner/Factories/PistolEnemy/Skeleton2D/Hip/Chest" index="2"]
-scale = Vector2(0.999999, 0.999999)
+scale = Vector2(0.999998, 0.999998)
 
 [node name="UpperLegL" parent="EnemySpawner/Factories/PistolEnemy/Skeleton2D/Hip" index="1"]
-rotation = 1.5658
-scale = Vector2(0.999999, 0.999999)
+rotation = 2.10524
+scale = Vector2(0.999998, 0.999998)
 
 [node name="LowerLegL" parent="EnemySpawner/Factories/PistolEnemy/Skeleton2D/Hip/UpperLegL" index="0"]
-rotation = 0.0068537
-scale = Vector2(0.999999, 0.999999)
+rotation = 0.250953
+scale = Vector2(0.999998, 0.999998)
 
 [node name="UpperLegR" parent="EnemySpawner/Factories/PistolEnemy/Skeleton2D/Hip" index="2"]
-rotation = 1.31414
-scale = Vector2(0.999999, 0.999999)
+rotation = 0.665704
+scale = Vector2(0.999998, 0.999998)
 
 [node name="LowerLegR" parent="EnemySpawner/Factories/PistolEnemy/Skeleton2D/Hip/UpperLegR" index="0"]
-rotation = 1.30215
+rotation = 1.00381
 scale = Vector2(1, 1)
 
 [node name="ShotgunEnemy" parent="EnemySpawner/Factories" instance=ExtResource("6_8r0hn")]
 position = Vector2(-525, 186)
 
 [node name="Hip" parent="EnemySpawner/Factories/ShotgunEnemy/Skeleton2D" index="0"]
-position = Vector2(-1, -17.6797)
+position = Vector2(-1, -14.6166)
 
 [node name="UpperArmL" parent="EnemySpawner/Factories/ShotgunEnemy/Skeleton2D/Hip/Chest" index="1"]
-scale = Vector2(0.999999, 0.999999)
+scale = Vector2(0.999998, 0.999998)
 
 [node name="LowerArmL" parent="EnemySpawner/Factories/ShotgunEnemy/Skeleton2D/Hip/Chest/UpperArmL" index="0"]
 rotation = 1.57079
 
 [node name="UpperArmR" parent="EnemySpawner/Factories/ShotgunEnemy/Skeleton2D/Hip/Chest" index="2"]
-scale = Vector2(0.999999, 0.999999)
+scale = Vector2(0.999998, 0.999998)
 
 [node name="UpperLegL" parent="EnemySpawner/Factories/ShotgunEnemy/Skeleton2D/Hip" index="1"]
-rotation = 1.5658
-scale = Vector2(0.999999, 0.999999)
+rotation = 2.10524
+scale = Vector2(0.999998, 0.999998)
 
 [node name="LowerLegL" parent="EnemySpawner/Factories/ShotgunEnemy/Skeleton2D/Hip/UpperLegL" index="0"]
-rotation = 0.0068537
-scale = Vector2(0.999999, 0.999999)
+rotation = 0.250953
+scale = Vector2(0.999998, 0.999998)
 
 [node name="UpperLegR" parent="EnemySpawner/Factories/ShotgunEnemy/Skeleton2D/Hip" index="2"]
-rotation = 1.31414
-scale = Vector2(0.999999, 0.999999)
+rotation = 0.665704
+scale = Vector2(0.999998, 0.999998)
 
 [node name="LowerLegR" parent="EnemySpawner/Factories/ShotgunEnemy/Skeleton2D/Hip/UpperLegR" index="0"]
-rotation = 1.30215
+rotation = 1.00381
 scale = Vector2(1, 1)
 
 [node name="SoldierEnemy" parent="EnemySpawner/Factories" instance=ExtResource("6_bf8lv")]
 position = Vector2(-277, 195)
 
 [node name="Hip" parent="EnemySpawner/Factories/SoldierEnemy/Skeleton2D" index="0"]
-position = Vector2(-1, -17.6797)
+position = Vector2(-1, -14.6166)
 
 [node name="UpperArmL" parent="EnemySpawner/Factories/SoldierEnemy/Skeleton2D/Hip/Chest" index="1"]
-scale = Vector2(0.999999, 0.999999)
+scale = Vector2(0.999998, 0.999998)
 
 [node name="UpperArmR" parent="EnemySpawner/Factories/SoldierEnemy/Skeleton2D/Hip/Chest" index="2"]
-scale = Vector2(0.999999, 0.999999)
+scale = Vector2(0.999998, 0.999998)
 
 [node name="UpperLegL" parent="EnemySpawner/Factories/SoldierEnemy/Skeleton2D/Hip" index="1"]
-rotation = 1.5658
-scale = Vector2(0.999999, 0.999999)
+rotation = 2.10524
+scale = Vector2(0.999998, 0.999998)
 
 [node name="LowerLegL" parent="EnemySpawner/Factories/SoldierEnemy/Skeleton2D/Hip/UpperLegL" index="0"]
-rotation = 0.0068537
-scale = Vector2(0.999999, 0.999999)
+rotation = 0.250953
+scale = Vector2(0.999998, 0.999998)
 
 [node name="UpperLegR" parent="EnemySpawner/Factories/SoldierEnemy/Skeleton2D/Hip" index="2"]
-rotation = 1.31414
-scale = Vector2(0.999999, 0.999999)
+rotation = 0.665704
+scale = Vector2(0.999998, 0.999998)
 
 [node name="LowerLegR" parent="EnemySpawner/Factories/SoldierEnemy/Skeleton2D/Hip/UpperLegR" index="0"]
-rotation = 1.30215
+rotation = 1.00381
 scale = Vector2(1, 1)
 
 [node name="EnemyUnits" type="Node2D" parent="."]
@@ -518,6 +519,8 @@ script = ExtResource("21_rchts")
 libraries = {
 "": SubResource("AnimationLibrary_utowk")
 }
+
+[node name="LoseGame" parent="UnitSpawningCanvas" instance=ExtResource("24_20yns")]
 
 [node name="UpgradeManager" type="Node2D" parent="."]
 script = ExtResource("23_03xkq")

@@ -14,7 +14,6 @@ extends Node2D
 ##A signal which emits when the player has changed layers. 
 ##Provides the speed multiplier for the layer that was entered
 signal ChangedLayer(layerSpeedMultiplier : float)
-signal GameWon()
 
 #Index of latest layer rendered
 var layerIndex : int = 0
@@ -59,7 +58,7 @@ func _process(delta):
 		
 		if rootCurrentLayer == 3:
 			Debug.Log("Won the game!!")
-			GameWon.emit()
+			EventManager.GameWon.emit()
 
 ##Function for rendering a new layer. Requires the texture to be rendered.
 func MakeNewLayer(newTex : Resource):

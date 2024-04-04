@@ -7,7 +7,8 @@ var allButtons : Array
 func _ready() -> void:
 	visible = false
 	var index : int = 0
-	thisRoundUnits = GameManager.availableUnits
+	for i in GameManager.availableUnits:
+		thisRoundUnits.append(i)
 	for unitAmt in GameManager.availableUnits:
 		if unitAmt > 0:
 			var newChild = preload("res://Scenes/UI/AllySpawnButton.tscn").instantiate()

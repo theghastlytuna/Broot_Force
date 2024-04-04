@@ -3,27 +3,20 @@ extends Node
 var depthsCollected : Array[float]
 #every round, waterToAddPerRound adds the rootPhaseStats.waterPerRound to itself, then we add waterToAddPerRound to waterBank to get the total amount of water the player can spend that round
 #this is done in world.gd in the goToOverworld function
-var waterBank : float = 0
-var waterToAddPerRound : float = 0:
+var waterBank : float = 0:
 	get:
-		Debug.Log("GET GM TOTAL_WATER:",waterToAddPerRound)
-		return waterToAddPerRound
+		return waterBank
 	set(value):
-		Debug.Log("SET GM TOTAL_WATER:",value)
 		EventManager.onWaterChanged.emit(value)
-		waterToAddPerRound = value
+		waterBank = value
+
+var waterToAddPerRound : float = 0
 
 var availableUnits : Array[int] = [0,0,0,0,0,0]
 var placedTowers : Dictionary #number tower slot key, path resource
 var placedTowersHealth : Dictionary #number tower slot key, float health
 var s : Dictionary #number tower slot key, int type #this method is so stupid
-var growthRounds : int = 0:
-	get:
-		Debug.Log("GET GM GROWTHROUNDS:",growthRounds)
-		return growthRounds
-	set(value):
-		Debug.Log("SET GM GROWTHROUNDS:",value)
-		growthRounds = value
+var growthRounds : int = 0
 var pastRoots : Dictionary
 var towerList : Array = [
 	preload("res://Scenes/Units/TreeUnitsGround/thorn_wall.tscn"),
