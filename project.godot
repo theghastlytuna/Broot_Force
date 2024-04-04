@@ -27,8 +27,8 @@ SaveManager="*res://Scripts/SaveManager.gd"
 
 [display]
 
-window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
+window/stretch/mode="viewport"
+window/stretch/aspect="keep_width"
 window/handheld/orientation=1
 
 [editor_plugins]
