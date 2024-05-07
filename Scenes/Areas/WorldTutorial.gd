@@ -33,7 +33,8 @@ func startTutorial():
 	#movementNode.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	movementNode.gui_input.connect(onMovementEntered)
 	setTutorialText("WORLD_TUTORIAL_1",Vector2(get_viewport().size.x/2,(get_viewport().size.y)-tutorialText.size.y))
-	followObject(movementNode, Vector2(movementNode.size.x/2,movementNode.size.y/2))
+	#followObject(movementNode, Vector2(movementNode.size.x/2,movementNode.size.y/2))
+	followObject(root,Vector2.ZERO)
 	movementNode.mouse_filter = Control.MOUSE_FILTER_STOP
 	pass
 

@@ -67,7 +67,7 @@ func loadData():
 		saveData.placedTowers = {}
 		saveData.placedTowerHealth = {}
 		saveData.pastRoots = {}
-		saveData.growthRounds = 0
+		saveData.growthRounds = GameManager.EnemyRoundsToAdd#TODO: REMOVE
 		saveData.rootRounds = 0
 		saveData.rootUpgrades = {"SPEED": 0,"TURNING": 0,"DURATION": 0,"STRENGTH": 0,"RESOURCE": 0}
 		saveData.ySeed = 0

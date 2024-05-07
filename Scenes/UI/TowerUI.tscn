@@ -93,7 +93,6 @@ type = NodePath("Type/Label")
 health = NodePath("Health/Label")
 confirm = NodePath("Build")
 container = NodePath("VBoxContainer")
-freeTowers = true
 topParent = NodePath("../..")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/TabContainer/BUILD"]
@@ -179,7 +178,6 @@ confirmButton = NodePath("Button")
 animationPlayer = NodePath("../../AnimationPlayer")
 description = NodePath("Description")
 towerPanel = NodePath("ScrollContainer/VBoxContainer/Panel")
-unlimitedUpgrades = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Panel/TabContainer/UPGRADE"]
 custom_minimum_size = Vector2(0, 400)

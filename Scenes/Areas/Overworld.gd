@@ -3,8 +3,10 @@ extends Node2D
 func _enter_tree():
 	EventManager.onGrowthPhaseEnd.connect(growthOver)
 	GameManager.growthRounds += 1
+	GameManager.growthRounds += GameManager.EnemyRoundsToAdd#TODO: REMOVE
 	SaveManager.saveGame()
 	SaveManager.loadData()
+	
 	Debug.Log("growth round ",GameManager.growthRounds)
 	
 
