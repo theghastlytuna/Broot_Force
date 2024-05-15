@@ -12,8 +12,16 @@ var activated : bool = false
 @export var firstRoundBudget : float = 40
 ##Holds all of the enemy units
 @export var enemyUnits : Array[CharacterBody2D]
-##How long it takes to spawn all units in a round, in seconds
-@export var spawnLength : float = 30
+##If the amount of units to spawn is greater than unitSpawnCeiling, spawn all units evenly over this fixed time
+@export var maxSpawnLength : float = 30
+##If there are more units to spawn than this number, then all units will spawn evenly spaced over the maxSpawnLength
+@export var unitSpawnCeiling : int = 10
+##This is the base amount of time between unit spawns
+@export var spawnGapBase : float = 4
+##This value is the lower range of the randomized time added/subtracted from the base spawn gap
+@export var spawnGapRandomMin : float = 0
+##This value is the lower range of the randomized time added/subtracted from the base spawn gap
+@export var spawnGapRandomMax : float = 0
 ##Parent node to spawn units under
 @export var unitParent : Node2D
 ##budget multiplier
@@ -132,7 +140,11 @@ func _ready():
 		#spawnLoopNum += 1
 	unitSpawnTimer = Timer.new()
 	add_child(unitSpawnTimer)
-	unitSpawnTimer.wait_time = spawnLength / unitsToSpawn.size()
+	
+	if (unitsToSpawn.size() - 1 > 10):
+		unitSpawnTimer.wait_time = maxSpawnLength / unitsToSpawn.size()
+	else:
+		unitSpawnTimer.wait_time = spawnGapBase + randf_range(spawnGapRandomMin, spawnGapRandomMax)
 	unitSpawnTimer.timeout.connect(spawnUnit)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -154,6 +166,9 @@ func spawnUnit():
 	
 	if unitsToSpawn.size() == 0:
 		FinishedSpawning.emit()
+		
+	unitSpawnTimer.wait_time = spawnGapBase + randf_range(spawnGapRandomMin, spawnGapRandomMax)
+	Debug.Log("Spawn Timer: ", unitSpawnTimer.wait_time)
 
 
 func _on_button_button_up():

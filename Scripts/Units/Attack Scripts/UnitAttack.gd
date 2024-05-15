@@ -143,11 +143,14 @@ func attack():
 	
 	if get_parent().is_in_group("EnemyUnits"):
 		if attackType == AttackType.MELEE:
-			SoundManager.play_sound(axeSound)
+			if !SoundManager.is_sound_playing(axeSound):
+				SoundManager.play_sound(axeSound)
 		elif attackType == AttackType.RANGED:
-			SoundManager.play_sound(shotgunSound)
+			if !SoundManager.is_sound_playing(shotgunSound):
+				SoundManager.play_sound(shotgunSound)
 		elif attackType == AttackType.VEHICLE:
-			SoundManager.play_sound(heavyDamageSound)
+			if !SoundManager.is_sound_playing(heavyDamageSound):
+				SoundManager.play_sound(heavyDamageSound)
 	#Debug.Log("Attack done")
 
 ##Method used for enablind and disabling this unit's ability to attack.

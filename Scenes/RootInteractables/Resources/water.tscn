@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/RootPhase/Interactable Scripts/waterInteractable.gd" id="1_l4ccs"]
 [ext_resource type="Script" path="res://Scenes/RootInteractables/Resources/UnitDepthHolder.gd" id="1_xn53j"]
-[ext_resource type="Texture2D" uid="uid://b3rmq871487g8" path="res://Sprites/Collectables/water.png" id="2_28wp6"]
+[ext_resource type="Texture2D" uid="uid://b3rmq871487g8" path="res://Sprites/Collectables/Water.png" id="2_28wp6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oqbvq"]
 size = Vector2(85, 69)
