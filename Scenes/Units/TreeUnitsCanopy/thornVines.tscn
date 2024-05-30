@@ -462,7 +462,7 @@ collision_layer = 4
 script = ExtResource("1_qcer7")
 health = 100000.0
 hittable = false
-cost = 80
+cost = 60
 
 [node name="Attack" type="Node2D" parent="."]
 script = ExtResource("3_q88i2")

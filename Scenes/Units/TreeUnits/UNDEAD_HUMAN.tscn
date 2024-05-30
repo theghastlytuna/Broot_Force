@@ -27,7 +27,7 @@ moveSpeed = -100.0
 [node name="Attack" type="Node2D" parent="."]
 position = Vector2(-34, -57.6581)
 script = ExtResource("3_5dhc5")
-attackDamage = 2.0
+attackDamage = 4.0
 timeToAttack = 0.9
 timeAfterAttack = 0.1
 groupToAttack = "EnemyUnits"
@@ -93,9 +93,6 @@ scale = Vector2(0.999998, 0.999998)
 scale = Vector2(0.999998, 0.999998)
 
 [node name="UpperLegR" parent="Node2D/Skeleton2D/Hip" index="1"]
-scale = Vector2(0.999999, 0.999999)
-
-[node name="LowerLegR" parent="Node2D/Skeleton2D/Hip/UpperLegR" index="0"]
 scale = Vector2(0.999999, 0.999999)
 
 [node name="UpperLegL" parent="Node2D/Skeleton2D/Hip" index="2"]

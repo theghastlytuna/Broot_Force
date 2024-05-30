@@ -307,7 +307,7 @@ collision_layer = 4
 script = ExtResource("1_c6e28")
 health = 100000.0
 hittable = false
-cost = 165
+cost = 120
 
 [node name="Attack" type="Node2D" parent="." node_paths=PackedStringArray("seedBomb")]
 script = ExtResource("2_1gc0n")

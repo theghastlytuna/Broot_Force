@@ -50,7 +50,7 @@ _data = {
 [node name="ChainsawEnemy" type="CharacterBody2D" groups=["EnemyHuman", "EnemyUnits", "Melee"]]
 collision_layer = 2
 script = ExtResource("1_lg6fk")
-health = 22.0
+health = 25.0
 cost = 25
 meleeResistance = 0.1
 
@@ -62,7 +62,7 @@ moveSpeed = 90.0
 [node name="Attack" type="Node2D" parent="."]
 position = Vector2(0.25, -28.75)
 script = ExtResource("3_2blaa")
-attackDamage = 9.0
+attackDamage = 7.0
 timeToAttack = 0.4
 timeAfterAttack = 1.6
 groupToAttack = "PlayerUnits"
@@ -251,7 +251,7 @@ bones = ["Hip", PackedFloat32Array(0, 0, 0, 0), "Hip/Chest", PackedFloat32Array(
 [node name="Skeleton2D" type="Skeleton2D" parent="."]
 
 [node name="Hip" type="Bone2D" parent="Skeleton2D"]
-position = Vector2(-1, -18.19)
+position = Vector2(-1, -17.9631)
 rest = Transform2D(1, 0, 0, 1, -1, -17)
 
 [node name="Chest" type="Bone2D" parent="Skeleton2D/Hip"]
@@ -268,7 +268,7 @@ bone_angle = 0.0
 
 [node name="UpperArmL" type="Bone2D" parent="Skeleton2D/Hip/Chest"]
 position = Vector2(0, -12)
-rotation = 0.373061
+rotation = -0.206643
 scale = Vector2(1, 1)
 rest = Transform2D(0.707108, -0.707106, 0.707106, 0.707108, 0, -12)
 
@@ -282,7 +282,7 @@ bone_angle = 0.0
 
 [node name="UpperArmR" type="Bone2D" parent="Skeleton2D/Hip/Chest"]
 position = Vector2(0, -12)
-rotation = -0.373061
+rotation = 0.206643
 scale = Vector2(1, 1)
 rest = Transform2D(0.707108, 0.707106, -0.707106, 0.707108, 0, -12)
 
@@ -300,13 +300,12 @@ rotation = -1.57079
 rest = Transform2D(1, 0, 0, 1, 7.07106, 2.69413e-05)
 
 [node name="UpperLegL" type="Bone2D" parent="Skeleton2D/Hip"]
-rotation = 0.811581
+rotation = 1.70856
 scale = Vector2(1, 1)
 rest = Transform2D(-0.707104, 0.707109, -0.707109, -0.707104, 0, 0)
 
 [node name="LowerLegL" type="Bone2D" parent="Skeleton2D/Hip/UpperLegL"]
 position = Vector2(8.48528, 2.81413e-05)
-rotation = 0.562874
 scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 8.48528, 2.81413e-05)
 auto_calculate_length_and_angle = false
@@ -321,11 +320,14 @@ length = 8.0
 bone_angle = 0.0
 
 [node name="UpperLegR" type="Bone2D" parent="Skeleton2D/Hip"]
-rotation = 1.8195
+rotation = 1.03347
+scale = Vector2(1, 1)
 rest = Transform2D(0.707108, 0.707106, -0.707106, 0.707108, 0, 0)
 
 [node name="LowerLegR" type="Bone2D" parent="Skeleton2D/Hip/UpperLegR"]
 position = Vector2(9.8995, 1.10944e-05)
+rotation = 0.895711
+scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 9.8995, 1.10944e-05)
 auto_calculate_length_and_angle = false
 length = 8.0

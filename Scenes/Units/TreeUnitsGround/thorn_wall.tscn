@@ -77,7 +77,7 @@ _data = {
 collision_layer = 4
 script = ExtResource("1_1lam0")
 health = 200.0
-cost = 120
+cost = 80
 
 [node name="ScaleParent" type="Node2D" parent="."]
 

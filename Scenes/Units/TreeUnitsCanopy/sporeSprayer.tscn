@@ -328,7 +328,7 @@ collision_layer = 4
 script = ExtResource("1_5x647")
 health = 100000.0
 hittable = false
-cost = 290
+cost = 200
 
 [node name="Attack" type="Node2D" parent="." node_paths=PackedStringArray("poisonNode", "minCloudSpawn", "maxCloudSpawn")]
 script = ExtResource("3_wuled")

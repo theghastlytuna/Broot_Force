@@ -451,7 +451,7 @@ _data = {
 collision_layer = 4
 script = ExtResource("1_dftyv")
 health = 70.0
-cost = 60
+cost = 40
 
 [node name="Attack" type="Node2D" parent="."]
 script = ExtResource("3_jv5v0")
@@ -512,12 +512,12 @@ rest = Transform2D(1, 0, 0, 1, 0, 0)
 [node name="Spine2" type="Bone2D" parent="SkeletonParent/Skeleton2D/Spine1"]
 position = Vector2(0, -39)
 rotation = -1.13185
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 0, -39)
 
 [node name="Spine3" type="Bone2D" parent="SkeletonParent/Skeleton2D/Spine1/Spine2"]
 position = Vector2(0, -45)
 rotation = -1.43463
+scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 0, -45)
 
 [node name="Head" type="Bone2D" parent="SkeletonParent/Skeleton2D/Spine1/Spine2/Spine3"]

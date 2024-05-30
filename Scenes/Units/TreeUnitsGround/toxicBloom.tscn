@@ -293,7 +293,7 @@ _data = {
 collision_layer = 4
 script = ExtResource("1_exnqm")
 health = 50.0
-cost = 140
+cost = 80
 
 [node name="Attack" type="Node2D" parent="."]
 script = ExtResource("3_5iyqw")

@@ -294,11 +294,11 @@ collision_layer = 4
 script = ExtResource("1_bqnyd")
 health = 100000.0
 hittable = false
-cost = 365
+cost = 190
 
 [node name="Attack" type="Node2D" parent="." node_paths=PackedStringArray("fruitBomb", "poisonCloud")]
 script = ExtResource("3_0kxpf")
-initialDamage = 16.0
+initialDamage = 12.0
 poisonDamage = 3.0
 fruitBomb = NodePath("../FruitBomb")
 poisonCloud = NodePath("../BomberCloud")

@@ -20,7 +20,7 @@ var activated : bool = false
 @export var spawnGapBase : float = 4
 ##This value is the lower range of the randomized time added/subtracted from the base spawn gap
 @export var spawnGapRandomMin : float = 0
-##This value is the lower range of the randomized time added/subtracted from the base spawn gap
+##This value is the upper range of the randomized time added/subtracted from the base spawn gap
 @export var spawnGapRandomMax : float = 0
 ##Parent node to spawn units under
 @export var unitParent : Node2D

@@ -170,7 +170,7 @@ _data = {
 [node name="SoldierEnemy" type="CharacterBody2D" groups=["EnemyHuman", "EnemyUnits", "Ranged"]]
 collision_layer = 2
 script = ExtResource("1_ptiun")
-health = 34.0
+health = 30.0
 cost = 60
 meleeResistance = 0.2
 
@@ -376,7 +376,7 @@ bones = ["Hip", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest", PackedF
 visible = false
 
 [node name="Hip" type="Bone2D" parent="Skeleton2D"]
-position = Vector2(-1, -14.6715)
+position = Vector2(-1, -17.8645)
 rest = Transform2D(1, 0, 0, 1, -1, -17)
 
 [node name="Chest" type="Bone2D" parent="Skeleton2D/Hip"]
@@ -410,7 +410,6 @@ bone_angle = 0.0
 [node name="UpperArmR" type="Bone2D" parent="Skeleton2D/Hip/Chest"]
 position = Vector2(0, -12)
 rotation = 5.75959
-scale = Vector2(1, 1)
 rest = Transform2D(0.707108, 0.707106, -0.707106, 0.707108, 0, -12)
 
 [node name="LowerArmR" type="Bone2D" parent="Skeleton2D/Hip/Chest/UpperArmR"]
@@ -427,25 +426,23 @@ rotation = 2.0944
 rest = Transform2D(0.965926, -0.258819, 0.258819, 0.965926, 7.07106, 2.69413e-05)
 
 [node name="UpperLegL" type="Bone2D" parent="Skeleton2D/Hip"]
-rotation = 0.802596
-scale = Vector2(1, 1)
+rotation = 1.65695
 rest = Transform2D(-0.707104, 0.707109, -0.707109, -0.707104, 0, 0)
 
 [node name="LowerLegL" type="Bone2D" parent="Skeleton2D/Hip/UpperLegL"]
 position = Vector2(8.48528, 2.81413e-05)
-rotation = 0.859914
 rest = Transform2D(1, 0, 0, 1, 8.48528, 2.81413e-05)
 auto_calculate_length_and_angle = false
 length = 8.0
 bone_angle = 0.0
 
 [node name="UpperLegR" type="Bone2D" parent="Skeleton2D/Hip"]
-rotation = 2.14122
+rotation = 1.13669
 rest = Transform2D(0.707108, 0.707106, -0.707106, 0.707108, 0, 0)
 
 [node name="LowerLegR" type="Bone2D" parent="Skeleton2D/Hip/UpperLegR"]
 position = Vector2(9.8995, 1.10944e-05)
-rotation = 0.214978
+rotation = 1.05054
 scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 9.8995, 1.10944e-05)
 auto_calculate_length_and_angle = false

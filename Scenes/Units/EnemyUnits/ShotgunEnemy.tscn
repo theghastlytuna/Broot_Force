@@ -336,7 +336,7 @@ bones = ["Hip", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest", PackedF
 visible = false
 
 [node name="Hip" type="Bone2D" parent="Skeleton2D"]
-position = Vector2(-1, -14.9636)
+position = Vector2(-1, -15.4275)
 rest = Transform2D(1, 0, 0, 1, -1, -17)
 
 [node name="Chest" type="Bone2D" parent="Skeleton2D/Hip"]
@@ -354,7 +354,6 @@ bone_angle = 0.0
 [node name="UpperArmL" type="Bone2D" parent="Skeleton2D/Hip/Chest"]
 position = Vector2(0, -12)
 rotation = -0.0438202
-scale = Vector2(1, 1)
 rest = Transform2D(0.707108, -0.707106, 0.707106, 0.707108, 0, -12)
 
 [node name="LowerArmL" type="Bone2D" parent="Skeleton2D/Hip/Chest/UpperArmL"]
@@ -384,13 +383,12 @@ rotation = -1.8326
 rest = Transform2D(-0.965926, -0.258819, 0.258819, -0.965926, 7.07106, 2.69413e-05)
 
 [node name="UpperLegL" type="Bone2D" parent="Skeleton2D/Hip"]
-rotation = 2.33235
-scale = Vector2(1, 1)
+rotation = 0.785398
 rest = Transform2D(-0.707104, 0.707109, -0.707109, -0.707104, 0, 0)
 
 [node name="LowerLegL" type="Bone2D" parent="Skeleton2D/Hip/UpperLegL"]
 position = Vector2(8.48528, 2.81413e-05)
-rotation = 0.0238359
+rotation = 0.0699456
 scale = Vector2(0.999999, 0.999999)
 rest = Transform2D(1, 0, 0, 1, 8.48528, 2.81413e-05)
 auto_calculate_length_and_angle = false
@@ -398,13 +396,11 @@ length = 8.0
 bone_angle = 0.0
 
 [node name="UpperLegR" type="Bone2D" parent="Skeleton2D/Hip"]
-rotation = 0.644506
-scale = Vector2(1, 1)
+rotation = 2.28624
 rest = Transform2D(0.707108, 0.707106, -0.707106, 0.707108, 0, 0)
 
 [node name="LowerLegR" type="Bone2D" parent="Skeleton2D/Hip/UpperLegR"]
 position = Vector2(9.8995, 1.10944e-05)
-rotation = 0.0953439
 scale = Vector2(0.999999, 0.999999)
 rest = Transform2D(1, 0, 0, 1, 9.8995, 1.10944e-05)
 auto_calculate_length_and_angle = false

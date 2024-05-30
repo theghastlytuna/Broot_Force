@@ -425,6 +425,7 @@ moveSpeed = -200.0
 [node name="Attack" type="Node2D" parent="."]
 position = Vector2(-34, -57.6581)
 script = ExtResource("3_vf0de")
+attackDamage = 2.0
 timeToAttack = 0.7
 timeAfterAttack = 0.8
 groupToAttack = "EnemyUnits"
