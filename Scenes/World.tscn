@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bm6m4ri1lrshm"]
+[gd_scene load_steps=7 format=3 uid="uid://bm6m4ri1lrshm"]
 
-[ext_resource type="Script" path="res://Scripts/Line2D.gd" id="1_5iy41"]
+[ext_resource type="Script" path="res://Scripts/RootPhase/Root/Line2D.gd" id="1_5iy41"]
 [ext_resource type="Texture2D" uid="uid://6mm3q3gblhrr" path="res://icon.svg" id="2_ja3un"]
-[ext_resource type="Script" path="res://Scripts/Spawner.gd" id="3_bsb8w"]
-[ext_resource type="Script" path="res://Scripts/LayerManager.gd" id="3_vpma5"]
-[ext_resource type="PackedScene" path="res://Scenes/water.tscn" id="4_pwnqw"]
+[ext_resource type="Script" path="res://Scripts/RootPhase/Spawn Management/Spawner.gd" id="3_bsb8w"]
+[ext_resource type="Script" path="res://Scripts/RootPhase/Spawn Management/LayerManager.gd" id="3_vpma5"]
 [ext_resource type="Texture2D" uid="uid://wnnrtab0skb7" path="res://Art Assets/Textures/Layer2.png" id="5_tt3bi"]
 
 [sub_resource type="Curve" id="Curve_ebely"]
@@ -62,9 +61,6 @@ rotation_smoothing_speed = 5.845
 
 [node name="Spawner" type="Node2D" parent="." node_paths=PackedStringArray("addingParent")]
 script = ExtResource("3_bsb8w")
-resourceDictionary = {
-Vector2(0, 5): ExtResource("4_pwnqw")
-}
 XSpread = 1000.0
 addingParent = NodePath("../Obsticles")
 
