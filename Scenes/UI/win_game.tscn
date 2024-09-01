@@ -65,7 +65,7 @@ alignment = 1
 [node name="Label" parent="CenterContainer/PanelContainer/VBoxContainer" instance=ExtResource("2_o1nwf")]
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
-text = "GAME_WIN"
+text = "You Won!"
 horizontal_alignment = 1
 
 [node name="Button" parent="CenterContainer/PanelContainer/VBoxContainer" instance=ExtResource("3_3njig")]
@@ -73,6 +73,6 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 32
-text = "OK"
+text = "Return to menu"
 
 [connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/Button" to="CenterContainer" method="_on_button_pressed"]

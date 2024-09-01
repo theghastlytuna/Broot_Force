@@ -17,5 +17,7 @@ func _on_button_pressed() -> void:
 	SaveManager.saveGame()
 	SaveManager.loadData()
 	
+	SaveManager.resetData()
+	
 	get_tree().change_scene_to_file("res://Menus/startmenu.tscn")
 	pass # Replace with function body.

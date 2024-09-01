@@ -13,7 +13,7 @@ var towerIndex : int = -1
 var showing : bool = false
 
 func _ready() -> void:
-	freeTowers = GameManager.freeTowers
+	#freeTowers = GameManager.freeTowers
 	topParent.visible = false
 	EventManager.onCanopyClicked.connect(showTowers)
 	EventManager.onGroundClicked.connect(showTowers)

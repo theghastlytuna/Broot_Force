@@ -83,10 +83,10 @@ func setStopMoving(b : bool):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	timerDisplay.text = str(floor($Timer.time_left))
+	
 	if stopMoving:
 		return
-	
-	timerDisplay.text = str(floor($Timer.time_left))
 	
 	wallNode.global_position.y = global_position.y
 	#spawn an object every spawnInterval pixels, if you go back up, it will not trigger

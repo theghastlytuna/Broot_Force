@@ -33,7 +33,7 @@ var towerList : Array = [
 
 var ySeed : int
 var EnemyRoundsToAdd : int
-var freeTowers : bool = false
+var freeTowers : bool = true
 
 #THORN_WALL,
 	#FLYTRAP_CLUSTER,

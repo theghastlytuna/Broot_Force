@@ -306,8 +306,9 @@ script = ExtResource("11_cjjht")
 [node name="RockUI" parent="CanvasLayer/UI" instance=ExtResource("11_623x4")]
 layout_mode = 1
 
-[node name="RootResults" parent="CanvasLayer/UI" instance=ExtResource("13_y0ym3")]
+[node name="RootResults" parent="CanvasLayer/UI" node_paths=PackedStringArray("rockUI") instance=ExtResource("13_y0ym3")]
 layout_mode = 1
+rockUI = NodePath("../RockUI")
 
 [node name="WinGame" parent="CanvasLayer/UI" instance=ExtResource("22_pyxfx")]
 layout_mode = 0

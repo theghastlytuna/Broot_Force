@@ -8,7 +8,6 @@ func _enter_tree():
 	SaveManager.loadData()
 	
 	Debug.Log("growth round ",GameManager.growthRounds)
-	
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

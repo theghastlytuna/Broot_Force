@@ -1,5 +1,7 @@
 extends Control
 
+@export var rockUI : CenterContainer
+
 var called : bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,6 +14,7 @@ func showResults():
 		return
 	called = true
 	$AnimationPlayer.play("Show")
+	rockUI.hide()
 	var totalUnitsCollected : int
 	for unit in GameManager.rootPhaseStats.availableUnits:
 		totalUnitsCollected+=unit

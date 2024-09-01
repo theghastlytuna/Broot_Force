@@ -8,6 +8,7 @@ var isVisible : bool
 func _ready():
 	isVisible = true
 	parentnode.onTowerPlacedOnSlot.connect(setVisible)
+	EventManager.onTowersPlaced.connect(disableButton)
 	if GameManager.growthRounds == 1:
 		$TextureRect/TextureRect2.visible = true
 		$TextureRect/TextureRect2/AnimationPlayer.play("Spin")
@@ -26,14 +27,17 @@ func setVisible(b : bool):
 		$TextureRect/AnimationPlayer.play("Sprout")
 		$TextureRect/AnimationPlayer.queue("Bob")
 		isVisible = true
-		mouse_filter = Control.MOUSE_FILTER_PASS
+		#mouse_filter = Control.MOUSE_FILTER_PASS
 	else:
 		if isVisible:
 			$TextureRect/AnimationPlayer.play("Retreat")
 		isVisible = false
-		mouse_filter = Control.MOUSE_FILTER_IGNORE
+		#mouse_filter = Control.MOUSE_FILTER_IGNORE
 	
 
 func _on_pressed():
 	Debug.Log("sdf")
 	EventManager.onGroundClicked.emit([0,1,2],parentnode)
+
+func disableButton():
+	mouse_filter = Control.MOUSE_FILTER_IGNORE
