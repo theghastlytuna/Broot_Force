@@ -155,6 +155,7 @@ func repairUnit(budget : float):
 	if repairCost <= budget:
 		damageTaken = 0
 		healthBar.value = health
+		GameManager.spendWater(repairCost)
 		return repairCost
 	else:
 		return -1.0

@@ -60,7 +60,7 @@ func selectUpgrade(type : int):
 	pass
 	
 func confirmUpgrade():
-	if upgradeToUpgrade <0:
+	if upgradeToUpgrade <0 && !towerSlot:
 		animationPlayer.play("Hide")
 		return
 		
@@ -71,7 +71,7 @@ func confirmUpgrade():
 			setConfirmButtonColour(Color.RED)
 			confirmButton.text = "TOWER_HP_FULL"
 			return
-		towerSlot.stashedTower.repairUnit(GameManager.totalWater)
+		towerSlot.stashedTower.repairUnit(GameManager.waterBank)
 		towerSlot = null
 		return
 	var upgradeType: String = str( GameManager.UpgradeType.keys()[upgradeToUpgrade])
