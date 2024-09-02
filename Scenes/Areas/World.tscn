@@ -41,16 +41,16 @@ point_count = 2
 [sub_resource type="CircleShape2D" id="CircleShape2D_4g5gk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kfqgj"]
-size = Vector2(69, 694)
+size = Vector2(346, 1247)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u5ugd"]
-size = Vector2(64, 742)
+size = Vector2(394, 1273)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ivd50"]
-size = Vector2(1877, 103)
+size = Vector2(1877, 281)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7d4vg"]
-size = Vector2(413.5, 87.5)
+size = Vector2(413.5, 340.735)
 
 [node name="World" type="Node2D" node_paths=PackedStringArray("oldRootHolder")]
 script = ExtResource("1_j1hoq")
@@ -162,13 +162,13 @@ collide_with_bodies = false
 [node name="LeftWall" type="Area2D" parent="Walls" groups=["WALL"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/LeftWall"]
-position = Vector2(-784.5, -14)
+position = Vector2(-923, 138.5)
 shape = SubResource("RectangleShape2D_kfqgj")
 
 [node name="RightWall" type="Area2D" parent="Walls" groups=["WALL"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/RightWall"]
-position = Vector2(782, -1)
+position = Vector2(947, 143.5)
 shape = SubResource("RectangleShape2D_u5ugd")
 
 [node name="Node2D" type="Node2D" parent="."]
@@ -176,20 +176,20 @@ shape = SubResource("RectangleShape2D_u5ugd")
 [node name="Area2D" type="Area2D" parent="Node2D" groups=["WALL"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Area2D"]
-position = Vector2(11.5, -51.5)
+position = Vector2(11.5, -140.5)
 shape = SubResource("RectangleShape2D_ivd50")
 
 [node name="Area2D2" type="Area2D" parent="Node2D" groups=["WALL"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Area2D2"]
-position = Vector2(735, 17)
+position = Vector2(824.532, -72.5321)
 rotation = 0.785397
 shape = SubResource("RectangleShape2D_7d4vg")
 
 [node name="Area2D3" type="Area2D" parent="Node2D" groups=["WALL"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Area2D3"]
-position = Vector2(-716, 15)
+position = Vector2(-799, -76)
 rotation = -0.785397
 shape = SubResource("RectangleShape2D_7d4vg")
 
@@ -310,14 +310,7 @@ layout_mode = 1
 layout_mode = 1
 
 [node name="WinGame" parent="CanvasLayer/UI" instance=ExtResource("22_pyxfx")]
-layout_mode = 0
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
+layout_mode = 1
 
 [node name="Tutorial" type="CanvasLayer" parent="."]
 

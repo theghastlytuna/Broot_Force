@@ -15,7 +15,8 @@ func saveGame():
 		resetData()
 	var collectedUnits = get_tree().get_nodes_in_group("COLLECTED")
 	for n in collectedUnits:
-		saveData.depthsCollected.append(n.depth)
+		if "depth" in n:
+			saveData.depthsCollected.append(n.depth)
 	collectedUnits.clear()
 	saveData.availableUnits = GameManager.availableUnits
 	saveData.waterToAddPerRound = GameManager.waterToAddPerRound

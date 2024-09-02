@@ -47,6 +47,7 @@ var currentRootArray : Array
 var spawningArcLength : float = 0
 var lastNormal : Vector2
 var lastNormalT : float
+var startedMoving = false
 
 func _enter_tree() -> void:
 	spawner.spawnInterval = spawnInterval
@@ -54,6 +55,7 @@ func _enter_tree() -> void:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	lastNormal = Vector2.ZERO
+	startedMoving = false
 	turningAmount = turningAmount * (1 + GameManager.getUpgradeAmount("TURNING"))
 	tip.add_point(Vector2(0,0))
 	tip.add_point(Vector2(0,0))
@@ -66,27 +68,29 @@ func _ready() -> void:
 	var musicPlayer: AudioStreamPlayer = SoundManager.play_music(music, 0, "Music")
 	EventManager.rootStartMoving.connect(setStopMoving.bind(false))
 	EventManager.rootStopMoving.connect(setStopMoving.bind(true))
-	EventManager.onRootPhaseStart.connect(startRootPhase)
-	
+	EventManager.rootStartMoving.connect(startRootPhase)
 	
 	
 	
 func startRootPhase():
+	if startedMoving:
+		return
 	GameManager.pastRoots[(GameManager.currentRootRound)] = []
 	currentRootArray = GameManager.pastRoots[(GameManager.currentRootRound)]
 	currentRootArray.append(Vector2.ZERO)
 	$Timer.wait_time = rootPhaseTimeout * (1 + GameManager.getUpgradeAmount("DURATION"))
 	$Timer.start()
+	startedMoving = true
 
 func setStopMoving(b : bool):
 	stopMoving = b
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if startedMoving:
+		timerDisplay.text = str(floor($Timer.time_left))
 	if stopMoving:
 		return
-	
-	timerDisplay.text = str(floor($Timer.time_left))
 	
 	wallNode.global_position.y = global_position.y
 	#spawn an object every spawnInterval pixels, if you go back up, it will not trigger
@@ -175,7 +179,7 @@ func _process(delta: float) -> void:
 
 	var size : int = tip.points.size()-1
 	tip.points[size] = position
-	if distanceFromLastPoint >= 25:
+	if distanceFromLastPoint >= 25:#magic number showing how often we are going to add a point along the arc length of the root, but this is not the value that is used for saving
 		tip.add_point(position)
 		if size >= tipPoints:			
 			tip.remove_point(0)
